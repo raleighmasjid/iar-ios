@@ -9,19 +9,20 @@ import SwiftUI
 
 struct PrayerView: View {
     @StateObject var prayerController = PrayerController()
+    
     var body: some View {
         VStack {
-            if let prayers = prayerController.current {
+            if let prayerDay = prayerController.current {
                 ForEach(Prayer.allCases, id: \.self) { prayer in
-                    PrayerRow(prayer: prayer, prayerDay: prayers)
+                    PrayerRow(prayer: prayer, prayerDay: prayerDay)
                 }
             } else {
                 Text("Loading...")
             }
         }
-            .task {
-                await prayerController.loadTimes()
-            }
+        .task {
+            await prayerController.loadTimes()
+        }
     }
 }
 
