@@ -8,26 +8,21 @@
 import SwiftUI
 
 struct PrayerView: View {
-    @StateObject var prayerController = PrayerController()
+    let prayerDay: PrayerDay
     
     var body: some View {
-        VStack {
-            if let prayerDay = prayerController.current {
-                ForEach(Prayer.allCases, id: \.self) { prayer in
-                    PrayerRow(prayer: prayer, prayerDay: prayerDay)
-                }
-            } else {
-                Text("Loading...")
+        VStack(spacing: 0) {
+            ForEach(Prayer.allCases, id: \.self) { prayer in
+                PrayerRow(prayer: prayer, prayerDay: prayerDay, current: prayer == prayerDay.currentPrayer())
             }
         }
-        .task {
-            await prayerController.loadTimes()
-        }
+        .frame(maxWidth: .infinity)
     }
 }
 
 struct PrayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerView()
+        PrayerView(prayerDay: .mock())
+            .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

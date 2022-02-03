@@ -9,27 +9,23 @@ import Foundation
 
 class PrayerController: ObservableObject {
     @Published var prayerDays: [PrayerDay] = []
+    @Published var current: PrayerDay?
+    @Published var upcoming: PrayerTime?
     
-    let session = URLSession.shared
+    let provider: PrayerProvider
     
-    var current: PrayerDay? {
-        prayerDays.first(where: {
-            Calendar.current.isDateInToday($0.date)
-        })
+    init(provider: PrayerProvider) {
+        self.provider = provider
     }
     
-    @MainActor
-    func loadTimes() async {
-        guard let url = URL(string: "https://raleighmasjid.org/API/prayer/app/") else {
-            return
-        }
-        do {
-            let (data, _) = try await session.data(from: url)
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            prayerDays = try decoder.decode([PrayerDay].self, from: data)
-        } catch {
-            print("error loading prayer times \(error)")
+    func loadTimes() {
+        Task {
+            prayerDays = await provider.fetchPrayerTimes()
+            current = prayerDays.first(where: {
+                Calendar.current.isDateInToday($0.date)
+            })
+
+            upcoming = PrayerDay.upcomingPrayer(prayerDays: prayerDays)
         }
     }
 }

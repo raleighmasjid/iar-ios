@@ -19,4 +19,8 @@ struct HijriComponents: Codable {
         case year
         case month = "month_numeric"
     }
+    
+    func formatted() -> String {
+        "\(monthName) \(day), \(year) h"
+    }
 }

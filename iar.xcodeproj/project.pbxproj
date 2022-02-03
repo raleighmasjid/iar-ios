@@ -20,6 +20,13 @@
 		847AC2E2279FAE16000D80EE /* PrayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E1279FAE16000D80EE /* PrayerController.swift */; };
 		847AC2E5279FB10A000D80EE /* PrayerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E4279FB10A000D80EE /* PrayerRow.swift */; };
 		847AC2E7279FB162000D80EE /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E6279FB162000D80EE /* Prayer.swift */; };
+		849550F127AA0316008A180F /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F027AA0316008A180F /* MockData.swift */; };
+		849550F327AA0654008A180F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F227AA0654008A180F /* MainView.swift */; };
+		849550F527AA07EB008A180F /* PrayerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F427AA07EB008A180F /* PrayerProvider.swift */; };
+		849550F727AA2EF7008A180F /* PrayerTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F627AA2EF7008A180F /* PrayerTime.swift */; };
+		849550F927AA3784008A180F /* PrayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F827AA3784008A180F /* PrayerHeader.swift */; };
+		849550FC27AA38B5008A180F /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FB27AA38B5008A180F /* Sequence.swift */; };
+		849550FE27AA4117008A180F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FD27AA4117008A180F /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		847AC2B6279F71A2000D80EE /* iar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		847AC2B6279F71A2000D80EE /* IAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AC2B9279F71A2000D80EE /* iarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iarApp.swift; sourceTree = "<group>"; };
 		847AC2BB279F71A2000D80EE /* PrayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerView.swift; sourceTree = "<group>"; };
 		847AC2BD279F71A2000D80EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +55,13 @@
 		847AC2E1279FAE16000D80EE /* PrayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerController.swift; sourceTree = "<group>"; };
 		847AC2E4279FB10A000D80EE /* PrayerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerRow.swift; sourceTree = "<group>"; };
 		847AC2E6279FB162000D80EE /* Prayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
+		849550F027AA0316008A180F /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		849550F227AA0654008A180F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		849550F427AA07EB008A180F /* PrayerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerProvider.swift; sourceTree = "<group>"; };
+		849550F627AA2EF7008A180F /* PrayerTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTime.swift; sourceTree = "<group>"; };
+		849550F827AA3784008A180F /* PrayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerHeader.swift; sourceTree = "<group>"; };
+		849550FB27AA38B5008A180F /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		849550FD27AA4117008A180F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +94,7 @@
 		847AC2B7279F71A2000D80EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				847AC2B6279F71A2000D80EE /* iar.app */,
+				847AC2B6279F71A2000D80EE /* IAR.app */,
 				847AC2D2279F9421000D80EE /* iarTests.xctest */,
 			);
 			name = Products;
@@ -93,6 +107,7 @@
 				847AC2E0279FAE04000D80EE /* Controllers */,
 				847AC2C7279F7419000D80EE /* Models */,
 				847AC2E3279FB0E6000D80EE /* Views */,
+				849550FA27AA389E008A180F /* Extensions */,
 				847AC2BD279F71A2000D80EE /* Assets.xcassets */,
 				847AC2BF279F71A2000D80EE /* Preview Content */,
 			);
@@ -103,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				847AC2C0279F71A2000D80EE /* Preview Assets.xcassets */,
+				849550F027AA0316008A180F /* MockData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -115,6 +131,7 @@
 				847AC2C8279F74C3000D80EE /* AdhanSchedule.swift */,
 				847AC2CC279F926A000D80EE /* IqamahSchedule.swift */,
 				847AC2E6279FB162000D80EE /* Prayer.swift */,
+				849550F627AA2EF7008A180F /* PrayerTime.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -140,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				847AC2E1279FAE16000D80EE /* PrayerController.swift */,
+				849550F427AA07EB008A180F /* PrayerProvider.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -148,9 +166,20 @@
 			isa = PBXGroup;
 			children = (
 				847AC2BB279F71A2000D80EE /* PrayerView.swift */,
+				849550F227AA0654008A180F /* MainView.swift */,
+				849550F827AA3784008A180F /* PrayerHeader.swift */,
 				847AC2E4279FB10A000D80EE /* PrayerRow.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		849550FA27AA389E008A180F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				849550FB27AA38B5008A180F /* Sequence.swift */,
+				849550FD27AA4117008A180F /* Color.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +199,7 @@
 			);
 			name = iar;
 			productName = iar;
-			productReference = 847AC2B6279F71A2000D80EE /* iar.app */;
+			productReference = 847AC2B6279F71A2000D80EE /* IAR.app */;
 			productType = "com.apple.product-type.application";
 		};
 		847AC2D1279F9421000D80EE /* iarTests */ = {
@@ -254,15 +283,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849550F727AA2EF7008A180F /* PrayerTime.swift in Sources */,
 				847AC2CD279F926A000D80EE /* IqamahSchedule.swift in Sources */,
+				849550F527AA07EB008A180F /* PrayerProvider.swift in Sources */,
 				847AC2BC279F71A2000D80EE /* PrayerView.swift in Sources */,
 				847AC2C9279F74C3000D80EE /* AdhanSchedule.swift in Sources */,
+				849550FE27AA4117008A180F /* Color.swift in Sources */,
 				847AC2DF279FA893000D80EE /* HijriComponents.swift in Sources */,
 				847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */,
 				847AC2E5279FB10A000D80EE /* PrayerRow.swift in Sources */,
+				849550FC27AA38B5008A180F /* Sequence.swift in Sources */,
 				847AC2CB279F9246000D80EE /* PrayerDay.swift in Sources */,
+				849550F927AA3784008A180F /* PrayerHeader.swift in Sources */,
+				849550F327AA0654008A180F /* MainView.swift in Sources */,
 				847AC2E7279FB162000D80EE /* Prayer.swift in Sources */,
 				847AC2E2279FAE16000D80EE /* PrayerController.swift in Sources */,
+				849550F127AA0316008A180F /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +459,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.raleighmasjid.iar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = IAR;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -452,7 +488,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.raleighmasjid.iar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = IAR;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
