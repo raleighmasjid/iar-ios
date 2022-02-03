@@ -34,11 +34,11 @@ struct PrayerRow: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .font(.system(size: 22, weight: .semibold))
             
-            Text(adhanTime.formatted(date: .omitted, time: .shortened))
+            Text(adhanTime.timeFormatted())
                 .frame(maxWidth: .infinity, alignment: .center)
                 .font(.system(size: 20, weight: .medium))
             
-            Text(iqamahTime?.formatted(date: .omitted, time: .shortened) ?? " ")
+            Text(iqamahTime?.timeFormatted() ?? " ")
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .font(.system(size: 20, weight: .medium))
             

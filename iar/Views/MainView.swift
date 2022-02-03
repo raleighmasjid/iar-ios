@@ -13,7 +13,7 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             VStack {
-                PrayerHeader(hijri: prayerController.current?.hijri)
+                PrayerHeader(prayerDay: prayerController.current)
                 if let prayerDay = prayerController.current {
                     PrayerView(prayerDay: prayerDay)
                 } else {

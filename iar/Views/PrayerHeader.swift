@@ -9,14 +9,14 @@ import SwiftUI
 
 struct PrayerHeader: View {
     
-    let hijri: HijriComponents?
+    let prayerDay: PrayerDay?
     
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text(Date().formatted(.dateTime.weekday(.abbreviated).month(.abbreviated).day().year()))
-                if let hijri = hijri {
-                    Text(hijri.formatted())
+                if let prayerDay = prayerDay {
+                    Text(Formatter.dayFormatter.string(from: prayerDay.date))
+                    Text(prayerDay.hijri.formatted())
                         .italic()
                 }
             }
@@ -46,9 +46,9 @@ struct PrayerHeader: View {
 
 struct PrayerHeader_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerHeader(hijri: PrayerDay.mock().hijri)
+        PrayerHeader(prayerDay: PrayerDay.mock())
             .previewLayout(PreviewLayout.sizeThatFits)
-        PrayerHeader(hijri: nil)
+        PrayerHeader(prayerDay: nil)
             .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

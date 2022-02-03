@@ -13,7 +13,7 @@ struct PrayerDay: Codable {
     let adhan: AdhanSchedule
     let iqamah: IqamahSchedule
     
-    public func currentPrayer(at time: Date = Date()) -> Prayer? {
+    func currentPrayer(at time: Date = Date()) -> Prayer? {
         if adhan.isha <= time {
             if Calendar.current.isDate(adhan.isha, inSameDayAs: time) {
                 return .isha
