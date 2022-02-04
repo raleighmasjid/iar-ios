@@ -44,6 +44,7 @@ struct PrayerHeader: View {
     }
 }
 
+#if DEBUG
 struct PrayerHeader_Previews: PreviewProvider {
     static var previews: some View {
         PrayerHeader(prayerDay: PrayerDay.mock())
@@ -52,3 +53,4 @@ struct PrayerHeader_Previews: PreviewProvider {
             .previewLayout(PreviewLayout.sizeThatFits)
     }
 }
+#endif

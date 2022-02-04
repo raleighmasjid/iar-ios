@@ -20,9 +20,11 @@ struct PrayerView: View {
     }
 }
 
+#if DEBUG
 struct PrayerView_Previews: PreviewProvider {
     static var previews: some View {
         PrayerView(prayerDay: .mock())
             .previewLayout(PreviewLayout.sizeThatFits)
     }
 }
+#endif

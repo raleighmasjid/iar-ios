@@ -51,6 +51,7 @@ struct PrayerRow: View {
     }
 }
 
+#if DEBUG
 struct PrayerRow_Previews: PreviewProvider {
     static var previews: some View {
         PrayerRow(prayer: .fajr, prayerDay: .mock(), current: true)
@@ -61,3 +62,4 @@ struct PrayerRow_Previews: PreviewProvider {
             .padding()
     }
 }
+#endif

@@ -7,7 +7,7 @@
 
 import Foundation
 
-#if targetEnvironment(simulator)
+#if DEBUG
 
 class MockProvider: PrayerProvider {
     func fetchPrayerTimes() async -> [PrayerDay] {
