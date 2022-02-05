@@ -77,7 +77,7 @@ struct PrayerDay: Codable {
     
     static func upcomingPrayer(prayerDays: [PrayerDay], time: Date = Date()) -> PrayerTime? {
         let times = prayerDays.flatMap { $0.prayerTimes }.sorted(comparingKeyPath: \.adhan)
-        return times.first(where: { ($0.iqamah ?? $0.adhan) >= time })
+        return times.first(where: { $0.adhan >= time })
     }
 }
 

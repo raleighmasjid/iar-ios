@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PrayerView: View {
     let prayerDay: PrayerDay
-    
+
     var body: some View {
         VStack(spacing: 0) {
             ForEach(Prayer.allCases, id: \.self) { prayer in
@@ -25,6 +25,7 @@ struct PrayerView_Previews: PreviewProvider {
     static var previews: some View {
         PrayerView(prayerDay: .mock())
             .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
     }
 }
 #endif

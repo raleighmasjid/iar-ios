@@ -22,12 +22,12 @@ struct PrayerRow: View {
     
     var body: some View {
         HStack() {
-            ZStack {
+            ZStack(alignment: .leading) {
                 if current {
                     Image(systemName: "circlebadge.fill")
                         .resizable()
                         .frame(width: 6, height: 6)
-                        .offset(x: -28, y: 0)
+                        .offset(x: -12, y: 0)
                 }
                 Text(prayerName)
             }
@@ -46,8 +46,6 @@ struct PrayerRow: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
         .background(Color.green.opacity(current ? 0.1 : 0))
-        
-        
     }
 }
 
@@ -55,6 +53,12 @@ struct PrayerRow: View {
 struct PrayerRow_Previews: PreviewProvider {
     static var previews: some View {
         PrayerRow(prayer: .fajr, prayerDay: .mock(), current: true)
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+        PrayerRow(prayer: .dhuhr, prayerDay: .mock(), current: true)
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+        PrayerRow(prayer: .maghrib, prayerDay: .mock(), current: true)
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
         PrayerRow(prayer: .dhuhr, prayerDay: .mock(), current: false)

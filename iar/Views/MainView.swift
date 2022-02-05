@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var prayerController: PrayerController
+    @StateObject var viewModel: PrayerTimesViewModel
     
     var body: some View {
         NavigationView {
             VStack {
-                PrayerHeader(prayerDay: prayerController.current)
-                if let prayerDay = prayerController.current {
+                PrayerHeader(prayerDay: viewModel.current,
+                             upcoming: viewModel.upcoming,
+                             remaining: viewModel.timeRemaining)
+                if let prayerDay = viewModel.current {
                     PrayerView(prayerDay: prayerDay)
                 } else {
                     Text("Loading...")
@@ -22,7 +24,7 @@ struct MainView: View {
                 Spacer(minLength: 10)
             }
             .onAppear {
-                prayerController.loadTimes()
+                viewModel.loadTimes()
             }
             .navigationTitle("Prayer Times")
         }
@@ -32,7 +34,7 @@ struct MainView: View {
 #if DEBUG
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(prayerController: PrayerController(provider: MockProvider()))
+        MainView(viewModel: PrayerTimesViewModel(provider: MockProvider()))
     }
 }
 #endif

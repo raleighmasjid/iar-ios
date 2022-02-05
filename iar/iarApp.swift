@@ -11,7 +11,7 @@ import SwiftUI
 struct iarApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView(prayerController: PrayerController(provider: NetworkPrayerProvider()))
+            MainView(viewModel: PrayerTimesViewModel(provider: NetworkPrayerProvider()))
         }
     }
 }
