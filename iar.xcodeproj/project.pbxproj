@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8420E8B827AF730E00C54EED /* AlarmToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B727AF730E00C54EED /* AlarmToggleStyle.swift */; };
+		8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B927AF78A600C54EED /* UIScreen.swift */; };
+		8420E8BC27AF7FEE00C54EED /* AlarmSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8BB27AF7FEE00C54EED /* AlarmSetting.swift */; };
 		847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2B9279F71A2000D80EE /* iarApp.swift */; };
 		847AC2BC279F71A2000D80EE /* PrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2BB279F71A2000D80EE /* PrayerView.swift */; };
 		847AC2BE279F71A2000D80EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847AC2BD279F71A2000D80EE /* Assets.xcassets */; };
@@ -42,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8420E8B727AF730E00C54EED /* AlarmToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmToggleStyle.swift; sourceTree = "<group>"; };
+		8420E8B927AF78A600C54EED /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		8420E8BB27AF7FEE00C54EED /* AlarmSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSetting.swift; sourceTree = "<group>"; };
 		8422A11627ACAE7C0043B8D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		847AC2B6279F71A2000D80EE /* IAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AC2B9279F71A2000D80EE /* iarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iarApp.swift; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 				847AC2CC279F926A000D80EE /* IqamahSchedule.swift */,
 				847AC2E6279FB162000D80EE /* Prayer.swift */,
 				849550F627AA2EF7008A180F /* PrayerTime.swift */,
+				8420E8BB27AF7FEE00C54EED /* AlarmSetting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,6 +183,7 @@
 				849550F227AA0654008A180F /* MainView.swift */,
 				849550F827AA3784008A180F /* PrayerHeader.swift */,
 				847AC2E4279FB10A000D80EE /* PrayerRow.swift */,
+				8420E8B727AF730E00C54EED /* AlarmToggleStyle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +194,7 @@
 				849550FB27AA38B5008A180F /* Sequence.swift */,
 				849550FD27AA4117008A180F /* Color.swift */,
 				84E57E0127AB943600AC10A0 /* URLSession.swift */,
+				8420E8B927AF78A600C54EED /* UIScreen.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,6 +316,7 @@
 				849550FE27AA4117008A180F /* Color.swift in Sources */,
 				847AC2DF279FA893000D80EE /* HijriComponents.swift in Sources */,
 				847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */,
+				8420E8B827AF730E00C54EED /* AlarmToggleStyle.swift in Sources */,
 				847AC2E5279FB10A000D80EE /* PrayerRow.swift in Sources */,
 				849550FC27AA38B5008A180F /* Sequence.swift in Sources */,
 				847AC2CB279F9246000D80EE /* PrayerDay.swift in Sources */,
@@ -317,6 +327,8 @@
 				847AC2E7279FB162000D80EE /* Prayer.swift in Sources */,
 				847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */,
 				849550F127AA0316008A180F /* MockData.swift in Sources */,
+				8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */,
+				8420E8BC27AF7FEE00C54EED /* AlarmSetting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

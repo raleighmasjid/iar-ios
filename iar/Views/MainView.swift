@@ -16,13 +16,7 @@ struct MainView: View {
                 PrayerHeader(prayerDay: viewModel.current,
                              upcoming: viewModel.upcoming,
                              remaining: viewModel.timeRemaining)
-                if let prayerDay = viewModel.current {
-                    PrayerView(prayerDay: prayerDay)
-                } else {
-                    Text("Loading...")
-                        .padding(20)
-                        .font(.title3)
-                }
+                PrayerView(prayerDay: viewModel.current, alarmSetting: viewModel.alarm)
                 Spacer(minLength: 10)
             }
             .onAppear {

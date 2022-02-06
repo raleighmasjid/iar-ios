@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct PrayerRow: View {
-    let prayerName: String
-    let adhanTime: Date
-    let iqamahTime: Date?
+    let prayer: Prayer
+    let adhan: Date?
+    let iqamah: Date?
     let current: Bool
+    let alarm: AlarmSetting
+    @Binding var alarmEnabled: Bool
     
-    init(prayer: Prayer, prayerDay: PrayerDay, current: Bool) {
-        prayerName = prayer.title
-        adhanTime = prayerDay.adhan(for: prayer)
-        iqamahTime = prayerDay.iqamah(for: prayer)
-        self.current = current
+    var adhanFormatted: String {
+        adhan?.timeFormatted() ?? "-:--"
+    }
+    
+    var iqamahFormatted: String {
+        iqamah?.timeFormatted() ?? " "
     }
     
     var body: some View {
@@ -29,39 +32,72 @@ struct PrayerRow: View {
                         .frame(width: 6, height: 6)
                         .offset(x: -12, y: 0)
                 }
-                Text(prayerName)
+                Text(prayer.title)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .font(.system(size: 22, weight: .semibold))
+            .font(.system(size: titleSize, weight: .semibold))
             
-            Text(adhanTime.timeFormatted())
+            Text(adhanFormatted)
                 .frame(maxWidth: .infinity, alignment: .center)
-                .font(.system(size: 20, weight: .medium))
+                .font(.system(size: timeSize, weight: .medium))
             
-            Text(iqamahTime?.timeFormatted() ?? " ")
+            Text(iqamahFormatted)
                 .frame(maxWidth: .infinity, alignment: .trailing)
-                .font(.system(size: 20, weight: .medium))
+                .font(.system(size: timeSize, weight: .medium))
+            
+            Toggle("Alarm", isOn: $alarmEnabled)
+                .toggleStyle(.alarm)
+                .frame(width: 35, height: 16, alignment: .trailing)
+                .onChange(of: alarmEnabled) { newValue in
+                    alarm.didUpdate()
+                }
             
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
         .background(Color.green.opacity(current ? 0.1 : 0))
     }
+    
+    var timeSize: CGFloat {
+        UIScreen.isTiny ? 14 : 16
+    }
+    
+    var titleSize: CGFloat {
+        UIScreen.isTiny ? 16 : 18
+    }
 }
 
 #if DEBUG
 struct PrayerRow_Previews: PreviewProvider {
+    static let alarm: AlarmSetting = {
+        let alarmSetting = AlarmSetting()
+        alarmSetting.fajr = true
+        alarmSetting.maghrib = true
+        return alarmSetting
+    }()
     static var previews: some View {
-        PrayerRow(prayer: .fajr, prayerDay: .mock(), current: true)
+        PrayerRow(prayer: .fajr,
+                  adhan: Date(),
+                  iqamah: Date().addingTimeInterval(600),
+                  current: true,
+                  alarm: alarm,
+                  alarmEnabled: alarm.isEnabled(prayer: .fajr))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
-        PrayerRow(prayer: .dhuhr, prayerDay: .mock(), current: true)
+        PrayerRow(prayer: .dhuhr,
+                  adhan: nil,
+                  iqamah: nil,
+                  current: false,
+                  alarm: alarm,
+                  alarmEnabled: alarm.isEnabled(prayer: .dhuhr))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
-        PrayerRow(prayer: .maghrib, prayerDay: .mock(), current: true)
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-        PrayerRow(prayer: .dhuhr, prayerDay: .mock(), current: false)
+        PrayerRow(prayer: .maghrib,
+                  adhan: Date(),
+                  iqamah: Date().addingTimeInterval(600),
+                  current: false,
+                  alarm: alarm,
+                  alarmEnabled: alarm.isEnabled(prayer: .fajr))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }
