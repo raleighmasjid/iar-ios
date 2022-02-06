@@ -31,6 +31,7 @@ enum Formatter {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]
         formatter.unitsStyle = .abbreviated
+        formatter.zeroFormattingBehavior = .pad
         return formatter
     }()
 }

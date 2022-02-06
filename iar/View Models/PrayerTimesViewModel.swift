@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PrayerTimesViewModel: ObservableObject {
     @Published var prayerDays: [PrayerDay] = []
@@ -21,6 +22,10 @@ class PrayerTimesViewModel: ObservableObject {
         self.provider = provider
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.updateNextPrayer()
+        }
+        
+        NotificationCenter.default.addObserver(forName: UIScene.willEnterForegroundNotification, object: nil, queue: nil) { [weak self] _ in
+            self?.loadTimes()
         }
     }
     

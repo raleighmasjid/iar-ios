@@ -12,7 +12,7 @@ struct MainView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(alignment: .leading) {
                 PrayerHeader(prayerDay: viewModel.current,
                              upcoming: viewModel.upcoming,
                              remaining: viewModel.timeRemaining)
@@ -20,11 +20,15 @@ struct MainView: View {
                     PrayerView(prayerDay: prayerDay)
                 } else {
                     Text("Loading...")
+                        .padding(20)
+                        .font(.title3)
                 }
                 Spacer(minLength: 10)
             }
             .onAppear {
-                viewModel.loadTimes()
+                if viewModel.current == nil {
+                    viewModel.loadTimes()
+                }
             }
             .navigationTitle("Prayer Times")
         }
