@@ -1,5 +1,5 @@
 //
-//  AlarmToggleStyle.swift
+//  ToggleStyle.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 2/5/22.

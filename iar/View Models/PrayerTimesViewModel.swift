@@ -10,13 +10,12 @@ import UIKit
 import SwiftUI
 
 class PrayerTimesViewModel: ObservableObject, AlarmSettingDelegate {
-    @Published var prayerDays: [PrayerDay] = []
     @Published var current: PrayerDay?
     @Published var upcoming: PrayerTime?
     @Published var timeRemaining: TimeInterval = 0
     
     let alarm: AlarmSetting
-    
+    var prayerDays: [PrayerDay] = []
     weak var timer: Timer?
     
     let provider: PrayerProvider
