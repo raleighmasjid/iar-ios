@@ -12,8 +12,7 @@ struct PrayerRow: View {
     let adhan: Date?
     let iqamah: Date?
     let current: Bool
-    let alarm: AlarmSetting
-    @Binding var alarmEnabled: Bool
+    @Binding var alarm: Bool
     
     var adhanFormatted: String {
         adhan?.timeFormatted() ?? "-:--"
@@ -45,12 +44,9 @@ struct PrayerRow: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .font(.system(size: timeSize, weight: .medium))
             
-            Toggle("Alarm", isOn: $alarmEnabled)
+            Toggle("Alarm", isOn: $alarm)
                 .toggleStyle(.alarm)
                 .frame(width: 35, height: 16, alignment: .trailing)
-                .onChange(of: alarmEnabled) { newValue in
-                    alarm.didUpdate()
-                }
             
         }
         .padding(.horizontal, 20)
@@ -59,45 +55,36 @@ struct PrayerRow: View {
     }
     
     var timeSize: CGFloat {
-        UIScreen.isTiny ? 14 : 16
+        UIScreen.isTiny ? 15 : 17
     }
     
     var titleSize: CGFloat {
-        UIScreen.isTiny ? 16 : 18
+        UIScreen.isTiny ? 16 : 19
     }
 }
 
 #if DEBUG
 struct PrayerRow_Previews: PreviewProvider {
-    static let alarm: AlarmSetting = {
-        let alarmSetting = AlarmSetting()
-        alarmSetting.fajr = true
-        alarmSetting.maghrib = true
-        return alarmSetting
-    }()
     static var previews: some View {
         PrayerRow(prayer: .fajr,
                   adhan: Date(),
                   iqamah: Date().addingTimeInterval(600),
                   current: true,
-                  alarm: alarm,
-                  alarmEnabled: alarm.isEnabled(prayer: .fajr))
+                  alarm: .constant(true))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
         PrayerRow(prayer: .dhuhr,
                   adhan: nil,
                   iqamah: nil,
                   current: false,
-                  alarm: alarm,
-                  alarmEnabled: alarm.isEnabled(prayer: .dhuhr))
+                  alarm: .constant(false))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
         PrayerRow(prayer: .maghrib,
                   adhan: Date(),
                   iqamah: Date().addingTimeInterval(600),
                   current: false,
-                  alarm: alarm,
-                  alarmEnabled: alarm.isEnabled(prayer: .fajr))
+                  alarm: .constant(true))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

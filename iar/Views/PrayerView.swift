@@ -19,8 +19,7 @@ struct PrayerView: View {
                           adhan: prayerDay?.adhan(for: prayer),
                           iqamah: prayerDay?.iqamah(for: prayer),
                           current: prayerDay?.currentPrayer() == prayer,
-                          alarm: alarmSetting,
-                          alarmEnabled: alarmSetting.isEnabled(prayer: prayer))
+                          alarm: alarmSetting.boundAlarm(for: prayer))
             }
         }
         .frame(maxWidth: .infinity)
@@ -50,7 +49,6 @@ struct PrayerView: View {
 
 #if DEBUG
 struct PrayerView_Previews: PreviewProvider {
-    static let viewModel = PrayerTimesViewModel(provider: MockProvider())
     static var previews: some View {
         PrayerView(prayerDay: .mock(), alarmSetting: AlarmSetting())
             .previewLayout(PreviewLayout.sizeThatFits)

@@ -116,10 +116,10 @@
 			children = (
 				8422A11627ACAE7C0043B8D0 /* Info.plist */,
 				847AC2B9279F71A2000D80EE /* iarApp.swift */,
+				847AC2E3279FB0E6000D80EE /* Views */,
 				84FEFD4E27AEDD0A0075126B /* View Models */,
 				847AC2E0279FAE04000D80EE /* Controllers */,
 				847AC2C7279F7419000D80EE /* Models */,
-				847AC2E3279FB0E6000D80EE /* Views */,
 				849550FA27AA389E008A180F /* Extensions */,
 				847AC2BD279F71A2000D80EE /* Assets.xcassets */,
 				847AC2BF279F71A2000D80EE /* Preview Content */,
@@ -140,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				847AC2C8279F74C3000D80EE /* AdhanSchedule.swift */,
-				8420E8BB27AF7FEE00C54EED /* AlarmSetting.swift */,
 				847AC2DE279FA893000D80EE /* HijriComponents.swift */,
 				847AC2CC279F926A000D80EE /* IqamahSchedule.swift */,
 				847AC2E6279FB162000D80EE /* Prayer.swift */,
@@ -171,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				849550F427AA07EB008A180F /* PrayerProvider.swift */,
+				8420E8BB27AF7FEE00C54EED /* AlarmSetting.swift */,
 				84E57DFF27AB8FE300AC10A0 /* Formatter.swift */,
 			);
 			path = Controllers;
