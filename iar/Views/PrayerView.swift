@@ -9,8 +9,15 @@ import SwiftUI
 
 struct PrayerView: View {
     let prayerDay: PrayerDay?
+    let currentPrayer: Prayer?
     @ObservedObject var alarmSetting: AlarmSetting
 
+    init(prayerDay: PrayerDay?, alarmSetting: AlarmSetting) {
+        self.prayerDay = prayerDay
+        self.currentPrayer = prayerDay?.currentPrayer()
+        self.alarmSetting = alarmSetting
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             columnHeaders
@@ -18,7 +25,7 @@ struct PrayerView: View {
                 PrayerRow(prayer: prayer,
                           adhan: prayerDay?.adhan(for: prayer),
                           iqamah: prayerDay?.iqamah(for: prayer),
-                          current: prayerDay?.currentPrayer() == prayer,
+                          current: currentPrayer == prayer,
                           alarm: alarmSetting.boundAlarm(for: prayer))
             }
         }
@@ -50,7 +57,8 @@ struct PrayerView: View {
 #if DEBUG
 struct PrayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerView(prayerDay: .mock(), alarmSetting: AlarmSetting())
+        PrayerView(prayerDay: .mock(),
+                   alarmSetting: AlarmSetting())
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

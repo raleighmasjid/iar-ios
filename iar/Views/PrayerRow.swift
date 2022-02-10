@@ -25,12 +25,11 @@ struct PrayerRow: View {
     var body: some View {
         HStack() {
             ZStack(alignment: .leading) {
-                if current {
-                    Image(systemName: "circlebadge.fill")
-                        .resizable()
-                        .frame(width: 6, height: 6)
-                        .offset(x: -12, y: 0)
-                }
+                Image(systemName: "circlebadge.fill")
+                    .resizable()
+                    .frame(width: 6, height: 6)
+                    .offset(x: -12, y: 0)
+                    .opacity(current ? 1 : 0)
                 Text(prayer.title)
             }
             .frame(maxWidth: .infinity, alignment: .leading)

@@ -16,7 +16,8 @@ struct MainView: View {
                 PrayerHeader(prayerDay: viewModel.current,
                              upcoming: viewModel.upcoming,
                              remaining: viewModel.timeRemaining)
-                PrayerView(prayerDay: viewModel.current, alarmSetting: viewModel.alarm)
+                PrayerView(prayerDay: viewModel.current,
+                           alarmSetting: viewModel.alarm)
                 Spacer(minLength: 10)
             }
             .onAppear {
