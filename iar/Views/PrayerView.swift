@@ -10,12 +10,11 @@ import SwiftUI
 struct PrayerView: View {
     let prayerDay: PrayerDay?
     let currentPrayer: Prayer?
-    @ObservedObject var alarmSetting: AlarmSetting
+    @EnvironmentObject var notifications: NotificationSettings
 
-    init(prayerDay: PrayerDay?, alarmSetting: AlarmSetting) {
+    init(prayerDay: PrayerDay?) {
         self.prayerDay = prayerDay
         self.currentPrayer = prayerDay?.currentPrayer()
-        self.alarmSetting = alarmSetting
     }
     
     var body: some View {
@@ -26,7 +25,7 @@ struct PrayerView: View {
                           adhan: prayerDay?.adhan(for: prayer),
                           iqamah: prayerDay?.iqamah(for: prayer),
                           current: currentPrayer == prayer,
-                          alarm: alarmSetting.boundAlarm(for: prayer))
+                          notificationEnabled: notifications.boundValue(for: prayer))
             }
         }
         .frame(maxWidth: .infinity)
@@ -57,8 +56,8 @@ struct PrayerView: View {
 #if DEBUG
 struct PrayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerView(prayerDay: .mock(),
-                   alarmSetting: AlarmSetting())
+        PrayerView(prayerDay: .mock())
+            .environmentObject(NotificationSettings())
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		8420E8B827AF730E00C54EED /* ToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B727AF730E00C54EED /* ToggleStyle.swift */; };
 		8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B927AF78A600C54EED /* UIScreen.swift */; };
-		8420E8BC27AF7FEE00C54EED /* AlarmSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8BB27AF7FEE00C54EED /* AlarmSetting.swift */; };
+		8420E8BC27AF7FEE00C54EED /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */; };
+		8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2B9279F71A2000D80EE /* iarApp.swift */; };
 		847AC2BC279F71A2000D80EE /* PrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2BB279F71A2000D80EE /* PrayerView.swift */; };
 		847AC2BE279F71A2000D80EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847AC2BD279F71A2000D80EE /* Assets.xcassets */; };
@@ -47,8 +48,9 @@
 /* Begin PBXFileReference section */
 		8420E8B727AF730E00C54EED /* ToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyle.swift; sourceTree = "<group>"; };
 		8420E8B927AF78A600C54EED /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
-		8420E8BB27AF7FEE00C54EED /* AlarmSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSetting.swift; sourceTree = "<group>"; };
+		8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		8422A11627ACAE7C0043B8D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8458125127B5F6F10065B185 /* StoredDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredDefault.swift; sourceTree = "<group>"; };
 		847AC2B6279F71A2000D80EE /* IAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AC2B9279F71A2000D80EE /* iarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iarApp.swift; sourceTree = "<group>"; };
 		847AC2BB279F71A2000D80EE /* PrayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerView.swift; sourceTree = "<group>"; };
@@ -170,8 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				849550F427AA07EB008A180F /* PrayerProvider.swift */,
-				8420E8BB27AF7FEE00C54EED /* AlarmSetting.swift */,
+				8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */,
 				84E57DFF27AB8FE300AC10A0 /* Formatter.swift */,
+				8458125127B5F6F10065B185 /* StoredDefault.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -328,7 +331,8 @@
 				847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */,
 				849550F127AA0316008A180F /* MockData.swift in Sources */,
 				8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */,
-				8420E8BC27AF7FEE00C54EED /* AlarmSetting.swift in Sources */,
+				8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */,
+				8420E8BC27AF7FEE00C54EED /* NotificationSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,7 +488,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,7 +519,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

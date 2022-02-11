@@ -12,7 +12,7 @@ struct PrayerRow: View {
     let adhan: Date?
     let iqamah: Date?
     let current: Bool
-    @Binding var alarm: Bool
+    @Binding var notificationEnabled: Bool
     
     var adhanFormatted: String {
         adhan?.timeFormatted() ?? "-:--"
@@ -43,7 +43,7 @@ struct PrayerRow: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .font(.system(size: timeSize, weight: .medium))
             
-            Toggle("Alarm", isOn: $alarm)
+            Toggle("Alarm", isOn: $notificationEnabled)
                 .toggleStyle(.alarm)
                 .frame(width: 35, height: 16, alignment: .trailing)
             
@@ -69,21 +69,21 @@ struct PrayerRow_Previews: PreviewProvider {
                   adhan: Date(),
                   iqamah: Date().addingTimeInterval(600),
                   current: true,
-                  alarm: .constant(true))
+                  notificationEnabled: .constant(true))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
         PrayerRow(prayer: .dhuhr,
                   adhan: nil,
                   iqamah: nil,
                   current: false,
-                  alarm: .constant(false))
+                  notificationEnabled: .constant(false))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
         PrayerRow(prayer: .maghrib,
                   adhan: Date(),
                   iqamah: Date().addingTimeInterval(600),
                   current: false,
-                  alarm: .constant(true))
+                  notificationEnabled: .constant(true))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

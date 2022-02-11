@@ -16,8 +16,7 @@ struct MainView: View {
                 PrayerHeader(prayerDay: viewModel.current,
                              upcoming: viewModel.upcoming,
                              remaining: viewModel.timeRemaining)
-                PrayerView(prayerDay: viewModel.current,
-                           alarmSetting: viewModel.alarm)
+                PrayerView(prayerDay: viewModel.current)
                 Spacer(minLength: 10)
             }
             .onAppear {
@@ -26,6 +25,7 @@ struct MainView: View {
                 }
             }
             .navigationTitle("Prayer Times")
+            .environmentObject(viewModel.notificationSettings)
         }
     }
 }

@@ -8,30 +8,51 @@
 import Foundation
 import UIKit
 import SwiftUI
+import Combine
 
-class PrayerTimesViewModel: ObservableObject, AlarmSettingDelegate {
+class PrayerTimesViewModel: ObservableObject {
     @Published var current: PrayerDay?
     @Published var upcoming: PrayerTime?
     @Published var timeRemaining: TimeInterval = 0
     
-    let alarm: AlarmSetting
-    var prayerDays: [PrayerDay] = []
+    let notificationSettings: NotificationSettings
+    var prayerDays: [PrayerDay] = [] {
+        didSet {
+            current = prayerDays.first(where: {
+                Calendar.current.isDateInToday($0.date)
+            })
+
+            updateNextPrayer()
+        }
+    }
+
     weak var timer: Timer?
-    
+
     let provider: PrayerProvider
-    
+
+    var cancellables = Set<AnyCancellable>()
+
     init(provider: PrayerProvider) {
         print("init PrayerTimesViewModel")
         self.provider = provider
-        self.alarm = AlarmSetting()
+        self.notificationSettings = NotificationSettings()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.updateNextPrayer()
         }
+
+        let publishers = [NotificationCenter.default.publisher(for: UIScene.willEnterForegroundNotification),
+                          NotificationCenter.default.publisher(for: .NSCalendarDayChanged)]
         
-        self.alarm.delegate = self
-        NotificationCenter.default.addObserver(forName: UIScene.willEnterForegroundNotification, object: nil, queue: nil) { [weak self] _ in
-            self?.loadTimes()
-        }
+        Publishers.MergeMany(publishers)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.loadTimes()
+            }.store(in: &cancellables)
+        
+        notificationSettings.didUpdate
+            .sink { [weak self] in
+                self?.didUpdateNotifications()
+            }.store(in: &cancellables)
     }
     
     deinit {
@@ -46,17 +67,18 @@ class PrayerTimesViewModel: ObservableObject, AlarmSettingDelegate {
     }
     
     func loadTimes() {
+        prayerDays = provider.cachedPrayerTimes()
+        NSLog("cached data: \(prayerDays)")
         Task {
             prayerDays = await provider.fetchPrayerTimes()
-            current = prayerDays.first(where: {
-                Calendar.current.isDateInToday($0.date)
-            })
-
-            updateNextPrayer()
+            NSLog("fetched data: \(prayerDays)")
         }
     }
     
-    func didUpdateAlarm() {
+    func didUpdateNotifications() {
         print("didUpdateAlarm")
+        Prayer.allCases.forEach { prayer in
+            print("\(prayer.title) is \(self.notificationSettings.isEnabled(for: prayer))")
+        }
     }
 }

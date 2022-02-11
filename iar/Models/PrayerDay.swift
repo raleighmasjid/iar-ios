@@ -75,6 +75,16 @@ struct PrayerDay: Codable {
         }
     }
     
+    static func from(data: Data) -> [PrayerDay] {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        do {
+            return try decoder.decode([PrayerDay].self, from: data)
+        } catch {
+            return []
+        }
+    }
+    
     static func upcomingPrayer(prayerDays: [PrayerDay], time: Date = Date()) -> PrayerTime? {
         let times = prayerDays.flatMap { $0.prayerTimes }.sorted(comparingKeyPath: \.adhan)
         return times.first(where: { $0.adhan >= time })

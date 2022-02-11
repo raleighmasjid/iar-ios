@@ -10,6 +10,10 @@ import Foundation
 #if DEBUG
 
 class MockProvider: PrayerProvider {
+    func cachedPrayerTimes() -> [PrayerDay] {
+        return [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
+    }
+    
     func fetchPrayerTimes() async -> [PrayerDay] {
         return [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
     }
