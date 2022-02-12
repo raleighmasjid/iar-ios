@@ -29,9 +29,8 @@ class NetworkPrayerProvider: PrayerProvider {
     
     @MainActor
     func fetchPrayerTimes() async -> [PrayerDay] {
-        let url = URL(string: "https://raleighmasjid.org/API/prayer/app/")!
         do {
-            let (data, _) = try await session.data(from: url)
+            let (data, _) = try await session.data(from: "https://raleighmasjid.org/API/app/prayer/")
             cachedData = data
             return PrayerDay.from(data: data)
         } catch {
