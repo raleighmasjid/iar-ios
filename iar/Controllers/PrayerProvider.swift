@@ -6,18 +6,20 @@
 //
 
 import Foundation
-import SwiftUI
+import Combine
 
 protocol PrayerProvider {
-    func cachedPrayerTimes() -> [PrayerDay]
-    func fetchPrayerTimes() async -> [PrayerDay]
+    var didUpdate: AnyPublisher<[PrayerDay], Never> { get }
+    func fetchPrayerTimes()
 }
 
 class NetworkPrayerProvider: PrayerProvider {
     let session = URLSession.shared
     
+    private let publisher = PassthroughSubject<[PrayerDay], Never>()
+    
     @StoredDefault(key: .prayerTimesCache, defaultValue: nil)
-    var cachedData: Data?
+    private var cachedData: Data?
     
     func cachedPrayerTimes() -> [PrayerDay] {
         guard let data = cachedData else {
@@ -27,15 +29,25 @@ class NetworkPrayerProvider: PrayerProvider {
         return PrayerDay.from(data: data)
     }
     
-    @MainActor
-    func fetchPrayerTimes() async -> [PrayerDay] {
-        do {
-            let (data, _) = try await session.data(from: "https://raleighmasjid.org/API/app/prayer/")
-            cachedData = data
-            return PrayerDay.from(data: data)
-        } catch {
-            print("error loading prayer times \(error)")
-            return []
+    var didUpdate: AnyPublisher<[PrayerDay], Never> {
+        publisher.receive(on: RunLoop.main).eraseToAnyPublisher()
+    }
+    
+    func fetchPrayerTimes() {
+        let cache = cachedPrayerTimes()
+        if !cache.isEmpty {
+            publisher.send(cache)
+        }
+        Task {
+            do {
+                let (data, _) = try await session.data(from: "https://raleighmasjid.org/API/app/prayer/")
+                cachedData = data
+                publisher.send(PrayerDay.from(data: data))
+            } catch {
+                print("error loading prayer times \(error)")
+                publisher.send([])
+            }
         }
     }
+
 }

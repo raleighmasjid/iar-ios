@@ -31,6 +31,7 @@
 		849550F927AA3784008A180F /* PrayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F827AA3784008A180F /* PrayerHeader.swift */; };
 		849550FC27AA38B5008A180F /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FB27AA38B5008A180F /* Sequence.swift */; };
 		849550FE27AA4117008A180F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FD27AA4117008A180F /* Color.swift */; };
+		84ACC8D927B86761004D4F25 /* FridaySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACC8D827B86761004D4F25 /* FridaySchedule.swift */; };
 		84E57E0027AB8FE400AC10A0 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E57DFF27AB8FE300AC10A0 /* Formatter.swift */; };
 		84E57E0227AB943600AC10A0 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E57E0127AB943600AC10A0 /* URLSession.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		849550F827AA3784008A180F /* PrayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerHeader.swift; sourceTree = "<group>"; };
 		849550FB27AA38B5008A180F /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		849550FD27AA4117008A180F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		84ACC8D827B86761004D4F25 /* FridaySchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridaySchedule.swift; sourceTree = "<group>"; };
 		84E57DFF27AB8FE300AC10A0 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		84E57E0127AB943600AC10A0 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 				847AC2E6279FB162000D80EE /* Prayer.swift */,
 				847AC2CA279F9246000D80EE /* PrayerDay.swift */,
 				849550F627AA2EF7008A180F /* PrayerTime.swift */,
+				84ACC8D827B86761004D4F25 /* FridaySchedule.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				849550F327AA0654008A180F /* MainView.swift in Sources */,
 				84E57E0227AB943600AC10A0 /* URLSession.swift in Sources */,
 				847AC2E7279FB162000D80EE /* Prayer.swift in Sources */,
+				84ACC8D927B86761004D4F25 /* FridaySchedule.swift in Sources */,
 				847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */,
 				849550F127AA0316008A180F /* MockData.swift in Sources */,
 				8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */,

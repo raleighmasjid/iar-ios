@@ -53,6 +53,9 @@ class PrayerTimesViewModel: ObservableObject {
             .sink { [weak self] in
                 self?.didUpdateNotifications()
             }.store(in: &cancellables)
+        
+        provider.didUpdate.assign(to: \.prayerDays, on: self)
+            .store(in: &cancellables)
     }
     
     deinit {
@@ -67,14 +70,9 @@ class PrayerTimesViewModel: ObservableObject {
     }
     
     func loadTimes() {
-        prayerDays = provider.cachedPrayerTimes()
-        NSLog("cached data: \(prayerDays)")
-        Task {
-            prayerDays = await provider.fetchPrayerTimes()
-            NSLog("fetched data: \(prayerDays)")
-        }
+        provider.fetchPrayerTimes()
     }
-    
+
     func didUpdateNotifications() {
         print("didUpdateAlarm")
         Prayer.allCases.forEach { prayer in

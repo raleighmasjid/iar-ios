@@ -6,16 +6,20 @@
 //
 
 import Foundation
+import Combine
 
 #if DEBUG
 
 class MockProvider: PrayerProvider {
-    func cachedPrayerTimes() -> [PrayerDay] {
-        return [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
+    private let publisher = PassthroughSubject<[PrayerDay], Never>()
+    
+    var didUpdate: AnyPublisher<[PrayerDay], Never> {
+        publisher.receive(on: RunLoop.main).eraseToAnyPublisher()
     }
     
-    func fetchPrayerTimes() async -> [PrayerDay] {
-        return [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
+    func fetchPrayerTimes() {
+        let days: [PrayerDay] = [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
+        publisher.send(days)
     }
 }
 
