@@ -11,15 +11,15 @@ import Combine
 #if DEBUG
 
 class MockProvider: PrayerProvider {
-    private let publisher = PassthroughSubject<[PrayerDay], Never>()
+    private let publisher = PassthroughSubject<PrayerResult, Never>()
     
-    var didUpdate: AnyPublisher<[PrayerDay], Never> {
+    var didUpdate: AnyPublisher<PrayerResult, Never> {
         publisher.receive(on: RunLoop.main).eraseToAnyPublisher()
     }
     
     func fetchPrayerTimes() {
         let days: [PrayerDay] = [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
-        publisher.send(days)
+        publisher.send(.success(days))
     }
 }
 

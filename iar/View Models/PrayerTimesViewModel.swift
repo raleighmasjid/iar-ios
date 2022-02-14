@@ -14,6 +14,7 @@ class PrayerTimesViewModel: ObservableObject {
     @Published var current: PrayerDay?
     @Published var upcoming: PrayerTime?
     @Published var timeRemaining: TimeInterval = 0
+    @Published var error = false
     
     let notificationSettings: NotificationSettings
     var prayerDays: [PrayerDay] = [] {
@@ -54,8 +55,15 @@ class PrayerTimesViewModel: ObservableObject {
                 self?.didUpdateNotifications()
             }.store(in: &cancellables)
         
-        provider.didUpdate.assign(to: \.prayerDays, on: self)
-            .store(in: &cancellables)
+        provider.didUpdate
+            .sink() { [weak self] result in
+                switch result {
+                case .success(let prayerDays):
+                    self?.prayerDays = prayerDays
+                case .failure:
+                    self?.error = true
+                }
+            }.store(in: &cancellables)
     }
     
     deinit {

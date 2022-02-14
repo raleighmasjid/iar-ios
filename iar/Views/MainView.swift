@@ -26,6 +26,13 @@ struct MainView: View {
             }
             .navigationTitle("Prayer Times")
             .environmentObject(viewModel.notificationSettings)
+            .alert(isPresented: $viewModel.error) {
+                Alert(title: Text("Error"),
+                      message: Text("Unable to load prayer times"),
+                      primaryButton: .default(Text("Retry"),
+                                              action: { viewModel.loadTimes() }),
+                      secondaryButton: .cancel(Text("Dismiss")))
+            }
         }
     }
 }

@@ -75,14 +75,10 @@ struct PrayerDay: Codable {
         }
     }
     
-    static func from(data: Data) -> [PrayerDay] {
+    static func from(data: Data) throws -> [PrayerDay] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        do {
-            return try decoder.decode([PrayerDay].self, from: data)
-        } catch {
-            return []
-        }
+        return try decoder.decode([PrayerDay].self, from: data)
     }
     
     static func upcomingPrayer(prayerDays: [PrayerDay], time: Date = Date()) -> PrayerTime? {
