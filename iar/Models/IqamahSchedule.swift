@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IqamahSchedule: Codable {
+struct IqamahSchedule: Codable, Equatable {
     let fajr: Date
     let dhuhr: Date
     let asr: Date

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HijriComponents: Codable {
+struct HijriComponents: Codable, Equatable {
     let monthName: String
     let day: Int
     let year: Int

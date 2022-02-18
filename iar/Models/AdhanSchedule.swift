@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AdhanSchedule: Codable {
+struct AdhanSchedule: Codable, Equatable {
     let fajr: Date
     let shuruq: Date
     let dhuhr: Date

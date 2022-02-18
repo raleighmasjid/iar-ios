@@ -12,3 +12,9 @@ extension Sequence {
         return self.sorted(by: { ($0[keyPath: keyPath] < $1[keyPath: keyPath]) == ascending })
     }
 }
+
+extension Collection {
+    subscript (safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}

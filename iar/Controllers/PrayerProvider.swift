@@ -35,7 +35,7 @@ class NetworkPrayerProvider: PrayerProvider {
             return []
         }
         
-        return prayerDays
+        return prayerDays.filter { Calendar.current.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
     }
     
     var didUpdate: AnyPublisher<PrayerResult, Never> {
@@ -43,8 +43,10 @@ class NetworkPrayerProvider: PrayerProvider {
     }
     
     func fetchPrayerTimes() {
+        print(">> fetch")
         let cache = cachedPrayerTimes()
         if !cache.isEmpty {
+            print(">> cache \(cache.map { $0.date })")
             publisher.send(.success(cache))
         }
 

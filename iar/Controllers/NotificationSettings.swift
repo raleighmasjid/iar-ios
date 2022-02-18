@@ -19,6 +19,7 @@ class NotificationSettings: ObservableObject {
     static let asrKey = "asrNotification"
     static let maghribKey = "maghribNotification"
     static let ishaKey = "ishaNotification"
+    static let notificationTypeKey = "notificationType"
     
     @AppStorage(NotificationSettings.fajrKey)
     private(set) var fajr: Bool = false
@@ -37,6 +38,13 @@ class NotificationSettings: ObservableObject {
     
     @AppStorage(NotificationSettings.ishaKey)
     private(set) var isha: Bool = false
+    
+    @AppStorage(NotificationSettings.notificationTypeKey)
+    var type: NotificationType = .saadAlghamidi {
+        didSet {
+            publisher.send()
+        }
+    }
     
     var didUpdate: AnyPublisher<Void, Never> {
         publisher.receive(on: RunLoop.main).eraseToAnyPublisher()

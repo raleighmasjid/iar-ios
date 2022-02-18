@@ -19,7 +19,6 @@ struct PrayerView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            columnHeaders
             ForEach(Prayer.allCases, id: \.self) { prayer in
                 PrayerRow(prayer: prayer,
                           adhan: prayerDay?.adhan(for: prayer),
@@ -30,26 +29,6 @@ struct PrayerView: View {
         }
         .frame(maxWidth: .infinity)
         
-    }
-    
-    var columnHeaders: some View {
-        HStack() {
-            Text("Prayer")
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Text("Adhan")
-                .frame(maxWidth: .infinity, alignment: .center)
-            
-            Text("Iqamah")
-                .frame(maxWidth: .infinity, alignment: .trailing)
-            
-            Spacer().frame(width: 43)
-        }
-        .padding(.vertical, 10)
-        .padding(.horizontal, 20)
-        .font(.system(size: 16, weight: .regular))
-        .foregroundColor(.white)
-        .background(Color.Theme.darkGreen)
     }
 }
 

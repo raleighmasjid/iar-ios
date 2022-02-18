@@ -11,7 +11,6 @@ import SwiftUI
 import Combine
 
 class PrayerTimesViewModel: ObservableObject {
-    @Published var current: PrayerDay?
     @Published var upcoming: PrayerTime?
     @Published var timeRemaining: TimeInterval = 0
     @Published var error = false
@@ -19,32 +18,36 @@ class PrayerTimesViewModel: ObservableObject {
     let notificationSettings: NotificationSettings
     var prayerDays: [PrayerDay] = [] {
         didSet {
-            current = prayerDays.first(where: {
-                Calendar.current.isDateInToday($0.date)
-            })
-
             updateNextPrayer()
+            
+            if (prayerDays != oldValue) {
+                updateNotifications()
+            }
         }
     }
 
     weak var timer: Timer?
 
     let provider: PrayerProvider
+    let notificationController = NotificationController()
 
     var cancellables = Set<AnyCancellable>()
 
+    func prayerDay(offset: Int = 0) -> PrayerDay? {
+        return prayerDays[safe: offset]
+    }
+    
     init(provider: PrayerProvider) {
-        print("init PrayerTimesViewModel")
+        print(">> init PrayerTimesViewModel")
         self.provider = provider
         self.notificationSettings = NotificationSettings()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.updateNextPrayer()
         }
 
-        let publishers = [NotificationCenter.default.publisher(for: UIScene.willEnterForegroundNotification),
-                          NotificationCenter.default.publisher(for: .NSCalendarDayChanged)]
         
-        Publishers.MergeMany(publishers)
+        
+        NotificationCenter.default.publisher(for: .NSCalendarDayChanged)
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.loadTimes()
@@ -52,7 +55,7 @@ class PrayerTimesViewModel: ObservableObject {
         
         notificationSettings.didUpdate
             .sink { [weak self] in
-                self?.didUpdateNotifications()
+                self?.updateNotifications()
             }.store(in: &cancellables)
         
         provider.didUpdate
@@ -81,10 +84,12 @@ class PrayerTimesViewModel: ObservableObject {
         provider.fetchPrayerTimes()
     }
 
-    func didUpdateNotifications() {
-        print("didUpdateAlarm")
-        Prayer.allCases.forEach { prayer in
-            print("\(prayer.title) is \(self.notificationSettings.isEnabled(for: prayer))")
+    func updateNotifications() {
+        let enabledPrayers = Prayer.allCases.filter { notificationSettings.isEnabled(for: $0) }
+        Task {
+            await self.notificationController.scheduleNotifications(prayerDays: self.prayerDays,
+                                                                    enabledPrayers: enabledPrayers,
+                                                                    notificationType: self.notificationSettings.type)
         }
     }
 }

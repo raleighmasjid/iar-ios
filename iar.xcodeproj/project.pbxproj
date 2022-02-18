@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8416F08527BEFE9E00129383 /* PrayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416F08427BEFE9E00129383 /* PrayerHeader.swift */; };
+		8416F08927BF280D00129383 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416F08827BF280D00129383 /* NotificationType.swift */; };
+		8416F08D27BF603D00129383 /* AdhanAfasy.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8416F08B27BF603D00129383 /* AdhanAfasy.caf */; };
+		8416F08E27BF603D00129383 /* AdhanSaadAlghamdi.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8416F08C27BF603D00129383 /* AdhanSaadAlghamdi.caf */; };
 		8420E8B827AF730E00C54EED /* ToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B727AF730E00C54EED /* ToggleStyle.swift */; };
 		8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B927AF78A600C54EED /* UIScreen.swift */; };
 		8420E8BC27AF7FEE00C54EED /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */; };
+		842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C127BDE9AE00A3B50B /* NotificationController.swift */; };
+		842E34C427BDEBF200A3B50B /* PrayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C327BDEBF200A3B50B /* PrayerScreen.swift */; };
+		842E34C627BDED2800A3B50B /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C527BDED2800A3B50B /* SettingsScreen.swift */; };
 		8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2B9279F71A2000D80EE /* iarApp.swift */; };
 		847AC2BC279F71A2000D80EE /* PrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2BB279F71A2000D80EE /* PrayerView.swift */; };
@@ -28,7 +35,7 @@
 		849550F327AA0654008A180F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F227AA0654008A180F /* MainView.swift */; };
 		849550F527AA07EB008A180F /* PrayerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F427AA07EB008A180F /* PrayerProvider.swift */; };
 		849550F727AA2EF7008A180F /* PrayerTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F627AA2EF7008A180F /* PrayerTime.swift */; };
-		849550F927AA3784008A180F /* PrayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F827AA3784008A180F /* PrayerHeader.swift */; };
+		849550F927AA3784008A180F /* PrayerCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F827AA3784008A180F /* PrayerCountdown.swift */; };
 		849550FC27AA38B5008A180F /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FB27AA38B5008A180F /* Sequence.swift */; };
 		849550FE27AA4117008A180F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FD27AA4117008A180F /* Color.swift */; };
 		84ACC8D927B86761004D4F25 /* FridaySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACC8D827B86761004D4F25 /* FridaySchedule.swift */; };
@@ -47,10 +54,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8416F08427BEFE9E00129383 /* PrayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerHeader.swift; sourceTree = "<group>"; };
+		8416F08827BF280D00129383 /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
+		8416F08B27BF603D00129383 /* AdhanAfasy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AdhanAfasy.caf; sourceTree = "<group>"; };
+		8416F08C27BF603D00129383 /* AdhanSaadAlghamdi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AdhanSaadAlghamdi.caf; sourceTree = "<group>"; };
 		8420E8B727AF730E00C54EED /* ToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyle.swift; sourceTree = "<group>"; };
 		8420E8B927AF78A600C54EED /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		8422A11627ACAE7C0043B8D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		842E34C127BDE9AE00A3B50B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		842E34C327BDEBF200A3B50B /* PrayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerScreen.swift; sourceTree = "<group>"; };
+		842E34C527BDED2800A3B50B /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		8458125127B5F6F10065B185 /* StoredDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredDefault.swift; sourceTree = "<group>"; };
 		847AC2B6279F71A2000D80EE /* IAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AC2B9279F71A2000D80EE /* iarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iarApp.swift; sourceTree = "<group>"; };
@@ -67,11 +81,12 @@
 		847AC2E1279FAE16000D80EE /* PrayerTimesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesViewModel.swift; sourceTree = "<group>"; };
 		847AC2E4279FB10A000D80EE /* PrayerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerRow.swift; sourceTree = "<group>"; };
 		847AC2E6279FB162000D80EE /* Prayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
+		8483A8D027BE0484003BB4BE /* iar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iar.entitlements; sourceTree = "<group>"; };
 		849550F027AA0316008A180F /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		849550F227AA0654008A180F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		849550F427AA07EB008A180F /* PrayerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerProvider.swift; sourceTree = "<group>"; };
 		849550F627AA2EF7008A180F /* PrayerTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTime.swift; sourceTree = "<group>"; };
-		849550F827AA3784008A180F /* PrayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerHeader.swift; sourceTree = "<group>"; };
+		849550F827AA3784008A180F /* PrayerCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCountdown.swift; sourceTree = "<group>"; };
 		849550FB27AA38B5008A180F /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		849550FD27AA4117008A180F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		84ACC8D827B86761004D4F25 /* FridaySchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridaySchedule.swift; sourceTree = "<group>"; };
@@ -97,6 +112,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8416F08627BF0CEC00129383 /* Prayer */ = {
+			isa = PBXGroup;
+			children = (
+				842E34C327BDEBF200A3B50B /* PrayerScreen.swift */,
+				849550F827AA3784008A180F /* PrayerCountdown.swift */,
+				8416F08427BEFE9E00129383 /* PrayerHeader.swift */,
+				847AC2BB279F71A2000D80EE /* PrayerView.swift */,
+				847AC2E4279FB10A000D80EE /* PrayerRow.swift */,
+			);
+			path = Prayer;
+			sourceTree = "<group>";
+		};
+		8416F08727BF27FD00129383 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				842E34C527BDED2800A3B50B /* SettingsScreen.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		8416F08A27BF5FE600129383 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				8416F08B27BF603D00129383 /* AdhanAfasy.caf */,
+				8416F08C27BF603D00129383 /* AdhanSaadAlghamdi.caf */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		847AC2AD279F71A1000D80EE = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +162,7 @@
 		847AC2B8279F71A2000D80EE /* iar */ = {
 			isa = PBXGroup;
 			children = (
+				8483A8D027BE0484003BB4BE /* iar.entitlements */,
 				8422A11627ACAE7C0043B8D0 /* Info.plist */,
 				847AC2B9279F71A2000D80EE /* iarApp.swift */,
 				847AC2E3279FB0E6000D80EE /* Views */,
@@ -125,6 +170,7 @@
 				847AC2E0279FAE04000D80EE /* Controllers */,
 				847AC2C7279F7419000D80EE /* Models */,
 				849550FA27AA389E008A180F /* Extensions */,
+				8416F08A27BF5FE600129383 /* Audio */,
 				847AC2BD279F71A2000D80EE /* Assets.xcassets */,
 				847AC2BF279F71A2000D80EE /* Preview Content */,
 			);
@@ -150,6 +196,7 @@
 				847AC2CA279F9246000D80EE /* PrayerDay.swift */,
 				849550F627AA2EF7008A180F /* PrayerTime.swift */,
 				84ACC8D827B86761004D4F25 /* FridaySchedule.swift */,
+				8416F08827BF280D00129383 /* NotificationType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +225,7 @@
 				8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */,
 				84E57DFF27AB8FE300AC10A0 /* Formatter.swift */,
 				8458125127B5F6F10065B185 /* StoredDefault.swift */,
+				842E34C127BDE9AE00A3B50B /* NotificationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,9 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				849550F227AA0654008A180F /* MainView.swift */,
-				849550F827AA3784008A180F /* PrayerHeader.swift */,
-				847AC2E4279FB10A000D80EE /* PrayerRow.swift */,
-				847AC2BB279F71A2000D80EE /* PrayerView.swift */,
+				8416F08627BF0CEC00129383 /* Prayer */,
+				8416F08727BF27FD00129383 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +342,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				847AC2C1279F71A2000D80EE /* Preview Assets.xcassets in Resources */,
+				8416F08E27BF603D00129383 /* AdhanSaadAlghamdi.caf in Resources */,
+				8416F08D27BF603D00129383 /* AdhanAfasy.caf in Resources */,
 				847AC2BE279F71A2000D80EE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,15 +372,20 @@
 				847AC2DF279FA893000D80EE /* HijriComponents.swift in Sources */,
 				847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */,
 				8420E8B827AF730E00C54EED /* ToggleStyle.swift in Sources */,
+				8416F08527BEFE9E00129383 /* PrayerHeader.swift in Sources */,
 				847AC2E5279FB10A000D80EE /* PrayerRow.swift in Sources */,
 				849550FC27AA38B5008A180F /* Sequence.swift in Sources */,
 				847AC2CB279F9246000D80EE /* PrayerDay.swift in Sources */,
 				84E57E0027AB8FE400AC10A0 /* Formatter.swift in Sources */,
-				849550F927AA3784008A180F /* PrayerHeader.swift in Sources */,
+				8416F08927BF280D00129383 /* NotificationType.swift in Sources */,
+				849550F927AA3784008A180F /* PrayerCountdown.swift in Sources */,
 				849550F327AA0654008A180F /* MainView.swift in Sources */,
+				842E34C427BDEBF200A3B50B /* PrayerScreen.swift in Sources */,
 				84E57E0227AB943600AC10A0 /* URLSession.swift in Sources */,
 				847AC2E7279FB162000D80EE /* Prayer.swift in Sources */,
 				84ACC8D927B86761004D4F25 /* FridaySchedule.swift in Sources */,
+				842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */,
+				842E34C627BDED2800A3B50B /* SettingsScreen.swift in Sources */,
 				847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */,
 				849550F127AA0316008A180F /* MockData.swift in Sources */,
 				8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */,
@@ -480,6 +534,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iar/iar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"iar/Preview Content\"";
@@ -511,6 +566,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iar/iar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"iar/Preview Content\"";
