@@ -13,6 +13,7 @@ struct PrayerView: View {
     @EnvironmentObject var notifications: NotificationSettings
 
     init(prayerDay: PrayerDay?) {
+        print(">> init prayerview")
         self.prayerDay = prayerDay
         self.currentPrayer = prayerDay?.currentPrayer()
     }

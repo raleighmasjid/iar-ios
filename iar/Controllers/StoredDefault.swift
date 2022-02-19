@@ -8,10 +8,11 @@
 import Foundation
 
 @propertyWrapper
-struct StoredDefault<T> {
+struct StoredDefault<T: Codable> {
     
     enum DefaultKey: String {
         case prayerTimesCache
+        case fridayScheduleCache
     }
     
     let key: DefaultKey
@@ -24,10 +25,17 @@ struct StoredDefault<T> {
 
     var wrappedValue: T {
         get {
-            UserDefaults.standard.object(forKey: key.rawValue) as? T ?? defaultValue
+            guard let data = UserDefaults.standard.object(forKey: key.rawValue) as? Data else {
+                return defaultValue
+            }
+
+            let value = try? JSONDecoder().decode(T.self, from: data)
+            return value ?? defaultValue
         }
+        
         set {
-            UserDefaults.standard.set(newValue, forKey: key.rawValue)
+            let data = try? JSONEncoder().encode(newValue)
+            UserDefaults.standard.set(data, forKey: key.rawValue)
         }
     }
 }

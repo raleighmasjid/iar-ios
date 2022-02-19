@@ -1,5 +1,5 @@
 //
-//  FridaySchedule.swift
+//  FridayPrayer.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 2/12/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FridaySchedule: Codable {
+struct FridayPrayer: Codable {
     let title: String
     let shift: String
     let time: String
@@ -23,5 +23,4 @@ struct FridaySchedule: Codable {
         case description
         case imageUrl = "image_url"
     }
-    
 }

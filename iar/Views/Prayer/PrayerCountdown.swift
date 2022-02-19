@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct PrayerCountdown: View {
+    @ObservedObject var viewModel: PrayerCountdownViewModel
     
-    let upcoming: PrayerTime?
-    let remaining: TimeInterval
+    init(upcoming: PrayerTime?) {
+        viewModel = PrayerCountdownViewModel(upcoming: upcoming)
+    }
     
     var countdown: String {
-        guard let upcoming = upcoming else {
+        guard let upcoming = viewModel.upcoming else {
             return " "
         }
 
-        return "\(upcoming.prayer.title) is in \(remaining.formattedInterval())"
+        return "\(upcoming.prayer.title) is in \(viewModel.timeRemaining.formattedInterval())"
     }
     
     var body: some View {
@@ -34,7 +36,7 @@ struct PrayerCountdown: View {
 #if DEBUG
 struct PrayerCountdown_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)), remaining: 600)
+        PrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

@@ -17,8 +17,7 @@ struct PrayerScreen: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    PrayerCountdown(upcoming: viewModel.upcoming,
-                                    remaining: viewModel.timeRemaining)
+                    PrayerCountdown(upcoming: viewModel.upcoming)
                     PrayerHeader(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
                     
                     columnHeaders
@@ -40,7 +39,7 @@ struct PrayerScreen: View {
             }
             .onAppear {
                 if viewModel.prayerDays.isEmpty {
-                    viewModel.loadTimes()
+                    viewModel.fetchLatest()
                 }
             }
             .onChange(of: scenePhase) { newPhase in
@@ -51,18 +50,19 @@ struct PrayerScreen: View {
                 case .active:
                     if didEnterBackground {
                         didEnterBackground = false
-                        viewModel.loadTimes()
+                        viewModel.fetchLatest()
                     }
                 default:
                     break
                 }
             }
             .navigationTitle("Prayer Times")
+            .navigationBarTitleDisplayMode(.inline)
             .alert(isPresented: $viewModel.error) {
                 Alert(title: Text("Error"),
                       message: Text("Unable to load prayer times"),
                       primaryButton: .default(Text("Retry"),
-                                              action: { viewModel.loadTimes() }),
+                                              action: { viewModel.fetchLatest() }),
                       secondaryButton: .cancel(Text("Dismiss")))
             }
         }

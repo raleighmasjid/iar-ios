@@ -8,10 +8,14 @@
 import Foundation
 import UserNotifications
 
-struct PrayerTime {
+struct PrayerTime: Equatable {
     let prayer: Prayer
     let adhan: Date
     let iqamah: Date?
+    
+    var timeRemaining: TimeInterval {
+        adhan.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+    }
     
     var notificationTime: Date {
         switch prayer {
