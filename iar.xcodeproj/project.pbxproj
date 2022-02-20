@@ -18,6 +18,7 @@
 		842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C127BDE9AE00A3B50B /* NotificationController.swift */; };
 		842E34C427BDEBF200A3B50B /* PrayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C327BDEBF200A3B50B /* PrayerScreen.swift */; };
 		842E34C627BDED2800A3B50B /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C527BDED2800A3B50B /* SettingsScreen.swift */; };
+		843F283627C1DEE8008D0328 /* PrayerSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F283527C1DEE8008D0328 /* PrayerSchedule.swift */; };
 		8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2B9279F71A2000D80EE /* iarApp.swift */; };
 		847AC2BC279F71A2000D80EE /* PrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2BB279F71A2000D80EE /* PrayerView.swift */; };
@@ -67,6 +68,7 @@
 		842E34C127BDE9AE00A3B50B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		842E34C327BDEBF200A3B50B /* PrayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerScreen.swift; sourceTree = "<group>"; };
 		842E34C527BDED2800A3B50B /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		843F283527C1DEE8008D0328 /* PrayerSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerSchedule.swift; sourceTree = "<group>"; };
 		8458125127B5F6F10065B185 /* StoredDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredDefault.swift; sourceTree = "<group>"; };
 		847AC2B6279F71A2000D80EE /* IAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AC2B9279F71A2000D80EE /* iarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iarApp.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				849550F627AA2EF7008A180F /* PrayerTime.swift */,
 				84ACC8D827B86761004D4F25 /* FridayPrayer.swift */,
 				8416F08827BF280D00129383 /* NotificationType.swift */,
+				843F283527C1DEE8008D0328 /* PrayerSchedule.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */,
 				842E34C627BDED2800A3B50B /* SettingsScreen.swift in Sources */,
 				847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */,
+				843F283627C1DEE8008D0328 /* PrayerSchedule.swift in Sources */,
 				849550F127AA0316008A180F /* MockData.swift in Sources */,
 				8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */,
 				8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */,

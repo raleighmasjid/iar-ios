@@ -10,10 +10,11 @@ import UIKit
 import SwiftUI
 import Combine
 
-class PrayerTimesViewModel: ObservableObject {
+class PrayerTimesViewModel: ObservableObject, PrayerProviderDelegate {
     @Published var upcoming: PrayerTime?
     @Published var fridaySchedule: [FridayPrayer] = []
     @Published var error = false
+    @Published var loading = false
     
     let notificationSettings: NotificationSettings
     var prayerDays: [PrayerDay] = [] {
@@ -40,40 +41,35 @@ class PrayerTimesViewModel: ObservableObject {
     init(provider: PrayerProvider) {
         self.provider = provider
         self.notificationSettings = NotificationSettings()
+        
+        provider.delegate = self
+
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.updateNextPrayer()
         }
 
-        NotificationCenter.default.publisher(for: .NSCalendarDayChanged)
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.fetchLatest()
-            }.store(in: &cancellables)
-        
         notificationSettings.didUpdate
             .sink { [weak self] in
                 self?.updateNotifications()
-            }.store(in: &cancellables)
-        
-        provider.didUpdate
-            .sink() { [weak self] result in
-                switch result {
-                case .success(let providerData):
-                    switch providerData {
-                    case .prayerDays(let days):
-                        self?.prayerDays = days
-                    case .fridaySchedule(let schedule):
-                        self?.fridaySchedule = schedule
-                    }
-                    
-                case .failure:
-                    self?.error = true
-                }
             }.store(in: &cancellables)
     }
     
     deinit {
         timer?.invalidate()
+    }
+    
+    func didFetchPrayerSchedule(prayerResult: PrayerResult, cached: Bool) {
+        if !cached {
+            loading = false
+        }
+        switch prayerResult {
+        case .success(let prayerSchedule):
+            prayerDays = prayerSchedule.prayerDays
+                .filter { Calendar.current.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
+            fridaySchedule = prayerSchedule.fridaySchedule
+        case .failure:
+            error = true
+        }
     }
     
     func updateNextPrayer() {
@@ -84,8 +80,10 @@ class PrayerTimesViewModel: ObservableObject {
     }
     
     func fetchLatest() {
-        provider.fetchPrayers()
-        provider.fetchFridaySchedule()
+        loading = true
+        Task {
+            await self.provider.fetchPrayers()
+        }
     }
 
     func updateNotifications() {

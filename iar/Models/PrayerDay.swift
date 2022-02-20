@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PrayerDay: Codable, Equatable {
+struct PrayerDay: Codable, Equatable, Hashable {
     let date: Date
     let hijri: HijriComponents
     let adhan: AdhanSchedule

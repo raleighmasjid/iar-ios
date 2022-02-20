@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PrayerScreen: View {
     @Environment(\.scenePhase) var scenePhase
+    let dayChange = NotificationCenter.default.publisher(for: .NSCalendarDayChanged)
     @StateObject var viewModel: PrayerTimesViewModel
     @State var dayOffset = 0
     @State var didEnterBackground = false
@@ -17,22 +18,33 @@ struct PrayerScreen: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    PrayerCountdown(upcoming: viewModel.upcoming)
+                    ZStack {
+                        PrayerCountdown(upcoming: viewModel.upcoming)
+                        HStack {
+                            Spacer(minLength: 50)
+                            if viewModel.loading {
+                                ProgressView()
+                                    .padding(.trailing, 24)
+                            }
+                        }
+                        
+                    }
+                    
                     PrayerHeader(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
                     
                     columnHeaders
-                    
-                    if viewModel.prayerDays.count > 0 {
-                        TabView(selection: $dayOffset) {
-                            ForEach(0..<viewModel.prayerDays.count, id: \.self) {
-                                PrayerView(prayerDay: viewModel.prayerDay(offset: $0))
-                            }
+                                        
+                    TabView(selection: $dayOffset) {
+                        ForEach(viewModel.prayerDays, id: \.self) {
+                            PrayerView(prayerDay: $0)
+                                .tag(viewModel.prayerDays.firstIndex(of: $0) ?? 0)
                         }
-                        .tabViewStyle(.page(indexDisplayMode: .never))
-                        .frame(height: 275)
-                    } else {
-                        PrayerView(prayerDay: nil)
+                        if viewModel.prayerDays.isEmpty {
+                            PrayerView(prayerDay: nil)
+                        }
                     }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    .frame(height: 275)
                     
                     Spacer(minLength: 10)
                 }
@@ -56,6 +68,9 @@ struct PrayerScreen: View {
                     break
                 }
             }
+            .onReceive(dayChange) { _ in
+                viewModel.fetchLatest()
+            }
             .navigationTitle("Prayer Times")
             .navigationBarTitleDisplayMode(.inline)
             .alert(isPresented: $viewModel.error) {
@@ -72,13 +87,10 @@ struct PrayerScreen: View {
         HStack() {
             Text("Prayer")
                 .frame(maxWidth: .infinity, alignment: .leading)
-            
             Text("Adhan")
                 .frame(maxWidth: .infinity, alignment: .center)
-            
             Text("Iqamah")
                 .frame(maxWidth: .infinity, alignment: .trailing)
-            
             Spacer().frame(width: 43)
         }
         .padding(.vertical, 10)
