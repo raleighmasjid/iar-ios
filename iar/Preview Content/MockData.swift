@@ -11,19 +11,11 @@ import Combine
 #if DEBUG
 
 class MockProvider: PrayerProvider {
+    var cachedPrayerSchedule: PrayerSchedule? = nil
     
-    weak var delegate: PrayerProviderDelegate?
-    
-    private let prayerPublisher = PassthroughSubject<PrayerResult, Never>()
-    
-    var didUpdate: AnyPublisher<PrayerResult, Never> {
-        prayerPublisher.receive(on: RunLoop.main).eraseToAnyPublisher()
-    }
-    
-    func fetchPrayers() {
+    func fetchPrayers() async throws -> PrayerSchedule {
         let days: [PrayerDay] = [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
-        let schedule = PrayerSchedule(prayerDays: days, fridaySchedule: [])
-        delegate?.didFetchPrayerSchedule(prayerResult: .success(schedule), cached: false)
+        return PrayerSchedule(prayerDays: days, fridaySchedule: [])
     }
 }
 

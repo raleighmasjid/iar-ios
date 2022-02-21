@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 import Combine
 
-class PrayerTimesViewModel: ObservableObject, PrayerProviderDelegate {
+class PrayerTimesViewModel: ObservableObject {
     @Published var upcoming: PrayerTime?
     @Published var fridaySchedule: [FridayPrayer] = []
     @Published var error = false
@@ -42,8 +42,6 @@ class PrayerTimesViewModel: ObservableObject, PrayerProviderDelegate {
         print(">> init viewmodel")
         self.provider = provider
         self.notificationSettings = NotificationSettings()
-        
-        provider.delegate = self
 
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.updateNextPrayer()
@@ -59,18 +57,10 @@ class PrayerTimesViewModel: ObservableObject, PrayerProviderDelegate {
         timer?.invalidate()
     }
     
-    func didFetchPrayerSchedule(prayerResult: PrayerResult, cached: Bool) {
-        if !cached {
-            loading = false
-        }
-        switch prayerResult {
-        case .success(let prayerSchedule):
-            prayerDays = prayerSchedule.prayerDays
-                .filter { Calendar.current.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
-            fridaySchedule = prayerSchedule.fridaySchedule
-        case .failure:
-            error = true
-        }
+    func didFetchPrayerSchedule(schedule: PrayerSchedule) {
+        prayerDays = schedule.prayerDays
+            .filter { Calendar.current.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
+        fridaySchedule = schedule.fridaySchedule
     }
     
     func updateNextPrayer() {
@@ -82,8 +72,19 @@ class PrayerTimesViewModel: ObservableObject, PrayerProviderDelegate {
     
     func fetchLatest() {
         loading = true
+        if let cached = provider.cachedPrayerSchedule {
+            didFetchPrayerSchedule(schedule: cached)
+        }
+
         Task {
-            await self.provider.fetchPrayers()
+            do {
+                let schedule = try await self.provider.fetchPrayers()
+                self.didFetchPrayerSchedule(schedule: schedule)
+                self.loading = false
+            } catch {
+                self.error = true
+                self.loading = false
+            }
         }
     }
 

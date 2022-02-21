@@ -93,9 +93,8 @@ struct PrayerHeader: View {
 
 #if DEBUG
 struct PrayerHeader_Previews: PreviewProvider {
-    static let viewModel = PrayerTimesViewModel(provider: MockProvider())
     static var previews: some View {
-        PrayerHeader(prayerDays: viewModel.prayerDays, dayOffset: .constant(0))
+        PrayerHeader(prayerDays: [.mock(), .mock()], dayOffset: .constant(0))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }
