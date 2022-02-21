@@ -27,25 +27,9 @@ struct PrayerScreen: View {
                                     .padding(.trailing, 24)
                             }
                         }
-                        
                     }
-                    
                     PrayerHeader(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
-                    
-                    columnHeaders
-                                        
-                    TabView(selection: $dayOffset) {
-                        ForEach(viewModel.prayerDays, id: \.self) {
-                            PrayerView(prayerDay: $0)
-                                .tag(viewModel.prayerDays.firstIndex(of: $0) ?? 0)
-                        }
-                        if viewModel.prayerDays.isEmpty {
-                            PrayerView(prayerDay: nil)
-                        }
-                    }
-                    .tabViewStyle(.page(indexDisplayMode: .never))
-                    .frame(height: 275)
-                    
+                    PrayerTimesView(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
                     Spacer(minLength: 10)
                 }
             }
@@ -58,14 +42,19 @@ struct PrayerScreen: View {
                 switch newPhase {
                 case .background:
                     didEnterBackground = true
-                    dayOffset = 0
                 case .active:
                     if didEnterBackground {
                         didEnterBackground = false
+                        dayOffset = 0
                         viewModel.fetchLatest()
                     }
                 default:
                     break
+                }
+            }
+            .onChange(of: viewModel.prayerDays) { newValue in
+                if newValue.count <= dayOffset {
+                    dayOffset = 0
                 }
             }
             .onReceive(dayChange) { _ in
@@ -83,22 +72,7 @@ struct PrayerScreen: View {
         }
     }
     
-    var columnHeaders: some View {
-        HStack() {
-            Text("Prayer")
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text("Adhan")
-                .frame(maxWidth: .infinity, alignment: .center)
-            Text("Iqamah")
-                .frame(maxWidth: .infinity, alignment: .trailing)
-            Spacer().frame(width: 43)
-        }
-        .padding(.vertical, 10)
-        .padding(.horizontal, 20)
-        .font(.system(size: 16, weight: .regular))
-        .foregroundColor(.white)
-        .background(Color.Theme.darkGreen)
-    }
+
 }
 
 #if DEBUG

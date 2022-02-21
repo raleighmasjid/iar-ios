@@ -1,5 +1,5 @@
 //
-//  PrayerView.swift
+//  PrayerDayView.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 1/24/22.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct PrayerView: View {
+struct PrayerDayView: View {
     let prayerDay: PrayerDay?
     let currentPrayer: Prayer?
     @EnvironmentObject var notifications: NotificationSettings
 
     init(prayerDay: PrayerDay?) {
-        print(">> init prayerview")
+        print(">> init PrayerDayView for \(prayerDay?.date)")
         self.prayerDay = prayerDay
         self.currentPrayer = prayerDay?.currentPrayer()
     }
@@ -34,9 +34,9 @@ struct PrayerView: View {
 }
 
 #if DEBUG
-struct PrayerView_Previews: PreviewProvider {
+struct PrayerDayView_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerView(prayerDay: .mock())
+        PrayerDayView(prayerDay: .mock())
             .environmentObject(NotificationSettings())
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
