@@ -1,5 +1,5 @@
 //
-//  SettingsScreen.swift
+//  MoreScreen.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 2/16/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingsScreen: View {
+struct MoreScreen: View {
     @EnvironmentObject var notifications: NotificationSettings
     
     var body: some View {
@@ -26,7 +26,7 @@ struct SettingsScreen: View {
 
 struct SettingsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsScreen()
+        MoreScreen()
             .environmentObject(NotificationSettings())
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840FBEB427C8729C003D646C /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FBEB327C8729C003D646C /* NewsScreen.swift */; };
+		840FBEB627C872AB003D646C /* DonateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FBEB527C872AB003D646C /* DonateScreen.swift */; };
 		8416F08527BEFE9E00129383 /* PrayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416F08427BEFE9E00129383 /* PrayerHeader.swift */; };
 		8416F08927BF280D00129383 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416F08827BF280D00129383 /* NotificationType.swift */; };
 		8416F08D27BF603D00129383 /* AdhanAfasy.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8416F08B27BF603D00129383 /* AdhanAfasy.caf */; };
@@ -17,7 +19,7 @@
 		8420E8BC27AF7FEE00C54EED /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */; };
 		842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C127BDE9AE00A3B50B /* NotificationController.swift */; };
 		842E34C427BDEBF200A3B50B /* PrayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C327BDEBF200A3B50B /* PrayerScreen.swift */; };
-		842E34C627BDED2800A3B50B /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C527BDED2800A3B50B /* SettingsScreen.swift */; };
+		842E34C627BDED2800A3B50B /* MoreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C527BDED2800A3B50B /* MoreScreen.swift */; };
 		843F283627C1DEE8008D0328 /* PrayerSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F283527C1DEE8008D0328 /* PrayerSchedule.swift */; };
 		8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2B9279F71A2000D80EE /* iarApp.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840FBEB327C8729C003D646C /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
+		840FBEB527C872AB003D646C /* DonateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateScreen.swift; sourceTree = "<group>"; };
 		8416F08427BEFE9E00129383 /* PrayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerHeader.swift; sourceTree = "<group>"; };
 		8416F08827BF280D00129383 /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
 		8416F08B27BF603D00129383 /* AdhanAfasy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AdhanAfasy.caf; sourceTree = "<group>"; };
@@ -69,7 +73,7 @@
 		8422A11627ACAE7C0043B8D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		842E34C127BDE9AE00A3B50B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		842E34C327BDEBF200A3B50B /* PrayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerScreen.swift; sourceTree = "<group>"; };
-		842E34C527BDED2800A3B50B /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		842E34C527BDED2800A3B50B /* MoreScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreScreen.swift; sourceTree = "<group>"; };
 		843F283527C1DEE8008D0328 /* PrayerSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerSchedule.swift; sourceTree = "<group>"; };
 		8458125127B5F6F10065B185 /* StoredDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredDefault.swift; sourceTree = "<group>"; };
 		847AC2B6279F71A2000D80EE /* IAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +124,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840FBEB727C872B9003D646C /* Donate */ = {
+			isa = PBXGroup;
+			children = (
+				840FBEB527C872AB003D646C /* DonateScreen.swift */,
+			);
+			path = Donate;
+			sourceTree = "<group>";
+		};
+		840FBEB827C872C8003D646C /* News */ = {
+			isa = PBXGroup;
+			children = (
+				840FBEB327C8729C003D646C /* NewsScreen.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		8416F08627BF0CEC00129383 /* Prayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,12 +153,12 @@
 			path = Prayer;
 			sourceTree = "<group>";
 		};
-		8416F08727BF27FD00129383 /* Settings */ = {
+		8416F08727BF27FD00129383 /* More */ = {
 			isa = PBXGroup;
 			children = (
-				842E34C527BDED2800A3B50B /* SettingsScreen.swift */,
+				842E34C527BDED2800A3B50B /* MoreScreen.swift */,
 			);
-			path = Settings;
+			path = More;
 			sourceTree = "<group>";
 		};
 		8416F08A27BF5FE600129383 /* Audio */ = {
@@ -246,7 +266,9 @@
 			children = (
 				849550F227AA0654008A180F /* MainView.swift */,
 				8416F08627BF0CEC00129383 /* Prayer */,
-				8416F08727BF27FD00129383 /* Settings */,
+				840FBEB827C872C8003D646C /* News */,
+				840FBEB727C872B9003D646C /* Donate */,
+				8416F08727BF27FD00129383 /* More */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -380,6 +402,7 @@
 				847AC2CD279F926A000D80EE /* IqamahSchedule.swift in Sources */,
 				849550F527AA07EB008A180F /* PrayerProvider.swift in Sources */,
 				847AC2BC279F71A2000D80EE /* PrayerDayView.swift in Sources */,
+				840FBEB427C8729C003D646C /* NewsScreen.swift in Sources */,
 				847AC2C9279F74C3000D80EE /* AdhanSchedule.swift in Sources */,
 				849550FE27AA4117008A180F /* Color.swift in Sources */,
 				847AC2DF279FA893000D80EE /* HijriComponents.swift in Sources */,
@@ -388,6 +411,7 @@
 				8416F08527BEFE9E00129383 /* PrayerHeader.swift in Sources */,
 				847AC2E5279FB10A000D80EE /* PrayerRow.swift in Sources */,
 				849550FC27AA38B5008A180F /* Sequence.swift in Sources */,
+				840FBEB627C872AB003D646C /* DonateScreen.swift in Sources */,
 				847AC2CB279F9246000D80EE /* PrayerDay.swift in Sources */,
 				84E57E0027AB8FE400AC10A0 /* Formatter.swift in Sources */,
 				8416F08927BF280D00129383 /* NotificationType.swift in Sources */,
@@ -399,7 +423,7 @@
 				847AC2E7279FB162000D80EE /* Prayer.swift in Sources */,
 				84ACC8D927B86761004D4F25 /* FridayPrayer.swift in Sources */,
 				842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */,
-				842E34C627BDED2800A3B50B /* SettingsScreen.swift in Sources */,
+				842E34C627BDED2800A3B50B /* MoreScreen.swift in Sources */,
 				847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */,
 				843F283627C1DEE8008D0328 /* PrayerSchedule.swift in Sources */,
 				849550F127AA0316008A180F /* MockData.swift in Sources */,

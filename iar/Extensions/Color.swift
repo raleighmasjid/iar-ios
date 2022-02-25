@@ -11,5 +11,9 @@ import SwiftUI
 extension Color {
     enum Theme {
         static let darkGreen = Color("DarkGreen")
+        static let prayerBackground = Color("PrayerBackground")
+        static let prayerBorder = Color("PrayerBorder")
+        static let prayerBorderCurrent = Color("PrayerBorderCurrent")
+        static let badgeBackground = Color("BadgeBackground")
     }
 }

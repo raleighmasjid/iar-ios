@@ -14,13 +14,17 @@ struct AlarmToggleStyle: ToggleStyle {
             configuration.isOn.toggle()
         } label: {
             if configuration.isOn {
-                Image(systemName: "alarm.fill")
+                Image("alarm-on")
                     .renderingMode(.template)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .foregroundColor(.Theme.darkGreen)
                     .opacity(1)
             } else {
-                Image(systemName: "alarm")
+                Image("alarm-off")
                     .renderingMode(.template)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .foregroundColor(.black)
                     .opacity(0.5)
             }

@@ -22,16 +22,26 @@ struct PrayerRow: View {
         iqamah?.timeFormatted() ?? " "
     }
     
+    var bgColor: Color {
+        current ? Color.Theme.prayerBackground : Color.white
+    }
+    
+    var borderColor: Color {
+        current ? Color.Theme.prayerBorderCurrent : Color.Theme.prayerBorder
+    }
+    
+    var rowOpacity: CGFloat {
+        guard let adhan = adhan,
+              (current || adhan >= Date()) else {
+                  return 0.7
+              }
+
+        return 1
+    }
+    
     var body: some View {
         HStack() {
-            ZStack(alignment: .leading) {
-                Image(systemName: "circlebadge.fill")
-                    .resizable()
-                    .frame(width: 6, height: 6)
-                    .offset(x: -12, y: 0)
-                    .opacity(current ? 1 : 0)
-                Text(prayer.title)
-            }
+            Text(prayer.title)
             .frame(maxWidth: .infinity, alignment: .leading)
             .font(.system(size: titleSize, weight: .semibold))
             
@@ -45,12 +55,17 @@ struct PrayerRow: View {
             
             Toggle("Alarm", isOn: $notificationEnabled)
                 .toggleStyle(.alarm)
-                .frame(width: 35, height: 16, alignment: .trailing)
+                .frame(width: 48, height: 18)
+                .padding(.vertical, 8)
             
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 10)
-        .background(Color.green.opacity(current ? 0.1 : 0))
+        .padding(.leading, 12)
+        .padding(.vertical, 8)
+        .background(bgColor)
+        .overlay(RoundedRectangle(cornerRadius: 8)
+                    .stroke(borderColor, lineWidth: 0.5))
+        .cornerRadius(8)
+        .opacity(rowOpacity)
     }
     
     var timeSize: CGFloat {

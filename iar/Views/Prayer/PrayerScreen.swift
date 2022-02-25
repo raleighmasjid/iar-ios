@@ -17,7 +17,7 @@ struct PrayerScreen: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 0) {
                     ZStack {
                         PrayerCountdown(upcoming: viewModel.upcoming)
                         HStack {

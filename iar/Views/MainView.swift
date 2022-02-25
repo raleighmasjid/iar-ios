@@ -15,11 +15,19 @@ struct MainView: View {
         TabView {
             PrayerScreen(viewModel: prayerTimesViewModel)
                 .tabItem {
-                    Text("Prayers")
+                    Label("Prayers", image: "tab-prayer")
                 }
-            SettingsScreen()
+            NewsScreen()
                 .tabItem {
-                    Text("Settings")
+                    Label("News", image: "tab-news")
+                }
+            DonateScreen()
+                .tabItem {
+                    Label("Donate", image: "tab-donate")
+                }
+            MoreScreen()
+                .tabItem {
+                    Label("More", image: "tab-more")
                 }
         }.environmentObject(prayerTimesViewModel.notificationSettings)
     }

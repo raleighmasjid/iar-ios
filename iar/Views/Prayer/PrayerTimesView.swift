@@ -20,20 +20,23 @@ struct PrayerTimesView: View {
     }
     
     var body: some View {
-        columnHeaders
-                            
-        TabView(selection: $dayOffset) {
-            ForEach(days, id: \.self) {
-                PrayerDayView(prayerDay: $0.prayerDay)
-                    .tag($0.index)
-            }
-            if days.isEmpty {
+        VStack(spacing: 0) {
+            columnHeaders
+                              
+            ZStack {
                 PrayerDayView(prayerDay: nil)
+                    .opacity(days.isEmpty ? 1 : 0)
+                TabView(selection: $dayOffset) {
+                    ForEach(days, id: \.self) {
+                        PrayerDayView(prayerDay: $0.prayerDay)
+                            .tag($0.index)
+                    }
+                }
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                .opacity(days.isEmpty ? 0 : 1)
+                .id(days.hashValue)
             }
         }
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(height: 275)
-        .id(days.hashValue)
     }
     
     var columnHeaders: some View {
@@ -44,13 +47,25 @@ struct PrayerTimesView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             Text("Iqamah")
                 .frame(maxWidth: .infinity, alignment: .trailing)
-            Spacer().frame(width: 43)
+            Spacer().frame(width: 55)
         }
         .padding(.vertical, 10)
-        .padding(.horizontal, 20)
-        .font(.system(size: 16, weight: .regular))
-        .foregroundColor(.white)
-        .background(Color.Theme.darkGreen)
+        .padding(.horizontal, 28)
+        .font(.system(size: 16, weight: .bold))
     }
 }
 
+#if DEBUG
+struct PrayerTimesView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            PrayerTimesView(prayerDays: [.mock()],
+                            dayOffset: .constant(0))
+            Spacer(minLength: 10)
+        }
+            .environmentObject(NotificationSettings())
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+    }
+}
+#endif

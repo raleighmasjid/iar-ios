@@ -19,13 +19,14 @@ struct PrayerDayView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 12) {
             ForEach(Prayer.allCases, id: \.self) { prayer in
                 PrayerRow(prayer: prayer,
                           adhan: prayerDay?.adhan(for: prayer),
                           iqamah: prayerDay?.iqamah(for: prayer),
                           current: currentPrayer == prayer,
                           notificationEnabled: notifications.boundValue(for: prayer))
+                    .padding(.horizontal, 16)
             }
         }
         .frame(maxWidth: .infinity)
