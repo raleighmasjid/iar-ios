@@ -12,4 +12,8 @@ extension UIScreen {
     static var isTiny: Bool {
         return (UIScreen.main.bounds.width <= 320)
     }
+    
+    static var isShort: Bool {
+        return (UIScreen.main.bounds.height <= 667)
+    }
 }

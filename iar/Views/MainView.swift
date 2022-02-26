@@ -29,7 +29,9 @@ struct MainView: View {
                 .tabItem {
                     Label("More", image: "tab-more")
                 }
-        }.environmentObject(prayerTimesViewModel.notificationSettings)
+        }
+        .environmentObject(prayerTimesViewModel.notificationSettings)
+        .accentColor(Color.Theme.darkGreen)
     }
 }
 

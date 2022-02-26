@@ -15,5 +15,7 @@ extension Color {
         static let prayerBorder = Color("PrayerBorder")
         static let prayerBorderCurrent = Color("PrayerBorderCurrent")
         static let badgeBackground = Color("BadgeBackground")
+        static let indicatorActive = Color("IndicatorActive")
+        static let indicatorInactive = Color("IndicatorInactive")
     }
 }

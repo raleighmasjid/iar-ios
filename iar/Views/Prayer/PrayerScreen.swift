@@ -17,6 +17,7 @@ struct PrayerScreen: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                Spacer().frame(height: 16)
                 VStack(alignment: .leading, spacing: 0) {
                     ZStack {
                         PrayerCountdown(upcoming: viewModel.upcoming)
@@ -30,7 +31,8 @@ struct PrayerScreen: View {
                     }
                     PrayerHeader(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
                     PrayerTimesView(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
-                    Spacer(minLength: 10)
+                    FridayScheduleView(fridayPrayers: viewModel.fridaySchedule)
+                    Spacer(minLength: 5)
                 }
             }
             .onAppear {

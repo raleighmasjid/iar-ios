@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FridayPrayer: Codable {
+struct FridayPrayer: Codable, Equatable, Hashable {
     let title: String
     let shift: String
     let time: String

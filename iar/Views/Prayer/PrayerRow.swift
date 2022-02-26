@@ -55,17 +55,24 @@ struct PrayerRow: View {
             
             Toggle("Alarm", isOn: $notificationEnabled)
                 .toggleStyle(.alarm)
-                .frame(width: 48, height: 18)
-                .padding(.vertical, 8)
+                .frame(width: 48, height: alarmHeight)
+                .padding(.vertical, verticalPadding)
             
         }
         .padding(.leading, 12)
-        .padding(.vertical, 8)
         .background(bgColor)
         .overlay(RoundedRectangle(cornerRadius: 8)
                     .stroke(borderColor, lineWidth: 0.5))
         .cornerRadius(8)
         .opacity(rowOpacity)
+    }
+    
+    var alarmHeight: CGFloat {
+        UIScreen.isTiny ? 16 : 18
+    }
+    
+    var verticalPadding: CGFloat {
+        UIScreen.isTiny ? 10 : 15
     }
     
     var timeSize: CGFloat {

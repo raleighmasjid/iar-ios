@@ -30,6 +30,10 @@ struct PrayerCountdown: View {
         return viewModel.timeRemaining.formattedInterval()
     }
     
+    var countdownSize: CGFloat {
+        UIScreen.isTiny ? 28 : 32
+    }
+    
     var badgeColor: Color {
         if viewModel.upcoming == nil {
             return .clear
@@ -47,7 +51,7 @@ struct PrayerCountdown: View {
                 .background(badgeColor)
                 .cornerRadius(8)
             Text(countdown)
-                .font(.system(size: 32, weight: .semibold))
+                .font(.system(size: countdownSize, weight: .semibold))
         }
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity, alignment: .leading)

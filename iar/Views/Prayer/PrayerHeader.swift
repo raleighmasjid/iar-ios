@@ -11,7 +11,7 @@ struct PrayerHeader: View {
     let prayerDays: [PrayerDay]
     @Binding var dayOffset: Int
     
-    let buttonSize: CGFloat = 28
+    let buttonSize: CGFloat = 32
     
     var hasPreviousDays: Bool {
         dayOffset > 0
@@ -46,12 +46,11 @@ struct PrayerHeader: View {
                     }
                 }
             } label: {
-                Image(systemName: "chevron.left.circle.fill")
+                Image("chevron-left")
                     .resizable()
                     .frame(width: buttonSize, height: buttonSize)
                     .padding(.horizontal, 20)
             }
-            .foregroundColor(.Theme.darkGreen)
             .disabled(!hasPreviousDays)
             .opacity(hasPreviousDays ? 1 : 0.3)
 
@@ -79,18 +78,16 @@ struct PrayerHeader: View {
                     }
                 }
             } label: {
-                Image(systemName: "chevron.right.circle.fill")
+                Image("chevron-right")
                     .resizable()
                     .frame(width: buttonSize, height: buttonSize)
                     .padding(.horizontal, 20)
             }
-            .foregroundColor(.Theme.darkGreen)
             .disabled(!hasNextDays)
             .opacity(hasNextDays ? 1 : 0.3)
             
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-//        .padding(.horizontal, 20)
         .padding(.vertical, 12)
 
     }

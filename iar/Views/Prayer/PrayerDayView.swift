@@ -13,13 +13,16 @@ struct PrayerDayView: View {
     @EnvironmentObject var notifications: NotificationSettings
 
     init(prayerDay: PrayerDay?) {
-        print(">> init PrayerDayView for \(String(describing: prayerDay?.date))")
         self.prayerDay = prayerDay
         self.currentPrayer = prayerDay?.currentPrayer()
     }
     
+    var rowSpacing: CGFloat {
+        UIScreen.isShort ? 8 : 12
+    }
+    
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: rowSpacing) {
             ForEach(Prayer.allCases, id: \.self) { prayer in
                 PrayerRow(prayer: prayer,
                           adhan: prayerDay?.adhan(for: prayer),

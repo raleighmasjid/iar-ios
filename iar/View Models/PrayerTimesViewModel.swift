@@ -39,7 +39,6 @@ class PrayerTimesViewModel: ObservableObject {
     }
     
     init(provider: PrayerProvider) {
-        print(">> init viewmodel")
         self.provider = provider
         self.notificationSettings = NotificationSettings()
 

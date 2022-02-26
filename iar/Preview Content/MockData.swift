@@ -15,7 +15,41 @@ class MockProvider: PrayerProvider {
     
     func fetchPrayers() async throws -> PrayerSchedule {
         let days: [PrayerDay] = [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
-        return PrayerSchedule(prayerDays: days, fridaySchedule: [])
+        return PrayerSchedule(prayerDays: days, fridaySchedule: FridayPrayer.mocks())
+    }
+}
+
+extension FridayPrayer {
+    static func mocks() -> [FridayPrayer] {
+        let json = """
+        [
+            {
+              "title": "How Can I Help to Convey the Message of Islam Lorem Ipsum Dolor Sit Amet How Can I Help to Convey the Message of Islam Lorem Ipsum Dolor Sit Amet",
+              "shift": "1st Shift",
+              "time": "11:30",
+              "speaker": "Imam Mohamed Badawy Ibn Rasheed Ibn Fadlan Ibn Ahmed",
+              "description": "Religious Specialist - Imam at Islamic Association of Raleigh",
+              "image_url": "https://raleighmasjid.org/wp-content/uploads/2021/05/badawy-logo.jpg"
+            },
+            {
+              "title": "Da`wah: An Important Duty in Islam",
+              "shift": "2nd Shift",
+              "time": "1:00",
+              "speaker": "Fiaz Fareed",
+              "description": "Chairman of Outreach & Da'wah at IAR",
+              "image_url": "https://raleighmasjid.org/wp-content/uploads/2021/05/brother-fiaz-fareed-smaller.png"
+            },
+            {
+              "title": "Islam: What the World Needs",
+              "shift": "3rd Shift",
+              "time": "2:15",
+              "speaker": "Mohammed Hannini",
+              "description": "Islamic Sciences Instructor",
+              "image_url": "https://raleighmasjid.org/wp-content/uploads/2021/05/Hanini.jpeg"
+            }
+          ]
+        """
+        return try! JSONDecoder().decode([FridayPrayer].self, from: json.data(using: .utf8)!)
     }
 }
 
