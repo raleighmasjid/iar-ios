@@ -39,6 +39,7 @@ struct KhutbaView: View {
                 HStack {
                     Image(uiImage: imageLoader.image)
                         .resizable()
+                        .aspectRatio(contentMode: .fill)
                         .frame(width: 32, height: 32)
                         .background(Color.white)
                         .clipShape(Circle())

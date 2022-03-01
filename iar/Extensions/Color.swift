@@ -18,4 +18,8 @@ extension Color {
         static let indicatorActive = Color("IndicatorActive")
         static let indicatorInactive = Color("IndicatorInactive")
     }
+    
+    var uiColor: UIColor {
+        UIColor(self)
+    }
 }

@@ -31,7 +31,7 @@ struct MainView: View {
                 }
         }
         .environmentObject(prayerTimesViewModel.notificationSettings)
-        .accentColor(Color.Theme.darkGreen)
+        .accentColor(.white)
     }
 }
 

@@ -15,9 +15,7 @@ class PrayerTimesViewModel: ObservableObject {
     @Published var fridaySchedule: [FridayPrayer] = []
     @Published var error = false
     @Published var loading = false
-    
-    let notificationSettings: NotificationSettings
-    var prayerDays: [PrayerDay] = [] {
+    @Published var prayerDays: [PrayerDay] = [] {
         didSet {
             updateNextPrayer()
             
@@ -27,17 +25,15 @@ class PrayerTimesViewModel: ObservableObject {
         }
     }
 
-    weak var timer: Timer?
-
-    let provider: PrayerProvider
-    let notificationController = NotificationController()
-
-    var cancellables = Set<AnyCancellable>()
-
-    func prayerDay(offset: Int = 0) -> PrayerDay? {
-        return prayerDays[safe: offset]
-    }
+    let notificationSettings: NotificationSettings
     
+    private weak var timer: Timer?
+
+    private let provider: PrayerProvider
+    private let notificationController = NotificationController()
+
+    private var cancellables = Set<AnyCancellable>()
+
     init(provider: PrayerProvider) {
         self.provider = provider
         self.notificationSettings = NotificationSettings()
@@ -56,17 +52,8 @@ class PrayerTimesViewModel: ObservableObject {
         timer?.invalidate()
     }
     
-    func didFetchPrayerSchedule(schedule: PrayerSchedule) {
-        prayerDays = schedule.prayerDays
-            .filter { Calendar.current.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
-        fridaySchedule = schedule.fridaySchedule
-    }
-    
-    func updateNextPrayer() {
-        let newUpcoming = PrayerDay.upcomingPrayer(prayerDays: prayerDays)
-        if newUpcoming != upcoming {
-            upcoming = newUpcoming
-        }
+    func prayerDay(offset: Int = 0) -> PrayerDay? {
+        return prayerDays[safe: offset]
     }
     
     func fetchLatest() {
@@ -86,8 +73,21 @@ class PrayerTimesViewModel: ObservableObject {
             }
         }
     }
+    
+    private func didFetchPrayerSchedule(schedule: PrayerSchedule) {
+        prayerDays = schedule.prayerDays
+            .filter { Calendar.current.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
+        fridaySchedule = schedule.fridaySchedule
+    }
+    
+    private func updateNextPrayer() {
+        let newUpcoming = PrayerDay.upcomingPrayer(prayerDays: prayerDays)
+        if newUpcoming != upcoming {
+            upcoming = newUpcoming
+        }
+    }
 
-    func updateNotifications() {
+    private func updateNotifications() {
         let enabledPrayers = Prayer.allCases.filter { notificationSettings.isEnabled(for: $0) }
         Task {
             await self.notificationController.scheduleNotifications(prayerDays: self.prayerDays,
