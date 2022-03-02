@@ -15,7 +15,7 @@ struct MainView: View {
         TabView {
             PrayerScreen(viewModel: prayerTimesViewModel)
                 .tabItem {
-                    Label("Prayers", image: "tab-prayer")
+                    Label("Prayer", image: "tab-prayer")
                 }
             NewsScreen()
                 .tabItem {

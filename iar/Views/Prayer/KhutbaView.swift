@@ -61,8 +61,10 @@ struct KhutbaView: View {
             .foregroundColor(.white)
             .frame(height: 190)
         }
-        .background(Color.Theme.darkGreen)
-        .cornerRadius(8)
+        .background(
+            Image("card-back")
+                .resizable()
+        )
         .padding(.bottom, 40)
         .padding(.horizontal, 20)
         .onAppear {
