@@ -89,7 +89,12 @@ extension PrayerDay {
                                     maghrib: maghribDate.addingTimeInterval(600),
                                     isha: ishaDate.addingTimeInterval(600),
                                     taraweeh: nil)
-        let adhan = AdhanSchedule(fajr: fajrDate, shuruq: shuruqDate, dhuhr: dhuhrDate, asr: asrDate, maghrib: maghribDate, isha: ishaDate)
+        let adhan = AdhanSchedule(fajr: fajrDate,
+                                  shuruq: shuruqDate,
+                                  dhuhr: dhuhrDate,
+                                  asr: asrDate,
+                                  maghrib: maghribDate,
+                                  isha: ishaDate)
         return PrayerDay(date: date, hijri: hijri, adhan: adhan, iqamah: iqamah)
     }
 }

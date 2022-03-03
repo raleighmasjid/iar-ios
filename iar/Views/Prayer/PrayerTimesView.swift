@@ -9,12 +9,12 @@ import SwiftUI
 
 struct PrayerTimesView: View {
     
-    let days: [IndexedPrayerDay]
+    let days: [PrayerDayViewModel]
     @Binding var dayOffset: Int
     
     init(prayerDays: [PrayerDay], dayOffset: Binding<Int>) {
         days = prayerDays.enumerated().map { (index, day) in
-            IndexedPrayerDay(prayerDay: day, index: index)
+            PrayerDayViewModel(prayerDay: day, index: index)
         }
         self._dayOffset = dayOffset
     }
@@ -24,11 +24,11 @@ struct PrayerTimesView: View {
             columnHeaders
                               
             ZStack {
-                PrayerDayView(prayerDay: nil)
+                PrayerDayView(prayerDay: nil, currentPrayer: nil)
                     .opacity(days.isEmpty ? 1 : 0)
                 TabView(selection: $dayOffset) {
                     ForEach(days, id: \.self) {
-                        PrayerDayView(prayerDay: $0.prayerDay)
+                        PrayerDayView(prayerDay: $0.prayerDay, currentPrayer: $0.currentPrayer)
                             .tag($0.index)
                     }
                 }

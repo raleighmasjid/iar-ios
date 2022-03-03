@@ -65,6 +65,7 @@ struct KhutbaView: View {
             Image("card-back")
                 .resizable()
         )
+        .cornerRadius(8)
         .padding(.bottom, 40)
         .padding(.horizontal, 20)
         .onAppear {

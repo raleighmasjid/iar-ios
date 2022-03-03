@@ -11,11 +11,6 @@ struct PrayerDayView: View {
     let prayerDay: PrayerDay?
     let currentPrayer: Prayer?
     @EnvironmentObject var notifications: NotificationSettings
-
-    init(prayerDay: PrayerDay?) {
-        self.prayerDay = prayerDay
-        self.currentPrayer = prayerDay?.currentPrayer()
-    }
     
     var rowSpacing: CGFloat {
         UIScreen.isShort ? 8 : 12
@@ -40,7 +35,7 @@ struct PrayerDayView: View {
 #if DEBUG
 struct PrayerDayView_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerDayView(prayerDay: .mock())
+        PrayerDayView(prayerDay: .mock(), currentPrayer: .asr)
             .environmentObject(NotificationSettings())
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
