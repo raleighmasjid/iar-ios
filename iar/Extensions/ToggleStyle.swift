@@ -25,7 +25,7 @@ struct AlarmToggleStyle: ToggleStyle {
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     .opacity(0.5)
             }
 

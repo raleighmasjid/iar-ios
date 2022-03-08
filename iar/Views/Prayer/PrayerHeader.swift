@@ -47,7 +47,9 @@ struct PrayerHeader: View {
                 }
             } label: {
                 Image("chevron-left")
+                    .renderingMode(.template)
                     .resizable()
+                    .foregroundColor(Color.Theme.darkGreen)
                     .frame(width: buttonSize, height: buttonSize)
                     .padding(.horizontal, 20)
             }
@@ -79,7 +81,9 @@ struct PrayerHeader: View {
                 }
             } label: {
                 Image("chevron-right")
+                    .renderingMode(.template)
                     .resizable()
+                    .foregroundColor(Color.Theme.darkGreen)
                     .frame(width: buttonSize, height: buttonSize)
                     .padding(.horizontal, 20)
             }

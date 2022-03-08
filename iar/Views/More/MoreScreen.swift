@@ -11,15 +11,12 @@ struct MoreScreen: View {
     @EnvironmentObject var notifications: NotificationSettings
     
     var body: some View {
-        NavigationView {
-            List {
-                Picker("Notification Sound", selection: $notifications.type) {
-                    ForEach(NotificationType.allCases, id:\.self) { type in
-                        Text(type.title).tag(type)
-                    }
+        List {
+            Picker("Notification Sound", selection: $notifications.type) {
+                ForEach(NotificationType.allCases, id:\.self) { type in
+                    Text(type.title).tag(type)
                 }
             }
-            .navigationTitle("Settings")
         }
     }
 }

@@ -8,69 +8,66 @@
 import SwiftUI
 
 struct PrayerScreen: View {
-    @Environment(\.scenePhase) var scenePhase
     let dayChange = NotificationCenter.default.publisher(for: .NSCalendarDayChanged)
     @StateObject var viewModel: PrayerTimesViewModel
     @State var dayOffset = 0
+    
+    @Environment(\.scenePhase) var scenePhase
     @State var didEnterBackground = false
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                Spacer().frame(height: 16)
-                VStack(alignment: .leading, spacing: 0) {
-                    ZStack {
-                        PrayerCountdown(upcoming: viewModel.upcoming)
-                        HStack {
-                            Spacer(minLength: 50)
-                            if viewModel.loading {
-                                ProgressView()
-                                    .padding(.trailing, 24)
-                            }
+        ScrollView {
+            Spacer().frame(height: 16)
+            VStack(alignment: .leading, spacing: 0) {
+                ZStack {
+                    PrayerCountdown(upcoming: viewModel.upcoming)
+                    HStack {
+                        Spacer(minLength: 50)
+                        if viewModel.loading {
+                            ProgressView()
+                                .padding(.trailing, 24)
                         }
                     }
-                    PrayerHeader(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
-                    PrayerTimesView(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
-                    FridayScheduleView(fridayPrayers: viewModel.fridaySchedule)
-                    Spacer(minLength: 5)
                 }
+                PrayerHeader(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
+                PrayerTimesView(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
+                FridayScheduleView(fridayPrayers: viewModel.fridaySchedule)
+                Spacer(minLength: 5)
             }
-            .onAppear {
-                if viewModel.prayerDays.isEmpty {
-                    viewModel.fetchLatest()
-                }
-            }
-            .onChange(of: scenePhase) { newPhase in
-                switch newPhase {
-                case .background:
-                    didEnterBackground = true
-                case .active:
-                    if didEnterBackground {
-                        didEnterBackground = false
-                        dayOffset = 0
-                        viewModel.fetchLatest()
-                    }
-                default:
-                    break
-                }
-            }
-            .onChange(of: viewModel.prayerDays) { newValue in
-                if newValue.count <= dayOffset {
-                    dayOffset = 0
-                }
-            }
-            .onReceive(dayChange) { _ in
+        }
+        .onAppear {
+            if viewModel.prayerDays.isEmpty {
                 viewModel.fetchLatest()
             }
-            .navigationTitle("Prayer Times")
-            .navigationBarTitleDisplayMode(.inline)
-            .alert(isPresented: $viewModel.error) {
-                Alert(title: Text("Error"),
-                      message: Text("Unable to load prayer times"),
-                      primaryButton: .default(Text("Retry"),
-                                              action: { viewModel.fetchLatest() }),
-                      secondaryButton: .cancel(Text("Dismiss")))
+        }
+        .onChange(of: scenePhase) { newPhase in
+            switch newPhase {
+            case .background:
+                didEnterBackground = true
+                dayOffset = 0
+            case .active:
+                if didEnterBackground {
+                    didEnterBackground = false
+                    viewModel.fetchLatest()
+                }
+            default:
+                break
             }
+        }
+        .onChange(of: viewModel.prayerDays) { newValue in
+            if newValue.count <= dayOffset {
+                dayOffset = 0
+            }
+        }
+        .onReceive(dayChange) { _ in
+            viewModel.fetchLatest()
+        }
+        .alert(isPresented: $viewModel.error) {
+            Alert(title: Text("Error"),
+                  message: Text("Unable to load prayer times"),
+                  primaryButton: .default(Text("Retry"),
+                                          action: { viewModel.fetchLatest() }),
+                  secondaryButton: .cancel(Text("Dismiss")))
         }
     }
     

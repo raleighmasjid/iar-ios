@@ -23,7 +23,7 @@ struct PrayerRow: View {
     }
     
     var bgColor: Color {
-        current ? Color.Theme.prayerBackground : Color.white
+        current ? Color.Theme.prayerBackground : .clear
     }
     
     var borderColor: Color {
@@ -33,7 +33,7 @@ struct PrayerRow: View {
     var rowOpacity: CGFloat {
         guard let adhan = adhan,
               (current || adhan >= Date()) else {
-                  return 0.7
+                  return 0.9
               }
 
         return 1
@@ -62,7 +62,7 @@ struct PrayerRow: View {
         .padding(.leading, 12)
         .background(bgColor)
         .overlay(RoundedRectangle(cornerRadius: 8)
-                    .stroke(borderColor, lineWidth: 0.5))
+                    .stroke(borderColor, lineWidth: 1.0))
         .cornerRadius(8)
         .opacity(rowOpacity)
     }

@@ -11,6 +11,8 @@ struct FridayScheduleView: View {
     let fridayPrayers: [FridayPrayer]
     @State var selectedShift: String = ""
     
+    @Environment(\.scenePhase) var scenePhase
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Friday Prayers")
@@ -29,6 +31,16 @@ struct FridayScheduleView: View {
             }
         }
         .padding(.top, 20)
+        .onChange(of: scenePhase) { newPhase in
+            switch newPhase {
+            case .background:
+                if let firstShift = fridayPrayers.first?.shift {
+                    selectedShift = firstShift
+                }
+            default:
+                break
+            }
+        }
         
     }
 }

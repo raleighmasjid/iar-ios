@@ -13,25 +13,44 @@ struct MainView: View {
     
     var body: some View {
         TabView {
-            PrayerScreen(viewModel: prayerTimesViewModel)
-                .tabItem {
-                    Label("Prayer", image: "tab-prayer")
-                }
-            NewsScreen()
-                .tabItem {
-                    Label("News", image: "tab-news")
-                }
-            DonateScreen()
-                .tabItem {
-                    Label("Donate", image: "tab-donate")
-                }
-            MoreScreen()
-                .tabItem {
-                    Label("More", image: "tab-more")
-                }
+            NavigationView {
+                PrayerScreen(viewModel: prayerTimesViewModel)
+                    .navigationTitle("Prayer Times")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("Prayer", image: "tab-prayer")
+            }
+            
+            NavigationView {
+                NewsScreen()
+                    .navigationTitle("News")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("News", image: "tab-news")
+            }
+            
+            NavigationView {
+                DonateScreen()
+                    .navigationTitle("Donate")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("Donate", image: "tab-donate")
+            }
+            
+            NavigationView {
+                MoreScreen()
+                    .navigationTitle("More")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("More", image: "tab-more")
+            }
         }
         .environmentObject(prayerTimesViewModel.notificationSettings)
-        .accentColor(.white)
+        .accentColor(.Theme.tabForeground)
     }
 }
 
