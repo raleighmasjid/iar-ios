@@ -26,12 +26,13 @@ struct EventRow: View {
             
             HStack {
                 Text("\(startTime) - \(endTime)")
-                    .foregroundColor(.Theme.secondaryText)
+                    
                 if (event.repeating) {
                     Image(systemName: "repeat")
                 }
             }
             .font(.system(size: 14.0))
+            .foregroundColor(.Theme.secondaryText)
             
             Text(event.description)
                 .font(.system(size: 12))
@@ -46,6 +47,7 @@ struct EventRow: View {
     }
 }
 
+#if DEBUG
 struct EventRow_Previews: PreviewProvider {
     static var previews: some View {
         EventRow(event: News.mocks().events.first!)
@@ -53,3 +55,4 @@ struct EventRow_Previews: PreviewProvider {
             .padding()
     }
 }
+#endif

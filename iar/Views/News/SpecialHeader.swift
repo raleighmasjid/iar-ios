@@ -33,6 +33,7 @@ struct SpecialHeader: View {
     }
 }
 
+#if DEBUG
 struct specialHeader_Previews: PreviewProvider {
     static var previews: some View {
         SpecialHeader(special: News.mocks().special!)
@@ -40,3 +41,4 @@ struct specialHeader_Previews: PreviewProvider {
             .padding()
     }
 }
+#endif

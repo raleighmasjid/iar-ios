@@ -49,11 +49,12 @@ struct EventList: View {
         } header: {
             Text(Formatter.dayFormatter.string(from: date))
                 .font(.system(size: 21, weight: .bold))
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
         }
     }
 }
 
+#if DEBUG
 struct EventList_Previews: PreviewProvider {
     static let vm: NewsViewModel = {
        let v = NewsViewModel(provider: MockProvider())
@@ -64,3 +65,4 @@ struct EventList_Previews: PreviewProvider {
         EventList(viewModel: vm)
     }
 }
+#endif

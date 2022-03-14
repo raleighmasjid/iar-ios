@@ -42,6 +42,7 @@ struct AnnouncementRow: View {
     }
 }
 
+#if DEBUG
 struct AnnouncementRow_Previews: PreviewProvider {
     static var previews: some View {
         AnnouncementRow(announcement: News.mocks().announcements.first!)
@@ -49,3 +50,4 @@ struct AnnouncementRow_Previews: PreviewProvider {
             .padding()
     }
 }
+#endif

@@ -79,6 +79,7 @@ struct AnnouncementsList: View {
     }
 }
 
+#if DEBUG
 struct AnnouncementsList_Previews: PreviewProvider {
     static let vm: NewsViewModel = {
        let v = NewsViewModel(provider: MockProvider())
@@ -89,3 +90,4 @@ struct AnnouncementsList_Previews: PreviewProvider {
         AnnouncementsList(viewModel: vm)
     }
 }
+#endif
