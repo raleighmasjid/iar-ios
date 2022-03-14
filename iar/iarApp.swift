@@ -20,6 +20,8 @@ struct iarApp: App {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: Color.Theme.darkGreen.uiColor], for: .normal)
         UISegmentedControl.appearance().backgroundColor = Color.Theme.segmentedBackground.uiColor
         
+        UINavigationBar.appearance().tintColor = Color.Theme.darkGreen.uiColor
+        
         let tabAppearance = UITabBarAppearance()
         tabAppearance.configureWithOpaqueBackground()
         tabAppearance.backgroundColor = Color.Theme.tabBackground.uiColor

@@ -9,8 +9,15 @@ import SwiftUI
 
 struct MainView: View {
     
-    let prayerTimesViewModel = PrayerTimesViewModel(provider: NetworkPrayerProvider())
+    @StateObject var prayerTimesViewModel = PrayerTimesViewModel(provider: NetworkPrayerProvider())
     
+    @StateObject var newsViewModel = NewsViewModel(provider: NetworkNewsProvider())
+    
+    @Environment(\.scenePhase) var scenePhase
+    @State var didEnterBackground = false
+
+    let dayChange = NotificationCenter.default.publisher(for: .NSCalendarDayChanged)
+
     var body: some View {
         TabView {
             NavigationView {
@@ -22,13 +29,25 @@ struct MainView: View {
                 Label("Prayer", image: "tab-prayer")
             }
             
-            NavigationView {
-                NewsScreen()
-                    .navigationTitle("News")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
-            .tabItem {
-                Label("News", image: "tab-news")
+            if #available(iOS 15.0, *) {
+                NavigationView {
+                    NewsScreen(viewModel: newsViewModel)
+                        .navigationTitle("News")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+                .tabItem {
+                    Label("News", image: "tab-news")
+                }
+                .badge(newsViewModel.badge)
+            } else {
+                NavigationView {
+                    NewsScreen(viewModel: newsViewModel)
+                        .navigationTitle("News")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+                .tabItem {
+                    Label("News", image: "tab-news")
+                }
             }
             
             NavigationView {
@@ -51,6 +70,32 @@ struct MainView: View {
         }
         .environmentObject(prayerTimesViewModel.notificationSettings)
         .accentColor(.Theme.tabForeground)
+        .onAppear {
+            if prayerTimesViewModel.prayerDays.isEmpty {
+                prayerTimesViewModel.fetchLatest()
+            }
+            if newsViewModel.announcements.isEmpty {
+                newsViewModel.fetchLatest()
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            switch newPhase {
+            case .background:
+                didEnterBackground = true
+            case .active:
+                if didEnterBackground {
+                    didEnterBackground = false
+                    prayerTimesViewModel.fetchLatest()
+                    newsViewModel.fetchLatest()
+                }
+            default:
+                break
+            }
+        }
+        .onReceive(dayChange) { _ in
+            prayerTimesViewModel.fetchLatest()
+            newsViewModel.fetchLatest()
+        }
     }
 }
 

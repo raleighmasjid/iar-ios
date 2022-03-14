@@ -9,14 +9,19 @@ import Foundation
 import UIKit
 
 class ImageLoader: ObservableObject {
-    @Published var image = UIImage()
-    
+    @Published var image: UIImage
+
     private var imageURL: URL?
     private let session = URLSession.shared
     
+    init(defaultImage: UIImage? = nil) {
+        image = defaultImage ?? UIImage()
+    }
+    
     func update(urlString: String) {
         guard let newURL = URL(string: urlString),
-              newURL != self.imageURL else { return }
+              newURL != self.imageURL
+        else { return }
         
         Task {
             await fetchImage(url: newURL)

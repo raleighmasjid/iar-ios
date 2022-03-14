@@ -12,6 +12,8 @@ struct StoredDefault<T: Codable> {
     
     enum DefaultKey: String {
         case prayerScheduleCache
+        case newsCache
+        case viewedSpecial
     }
     
     let key: DefaultKey

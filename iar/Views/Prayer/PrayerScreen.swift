@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct PrayerScreen: View {
-    let dayChange = NotificationCenter.default.publisher(for: .NSCalendarDayChanged)
-    @StateObject var viewModel: PrayerTimesViewModel
+    @ObservedObject var viewModel: PrayerTimesViewModel
     @State var dayOffset = 0
     
     @Environment(\.scenePhase) var scenePhase
-    @State var didEnterBackground = false
     
     var body: some View {
         ScrollView {
@@ -35,21 +33,10 @@ struct PrayerScreen: View {
                 Spacer(minLength: 5)
             }
         }
-        .onAppear {
-            if viewModel.prayerDays.isEmpty {
-                viewModel.fetchLatest()
-            }
-        }
         .onChange(of: scenePhase) { newPhase in
             switch newPhase {
             case .background:
-                didEnterBackground = true
                 dayOffset = 0
-            case .active:
-                if didEnterBackground {
-                    didEnterBackground = false
-                    viewModel.fetchLatest()
-                }
             default:
                 break
             }
@@ -58,9 +45,6 @@ struct PrayerScreen: View {
             if newValue.count <= dayOffset {
                 dayOffset = 0
             }
-        }
-        .onReceive(dayChange) { _ in
-            viewModel.fetchLatest()
         }
         .alert(isPresented: $viewModel.error) {
             Alert(title: Text("Error"),

@@ -16,9 +16,9 @@ enum NotificationType: String, CaseIterable {
     var title: String {
         switch self {
         case .saadAlghamidi:
-            return "Saad al-Ghamidi"
+            return "Adhan Al-Ghamidi"
         case .alafasy:
-            return "Mishary Alafasy"
+            return "Adhan Alafasy"
         case .silent:
             return "Silent"
         }
@@ -32,8 +32,6 @@ enum NotificationType: String, CaseIterable {
             return UNNotificationSound(named: UNNotificationSoundName(rawValue: "AdhanSaadAlghamdi.caf"))
         case .silent:
             return nil
-//        case .systemSound:
-//            return UNNotificationSound.default
         }
     }
 }

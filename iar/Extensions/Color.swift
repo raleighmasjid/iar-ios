@@ -21,6 +21,8 @@ extension Color {
         static let indicatorActive = Color("IndicatorActive")
         static let indicatorInactive = Color("IndicatorInactive")
         static let segmentedBackground = Color("SegmentedBackground")
+        static let secondaryText = Color("SecondaryText")
+        static let tertiaryText = Color("TertiaryText")
     }
     
     var uiColor: UIColor {
