@@ -54,7 +54,7 @@ struct PrayerHeader: View {
                     .padding(.horizontal, 20)
             }
             .disabled(!hasPreviousDays)
-            .opacity(hasPreviousDays ? 1 : 0.3)
+            .opacity(hasPreviousDays ? 1 : 0.5)
 
             Button {
                 withAnimation {
@@ -88,7 +88,7 @@ struct PrayerHeader: View {
                     .padding(.horizontal, 20)
             }
             .disabled(!hasNextDays)
-            .opacity(hasNextDays ? 1 : 0.3)
+            .opacity(hasNextDays ? 1 : 0.5)
             
         }
         .frame(maxWidth: .infinity, alignment: .leading)

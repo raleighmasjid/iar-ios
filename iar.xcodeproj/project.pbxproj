@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840F072627DFE05300CCDE19 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840F072527DFE05300CCDE19 /* Launch Screen.storyboard */; };
 		840FBEB427C8729C003D646C /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FBEB327C8729C003D646C /* NewsScreen.swift */; };
 		840FBEB627C872AB003D646C /* DonateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FBEB527C872AB003D646C /* DonateScreen.swift */; };
 		840FBEBA27C87882003D646C /* FridayScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FBEB927C87882003D646C /* FridayScheduleView.swift */; };
@@ -76,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840F072527DFE05300CCDE19 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		840FBEB327C8729C003D646C /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
 		840FBEB527C872AB003D646C /* DonateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateScreen.swift; sourceTree = "<group>"; };
 		840FBEB927C87882003D646C /* FridayScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridayScheduleView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				8416F08A27BF5FE600129383 /* Audio */,
 				847AC2BD279F71A2000D80EE /* Assets.xcassets */,
 				847AC2BF279F71A2000D80EE /* Preview Content */,
+				840F072527DFE05300CCDE19 /* Launch Screen.storyboard */,
 			);
 			path = iar;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				847AC2C1279F71A2000D80EE /* Preview Assets.xcassets in Resources */,
 				8416F08E27BF603D00129383 /* AdhanSaadAlghamdi.caf in Resources */,
 				8416F08D27BF603D00129383 /* AdhanAfasy.caf in Resources */,
+				840F072627DFE05300CCDE19 /* Launch Screen.storyboard in Resources */,
 				847AC2BE279F71A2000D80EE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,6 +660,7 @@
 				INFOPLIST_FILE = iar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -688,6 +693,7 @@
 				INFOPLIST_FILE = iar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
