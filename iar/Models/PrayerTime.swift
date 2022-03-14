@@ -34,11 +34,11 @@ struct PrayerTime: Equatable {
         switch prayer {
         case .shuruq:
             content.body = "Shuruq is in 30 minutes"
+            content.sound = notificationType == .silent ? nil : UNNotificationSound.default
         default:
             content.body = prayer.title
+            content.sound = notificationType.notificationSound
         }
-        
-        content.sound = notificationType.notificationSound
         
         if #available(iOS 15.0, *) {
             content.interruptionLevel = .timeSensitive
