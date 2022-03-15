@@ -10,6 +10,7 @@ import SwiftUI
 struct PrayerTimesView: View {
     
     let days: [PrayerDayViewModel]
+    let showTaraweeh: Bool
     @Binding var dayOffset: Int
     
     init(prayerDays: [PrayerDay], dayOffset: Binding<Int>) {
@@ -17,6 +18,7 @@ struct PrayerTimesView: View {
             PrayerDayViewModel(prayerDay: day, index: index)
         }
         self._dayOffset = dayOffset
+        self.showTaraweeh = prayerDays.contains(where: { $0.hasTaraweeh })
     }
     
     var body: some View {
@@ -24,12 +26,20 @@ struct PrayerTimesView: View {
             columnHeaders
                               
             ZStack {
-                PrayerDayView(prayerDay: nil, currentPrayer: nil)
+                PrayerDayView(prayerDay: nil,
+                              currentPrayer: nil,
+                              showTaraweeh: showTaraweeh)
                     .opacity(days.isEmpty ? 1 : 0)
+                
                 TabView(selection: $dayOffset) {
-                    ForEach(days, id: \.self) {
-                        PrayerDayView(prayerDay: $0.prayerDay, currentPrayer: $0.currentPrayer)
-                            .tag($0.index)
+                    ForEach(days, id: \.self) { prayerItem in
+                        VStack {
+                            PrayerDayView(prayerDay: prayerItem.prayerDay,
+                                          currentPrayer: prayerItem.currentPrayer,
+                                          showTaraweeh: prayerItem.prayerDay.hasTaraweeh)
+                            Spacer(minLength: 0)
+                        }
+                        .tag(prayerItem.index)
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))

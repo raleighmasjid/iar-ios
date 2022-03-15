@@ -49,12 +49,12 @@ struct PrayerHeader: View {
                 Image("chevron-left")
                     .renderingMode(.template)
                     .resizable()
-                    .foregroundColor(Color.Theme.darkGreen)
+                    .foregroundColor(hasPreviousDays ? Color.Theme.darkGreen : .primary)
                     .frame(width: buttonSize, height: buttonSize)
                     .padding(.horizontal, 20)
             }
             .disabled(!hasPreviousDays)
-            .opacity(hasPreviousDays ? 1 : 0.5)
+            .opacity(hasPreviousDays ? 1 : 0.3)
 
             Button {
                 withAnimation {

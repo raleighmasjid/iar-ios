@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct PrayerRow: View {
-    let prayer: Prayer
+    let prayer: String
     let adhan: Date?
     let iqamah: Date?
     let current: Bool
+    let displayAlarm: Bool
     @Binding var notificationEnabled: Bool
     
     var adhanFormatted: String {
-        adhan?.timeFormatted() ?? "-:--"
+        adhan?.timeFormatted() ?? " "
     }
     
     var iqamahFormatted: String {
@@ -41,7 +42,7 @@ struct PrayerRow: View {
     
     var body: some View {
         HStack() {
-            Text(prayer.title)
+            Text(prayer)
             .frame(maxWidth: .infinity, alignment: .leading)
             .font(.system(size: titleSize, weight: .semibold))
             
@@ -57,6 +58,8 @@ struct PrayerRow: View {
                 .toggleStyle(.alarm)
                 .frame(width: 48, height: alarmHeight)
                 .padding(.vertical, verticalPadding)
+                .opacity(displayAlarm ? 1.0 : 0.0)
+                .disabled(!displayAlarm)
             
         }
         .padding(.leading, 12)
@@ -87,24 +90,27 @@ struct PrayerRow: View {
 #if DEBUG
 struct PrayerRow_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerRow(prayer: .fajr,
+        PrayerRow(prayer: Prayer.fajr.title,
                   adhan: Date(),
                   iqamah: Date().addingTimeInterval(600),
                   current: true,
+                  displayAlarm: true,
                   notificationEnabled: .constant(true))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
-        PrayerRow(prayer: .dhuhr,
+        PrayerRow(prayer: Prayer.dhuhr.title,
                   adhan: nil,
                   iqamah: nil,
                   current: false,
+                  displayAlarm: true,
                   notificationEnabled: .constant(false))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
-        PrayerRow(prayer: .maghrib,
+        PrayerRow(prayer: Prayer.maghrib.title,
                   adhan: Date(),
                   iqamah: Date().addingTimeInterval(600),
                   current: false,
+                  displayAlarm: true,
                   notificationEnabled: .constant(true))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()

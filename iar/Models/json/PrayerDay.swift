@@ -75,6 +75,10 @@ struct PrayerDay: Codable, Equatable, Hashable {
         }
     }
     
+    var hasTaraweeh: Bool {
+        iqamah.taraweeh != nil
+    }
+    
     static func upcomingPrayer(prayerDays: [PrayerDay], time: Date = Date()) -> PrayerTime? {
         let times = prayerDays.flatMap { $0.prayerTimes }.sorted(comparingKeyPath: \.adhan)
         return times.first(where: { $0.adhan >= time })
