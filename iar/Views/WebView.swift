@@ -17,35 +17,36 @@ struct WebView: View {
     
     typealias DoneAction = () -> Void
     
+    @Environment(\.openURL) var openURL
+    
     let destination: WebDestination
     let doneAction: DoneAction?
-    let progressPlacement: ToolbarItemPlacement
-    let donePlacement: ToolbarItemPlacement
     @StateObject var helper: WebViewHelper = WebViewHelper()
+    @State var showActions: Bool = false
+    @State var showShare: Bool = false
     
     init(_ webDestination: WebDestination, done: DoneAction? = nil) {
         destination = webDestination
         doneAction = done
-        if done == nil {
-            progressPlacement = .navigationBarTrailing
-            donePlacement = .navigationBarLeading
-        } else {
-            progressPlacement = .navigationBarLeading
-            donePlacement = .navigationBarTrailing
-        }
     }
     
     var body: some View {
         WebkitView(url: destination.url, helper: helper)
         .navigationTitle(destination.title)
         .toolbar {
-            ToolbarItem(placement: progressPlacement) {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
                 if helper.isLoading {
                     ProgressView()
                 }
+                Button {
+                    showActions = true
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
             }
             
-            ToolbarItem(placement: donePlacement) {
+            
+            ToolbarItem(placement: .navigationBarLeading) {
                 if let doneAction = doneAction {
                     Button("Done") {
                         doneAction()
@@ -53,7 +54,31 @@ struct WebView: View {
                 }
             }
         }
+        .actionSheet(isPresented: $showActions) {
+            ActionSheet(
+                title: Text(currentURL()?.absoluteString ?? destination.url),
+                buttons: [
+                    .default(Text("Share")) {
+                        showShare = true
+                    },
+                    .default(Text("Open in Browser")) {
+                        if let url = currentURL() {
+                            openURL(url)
+                        }
+                    },
+                    .cancel()
+                ]
+            )
+        }
+        .sheet(isPresented: $showShare) {
+            ShareSheet(activityItems: [currentURL() ?? destination.url])
+        }
     }
+    
+    func currentURL() -> URL? {
+        helper.currentURL ?? URL(string: destination.url)
+    }
+    
 }
 
 
@@ -79,12 +104,14 @@ struct WebkitView: UIViewRepresentable {
 class WebViewHelper: NSObject, ObservableObject, WKNavigationDelegate, WKUIDelegate {
 
     @Published var isLoading: Bool = false
+    var currentURL: URL?
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         isLoading = false
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        currentURL = webView.url
         isLoading = true
     }
     
