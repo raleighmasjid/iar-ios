@@ -11,6 +11,7 @@ class NewsViewModel: ObservableObject {
     @Published var announcements: [Announcement] = []
     @Published var events: [Date: [Event]] = [:]
     @Published var special: SpecialAnnouncement?
+    @Published var featured: Announcement?
     
     @Published var badge: String?
     
@@ -58,6 +59,7 @@ class NewsViewModel: ObservableObject {
         let cal = Calendar.current
         events = Dictionary(grouping: news.events, by: { cal.startOfDay(for: $0.start) })
         special = news.special
+        featured = news.featured
         updateBadge()
     }
     

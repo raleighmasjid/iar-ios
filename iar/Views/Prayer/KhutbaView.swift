@@ -40,12 +40,12 @@ struct KhutbaView: View {
                     Image(uiImage: imageLoader.image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 32, height: 32)
+                        .frame(width: 42, height: 42)
                         .background(Color.white)
                         .clipShape(Circle())
                     VStack(alignment: .leading) {
                         Text(fridayPrayer.speaker)
-                            .font(.system(size: 15, weight: .semibold))
+                            .font(.system(size: 16, weight: .semibold))
                             .lineLimit(2)
                         Text(fridayPrayer.description)
                             .font(.system(size: 12, weight: .light))
@@ -59,7 +59,7 @@ struct KhutbaView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(16)
             .foregroundColor(.white)
-            .frame(height: 190)
+            .frame(height: 192)
         }
         .background(
             Image("card-back")

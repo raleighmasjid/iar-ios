@@ -9,6 +9,7 @@ import Foundation
 
 struct News: Codable {
     let special: SpecialAnnouncement?
+    let featured: Announcement?
     let announcements: [Announcement]
     let events: [Event]
 }

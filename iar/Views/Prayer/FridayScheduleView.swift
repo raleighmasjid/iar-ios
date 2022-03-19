@@ -27,7 +27,7 @@ struct FridayScheduleView: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 .id(fridayPrayers.hashValue)
-                .frame(height: 230)
+                .frame(height: 232)
             }
         }
         .padding(.top, 20)

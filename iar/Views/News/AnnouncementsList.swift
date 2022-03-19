@@ -35,6 +35,12 @@ struct AnnouncementsList: View {
                 }
             }
             
+            if let featured = viewModel.featured {
+                NavigationLink(destination: WebView(featured)) {
+                    AnnouncementRow(announcement: featured)
+                }
+            }
+            
             ForEach(viewModel.announcements) { announcement in
                 NavigationLink(destination: WebView(announcement)) {
                     AnnouncementRow(announcement: announcement)
