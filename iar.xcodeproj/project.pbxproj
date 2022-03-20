@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8407708F27E6B3E50042410C /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407708E27E6B3E50042410C /* Announcements.swift */; };
 		840F072627DFE05300CCDE19 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840F072527DFE05300CCDE19 /* Launch Screen.storyboard */; };
 		840FBEB427C8729C003D646C /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FBEB327C8729C003D646C /* NewsScreen.swift */; };
 		840FBEB627C872AB003D646C /* DonateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FBEB527C872AB003D646C /* DonateScreen.swift */; };
@@ -57,8 +58,7 @@
 		84997A0127C98B1600EB149C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84997A0027C98B1600EB149C /* ImageLoader.swift */; };
 		84ACC8D927B86761004D4F25 /* FridayPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACC8D827B86761004D4F25 /* FridayPrayer.swift */; };
 		84D44B9F27D8661E00202BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44B9E27D8661E00202BD3 /* Event.swift */; };
-		84D44BA127D866C300202BD3 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA027D866C300202BD3 /* Announcement.swift */; };
-		84D44BA327D866F600202BD3 /* SpecialAnnouncement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA227D866F600202BD3 /* SpecialAnnouncement.swift */; };
+		84D44BA127D866C300202BD3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA027D866C300202BD3 /* Post.swift */; };
 		84D44BA527D8672200202BD3 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA427D8672200202BD3 /* News.swift */; };
 		84D44BA727D8676400202BD3 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA627D8676400202BD3 /* NewsViewModel.swift */; };
 		84D44BA927D8677C00202BD3 /* NewsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA827D8677C00202BD3 /* NewsProvider.swift */; };
@@ -78,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8407708E27E6B3E50042410C /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
 		840F072527DFE05300CCDE19 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		840FBEB327C8729C003D646C /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
 		840FBEB527C872AB003D646C /* DonateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateScreen.swift; sourceTree = "<group>"; };
@@ -132,8 +133,7 @@
 		84997A0027C98B1600EB149C /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		84ACC8D827B86761004D4F25 /* FridayPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridayPrayer.swift; sourceTree = "<group>"; };
 		84D44B9E27D8661E00202BD3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		84D44BA027D866C300202BD3 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
-		84D44BA227D866F600202BD3 /* SpecialAnnouncement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialAnnouncement.swift; sourceTree = "<group>"; };
+		84D44BA027D866C300202BD3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		84D44BA427D8672200202BD3 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		84D44BA627D8676400202BD3 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		84D44BA827D8677C00202BD3 /* NewsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsProvider.swift; sourceTree = "<group>"; };
@@ -223,9 +223,9 @@
 				84ACC8D827B86761004D4F25 /* FridayPrayer.swift */,
 				843F283527C1DEE8008D0328 /* PrayerSchedule.swift */,
 				84D44B9E27D8661E00202BD3 /* Event.swift */,
-				84D44BA027D866C300202BD3 /* Announcement.swift */,
-				84D44BA227D866F600202BD3 /* SpecialAnnouncement.swift */,
+				84D44BA027D866C300202BD3 /* Post.swift */,
 				84D44BA427D8672200202BD3 /* News.swift */,
+				8407708E27E6B3E50042410C /* Announcements.swift */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -460,7 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D44BA327D866F600202BD3 /* SpecialAnnouncement.swift in Sources */,
+				8407708F27E6B3E50042410C /* Announcements.swift in Sources */,
 				84D44BA527D8672200202BD3 /* News.swift in Sources */,
 				849550F727AA2EF7008A180F /* PrayerTime.swift in Sources */,
 				8497D2E427C2B9F1000BF89C /* PrayerTimesView.swift in Sources */,
@@ -480,7 +480,7 @@
 				8420E8B827AF730E00C54EED /* ToggleStyle.swift in Sources */,
 				8416F08527BEFE9E00129383 /* PrayerHeader.swift in Sources */,
 				847AC2E5279FB10A000D80EE /* PrayerRow.swift in Sources */,
-				84D44BA127D866C300202BD3 /* Announcement.swift in Sources */,
+				84D44BA127D866C300202BD3 /* Post.swift in Sources */,
 				849550FC27AA38B5008A180F /* Sequence.swift in Sources */,
 				840FBEB627C872AB003D646C /* DonateScreen.swift in Sources */,
 				847AC2CB279F9246000D80EE /* PrayerDay.swift in Sources */,
@@ -656,7 +656,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iar/iar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"iar/Preview Content\"";
 				DEVELOPMENT_TEAM = M8X3U28L5K;
 				ENABLE_PREVIEWS = YES;
@@ -689,7 +689,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iar/iar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"iar/Preview Content\"";
 				DEVELOPMENT_TEAM = M8X3U28L5K;
 				ENABLE_PREVIEWS = YES;

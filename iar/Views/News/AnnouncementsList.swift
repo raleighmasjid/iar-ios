@@ -26,7 +26,7 @@ struct AnnouncementsList: View {
     
     var mainContent: some View {
         List {
-            if let special = viewModel.special {
+            if let special = viewModel.announcements?.special {
                 if #available(iOS 15.0, *) {
                     specialButton(special: special)
                         .listRowSeparator(.hidden)
@@ -35,36 +35,34 @@ struct AnnouncementsList: View {
                 }
             }
             
-            if let featured = viewModel.featured {
+            if let featured = viewModel.announcements?.featured {
                 NavigationLink(destination: WebView(featured)) {
                     AnnouncementRow(announcement: featured)
                 }
             }
             
-            ForEach(viewModel.announcements) { announcement in
-                NavigationLink(destination: WebView(announcement)) {
-                    AnnouncementRow(announcement: announcement)
+            ForEach(viewModel.announcements?.posts ?? []) { post in
+                NavigationLink(destination: WebView(post)) {
+                    AnnouncementRow(announcement: post)
                 }
             }
         }
         .listStyle(.plain)
         .onAppear {
             isVisible = true
-            if let special = viewModel.special {
-                viewModel.viewedSpecial = special.id
-            }
+            viewModel.didViewAnnouncements()
         }
         .onDisappear {
             isVisible = false
         }
-        .onChange(of: viewModel.special) { newAnnouncement in
-            if let special = viewModel.special, isVisible {
-                viewModel.viewedSpecial = special.id
+        .onChange(of: viewModel.announcements) { newAnnouncement in
+            if isVisible {
+                viewModel.didViewAnnouncements()
             }
         }
         .sheet(isPresented: $showingSpecial) {
             NavigationView {
-                if let special = viewModel.special {
+                if let special = viewModel.announcements?.special {
                     WebView(special, done: {
                         showingSpecial = false
                     })
@@ -75,7 +73,7 @@ struct AnnouncementsList: View {
         }
     }
     
-    func specialButton(special: SpecialAnnouncement) -> some View {
+    func specialButton(special: Post) -> some View {
         Button {
             showingSpecial = true
         } label: {

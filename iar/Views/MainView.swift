@@ -74,7 +74,7 @@ struct MainView: View {
             if prayerTimesViewModel.prayerDays.isEmpty {
                 prayerTimesViewModel.fetchLatest()
             }
-            if newsViewModel.announcements.isEmpty {
+            if newsViewModel.announcements == nil {
                 newsViewModel.fetchLatest()
             }
         }

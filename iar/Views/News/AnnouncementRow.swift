@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AnnouncementRow: View {
-    var announcement: Announcement
+    var announcement: Post
     @StateObject var imageLoader = ImageLoader(
         defaultImage: UIImage(named: "news-placeholder")
     )
@@ -45,7 +45,7 @@ struct AnnouncementRow: View {
 #if DEBUG
 struct AnnouncementRow_Previews: PreviewProvider {
     static var previews: some View {
-        AnnouncementRow(announcement: News.mocks().announcements.first!)
+        AnnouncementRow(announcement: News.mocks().announcements.posts.first!)
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

@@ -1,5 +1,5 @@
 //
-//  SpecialAnnouncement.swift
+//  Post.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 3/8/22.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct SpecialAnnouncement: Codable, Equatable, WebDestination {
+struct Post: Codable, Identifiable, Equatable, WebDestination {
     let id: Int
     let title: String
     let date: Date
     let url: String
     let text: String
+    let image: String?
 }
-

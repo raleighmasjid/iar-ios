@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SpecialHeader: View {
-    let special: SpecialAnnouncement
+    let special: Post
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
@@ -36,7 +36,7 @@ struct SpecialHeader: View {
 #if DEBUG
 struct specialHeader_Previews: PreviewProvider {
     static var previews: some View {
-        SpecialHeader(special: News.mocks().special!)
+        SpecialHeader(special: News.mocks().announcements.special!)
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

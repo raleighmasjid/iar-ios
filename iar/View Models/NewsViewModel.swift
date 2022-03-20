@@ -8,22 +8,16 @@
 import Foundation
 
 class NewsViewModel: ObservableObject {
-    @Published var announcements: [Announcement] = []
+    @Published var announcements: Announcements?
     @Published var events: [Date: [Event]] = [:]
-    @Published var special: SpecialAnnouncement?
-    @Published var featured: Announcement?
     
     @Published var badge: String?
     
     @Published var error = false
     @Published var loading = false
     
-    @StoredDefault(key: .viewedSpecial, defaultValue: 0)
-    var viewedSpecial: Int {
-        didSet {
-            updateBadge()
-        }
-    }
+    @StoredDefault(key: .viewedAnnouncements, defaultValue: [])
+    private var viewedAnnouncements: [Int]
     
     private let provider: NewsProvider
 
@@ -54,20 +48,32 @@ class NewsViewModel: ObservableObject {
         }
     }
     
-    func didFetchNews(news: News) {
+    func didViewAnnouncements() {
+        if let announcements = announcements {
+            let postIDs = announcements.postIDs()
+            viewedAnnouncements = postIDs
+
+            updateBadge()
+        }
+    }
+    
+    private func didFetchNews(news: News) {
         announcements = news.announcements
         let cal = Calendar.current
         events = Dictionary(grouping: news.events, by: { cal.startOfDay(for: $0.start) })
-        special = news.special
-        featured = news.featured
         updateBadge()
     }
     
     private func updateBadge() {
-        if let special = special, special.id != viewedSpecial {
-            badge = " "
-        } else {
+        guard let announcements = announcements else {
             badge = nil
+            return
         }
+
+        let currentIds = Set(announcements.postIDs())
+        let viewedIds = Set(viewedAnnouncements)
+        
+        let unviewedIds = currentIds.subtracting(viewedIds)
+        badge = unviewedIds.isEmpty ? nil : " "
     }
 }
