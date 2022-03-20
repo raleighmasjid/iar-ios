@@ -76,7 +76,7 @@ class PrayerTimesViewModel: ObservableObject {
     
     private func didFetchPrayerSchedule(schedule: PrayerSchedule) {
         prayerDays = schedule.prayerDays
-            .filter { Calendar.current.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
+            .filter { Calendar.zonedCalendar.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
         fridaySchedule = schedule.fridaySchedule
     }
     
