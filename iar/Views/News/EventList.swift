@@ -25,7 +25,7 @@ struct EventList: View {
     var mainContent: some View {
         List {
             ForEach(viewModel.events.keys.sorted(), id: \.self) { date in
-                let events = viewModel.events[date] ?? []
+                let events = viewModel.events[date]?.sorted(comparingKeyPath: \.start) ?? []
                 if #available(iOS 15.0, *) {
                     eventSection(date: date, events: events)
                         .listRowSeparator(.hidden)

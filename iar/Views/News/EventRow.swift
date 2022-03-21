@@ -25,7 +25,11 @@ struct EventRow: View {
                 .lineLimit(2)
             
             HStack {
-                Text("\(startTime) - \(endTime)")
+                if (event.allDay) {
+                    Text("All Day")
+                } else {
+                    Text("\(startTime) - \(endTime)")
+                }
                     
                 if (event.repeating) {
                     Image(systemName: "repeat")
@@ -50,7 +54,10 @@ struct EventRow: View {
 #if DEBUG
 struct EventRow_Previews: PreviewProvider {
     static var previews: some View {
-        EventRow(event: News.mocks().events.first!)
+        EventRow(event: News.mocks().events[0])
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+        EventRow(event: News.mocks().events[2])
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }
