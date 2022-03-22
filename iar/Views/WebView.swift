@@ -13,6 +13,11 @@ protocol WebDestination {
     var title: String { get }
 }
 
+struct WebLink: WebDestination {
+    let url: String
+    let title: String
+}
+
 struct WebView: View {
     
     typealias DoneAction = () -> Void

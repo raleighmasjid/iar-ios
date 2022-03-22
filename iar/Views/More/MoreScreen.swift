@@ -20,11 +20,24 @@ struct MoreScreen: View {
                 }
             }
             
-            Section {
-                Link("Visit Full Website", destination: URL(string: "https://raleighmasjid.org")!)
-                    .foregroundColor(.primary)
+            Section(footer:
+                VStack(alignment: .center) {
+                    Text("The Islamic Association of Raleigh")
+                    Text(version())
+            }.frame(maxWidth: .infinity)
+                .padding(.top, 50)
+            ) {
+                NavigationLink("App Feedback", destination: WebView(WebLink(url: "https://raleighmasjid.org/appfeedback", title: "App Feedback")))
+                NavigationLink("Visit Full Website", destination: WebView(WebLink(url: "https://raleighmasjid.org", title: "IAR")))
             }
         }
+    }
+    
+    func version() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        let build = dictionary["CFBundleVersion"] as! String
+        return "Version \(version) (\(build))"
     }
 }
 
