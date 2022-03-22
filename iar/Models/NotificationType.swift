@@ -16,9 +16,9 @@ enum NotificationType: String, CaseIterable {
     var title: String {
         switch self {
         case .saadAlghamidi:
-            return "Al-Ghamidi"
+            return "Saad Al-Ghamdi"
         case .alafasy:
-            return "Alafasy"
+            return "Mishary Alafasy"
         case .silent:
             return "Silent"
         }
