@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DonateScreen: View {
+    let donateURL = URL(string: "https://donate.raleighmasjid.org/giving")!
+    
     var body: some View {
         VStack(alignment: .center, spacing: 48) {
             Spacer(minLength: 5)
@@ -24,7 +26,7 @@ struct DonateScreen: View {
             Button(action: {
                     
                 }) {
-                    Link("Donate Now", destination: URL(string: "https://raleighmasjid.org/donate/")!)
+                    Link("Donate Now", destination: donateURL)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .font(.system(size: 16, weight: .semibold))
                         .padding()
