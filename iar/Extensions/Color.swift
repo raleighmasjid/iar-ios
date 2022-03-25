@@ -23,6 +23,7 @@ extension Color {
         static let segmentedBackground = Color("SegmentedBackground")
         static let secondaryText = Color("SecondaryText")
         static let tertiaryText = Color("TertiaryText")
+        static let shiftColor = Color("ShiftColor")
     }
     
     var uiColor: UIColor {

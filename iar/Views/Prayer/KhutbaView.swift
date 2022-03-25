@@ -17,7 +17,7 @@ struct KhutbaView: View {
                 HStack {
                     Text(fridayPrayer.shift)
                         .font(.system(size: 14, weight: .bold))
-                        .foregroundColor(Color.Theme.darkGreen)
+                        .foregroundColor(Color.Theme.shiftColor)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 10)
                         .background(Color.white)
@@ -29,7 +29,7 @@ struct KhutbaView: View {
 
                 Text(fridayPrayer.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 16, weight: .regular))
+                    .font(.system(size: 18, weight: .regular))
                     .padding(.vertical, 24)
                 
                 HStack {
@@ -43,7 +43,7 @@ struct KhutbaView: View {
                         Text(fridayPrayer.speaker)
                             .font(.system(size: 16, weight: .semibold))
                         Text(fridayPrayer.description)
-                            .font(.system(size: 12, weight: .light))
+                            .font(.system(size: 13, weight: .light))
                     }
                     
                 }.frame(maxWidth: .infinity, alignment: .leading)
@@ -53,15 +53,13 @@ struct KhutbaView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(16)
             .foregroundColor(.white)
-            
         }
         .background(
-            Image("card-back")
-                .resizable(capInsets: EdgeInsets(top: 160,
-                                                 leading: 260,
-                                                 bottom: 10,
-                                                 trailing: 10),
-                           resizingMode: .stretch)
+            ZStack(alignment: .topLeading) {
+                Image("khutba-back")
+                    .resizable()
+                Image("khutba-decoration")
+            }
         )
         .cornerRadius(8)
         .onAppear {

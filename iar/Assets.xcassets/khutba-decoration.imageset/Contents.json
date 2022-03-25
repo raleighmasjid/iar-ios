@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "card-back.png",
+      "filename" : "khutba-decoration.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "card-back@2x.png",
+      "filename" : "khutba-decoration@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "card-back@3x.png",
+      "filename" : "khutba-decoration@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,9 +19,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "preserves-vector-representation" : true,
-    "template-rendering-intent" : "original"
   }
 }
