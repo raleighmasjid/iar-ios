@@ -13,9 +13,12 @@ class ImageLoader: ObservableObject {
 
     private var imageURL: URL?
     private let session = URLSession.shared
+    private var loadingURL: URL?
+    private let defaultImage: UIImage?
     
     init(defaultImage: UIImage? = nil) {
-        image = defaultImage ?? UIImage()
+        self.image = defaultImage ?? UIImage()
+        self.defaultImage = defaultImage
     }
     
     func update(urlString: String) {
@@ -30,13 +33,23 @@ class ImageLoader: ObservableObject {
     
     @MainActor
     private func fetchImage(url: URL) async {
+        guard url != loadingURL else {
+            return
+        }
+
+        loadingURL = url
         do {
             let (data, _) = try await session.data(from: url)
-            imageURL = url
-            image = UIImage(data: data) ?? UIImage()
+            if let newImage = UIImage(data: data) {
+                image = newImage
+                imageURL = url
+            } else {
+                image = defaultImage ?? UIImage()
+            }
         } catch {
             NSLog("Error loading image \(error)")
         }
+        loadingURL = nil
     }
     
 }

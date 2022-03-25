@@ -27,14 +27,10 @@ struct KhutbaView: View {
                         .font(.system(size: 16, weight: .bold))
                 }
 
-                Spacer(minLength: 2)
-
                 Text(fridayPrayer.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .lineLimit(3)
                     .font(.system(size: 16, weight: .regular))
-
-                Spacer(minLength: 2)
+                    .padding(.vertical, 24)
                 
                 HStack {
                     Image(uiImage: imageLoader.image)
@@ -46,10 +42,8 @@ struct KhutbaView: View {
                     VStack(alignment: .leading) {
                         Text(fridayPrayer.speaker)
                             .font(.system(size: 16, weight: .semibold))
-                            .lineLimit(2)
                         Text(fridayPrayer.description)
                             .font(.system(size: 12, weight: .light))
-                            .lineLimit(2)
                     }
                     
                 }.frame(maxWidth: .infinity, alignment: .leading)
@@ -59,17 +53,22 @@ struct KhutbaView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(16)
             .foregroundColor(.white)
-            .frame(height: 192)
+            
         }
         .background(
             Image("card-back")
-                .resizable()
+                .resizable(capInsets: EdgeInsets(top: 160,
+                                                 leading: 260,
+                                                 bottom: 10,
+                                                 trailing: 10),
+                           resizingMode: .stretch)
         )
         .cornerRadius(8)
-        .padding(.bottom, 40)
-        .padding(.horizontal, 20)
         .onAppear {
             imageLoader.update(urlString: fridayPrayer.imageUrl)
+        }
+        .onChange(of: fridayPrayer.imageUrl) { newValue in
+            imageLoader.update(urlString: newValue)
         }
     }
 }

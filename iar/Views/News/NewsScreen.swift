@@ -26,7 +26,7 @@ struct NewsScreen: View {
 
             switch (section) {
             case .announcements:
-                AnnouncementsList(viewModel: viewModel)
+                PostsList(viewModel: viewModel)
             case .events:
                 EventList(viewModel: viewModel)
             }

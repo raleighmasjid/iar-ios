@@ -1,5 +1,5 @@
 //
-//  AnnouncementsList.swift
+//  PostsList.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 3/12/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AnnouncementsList: View {
+struct PostsList: View {
     
     @ObservedObject var viewModel: NewsViewModel
     @State private var showingSpecial: Bool = false
@@ -37,13 +37,13 @@ struct AnnouncementsList: View {
             
             if let featured = viewModel.announcements?.featured {
                 NavigationLink(destination: WebView(featured)) {
-                    AnnouncementRow(announcement: featured)
+                    PostRow(post: featured)
                 }
             }
             
             ForEach(viewModel.announcements?.posts ?? []) { post in
                 NavigationLink(destination: WebView(post)) {
-                    AnnouncementRow(announcement: post)
+                    PostRow(post: post)
                 }
             }
         }
@@ -91,7 +91,7 @@ struct AnnouncementsList_Previews: PreviewProvider {
         return v
     }()
     static var previews: some View {
-        AnnouncementsList(viewModel: vm)
+        PostsList(viewModel: vm)
     }
 }
 #endif

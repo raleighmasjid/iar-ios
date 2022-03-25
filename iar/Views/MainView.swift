@@ -16,7 +16,7 @@ struct MainView: View {
     @Environment(\.scenePhase) var scenePhase
     @State var didEnterBackground = false
 
-    let dayChange = NotificationCenter.default.publisher(for: .NSCalendarDayChanged)
+    let dayChange = NotificationCenter.default.publisher(for: .NSCalendarDayChanged).receive(on: RunLoop.main)
 
     var body: some View {
         TabView {
