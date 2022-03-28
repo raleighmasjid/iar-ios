@@ -24,6 +24,9 @@
 		842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C127BDE9AE00A3B50B /* NotificationController.swift */; };
 		842E34C427BDEBF200A3B50B /* PrayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C327BDEBF200A3B50B /* PrayerScreen.swift */; };
 		842E34C627BDED2800A3B50B /* MoreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C527BDED2800A3B50B /* MoreScreen.swift */; };
+		843C8C7F27F154090077F5E1 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8C7E27F154090077F5E1 /* NotificationService.swift */; };
+		843C8C8327F154090077F5E1 /* IARNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 843C8C7C27F154090077F5E1 /* IARNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		843C8C8A27F155E70077F5E1 /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = 843C8C8927F155E70077F5E1 /* OneSignal */; };
 		843F283627C1DEE8008D0328 /* PrayerSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F283527C1DEE8008D0328 /* PrayerSchedule.swift */; };
 		8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		845FB0ED27E3C579006E54E1 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FB0EC27E3C579006E54E1 /* ShareSheet.swift */; };
@@ -68,6 +71,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		843C8C8127F154090077F5E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847AC2AE279F71A1000D80EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 843C8C7B27F154090077F5E1;
+			remoteInfo = IARNotificationServiceExtension;
+		};
 		847AC2D6279F9421000D80EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 847AC2AE279F71A1000D80EE /* Project object */;
@@ -76,6 +86,20 @@
 			remoteInfo = iar;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		843C8C8427F154090077F5E1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				843C8C8327F154090077F5E1 /* IARNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8407708E27E6B3E50042410C /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
@@ -96,6 +120,9 @@
 		842E34C127BDE9AE00A3B50B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		842E34C327BDEBF200A3B50B /* PrayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerScreen.swift; sourceTree = "<group>"; };
 		842E34C527BDED2800A3B50B /* MoreScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreScreen.swift; sourceTree = "<group>"; };
+		843C8C7C27F154090077F5E1 /* IARNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IARNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		843C8C7E27F154090077F5E1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		843C8C8027F154090077F5E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		843F283527C1DEE8008D0328 /* PrayerSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerSchedule.swift; sourceTree = "<group>"; };
 		8458125127B5F6F10065B185 /* StoredDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredDefault.swift; sourceTree = "<group>"; };
 		845FB0EC27E3C579006E54E1 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
@@ -143,10 +170,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		843C8C7927F154090077F5E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		847AC2B3279F71A2000D80EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843C8C8A27F155E70077F5E1 /* OneSignal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,11 +265,21 @@
 			path = json;
 			sourceTree = "<group>";
 		};
+		843C8C7D27F154090077F5E1 /* IARNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				843C8C7E27F154090077F5E1 /* NotificationService.swift */,
+				843C8C8027F154090077F5E1 /* Info.plist */,
+			);
+			path = IARNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		847AC2AD279F71A1000D80EE = {
 			isa = PBXGroup;
 			children = (
 				847AC2B8279F71A2000D80EE /* iar */,
 				847AC2D3279F9421000D80EE /* iarTests */,
+				843C8C7D27F154090077F5E1 /* IARNotificationServiceExtension */,
 				847AC2B7279F71A2000D80EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -244,6 +289,7 @@
 			children = (
 				847AC2B6279F71A2000D80EE /* IAR.app */,
 				847AC2D2279F9421000D80EE /* iarTests.xctest */,
+				843C8C7C27F154090077F5E1 /* IARNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -359,6 +405,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		843C8C7B27F154090077F5E1 /* IARNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843C8C8727F154090077F5E1 /* Build configuration list for PBXNativeTarget "IARNotificationServiceExtension" */;
+			buildPhases = (
+				843C8C7827F154090077F5E1 /* Sources */,
+				843C8C7927F154090077F5E1 /* Frameworks */,
+				843C8C7A27F154090077F5E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IARNotificationServiceExtension;
+			productName = IARNotificationServiceExtension;
+			productReference = 843C8C7C27F154090077F5E1 /* IARNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		847AC2B5279F71A2000D80EE /* iar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 847AC2C4279F71A2000D80EE /* Build configuration list for PBXNativeTarget "iar" */;
@@ -366,12 +429,17 @@
 				847AC2B2279F71A2000D80EE /* Sources */,
 				847AC2B3279F71A2000D80EE /* Frameworks */,
 				847AC2B4279F71A2000D80EE /* Resources */,
+				843C8C8427F154090077F5E1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				843C8C8227F154090077F5E1 /* PBXTargetDependency */,
 			);
 			name = iar;
+			packageProductDependencies = (
+				843C8C8927F155E70077F5E1 /* OneSignal */,
+			);
 			productName = iar;
 			productReference = 847AC2B6279F71A2000D80EE /* IAR.app */;
 			productType = "com.apple.product-type.application";
@@ -404,6 +472,9 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					843C8C7B27F154090077F5E1 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					847AC2B5279F71A2000D80EE = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -422,17 +493,28 @@
 				Base,
 			);
 			mainGroup = 847AC2AD279F71A1000D80EE;
+			packageReferences = (
+				843C8C8827F155E70077F5E1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+			);
 			productRefGroup = 847AC2B7279F71A2000D80EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				847AC2B5279F71A2000D80EE /* iar */,
 				847AC2D1279F9421000D80EE /* iarTests */,
+				843C8C7B27F154090077F5E1 /* IARNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		843C8C7A27F154090077F5E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		847AC2B4279F71A2000D80EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,6 +538,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		843C8C7827F154090077F5E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				843C8C7F27F154090077F5E1 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		847AC2B2279F71A2000D80EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -525,6 +615,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		843C8C8227F154090077F5E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 843C8C7B27F154090077F5E1 /* IARNotificationServiceExtension */;
+			targetProxy = 843C8C8127F154090077F5E1 /* PBXContainerItemProxy */;
+		};
 		847AC2D7279F9421000D80EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 847AC2B5279F71A2000D80EE /* iar */;
@@ -533,6 +628,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		843C8C8527F154090077F5E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M8X3U28L5K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IARNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.raleighmasjid.iar.IARNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		843C8C8627F154090077F5E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M8X3U28L5K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IARNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.raleighmasjid.iar.IARNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		847AC2C2279F71A2000D80EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -652,6 +799,7 @@
 		847AC2C5279F71A2000D80EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iar/iar.entitlements;
@@ -685,6 +833,7 @@
 		847AC2C6279F71A2000D80EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iar/iar.entitlements;
@@ -754,6 +903,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		843C8C8727F154090077F5E1 /* Build configuration list for PBXNativeTarget "IARNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843C8C8527F154090077F5E1 /* Debug */,
+				843C8C8627F154090077F5E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		847AC2B1279F71A2000D80EE /* Build configuration list for PBXProject "iar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -782,6 +940,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		843C8C8827F155E70077F5E1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		843C8C8927F155E70077F5E1 /* OneSignal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 843C8C8827F155E70077F5E1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignal;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 847AC2AE279F71A1000D80EE /* Project object */;
 }

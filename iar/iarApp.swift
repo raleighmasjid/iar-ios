@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import OneSignal
 
 @main
 struct iarApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self)
+    var appDelegate
     
     init() {
         UIPageControl.appearance().currentPageIndicatorTintColor = Color.Theme.indicatorActive.uiColor
@@ -37,5 +41,18 @@ struct iarApp: App {
         WindowGroup {
             MainView()
         }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+       OneSignal.initWithLaunchOptions(launchOptions)
+       OneSignal.setAppId("01fcf852-7b3f-4b53-a733-4cb8241bd193")
+
+       OneSignal.promptForPushNotifications(userResponse: { accepted in
+         print("User accepted notification: \(accepted)")
+       })
+
+       return true
     }
 }
