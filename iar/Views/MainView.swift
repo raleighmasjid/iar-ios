@@ -25,6 +25,7 @@ struct MainView: View {
                     .navigationTitle("Prayer Times")
                     .navigationBarTitleDisplayMode(.inline)
             }
+            .navigationViewStyle(.stack)
             .tabItem {
                 Label("Prayer", image: "tab-prayer")
             }
@@ -35,6 +36,7 @@ struct MainView: View {
                         .navigationTitle("News")
                         .navigationBarTitleDisplayMode(.inline)
                 }
+                .navigationViewStyle(.stack)
                 .tabItem {
                     Label("News", image: "tab-news")
                 }
@@ -45,6 +47,7 @@ struct MainView: View {
                         .navigationTitle("News")
                         .navigationBarTitleDisplayMode(.inline)
                 }
+                .navigationViewStyle(.stack)
                 .tabItem {
                     Label("News", image: "tab-news")
                 }
@@ -55,6 +58,7 @@ struct MainView: View {
                     .navigationTitle("Donate")
                     .navigationBarTitleDisplayMode(.inline)
             }
+            .navigationViewStyle(.stack)
             .tabItem {
                 Label("Donate", image: "tab-donate")
             }
@@ -64,6 +68,7 @@ struct MainView: View {
                     .navigationTitle("More")
                     .navigationBarTitleDisplayMode(.inline)
             }
+            .navigationViewStyle(.stack)
             .tabItem {
                 Label("More", image: "tab-more")
             }
