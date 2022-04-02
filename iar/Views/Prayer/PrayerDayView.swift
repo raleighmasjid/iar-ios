@@ -36,6 +36,7 @@ struct PrayerDayView: View {
                           current: false,
                           displayAlarm: false,
                           notificationEnabled: .constant(false))
+                    .opacity(prayerDay?.iqamah.taraweeh == nil ? 0.8 : 1.0)
             }
         }
         .padding(.horizontal, 16)

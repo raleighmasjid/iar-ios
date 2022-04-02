@@ -28,7 +28,7 @@ struct NewsScreen: View {
             case .announcements:
                 PostsList(viewModel: viewModel)
             case .events:
-                EventList(viewModel: viewModel)
+                EventsList(viewModel: viewModel)
             }
         }
         .toolbar {

@@ -54,7 +54,7 @@
 		8497D2E427C2B9F1000BF89C /* PrayerTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497D2E327C2B9F1000BF89C /* PrayerTimesView.swift */; };
 		84994CCA27DD465500BD2A33 /* NewsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CC927DD465500BD2A33 /* NewsSection.swift */; };
 		84994CCC27DD47C500BD2A33 /* PostsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CCB27DD47C500BD2A33 /* PostsList.swift */; };
-		84994CCE27DD4B1800BD2A33 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CCD27DD4B1800BD2A33 /* EventList.swift */; };
+		84994CCE27DD4B1800BD2A33 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CCD27DD4B1800BD2A33 /* EventsList.swift */; };
 		84994CD027DD4EEF00BD2A33 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CCF27DD4EEF00BD2A33 /* PostRow.swift */; };
 		84994CD227DD53BB00BD2A33 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CD127DD53BB00BD2A33 /* WebView.swift */; };
 		84994CD427DD5DFC00BD2A33 /* SpecialHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CD327DD5DFC00BD2A33 /* SpecialHeader.swift */; };
@@ -153,7 +153,7 @@
 		8497D2E327C2B9F1000BF89C /* PrayerTimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesView.swift; sourceTree = "<group>"; };
 		84994CC927DD465500BD2A33 /* NewsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSection.swift; sourceTree = "<group>"; };
 		84994CCB27DD47C500BD2A33 /* PostsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsList.swift; sourceTree = "<group>"; };
-		84994CCD27DD4B1800BD2A33 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
+		84994CCD27DD4B1800BD2A33 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		84994CCF27DD4EEF00BD2A33 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		84994CD127DD53BB00BD2A33 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		84994CD327DD5DFC00BD2A33 /* SpecialHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialHeader.swift; sourceTree = "<group>"; };
@@ -206,11 +206,11 @@
 		840FBEB827C872C8003D646C /* News */ = {
 			isa = PBXGroup;
 			children = (
-				840FBEB327C8729C003D646C /* NewsScreen.swift */,
-				84994CCB27DD47C500BD2A33 /* PostsList.swift */,
-				84994CCD27DD4B1800BD2A33 /* EventList.swift */,
 				84E8774627DE56FE00D80908 /* EventRow.swift */,
+				84994CCD27DD4B1800BD2A33 /* EventsList.swift */,
+				840FBEB327C8729C003D646C /* NewsScreen.swift */,
 				84994CCF27DD4EEF00BD2A33 /* PostRow.swift */,
+				84994CCB27DD47C500BD2A33 /* PostsList.swift */,
 				84994CD327DD5DFC00BD2A33 /* SpecialHeader.swift */,
 			);
 			path = News;
@@ -252,15 +252,15 @@
 			isa = PBXGroup;
 			children = (
 				847AC2C8279F74C3000D80EE /* AdhanSchedule.swift */,
+				8407708E27E6B3E50042410C /* Announcements.swift */,
+				84D44B9E27D8661E00202BD3 /* Event.swift */,
+				84ACC8D827B86761004D4F25 /* FridayPrayer.swift */,
 				847AC2DE279FA893000D80EE /* HijriComponents.swift */,
 				847AC2CC279F926A000D80EE /* IqamahSchedule.swift */,
-				847AC2CA279F9246000D80EE /* PrayerDay.swift */,
-				84ACC8D827B86761004D4F25 /* FridayPrayer.swift */,
-				843F283527C1DEE8008D0328 /* PrayerSchedule.swift */,
-				84D44B9E27D8661E00202BD3 /* Event.swift */,
-				84D44BA027D866C300202BD3 /* Post.swift */,
 				84D44BA427D8672200202BD3 /* News.swift */,
-				8407708E27E6B3E50042410C /* Announcements.swift */,
+				84D44BA027D866C300202BD3 /* Post.swift */,
+				847AC2CA279F9246000D80EE /* PrayerDay.swift */,
+				843F283527C1DEE8008D0328 /* PrayerSchedule.swift */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -297,17 +297,17 @@
 		847AC2B8279F71A2000D80EE /* iar */ = {
 			isa = PBXGroup;
 			children = (
-				8483A8D027BE0484003BB4BE /* iar.entitlements */,
-				8422A11627ACAE7C0043B8D0 /* Info.plist */,
 				847AC2B9279F71A2000D80EE /* iarApp.swift */,
-				847AC2E3279FB0E6000D80EE /* Views */,
-				84FEFD4E27AEDD0A0075126B /* View Models */,
 				847AC2E0279FAE04000D80EE /* Controllers */,
 				847AC2C7279F7419000D80EE /* Models */,
+				847AC2BF279F71A2000D80EE /* Preview Content */,
+				84FEFD4E27AEDD0A0075126B /* View Models */,
+				847AC2E3279FB0E6000D80EE /* Views */,
 				849550FA27AA389E008A180F /* Extensions */,
 				8416F08A27BF5FE600129383 /* Audio */,
+				8422A11627ACAE7C0043B8D0 /* Info.plist */,
+				8483A8D027BE0484003BB4BE /* iar.entitlements */,
 				847AC2BD279F71A2000D80EE /* Assets.xcassets */,
-				847AC2BF279F71A2000D80EE /* Preview Content */,
 				840F072527DFE05300CCDE19 /* Launch Screen.storyboard */,
 			);
 			path = iar;
@@ -368,13 +368,13 @@
 		847AC2E3279FB0E6000D80EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				849550F227AA0654008A180F /* MainView.swift */,
-				84994CD127DD53BB00BD2A33 /* WebView.swift */,
-				845FB0EC27E3C579006E54E1 /* ShareSheet.swift */,
-				8416F08627BF0CEC00129383 /* Prayer */,
-				840FBEB827C872C8003D646C /* News */,
 				840FBEB727C872B9003D646C /* Donate */,
 				8416F08727BF27FD00129383 /* More */,
+				840FBEB827C872C8003D646C /* News */,
+				8416F08627BF0CEC00129383 /* Prayer */,
+				849550F227AA0654008A180F /* MainView.swift */,
+				845FB0EC27E3C579006E54E1 /* ShareSheet.swift */,
+				84994CD127DD53BB00BD2A33 /* WebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -574,7 +574,7 @@
 				849550FC27AA38B5008A180F /* Sequence.swift in Sources */,
 				840FBEB627C872AB003D646C /* DonateScreen.swift in Sources */,
 				847AC2CB279F9246000D80EE /* PrayerDay.swift in Sources */,
-				84994CCE27DD4B1800BD2A33 /* EventList.swift in Sources */,
+				84994CCE27DD4B1800BD2A33 /* EventsList.swift in Sources */,
 				84E57E0027AB8FE400AC10A0 /* Formatter.swift in Sources */,
 				8416F08927BF280D00129383 /* NotificationType.swift in Sources */,
 				849550F927AA3784008A180F /* PrayerCountdown.swift in Sources */,

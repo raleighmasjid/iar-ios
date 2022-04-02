@@ -45,14 +45,20 @@ struct PrayerRow: View {
             Text(prayer)
             .frame(maxWidth: .infinity, alignment: .leading)
             .font(.system(size: titleSize, weight: .semibold))
+            .minimumScaleFactor(0.5)
+            .lineLimit(1)
             
             Text(adhanFormatted)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .font(.system(size: timeSize, weight: .medium))
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
             
             Text(iqamahFormatted)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .font(.system(size: timeSize, weight: .medium))
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
             
             Toggle("Alarm", isOn: $notificationEnabled)
                 .toggleStyle(.alarm)

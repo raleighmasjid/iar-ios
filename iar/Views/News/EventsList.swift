@@ -1,5 +1,5 @@
 //
-//  EventList.swift
+//  EventsList.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 3/12/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EventList: View {
+struct EventsList: View {
     
     @ObservedObject var viewModel: NewsViewModel
     
@@ -62,7 +62,7 @@ struct EventList_Previews: PreviewProvider {
         return v
     }()
     static var previews: some View {
-        EventList(viewModel: vm)
+        EventsList(viewModel: vm)
     }
 }
 #endif

@@ -36,7 +36,7 @@ struct PrayerTimesView: View {
                         VStack {
                             PrayerDayView(prayerDay: prayerItem.prayerDay,
                                           currentPrayer: prayerItem.currentPrayer,
-                                          showTaraweeh: prayerItem.prayerDay.hasTaraweeh)
+                                          showTaraweeh: showTaraweeh)
                             Spacer(minLength: 0)
                         }
                         .tag(prayerItem.index)
