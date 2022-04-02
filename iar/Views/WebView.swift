@@ -59,6 +59,16 @@ struct WebView: View {
                 }
             }
         }
+        .alert(isPresented: $helper.hasExternalURL) {
+            Alert(
+                title: Text("Open in Safari?"),
+                message: Text(helper.externalURL?.absoluteString ?? ""),
+                primaryButton: .default(Text("Open"), action: {
+                    if let url = helper.externalURL {
+                        openURL(url)
+                    }
+                }), secondaryButton: .cancel())
+        }
         .actionSheet(isPresented: $showActions) {
             ActionSheet(
                 title: Text(currentURL()?.absoluteString ?? destination.url),
@@ -107,9 +117,11 @@ struct WebkitView: UIViewRepresentable {
 }
 
 class WebViewHelper: NSObject, ObservableObject, WKNavigationDelegate, WKUIDelegate {
-
+    
     @Published var isLoading: Bool = false
+    @Published var hasExternalURL: Bool = false
     var currentURL: URL?
+    var externalURL: URL?
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         isLoading = false
@@ -134,4 +146,21 @@ class WebViewHelper: NSObject, ObservableObject, WKNavigationDelegate, WKUIDeleg
         }
         return nil
     }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print(">> didFail \(error)")
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        if let failingURLString = (error as NSError).userInfo[NSURLErrorFailingURLStringErrorKey] as? String,
+           let failingURL = URL(string: failingURLString) {
+            externalURL = failingURL
+            hasExternalURL = true
+        }
+    }
+    
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        print(">> webViewWebContentProcessDidTerminate")
+    }
+    
 }
