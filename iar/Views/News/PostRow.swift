@@ -6,16 +6,24 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct PostRow: View {
     let post: Post
-    @StateObject var imageLoader = ImageLoader(
-        defaultImage: UIImage(named: "news-placeholder")
-    )
+    
+    var postImageURL: URL? {
+        if let imageUrlString = post.image {
+            return URL(string: imageUrlString)
+        } else {
+            return nil
+        }
+    }
     
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
-            Image(uiImage: imageLoader.image)
+            KFImage.url(postImageURL)
+                .placeholder {Image("news-placeholder") }
+                .fade(duration: 0.2)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 54, height: 54)
@@ -34,16 +42,6 @@ struct PostRow: View {
             }
         }
         .padding(.vertical, 8)
-        .onAppear {
-            if let imageUrl = post.image {
-                imageLoader.update(urlString: imageUrl)
-            }
-        }
-        .onChange(of: post.image) { newValue in
-            if let imageUrl = newValue {
-                imageLoader.update(urlString: imageUrl)
-            }
-        }
     }
 }
 

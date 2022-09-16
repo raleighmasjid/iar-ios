@@ -30,6 +30,7 @@
 		843F283627C1DEE8008D0328 /* PrayerSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F283527C1DEE8008D0328 /* PrayerSchedule.swift */; };
 		8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		845FB0ED27E3C579006E54E1 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FB0EC27E3C579006E54E1 /* ShareSheet.swift */; };
+		8460D6B028D4E8BC00425AF3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8460D6AF28D4E8BC00425AF3 /* Kingfisher */; };
 		847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2B9279F71A2000D80EE /* iarApp.swift */; };
 		847AC2BC279F71A2000D80EE /* PrayerDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2BB279F71A2000D80EE /* PrayerDayView.swift */; };
 		847AC2BE279F71A2000D80EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847AC2BD279F71A2000D80EE /* Assets.xcassets */; };
@@ -58,7 +59,6 @@
 		84994CD027DD4EEF00BD2A33 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CCF27DD4EEF00BD2A33 /* PostRow.swift */; };
 		84994CD227DD53BB00BD2A33 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CD127DD53BB00BD2A33 /* WebView.swift */; };
 		84994CD427DD5DFC00BD2A33 /* SpecialHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CD327DD5DFC00BD2A33 /* SpecialHeader.swift */; };
-		84997A0127C98B1600EB149C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84997A0027C98B1600EB149C /* ImageLoader.swift */; };
 		84ACC8D927B86761004D4F25 /* FridayPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACC8D827B86761004D4F25 /* FridayPrayer.swift */; };
 		84D44B9F27D8661E00202BD3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44B9E27D8661E00202BD3 /* Event.swift */; };
 		84D44BA127D866C300202BD3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA027D866C300202BD3 /* Post.swift */; };
@@ -157,7 +157,6 @@
 		84994CCF27DD4EEF00BD2A33 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		84994CD127DD53BB00BD2A33 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		84994CD327DD5DFC00BD2A33 /* SpecialHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialHeader.swift; sourceTree = "<group>"; };
-		84997A0027C98B1600EB149C /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		84ACC8D827B86761004D4F25 /* FridayPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridayPrayer.swift; sourceTree = "<group>"; };
 		84D44B9E27D8661E00202BD3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		84D44BA027D866C300202BD3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -181,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8460D6B028D4E8BC00425AF3 /* Kingfisher in Frameworks */,
 				843C8C8A27F155E70077F5E1 /* OneSignal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,7 +359,6 @@
 				84E57DFF27AB8FE300AC10A0 /* Formatter.swift */,
 				8458125127B5F6F10065B185 /* StoredDefault.swift */,
 				842E34C127BDE9AE00A3B50B /* NotificationController.swift */,
-				84997A0027C98B1600EB149C /* ImageLoader.swift */,
 				84D44BA827D8677C00202BD3 /* NewsProvider.swift */,
 			);
 			path = Controllers;
@@ -439,6 +438,7 @@
 			name = iar;
 			packageProductDependencies = (
 				843C8C8927F155E70077F5E1 /* OneSignal */,
+				8460D6AF28D4E8BC00425AF3 /* Kingfisher */,
 			);
 			productName = iar;
 			productReference = 847AC2B6279F71A2000D80EE /* IAR.app */;
@@ -495,6 +495,7 @@
 			mainGroup = 847AC2AD279F71A1000D80EE;
 			packageReferences = (
 				843C8C8827F155E70077F5E1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+				8460D6AE28D4E8BC00425AF3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 847AC2B7279F71A2000D80EE /* Products */;
 			projectDirPath = "";
@@ -587,7 +588,6 @@
 				847AC2E7279FB162000D80EE /* Prayer.swift in Sources */,
 				84994CD227DD53BB00BD2A33 /* WebView.swift in Sources */,
 				84ACC8D927B86761004D4F25 /* FridayPrayer.swift in Sources */,
-				84997A0127C98B1600EB149C /* ImageLoader.swift in Sources */,
 				84E8774727DE56FE00D80908 /* EventRow.swift in Sources */,
 				842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */,
 				842E34C627BDED2800A3B50B /* MoreScreen.swift in Sources */,
@@ -952,6 +952,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		8460D6AE28D4E8BC00425AF3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -959,6 +967,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 843C8C8827F155E70077F5E1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
 			productName = OneSignal;
+		};
+		8460D6AF28D4E8BC00425AF3 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8460D6AE28D4E8BC00425AF3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

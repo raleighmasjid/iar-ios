@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct KhutbaView: View {
     let fridayPrayer: FridayPrayer
-    @StateObject var imageLoader = ImageLoader()
     
     var body: some View {
         ZStack {
@@ -33,7 +33,7 @@ struct KhutbaView: View {
                     .padding(.vertical, 24)
                 
                 HStack {
-                    Image(uiImage: imageLoader.image)
+                    KFImage.url(URL(string: fridayPrayer.imageUrl))
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 42, height: 42)
@@ -62,12 +62,6 @@ struct KhutbaView: View {
             }
         )
         .cornerRadius(8)
-        .onAppear {
-            imageLoader.update(urlString: fridayPrayer.imageUrl)
-        }
-        .onChange(of: fridayPrayer.imageUrl) { newValue in
-            imageLoader.update(urlString: newValue)
-        }
     }
 }
 

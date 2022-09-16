@@ -1,16 +1,23 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "OneSignalXCFramework",
-        "repositoryURL": "https://github.com/OneSignal/OneSignal-XCFramework",
-        "state": {
-          "branch": null,
-          "revision": "837e427138b22c9e5e56ecc9dc4374f33f84aa06",
-          "version": "3.10.2"
-        }
+  "pins" : [
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "be1a1acb283a702b99b630f586877ba02234b4cb",
+        "version" : "7.3.2"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "onesignal-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OneSignal/OneSignal-XCFramework",
+      "state" : {
+        "revision" : "837e427138b22c9e5e56ecc9dc4374f33f84aa06",
+        "version" : "3.10.2"
+      }
+    }
+  ],
+  "version" : 2
 }
