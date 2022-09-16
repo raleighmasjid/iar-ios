@@ -10,6 +10,7 @@ import UIKit
 import SwiftUI
 import Combine
 
+@MainActor
 class PrayerTimesViewModel: ObservableObject {
     @Published var upcoming: PrayerTime?
     @Published var fridaySchedule: [FridayPrayer] = []

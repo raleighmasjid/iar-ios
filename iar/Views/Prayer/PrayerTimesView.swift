@@ -30,21 +30,22 @@ struct PrayerTimesView: View {
                               currentPrayer: nil,
                               showTaraweeh: showTaraweeh)
                     .opacity(days.isEmpty ? 1 : 0)
-                
-                TabView(selection: $dayOffset) {
-                    ForEach(days, id: \.self) { prayerItem in
-                        VStack {
-                            PrayerDayView(prayerDay: prayerItem.prayerDay,
-                                          currentPrayer: prayerItem.currentPrayer,
-                                          showTaraweeh: showTaraweeh)
-                            Spacer(minLength: 0)
+                if !days.isEmpty {
+                    TabView(selection: $dayOffset) {
+                        ForEach(days, id: \.self) { prayerItem in
+                            VStack {
+                                PrayerDayView(prayerDay: prayerItem.prayerDay,
+                                              currentPrayer: prayerItem.currentPrayer,
+                                              showTaraweeh: showTaraweeh)
+                                Spacer(minLength: 0)
+                            }
+                            .tag(prayerItem.index)
                         }
-                        .tag(prayerItem.index)
                     }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    .opacity(days.isEmpty ? 0 : 1)
+                    .id(days.hashValue)
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .opacity(days.isEmpty ? 0 : 1)
-                .id(days.hashValue)
             }
         }
     }

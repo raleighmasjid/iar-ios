@@ -62,15 +62,15 @@ struct PrayerScreen: View {
 struct PrayerScreen_Previews: PreviewProvider {
     static let viewModel = PrayerTimesViewModel(provider: MockProvider())
     static var previews: some View {
-        PrayerScreen(viewModel: viewModel)
-            .previewDevice(PreviewDevice(rawValue: "iPhone 13"))
-            .previewDisplayName("iPhone 13")
-            .environmentObject(viewModel.notificationSettings)
-        
-//        PrayerScreen(viewModel: PrayerTimesViewModel(provider: MockProvider()))
-//            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
-//            .previewDisplayName("iPhone 8")
+//        PrayerScreen(viewModel: viewModel)
+//            .previewDevice(PreviewDevice(rawValue: "iPhone 13"))
+//            .previewDisplayName("iPhone 13")
 //            .environmentObject(viewModel.notificationSettings)
+        
+        PrayerScreen(viewModel: PrayerTimesViewModel(provider: MockProvider()))
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+            .previewDisplayName("iPhone 8")
+            .environmentObject(viewModel.notificationSettings)
         
 //        PrayerScreen(viewModel: PrayerTimesViewModel(provider: MockProvider()))
 //            .previewDevice(PreviewDevice(rawValue: "iPhone SE (1st generation)"))

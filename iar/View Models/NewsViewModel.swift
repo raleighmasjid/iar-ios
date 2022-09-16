@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class NewsViewModel: ObservableObject {
     @Published var announcements: Announcements?
     @Published var events: [Date: [Event]] = [:]
@@ -37,7 +38,6 @@ class NewsViewModel: ObservableObject {
         }
     }
     
-    @MainActor
     func refreshNews() async {
         do {
             let news = try await provider.fetchNews()
