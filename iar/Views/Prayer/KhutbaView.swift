@@ -22,6 +22,7 @@ struct KhutbaView: View {
                         .padding(.horizontal, 10)
                         .background(Color.white)
                         .cornerRadius(8)
+                        .opacity(fridayPrayer.shift.isEmpty ? 0 : 1)
                     Spacer(minLength: 5)
                     Text(fridayPrayer.time)
                         .font(.system(size: 16, weight: .bold))
@@ -33,12 +34,14 @@ struct KhutbaView: View {
                     .padding(.vertical, 24)
                 
                 HStack {
-                    KFImage.url(URL(string: fridayPrayer.imageUrl))
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 42, height: 42)
-                        .background(Color.white)
-                        .clipShape(Circle())
+                    if URL(string: fridayPrayer.imageUrl) != nil {
+                        KFImage.url(URL(string: fridayPrayer.imageUrl))
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 42, height: 42)
+                            .background(Color.white)
+                            .clipShape(Circle())
+                    }
                     VStack(alignment: .leading) {
                         Text(fridayPrayer.speaker)
                             .font(.system(size: 16, weight: .semibold))
@@ -72,6 +75,12 @@ struct KhutbaView_Previews: PreviewProvider {
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
         KhutbaView(fridayPrayer: FridayPrayer.mocks()[1])
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+        KhutbaView(fridayPrayer: FridayPrayer.mocks()[2])
+            .previewLayout(PreviewLayout.sizeThatFits)
+            .padding()
+        KhutbaView(fridayPrayer: FridayPrayer.mocks()[3])
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

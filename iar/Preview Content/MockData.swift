@@ -447,7 +447,15 @@ extension FridayPrayer {
               "time": "2:15",
               "speaker": "Mohammed Hannini",
               "description": "Islamic Sciences Instructor",
-              "image_url": "https://raleighmasjid.org/wp-content/uploads/2021/05/Hanini.jpeg"
+              "image_url": ""
+            },
+            {
+              "title": "Just an announcement",
+              "shift": "",
+              "time": "",
+              "speaker": "",
+              "description": "",
+              "image_url": ""
             }
           ]
         """

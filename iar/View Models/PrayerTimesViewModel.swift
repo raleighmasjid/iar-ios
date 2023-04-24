@@ -40,7 +40,9 @@ class PrayerTimesViewModel: ObservableObject {
         self.notificationSettings = NotificationSettings()
 
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            self?.updateNextPrayer()
+            Task { @MainActor [weak self] in
+                self?.updateNextPrayer()
+            }
         }
 
         notificationSettings.didUpdate
