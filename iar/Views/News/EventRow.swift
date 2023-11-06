@@ -36,12 +36,12 @@ struct EventRow: View {
                 }
             }
             .font(.system(size: 14.0))
-            .foregroundColor(.Theme.secondaryText)
+            .foregroundColor(.secondaryText)
             
             Text(event.description)
                 .font(.system(size: 12))
                 .lineLimit(3)
-                .foregroundColor(.Theme.tertiaryText)
+                .foregroundColor(.tertiaryText)
             if #available(iOS 15.0, *) {
                 Divider()
             }

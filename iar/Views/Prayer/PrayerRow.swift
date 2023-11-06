@@ -24,11 +24,11 @@ struct PrayerRow: View {
     }
     
     var bgColor: Color {
-        current ? Color.Theme.prayerBackground : .clear
+        current ? Color(.prayerBackground) : .clear
     }
     
     var borderColor: Color {
-        current ? Color.Theme.prayerBorderCurrent : Color.Theme.prayerBorder
+        current ? Color(.prayerBorderCurrent) : Color(.prayerBorder)
     }
     
     var rowOpacity: CGFloat {

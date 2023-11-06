@@ -29,7 +29,7 @@ struct MainView: View {
             .tabItem {
                 Label("Prayer", image: "tab-prayer")
             }
-            .accentColor(Color.Theme.darkGreen)
+            .accentColor(.darkGreen)
             
             if #available(iOS 15.0, *) {
                 NavigationView {
@@ -42,7 +42,7 @@ struct MainView: View {
                     Label("News", image: "tab-news")
                 }
                 .badge(newsViewModel.badge)
-                .accentColor(Color.Theme.darkGreen)
+                .accentColor(.darkGreen)
             } else {
                 NavigationView {
                     NewsScreen(viewModel: newsViewModel)
@@ -53,7 +53,7 @@ struct MainView: View {
                 .tabItem {
                     Label("News", image: "tab-news")
                 }
-                .accentColor(Color.Theme.darkGreen)
+                .accentColor(.darkGreen)
             }
             
             NavigationView {
@@ -65,7 +65,7 @@ struct MainView: View {
             .tabItem {
                 Label("Donate", image: "tab-donate")
             }
-            .accentColor(Color.Theme.darkGreen)
+            .accentColor(.darkGreen)
             
             NavigationView {
                 MoreScreen()
@@ -76,10 +76,10 @@ struct MainView: View {
             .tabItem {
                 Label("More", image: "tab-more")
             }
-            .accentColor(Color.Theme.darkGreen)
+            .accentColor(.darkGreen)
         }
         .environmentObject(prayerTimesViewModel.notificationSettings)
-        .accentColor(.Theme.tabForeground)
+        .accentColor(.tabForeground)
         .onAppear {
             if prayerTimesViewModel.prayerDays.isEmpty {
                 prayerTimesViewModel.fetchLatest()

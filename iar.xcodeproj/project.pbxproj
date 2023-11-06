@@ -50,7 +50,6 @@
 		849550F727AA2EF7008A180F /* PrayerTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F627AA2EF7008A180F /* PrayerTime.swift */; };
 		849550F927AA3784008A180F /* PrayerCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F827AA3784008A180F /* PrayerCountdown.swift */; };
 		849550FC27AA38B5008A180F /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FB27AA38B5008A180F /* Sequence.swift */; };
-		849550FE27AA4117008A180F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FD27AA4117008A180F /* Color.swift */; };
 		8497D2E227C2B981000BF89C /* PrayerDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497D2E127C2B981000BF89C /* PrayerDayViewModel.swift */; };
 		8497D2E427C2B9F1000BF89C /* PrayerTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497D2E327C2B9F1000BF89C /* PrayerTimesView.swift */; };
 		84994CCA27DD465500BD2A33 /* NewsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CC927DD465500BD2A33 /* NewsSection.swift */; };
@@ -148,7 +147,6 @@
 		849550F627AA2EF7008A180F /* PrayerTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTime.swift; sourceTree = "<group>"; };
 		849550F827AA3784008A180F /* PrayerCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCountdown.swift; sourceTree = "<group>"; };
 		849550FB27AA38B5008A180F /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
-		849550FD27AA4117008A180F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8497D2E127C2B981000BF89C /* PrayerDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDayViewModel.swift; sourceTree = "<group>"; };
 		8497D2E327C2B9F1000BF89C /* PrayerTimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesView.swift; sourceTree = "<group>"; };
 		84994CC927DD465500BD2A33 /* NewsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSection.swift; sourceTree = "<group>"; };
@@ -381,7 +379,6 @@
 		849550FA27AA389E008A180F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				849550FD27AA4117008A180F /* Color.swift */,
 				849550FB27AA38B5008A180F /* Sequence.swift */,
 				8420E8B727AF730E00C54EED /* ToggleStyle.swift */,
 				8420E8B927AF78A600C54EED /* UIScreen.swift */,
@@ -470,7 +467,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					843C8C7B27F154090077F5E1 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -564,7 +561,6 @@
 				840FBEB427C8729C003D646C /* NewsScreen.swift in Sources */,
 				84994CD027DD4EEF00BD2A33 /* PostRow.swift in Sources */,
 				847AC2C9279F74C3000D80EE /* AdhanSchedule.swift in Sources */,
-				849550FE27AA4117008A180F /* Color.swift in Sources */,
 				847AC2DF279FA893000D80EE /* HijriComponents.swift in Sources */,
 				847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */,
 				84994CCA27DD465500BD2A33 /* NewsSection.swift in Sources */,
@@ -684,6 +680,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -717,6 +714,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -745,6 +743,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -778,6 +777,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

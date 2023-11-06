@@ -38,7 +38,7 @@ struct PrayerCountdown: View {
         if viewModel.upcoming == nil {
             return .clear
         } else {
-            return Color.Theme.badgeBackground
+            return Color(.badgeBackground)
         }
     }
     

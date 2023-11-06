@@ -14,9 +14,9 @@ struct SpecialHeader: View {
             HStack {
                 Image(systemName: "exclamationmark.circle")
                     .font(.system(size: 18.0, weight: .semibold))
-                    .foregroundColor(.Theme.darkGreen)
+                    .foregroundColor(.darkGreen)
                 Text(special.title)
-                    .foregroundColor(.Theme.darkGreen)
+                    .foregroundColor(.darkGreen)
                     .font(.system(size: 16, weight: .semibold))
             }
             Text(special.text)
@@ -25,10 +25,10 @@ struct SpecialHeader: View {
                 .lineSpacing(3)
         }
         .padding(16)
-        .background(Color.Theme.prayerBackground)
+        .background(Color(.prayerBackground))
         .cornerRadius(8)
         .overlay(RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.Theme.darkGreen, lineWidth: 0.5))
+                    .stroke(.darkGreen, lineWidth: 0.5))
         
     }
 }

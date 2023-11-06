@@ -13,14 +13,14 @@ struct DonateScreen: View {
     var body: some View {
         VStack(alignment: .center, spacing: 48) {
             Spacer(minLength: 5)
-            Image("donate-graphic")
+            Image(.donateGraphic)
                 .resizable()
                 .scaledToFit()
                 .layoutPriority(0.5)
             
             Text("Your Masjid relies on the generous people of this community to keep its doors open. Consider donating to help cover our running costs.")
                 .font(.system(size: 16))
-                .foregroundColor(.Theme.secondaryText)
+                .foregroundColor(.secondaryText)
                 .multilineTextAlignment(.center)
                 .layoutPriority(1)
             Button(action: {
@@ -30,9 +30,9 @@ struct DonateScreen: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .font(.system(size: 16, weight: .semibold))
                         .padding()
-                        .foregroundColor(.Theme.darkGreen)
+                        .foregroundColor(.darkGreen)
                 }
-                .background(Color.Theme.segmentedBackground)
+                .background(Color(.segmentedBackground))
                 .cornerRadius(27)
                 .layoutPriority(0.75)
             Spacer(minLength: 5)

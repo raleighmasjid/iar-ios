@@ -46,10 +46,10 @@ struct PrayerHeader: View {
                     }
                 }
             } label: {
-                Image("chevron-left")
+                Image(.chevronLeft)
                     .renderingMode(.template)
                     .resizable()
-                    .foregroundColor(hasPreviousDays ? Color.Theme.darkGreen : .primary)
+                    .foregroundColor(hasPreviousDays ? Color(.darkGreen) : .primary)
                     .frame(width: buttonSize, height: buttonSize)
                     .padding(.horizontal, 20)
             }
@@ -80,10 +80,10 @@ struct PrayerHeader: View {
                     }
                 }
             } label: {
-                Image("chevron-right")
+                Image(.chevronRight)
                     .renderingMode(.template)
                     .resizable()
-                    .foregroundColor(Color.Theme.darkGreen)
+                    .foregroundColor(.darkGreen)
                     .frame(width: buttonSize, height: buttonSize)
                     .padding(.horizontal, 20)
             }

@@ -17,7 +17,7 @@ struct KhutbaView: View {
                 HStack {
                     Text(fridayPrayer.shift)
                         .font(.system(size: 14, weight: .bold))
-                        .foregroundColor(Color.Theme.shiftColor)
+                        .foregroundColor(.shift)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 10)
                         .background(Color.white)
@@ -59,9 +59,9 @@ struct KhutbaView: View {
         }
         .background(
             ZStack(alignment: .topLeading) {
-                Image("khutba-back")
+                Image(.khutbaBack)
                     .resizable()
-                Image("khutba-decoration")
+                Image(.khutbaDecoration)
             }
         )
         .cornerRadius(8)

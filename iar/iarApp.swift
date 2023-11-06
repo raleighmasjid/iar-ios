@@ -15,20 +15,20 @@ struct iarApp: App {
     var appDelegate
     
     init() {
-        UIPageControl.appearance().currentPageIndicatorTintColor = Color.Theme.indicatorActive.uiColor
-        UIPageControl.appearance().pageIndicatorTintColor = Color.Theme.indicatorInactive.uiColor
-        UIPageControl.appearance().tintColor = Color.Theme.indicatorInactive.uiColor
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(resource: .indicatorActive)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(resource: .indicatorInactive)
+        UIPageControl.appearance().tintColor = UIColor(resource: .indicatorInactive)
 
-        UISegmentedControl.appearance().selectedSegmentTintColor = Color.Theme.darkGreen.uiColor
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(resource: .darkGreen)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: Color.Theme.darkGreen.uiColor], for: .normal)
-        UISegmentedControl.appearance().backgroundColor = Color.Theme.segmentedBackground.uiColor
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(resource: .darkGreen)], for: .normal)
+        UISegmentedControl.appearance().backgroundColor = UIColor(resource: .segmentedBackground)
         
-        UINavigationBar.appearance().tintColor = Color.Theme.darkGreen.uiColor
+        UINavigationBar.appearance().tintColor = UIColor(resource: .darkGreen)
         
         let tabAppearance = UITabBarAppearance()
         tabAppearance.configureWithOpaqueBackground()
-        tabAppearance.backgroundColor = Color.Theme.tabBackground.uiColor
+        tabAppearance.backgroundColor = UIColor(resource: .tabBackground)
         tabAppearance.stackedLayoutAppearance.normal.iconColor = .white.withAlphaComponent(0.5)
         tabAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white.withAlphaComponent(0.5)]
         UITabBar.appearance().standardAppearance = tabAppearance

@@ -22,7 +22,7 @@ struct PostRow: View {
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
             KFImage.url(postImageURL)
-                .placeholder {Image("news-placeholder") }
+                .placeholder {Image(.newsPlaceholder) }
                 .fade(duration: 0.2)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -35,10 +35,10 @@ struct PostRow: View {
                 Text(post.text)
                     .font(.system(size: 14))
                     .lineLimit(3)
-                    .foregroundColor(.Theme.secondaryText)
+                    .foregroundColor(.secondaryText)
                 Text(Formatter.dayFormatter.string(from: post.date))
                     .font(.system(size: 12))
-                    .foregroundColor(.Theme.tertiaryText)
+                    .foregroundColor(.tertiaryText)
             }
         }
         .padding(.vertical, 8)
