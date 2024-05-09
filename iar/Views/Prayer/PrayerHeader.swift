@@ -70,7 +70,7 @@ struct PrayerHeader: View {
                         .frame(maxWidth: .infinity)
                 }
             }
-            .animation(nil)
+            .animation(nil, value: date)
             .buttonStyle(.plain)
             
             Button {

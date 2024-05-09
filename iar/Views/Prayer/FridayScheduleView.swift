@@ -13,11 +13,11 @@ struct FridayScheduleView: View {
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 16) {
             Text("Friday Prayers")
-                .font(.system(size: 24, weight: .bold))
+                .font(.system(size: 28, weight: .bold))
                 .padding(.horizontal, 20)
-            VStack(spacing: 12) {
+            VStack(spacing: 16) {
                 ForEach(fridayPrayers, id: \.self) {
                     KhutbaView(fridayPrayer: $0)
                 }

@@ -33,6 +33,7 @@ struct PrayerScreen: View {
                 Spacer(minLength: 5)
             }
         }
+        .background(Color.prayerScreenBackground)
         .onChange(of: scenePhase) { newPhase in
             switch newPhase {
             case .background:

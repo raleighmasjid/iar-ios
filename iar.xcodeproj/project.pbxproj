@@ -38,8 +38,6 @@
 		847AC2C9279F74C3000D80EE /* AdhanSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2C8279F74C3000D80EE /* AdhanSchedule.swift */; };
 		847AC2CB279F9246000D80EE /* PrayerDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2CA279F9246000D80EE /* PrayerDay.swift */; };
 		847AC2CD279F926A000D80EE /* IqamahSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2CC279F926A000D80EE /* IqamahSchedule.swift */; };
-		847AC2D5279F9421000D80EE /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2D4279F9421000D80EE /* DecodingTests.swift */; };
-		847AC2DC279F945A000D80EE /* prayerday.json in Resources */ = {isa = PBXBuildFile; fileRef = 847AC2DB279F945A000D80EE /* prayerday.json */; };
 		847AC2DF279FA893000D80EE /* HijriComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2DE279FA893000D80EE /* HijriComponents.swift */; };
 		847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E1279FAE16000D80EE /* PrayerTimesViewModel.swift */; };
 		847AC2E5279FB10A000D80EE /* PrayerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E4279FB10A000D80EE /* PrayerRow.swift */; };
@@ -76,13 +74,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 843C8C7B27F154090077F5E1;
 			remoteInfo = IARNotificationServiceExtension;
-		};
-		847AC2D6279F9421000D80EE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 847AC2AE279F71A1000D80EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 847AC2B5279F71A2000D80EE;
-			remoteInfo = iar;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -133,7 +124,6 @@
 		847AC2C8279F74C3000D80EE /* AdhanSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdhanSchedule.swift; sourceTree = "<group>"; };
 		847AC2CA279F9246000D80EE /* PrayerDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDay.swift; sourceTree = "<group>"; };
 		847AC2CC279F926A000D80EE /* IqamahSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqamahSchedule.swift; sourceTree = "<group>"; };
-		847AC2D2279F9421000D80EE /* iarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AC2D4279F9421000D80EE /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		847AC2DB279F945A000D80EE /* prayerday.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prayerday.json; sourceTree = "<group>"; };
 		847AC2DE279FA893000D80EE /* HijriComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HijriComponents.swift; sourceTree = "<group>"; };
@@ -180,13 +170,6 @@
 			files = (
 				8460D6B028D4E8BC00425AF3 /* Kingfisher in Frameworks */,
 				843C8C8A27F155E70077F5E1 /* OneSignal in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		847AC2CF279F9421000D80EE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				847AC2B6279F71A2000D80EE /* IAR.app */,
-				847AC2D2279F9421000D80EE /* iarTests.xctest */,
 				843C8C7C27F154090077F5E1 /* IARNotificationServiceExtension.appex */,
 			);
 			name = Products;
@@ -441,24 +423,6 @@
 			productReference = 847AC2B6279F71A2000D80EE /* IAR.app */;
 			productType = "com.apple.product-type.application";
 		};
-		847AC2D1279F9421000D80EE /* iarTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 847AC2D8279F9421000D80EE /* Build configuration list for PBXNativeTarget "iarTests" */;
-			buildPhases = (
-				847AC2CE279F9421000D80EE /* Sources */,
-				847AC2CF279F9421000D80EE /* Frameworks */,
-				847AC2D0279F9421000D80EE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				847AC2D7279F9421000D80EE /* PBXTargetDependency */,
-			);
-			name = iarTests;
-			productName = iarTests;
-			productReference = 847AC2D2279F9421000D80EE /* iarTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -474,10 +438,6 @@
 					};
 					847AC2B5279F71A2000D80EE = {
 						CreatedOnToolsVersion = 13.2.1;
-					};
-					847AC2D1279F9421000D80EE = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = 847AC2B5279F71A2000D80EE;
 					};
 				};
 			};
@@ -499,7 +459,6 @@
 			projectRoot = "";
 			targets = (
 				847AC2B5279F71A2000D80EE /* iar */,
-				847AC2D1279F9421000D80EE /* iarTests */,
 				843C8C7B27F154090077F5E1 /* IARNotificationServiceExtension */,
 			);
 		};
@@ -522,14 +481,6 @@
 				8416F08D27BF603D00129383 /* AdhanAfasy.caf in Resources */,
 				840F072627DFE05300CCDE19 /* Launch Screen.storyboard in Resources */,
 				847AC2BE279F71A2000D80EE /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		847AC2D0279F9421000D80EE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				847AC2DC279F945A000D80EE /* prayerday.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,14 +551,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		847AC2CE279F9421000D80EE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				847AC2D5279F9421000D80EE /* DecodingTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -615,11 +558,6 @@
 			isa = PBXTargetDependency;
 			target = 843C8C7B27F154090077F5E1 /* IARNotificationServiceExtension */;
 			targetProxy = 843C8C8127F154090077F5E1 /* PBXContainerItemProxy */;
-		};
-		847AC2D7279F9421000D80EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 847AC2B5279F71A2000D80EE /* iar */;
-			targetProxy = 847AC2D6279F9421000D80EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -634,7 +572,7 @@
 				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Notification Service Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -660,7 +598,7 @@
 				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Notification Service Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -817,7 +755,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -852,7 +790,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -863,42 +801,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		847AC2D9279F9421000D80EE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8X3U28L5K;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.raleighmasjid.iarTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iar.app/iar";
-			};
-			name = Debug;
-		};
-		847AC2DA279F9421000D80EE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8X3U28L5K;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.raleighmasjid.iarTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iar.app/iar";
 			};
 			name = Release;
 		};
@@ -928,15 +830,6 @@
 			buildConfigurations = (
 				847AC2C5279F71A2000D80EE /* Debug */,
 				847AC2C6279F71A2000D80EE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		847AC2D8279F9421000D80EE /* Build configuration list for PBXNativeTarget "iarTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				847AC2D9279F9421000D80EE /* Debug */,
-				847AC2DA279F9421000D80EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

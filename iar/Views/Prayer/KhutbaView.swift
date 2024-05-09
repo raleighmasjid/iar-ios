@@ -16,55 +16,59 @@ struct KhutbaView: View {
             VStack(spacing: 0) {
                 HStack {
                     Text(fridayPrayer.shift)
-                        .font(.system(size: 14, weight: .bold))
+                        .font(.system(size: 16, weight: .bold))
                         .foregroundColor(.shift)
-                        .padding(.vertical, 2)
-                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 8)
                         .background(Color.white)
                         .cornerRadius(8)
                         .opacity(fridayPrayer.shift.isEmpty ? 0 : 1)
                     Spacer(minLength: 5)
                     Text(fridayPrayer.time)
-                        .font(.system(size: 16, weight: .bold))
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.white)
                 }
+                .padding(16)
+                .background(Color.darkGreen)
 
-                Text(fridayPrayer.title)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 18, weight: .regular))
-                    .padding(.vertical, 24)
-                
-                HStack {
-                    if URL(string: fridayPrayer.imageUrl) != nil {
-                        KFImage.url(URL(string: fridayPrayer.imageUrl))
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 42, height: 42)
-                            .background(Color.white)
-                            .clipShape(Circle())
-                    }
-                    VStack(alignment: .leading) {
-                        Text(fridayPrayer.speaker)
-                            .font(.system(size: 16, weight: .semibold))
-                        Text(fridayPrayer.description)
-                            .font(.system(size: 13, weight: .light))
-                    }
+                VStack(spacing: 0) {
+                    Text(fridayPrayer.title)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 20, weight: .regular))
+                        .padding(.bottom, 24)
+                        .padding(.top, 8)
                     
-                }.frame(maxWidth: .infinity, alignment: .leading)
-                
+                    HStack(spacing: 16) {
+                        if URL(string: fridayPrayer.imageUrl) != nil {
+                            KFImage.url(URL(string: fridayPrayer.imageUrl))
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 48, height: 48)
+                                .background(Color.white)
+                                .clipShape(Circle())
+                        }
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(fridayPrayer.speaker)
+                                .font(.system(size: 17, weight: .semibold))
+                            Text(fridayPrayer.description)
+                                .font(.system(size: 12))
+                                .foregroundColor(.secondaryText)
+                        }
+                        
+                    }.frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(16)
             }
-            
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(16)
-            .foregroundColor(.white)
+            .foregroundColor(.textPrimary)
         }
         .background(
-            ZStack(alignment: .topLeading) {
-                Image(.khutbaBack)
-                    .resizable()
+            ZStack(alignment: .bottomTrailing) {
+                Color.khutbaBackground
                 Image(.khutbaDecoration)
             }
         )
-        .cornerRadius(8)
+        .cornerRadius(16)
     }
 }
 
@@ -74,15 +78,19 @@ struct KhutbaView_Previews: PreviewProvider {
         KhutbaView(fridayPrayer: FridayPrayer.mocks()[0])
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
+            .background(Color.prayerScreenBackground)
         KhutbaView(fridayPrayer: FridayPrayer.mocks()[1])
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
+            .background(Color.prayerScreenBackground)
         KhutbaView(fridayPrayer: FridayPrayer.mocks()[2])
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
+            .background(Color.prayerScreenBackground)
         KhutbaView(fridayPrayer: FridayPrayer.mocks()[3])
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
+            .background(Color.prayerScreenBackground)
     }
 }
 #endif

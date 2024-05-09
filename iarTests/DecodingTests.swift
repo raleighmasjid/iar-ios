@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import iar
+@testable import IAR
 
 class DecodingTests: XCTestCase {
     

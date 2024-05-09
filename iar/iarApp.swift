@@ -15,26 +15,26 @@ struct iarApp: App {
     var appDelegate
     
     init() {
-        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(resource: .indicatorActive)
-        UIPageControl.appearance().pageIndicatorTintColor = UIColor(resource: .indicatorInactive)
-        UIPageControl.appearance().tintColor = UIColor(resource: .indicatorInactive)
-
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(resource: .darkGreen)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(resource: .darkGreen)], for: .normal)
-        UISegmentedControl.appearance().backgroundColor = UIColor(resource: .segmentedBackground)
+//        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(resource: .indicatorActive)
+//        UIPageControl.appearance().pageIndicatorTintColor = UIColor(resource: .indicatorInactive)
+//        UIPageControl.appearance().tintColor = UIColor(resource: .indicatorInactive)
+//
+//        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(resource: .darkGreen)
+//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(resource: .darkGreen)], for: .normal)
+//        UISegmentedControl.appearance().backgroundColor = UIColor(resource: .segmentedBackground)
+//        
+//        UINavigationBar.appearance().tintColor = UIColor(resource: .darkGreen)
         
-        UINavigationBar.appearance().tintColor = UIColor(resource: .darkGreen)
-        
-        let tabAppearance = UITabBarAppearance()
-        tabAppearance.configureWithOpaqueBackground()
-        tabAppearance.backgroundColor = UIColor(resource: .tabBackground)
-        tabAppearance.stackedLayoutAppearance.normal.iconColor = .white.withAlphaComponent(0.5)
-        tabAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white.withAlphaComponent(0.5)]
-        UITabBar.appearance().standardAppearance = tabAppearance
-        if #available(iOS 15.0, *) {
-            UITabBar.appearance().scrollEdgeAppearance = tabAppearance
-        }
+//        let tabAppearance = UITabBarAppearance()
+//        tabAppearance.configureWithOpaqueBackground()
+//        tabAppearance.backgroundColor = UIColor(resource: .tabBackground)
+//        tabAppearance.stackedLayoutAppearance.normal.iconColor = .white.withAlphaComponent(0.5)
+//        tabAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white.withAlphaComponent(0.5)]
+//        UITabBar.appearance().standardAppearance = tabAppearance
+//        if #available(iOS 15.0, *) {
+//            UITabBar.appearance().scrollEdgeAppearance = tabAppearance
+//        }
     }
     
     var body: some Scene {

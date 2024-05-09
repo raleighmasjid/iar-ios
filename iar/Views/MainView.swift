@@ -20,41 +20,33 @@ struct MainView: View {
 
     var body: some View {
         TabView {
+            PrayerScreen(viewModel: prayerTimesViewModel)
+            .tabItem {
+                Label("Prayer", image: "tab-prayer")
+            }
+            
             NavigationView {
-                PrayerScreen(viewModel: prayerTimesViewModel)
-                    .navigationTitle("Prayer Times")
+                DonateScreen()
+                    .navigationTitle("Donate")
                     .navigationBarTitleDisplayMode(.inline)
             }
             .navigationViewStyle(.stack)
             .tabItem {
-                Label("Prayer", image: "tab-prayer")
+                Label("Qiblah", image: "tab-qibla")
             }
             .accentColor(.darkGreen)
             
-            if #available(iOS 15.0, *) {
-                NavigationView {
-                    NewsScreen(viewModel: newsViewModel)
-                        .navigationTitle("News")
-                        .navigationBarTitleDisplayMode(.inline)
-                }
-                .navigationViewStyle(.stack)
-                .tabItem {
-                    Label("News", image: "tab-news")
-                }
-                .badge(newsViewModel.badge)
-                .accentColor(.darkGreen)
-            } else {
-                NavigationView {
-                    NewsScreen(viewModel: newsViewModel)
-                        .navigationTitle("News")
-                        .navigationBarTitleDisplayMode(.inline)
-                }
-                .navigationViewStyle(.stack)
-                .tabItem {
-                    Label("News", image: "tab-news")
-                }
-                .accentColor(.darkGreen)
+            NavigationView {
+                NewsScreen(viewModel: newsViewModel)
+                    .navigationTitle("News")
+                    .navigationBarTitleDisplayMode(.inline)
             }
+            .navigationViewStyle(.stack)
+            .tabItem {
+                Label("News", image: "tab-news")
+            }
+            .badge(newsViewModel.badge)
+            .accentColor(.darkGreen)
             
             NavigationView {
                 DonateScreen()
@@ -74,7 +66,7 @@ struct MainView: View {
             }
             .navigationViewStyle(.stack)
             .tabItem {
-                Label("More", image: "tab-more")
+                Label("Settings", image: "tab-settings")
             }
             .accentColor(.darkGreen)
         }
