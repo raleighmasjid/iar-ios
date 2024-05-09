@@ -24,7 +24,8 @@ struct FridayScheduleView: View {
             }
             .padding(.horizontal, 20)
         }
-        .padding(.vertical, 20)
+        .padding(.bottom, 16)
+        .padding(.top, 32)
     }
 }
 
