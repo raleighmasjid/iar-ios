@@ -29,7 +29,7 @@ struct KhutbaView: View {
                         .foregroundColor(.white)
                 }
                 .padding(16)
-                .background(Color.darkGreen)
+                .background(Color.brandPrimary)
 
                 VStack(spacing: 0) {
                     Text(fridayPrayer.title)
@@ -39,14 +39,14 @@ struct KhutbaView: View {
                         .padding(.top, 8)
                     
                     HStack(spacing: 16) {
-                        if URL(string: fridayPrayer.imageUrl) != nil {
-                            KFImage.url(URL(string: fridayPrayer.imageUrl))
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 48, height: 48)
-                                .background(Color.white)
-                                .clipShape(Circle())
-                        }
+                        AsyncImage(url: URL(string: fridayPrayer.imageUrl)) { image in
+                                image.resizable()
+                            } placeholder: {
+                                Color.secondaryText.opacity(0.25)
+                            }
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 48, height: 48)
+                            .clipShape(Circle())
                         VStack(alignment: .leading, spacing: 2) {
                             Text(fridayPrayer.speaker)
                                 .font(.system(size: 17, weight: .semibold))

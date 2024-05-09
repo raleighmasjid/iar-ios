@@ -124,8 +124,6 @@
 		847AC2C8279F74C3000D80EE /* AdhanSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdhanSchedule.swift; sourceTree = "<group>"; };
 		847AC2CA279F9246000D80EE /* PrayerDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDay.swift; sourceTree = "<group>"; };
 		847AC2CC279F926A000D80EE /* IqamahSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IqamahSchedule.swift; sourceTree = "<group>"; };
-		847AC2D4279F9421000D80EE /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
-		847AC2DB279F945A000D80EE /* prayerday.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prayerday.json; sourceTree = "<group>"; };
 		847AC2DE279FA893000D80EE /* HijriComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HijriComponents.swift; sourceTree = "<group>"; };
 		847AC2E1279FAE16000D80EE /* PrayerTimesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesViewModel.swift; sourceTree = "<group>"; };
 		847AC2E4279FB10A000D80EE /* PrayerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerRow.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				847AC2B8279F71A2000D80EE /* iar */,
-				847AC2D3279F9421000D80EE /* iarTests */,
 				843C8C7D27F154090077F5E1 /* IARNotificationServiceExtension */,
 				847AC2B7279F71A2000D80EE /* Products */,
 			);
@@ -312,23 +309,6 @@
 				84994CC927DD465500BD2A33 /* NewsSection.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		847AC2D3279F9421000D80EE /* iarTests */ = {
-			isa = PBXGroup;
-			children = (
-				847AC2D4279F9421000D80EE /* DecodingTests.swift */,
-				847AC2DD279F9483000D80EE /* Resources */,
-			);
-			path = iarTests;
-			sourceTree = "<group>";
-		};
-		847AC2DD279F9483000D80EE /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				847AC2DB279F945A000D80EE /* prayerday.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		847AC2E0279FAE04000D80EE /* Controllers */ = {
