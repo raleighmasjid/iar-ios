@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Kingfisher
+import NukeUI
 
 struct KhutbaView: View {
     let fridayPrayer: FridayPrayer
@@ -39,10 +39,12 @@ struct KhutbaView: View {
                         .padding(.top, 8)
                     
                     HStack(spacing: 16) {
-                        AsyncImage(url: URL(string: fridayPrayer.imageUrl)) { image in
-                                image.resizable()
-                            } placeholder: {
-                                Color.secondaryText.opacity(0.25)
+                        LazyImage(url: URL(string: fridayPrayer.imageUrl)) { state in
+                                if let image = state.image {
+                                    image.resizable()
+                                } else {
+                                    Color.secondaryText.opacity(0.25)
+                                }
                             }
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 48, height: 48)

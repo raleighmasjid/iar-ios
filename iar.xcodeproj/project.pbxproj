@@ -21,6 +21,8 @@
 		8420E8B827AF730E00C54EED /* ToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B727AF730E00C54EED /* ToggleStyle.swift */; };
 		8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B927AF78A600C54EED /* UIScreen.swift */; };
 		8420E8BC27AF7FEE00C54EED /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */; };
+		84224BD72BED5676001B6353 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 84224BD62BED5676001B6353 /* Nuke */; };
+		84224BD92BED5676001B6353 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 84224BD82BED5676001B6353 /* NukeUI */; };
 		842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C127BDE9AE00A3B50B /* NotificationController.swift */; };
 		842E34C427BDEBF200A3B50B /* PrayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C327BDEBF200A3B50B /* PrayerScreen.swift */; };
 		842E34C627BDED2800A3B50B /* MoreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C527BDED2800A3B50B /* MoreScreen.swift */; };
@@ -30,7 +32,6 @@
 		843F283627C1DEE8008D0328 /* PrayerSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F283527C1DEE8008D0328 /* PrayerSchedule.swift */; };
 		8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		845FB0ED27E3C579006E54E1 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FB0EC27E3C579006E54E1 /* ShareSheet.swift */; };
-		8460D6B028D4E8BC00425AF3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8460D6AF28D4E8BC00425AF3 /* Kingfisher */; };
 		847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2B9279F71A2000D80EE /* iarApp.swift */; };
 		847AC2BC279F71A2000D80EE /* PrayerDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2BB279F71A2000D80EE /* PrayerDayView.swift */; };
 		847AC2BE279F71A2000D80EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847AC2BD279F71A2000D80EE /* Assets.xcassets */; };
@@ -166,8 +167,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8460D6B028D4E8BC00425AF3 /* Kingfisher in Frameworks */,
+				84224BD72BED5676001B6353 /* Nuke in Frameworks */,
 				843C8C8A27F155E70077F5E1 /* OneSignal in Frameworks */,
+				84224BD92BED5676001B6353 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +399,8 @@
 			name = iar;
 			packageProductDependencies = (
 				843C8C8927F155E70077F5E1 /* OneSignal */,
-				8460D6AF28D4E8BC00425AF3 /* Kingfisher */,
+				84224BD62BED5676001B6353 /* Nuke */,
+				84224BD82BED5676001B6353 /* NukeUI */,
 			);
 			productName = iar;
 			productReference = 847AC2B6279F71A2000D80EE /* IAR.app */;
@@ -432,7 +435,7 @@
 			mainGroup = 847AC2AD279F71A1000D80EE;
 			packageReferences = (
 				843C8C8827F155E70077F5E1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
-				8460D6AE28D4E8BC00425AF3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				84224BD52BED5676001B6353 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 847AC2B7279F71A2000D80EE /* Products */;
 			projectDirPath = "";
@@ -817,6 +820,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		84224BD52BED5676001B6353 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.6.0;
+			};
+		};
 		843C8C8827F155E70077F5E1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
@@ -825,26 +836,23 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		8460D6AE28D4E8BC00425AF3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		84224BD62BED5676001B6353 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84224BD52BED5676001B6353 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		84224BD82BED5676001B6353 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84224BD52BED5676001B6353 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
 		843C8C8927F155E70077F5E1 /* OneSignal */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 843C8C8827F155E70077F5E1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
 			productName = OneSignal;
-		};
-		8460D6AF28D4E8BC00425AF3 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8460D6AE28D4E8BC00425AF3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Kingfisher
+import NukeUI
 
 struct PostRow: View {
     let post: Post
@@ -21,10 +21,13 @@ struct PostRow: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
-            KFImage.url(postImageURL)
-                .placeholder {Image(.newsPlaceholder) }
-                .fade(duration: 0.2)
-                .resizable()
+            LazyImage(url: postImageURL, transaction: .init(animation: .easeIn(duration: 0.2))) { state in
+                    if let image = state.image {
+                        image.resizable()
+                    } else {
+                        Image(.newsPlaceholder)
+                    }
+                }
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 54, height: 54)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
