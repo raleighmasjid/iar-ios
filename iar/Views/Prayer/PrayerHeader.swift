@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct PrayerHeader: View {
-    let prayerDays: [PrayerDay]
+    let prayerDays: [PrayerDayViewModel]
     @Binding var dayOffset: Int
     
-    let buttonSize: CGFloat = 32
+    let buttonSize: CGFloat = 48
     
     var hasPreviousDays: Bool {
         dayOffset > 0
@@ -22,19 +22,19 @@ struct PrayerHeader: View {
     }
     
     var date: String {
-        guard let prayerDay = prayerDays[safe: dayOffset] else {
+        guard let viewModel = prayerDays[safe: dayOffset] else {
             return "Loading..."
         }
 
-        return Formatter.dayFormatter.string(from: prayerDay.date)
+        return Formatter.dayFormatter.string(from: viewModel.prayerDay.date)
     }
     
     var hijri: String {
-        guard let prayerDay = prayerDays[safe: dayOffset] else {
+        guard let viewModel = prayerDays[safe: dayOffset] else {
             return " "
         }
 
-        return prayerDay.hijri.formatted()
+        return viewModel.prayerDay.hijri.formatted()
     }
     
     var body: some View {
@@ -47,14 +47,11 @@ struct PrayerHeader: View {
                 }
             } label: {
                 Image(.chevronLeft)
-                    .renderingMode(.template)
-                    .resizable()
-                    .foregroundColor(hasPreviousDays ? Color(.darkGreen) : .primary)
+                    .foregroundColor(hasPreviousDays ? Color(.action) : .primary.opacity(0.3))
                     .frame(width: buttonSize, height: buttonSize)
-                    .padding(.horizontal, 20)
+                    .padding(4)
             }
             .disabled(!hasPreviousDays)
-            .opacity(hasPreviousDays ? 1 : 0.3)
 
             Button {
                 withAnimation {
@@ -63,12 +60,15 @@ struct PrayerHeader: View {
             } label: {
                 VStack(spacing: 2) {
                     Text(date)
-                        .font(.system(size: 15, weight: .semibold))
+                        .font(.system(size: 16, weight: .semibold))
                         .frame(maxWidth: .infinity)
+                        .padding(.bottom, 4)
                     Text(hijri)
-                        .font(.system(size: 13))
+                        .font(.system(size: 12))
                         .frame(maxWidth: .infinity)
+                        .foregroundStyle(.secondaryText)
                 }
+                .padding(.vertical, 6)
             }
             .animation(nil, value: date)
             .buttonStyle(.plain)
@@ -81,18 +81,15 @@ struct PrayerHeader: View {
                 }
             } label: {
                 Image(.chevronRight)
-                    .renderingMode(.template)
-                    .resizable()
-                    .foregroundColor(.darkGreen)
+                    .foregroundColor(hasNextDays ? .action : .primary.opacity(0.3))
                     .frame(width: buttonSize, height: buttonSize)
-                    .padding(.horizontal, 20)
+                    .padding(4)
             }
             .disabled(!hasNextDays)
-            .opacity(hasNextDays ? 1 : 0.5)
             
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.vertical, 12)
+        .padding(.vertical, 10)
 
     }
 }
@@ -100,7 +97,7 @@ struct PrayerHeader: View {
 #if DEBUG
 struct PrayerHeader_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerHeader(prayerDays: [.mock(), .mock()], dayOffset: .constant(0))
+        PrayerHeader(prayerDays: [PrayerDayViewModel(prayerDay: .mock(), index: 0), PrayerDayViewModel(prayerDay: .mock(), index: 1)], dayOffset: .constant(0))
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
     }

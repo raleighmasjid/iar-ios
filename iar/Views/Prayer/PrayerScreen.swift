@@ -9,9 +9,6 @@ import SwiftUI
 
 struct PrayerScreen: View {
     @ObservedObject var viewModel: PrayerTimesViewModel
-    @State var dayOffset = 0
-    
-    @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
         ScrollView {
@@ -27,26 +24,12 @@ struct PrayerScreen: View {
                         }
                     }
                 }
-                PrayerHeader(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
-                PrayerTimesView(prayerDays: viewModel.prayerDays, dayOffset: $dayOffset)
+                PrayerTimesView(prayerDays: viewModel.prayerDays)
                 FridayScheduleView(fridayPrayers: viewModel.fridaySchedule)
                 Spacer(minLength: 5)
             }
         }
         .background(Color.prayerScreenBackground)
-        .onChange(of: scenePhase) { newPhase in
-            switch newPhase {
-            case .background:
-                dayOffset = 0
-            default:
-                break
-            }
-        }
-        .onChange(of: viewModel.prayerDays) { newValue in
-            if newValue.count <= dayOffset {
-                dayOffset = 0
-            }
-        }
         .alert(isPresented: $viewModel.error) {
             Alert(title: Text("Error"),
                   message: Text("Unable to load prayer times"),

@@ -11,20 +11,19 @@ struct PrayerTimesView: View {
     
     let days: [PrayerDayViewModel]
     let showTaraweeh: Bool
-    @Binding var dayOffset: Int
+    @State var dayOffset = 0
+    @Environment(\.scenePhase) var scenePhase
     
-    init(prayerDays: [PrayerDay], dayOffset: Binding<Int>) {
+    init(prayerDays: [PrayerDay]) {
         days = prayerDays.enumerated().map { (index, day) in
             PrayerDayViewModel(prayerDay: day, index: index)
         }
-        self._dayOffset = dayOffset
         self.showTaraweeh = prayerDays.contains(where: { $0.hasTaraweeh })
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            columnHeaders
-                              
+            PrayerHeader(prayerDays: days, dayOffset: $dayOffset)
             ZStack {
                 PrayerDayView(prayerDay: nil,
                               currentPrayer: nil,
@@ -48,21 +47,18 @@ struct PrayerTimesView: View {
                 }
             }
         }
-    }
-    
-    var columnHeaders: some View {
-        HStack() {
-            Text("Prayer")
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text("Adhan")
-                .frame(maxWidth: .infinity, alignment: .center)
-            Text("Iqamah")
-                .frame(maxWidth: .infinity, alignment: .trailing)
-            Spacer().frame(width: 55)
+        .background(.prayerCardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .shadow(color: .black.opacity(0.05), radius: 25, x: 0, y: 5)
+        .padding(.horizontal, 16)
+        .onChange(of: scenePhase) { newPhase in
+            switch newPhase {
+            case .background:
+                dayOffset = 0
+            default:
+                break
+            }
         }
-        .padding(.vertical, 10)
-        .padding(.horizontal, 28)
-        .font(.system(size: 16, weight: .bold))
     }
 }
 
@@ -70,8 +66,7 @@ struct PrayerTimesView: View {
 struct PrayerTimesView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            PrayerTimesView(prayerDays: [.mock()],
-                            dayOffset: .constant(0))
+            PrayerTimesView(prayerDays: [.mock()])
             Spacer(minLength: 10)
         }
             .environmentObject(NotificationSettings())

@@ -18,15 +18,14 @@ struct AlarmToggleStyle: ToggleStyle {
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.darkGreen)
+                    .foregroundColor(.action)
                     .opacity(1)
             } else {
                 Image(.alarmOff)
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.primary)
-                    .opacity(0.5)
+                    .foregroundColor(.disabledAction)
             }
 
         }
