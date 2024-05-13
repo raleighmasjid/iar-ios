@@ -26,15 +26,14 @@ struct iarApp: App {
 //        
 //        UINavigationBar.appearance().tintColor = UIColor(resource: .darkGreen)
         
-//        let tabAppearance = UITabBarAppearance()
-//        tabAppearance.configureWithOpaqueBackground()
-//        tabAppearance.backgroundColor = UIColor(resource: .tabBackground)
-//        tabAppearance.stackedLayoutAppearance.normal.iconColor = .white.withAlphaComponent(0.5)
-//        tabAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white.withAlphaComponent(0.5)]
-//        UITabBar.appearance().standardAppearance = tabAppearance
-//        if #available(iOS 15.0, *) {
-//            UITabBar.appearance().scrollEdgeAppearance = tabAppearance
-//        }
+        let tabAppearance = UITabBarAppearance()
+        tabAppearance.configureWithDefaultBackground()
+        tabAppearance.stackedLayoutAppearance.normal.iconColor = UIColor(resource: .tabUnselected)
+        tabAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor(resource: .tabUnselected)]
+        UITabBar.appearance().standardAppearance = tabAppearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = tabAppearance
+        }
     }
     
     var body: some Scene {

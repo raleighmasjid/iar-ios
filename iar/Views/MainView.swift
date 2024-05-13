@@ -71,7 +71,7 @@ struct MainView: View {
             .accentColor(.darkGreen)
         }
         .environmentObject(prayerTimesViewModel.notificationSettings)
-        .accentColor(.tabForeground)
+        .accentColor(.tabSelected)
         .onAppear {
             if prayerTimesViewModel.prayerDays.isEmpty {
                 prayerTimesViewModel.fetchLatest()
