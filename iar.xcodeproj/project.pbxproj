@@ -19,7 +19,6 @@
 		8416F08E27BF603D00129383 /* AdhanSaadAlghamdi.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8416F08C27BF603D00129383 /* AdhanSaadAlghamdi.caf */; };
 		8416F09227C0A50000129383 /* PrayerCountdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416F09127C0A50000129383 /* PrayerCountdownViewModel.swift */; };
 		8420E8B827AF730E00C54EED /* ToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B727AF730E00C54EED /* ToggleStyle.swift */; };
-		8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8B927AF78A600C54EED /* UIScreen.swift */; };
 		8420E8BC27AF7FEE00C54EED /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */; };
 		84224BD72BED5676001B6353 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 84224BD62BED5676001B6353 /* Nuke */; };
 		84224BD92BED5676001B6353 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 84224BD82BED5676001B6353 /* NukeUI */; };
@@ -32,6 +31,7 @@
 		843F283627C1DEE8008D0328 /* PrayerSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F283527C1DEE8008D0328 /* PrayerSchedule.swift */; };
 		8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		845FB0ED27E3C579006E54E1 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FB0EC27E3C579006E54E1 /* ShareSheet.swift */; };
+		846E07732BF3067B00EAA538 /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E07722BF3067B00EAA538 /* PreferenceKeys.swift */; };
 		847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2B9279F71A2000D80EE /* iarApp.swift */; };
 		847AC2BC279F71A2000D80EE /* PrayerDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2BB279F71A2000D80EE /* PrayerDayView.swift */; };
 		847AC2BE279F71A2000D80EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847AC2BD279F71A2000D80EE /* Assets.xcassets */; };
@@ -105,7 +105,6 @@
 		8416F08C27BF603D00129383 /* AdhanSaadAlghamdi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AdhanSaadAlghamdi.caf; sourceTree = "<group>"; };
 		8416F09127C0A50000129383 /* PrayerCountdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCountdownViewModel.swift; sourceTree = "<group>"; };
 		8420E8B727AF730E00C54EED /* ToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyle.swift; sourceTree = "<group>"; };
-		8420E8B927AF78A600C54EED /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		8420E8BB27AF7FEE00C54EED /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		8422A11627ACAE7C0043B8D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		842E34C127BDE9AE00A3B50B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -117,6 +116,7 @@
 		843F283527C1DEE8008D0328 /* PrayerSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerSchedule.swift; sourceTree = "<group>"; };
 		8458125127B5F6F10065B185 /* StoredDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredDefault.swift; sourceTree = "<group>"; };
 		845FB0EC27E3C579006E54E1 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		846E07722BF3067B00EAA538 /* PreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKeys.swift; sourceTree = "<group>"; };
 		847AC2B6279F71A2000D80EE /* IAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AC2B9279F71A2000D80EE /* iarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iarApp.swift; sourceTree = "<group>"; };
 		847AC2BB279F71A2000D80EE /* PrayerDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDayView.swift; sourceTree = "<group>"; };
@@ -322,6 +322,7 @@
 				8458125127B5F6F10065B185 /* StoredDefault.swift */,
 				842E34C127BDE9AE00A3B50B /* NotificationController.swift */,
 				84D44BA827D8677C00202BD3 /* NewsProvider.swift */,
+				846E07722BF3067B00EAA538 /* PreferenceKeys.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -345,7 +346,6 @@
 			children = (
 				849550FB27AA38B5008A180F /* Sequence.swift */,
 				8420E8B727AF730E00C54EED /* ToggleStyle.swift */,
-				8420E8B927AF78A600C54EED /* UIScreen.swift */,
 				84E57E0127AB943600AC10A0 /* URLSession.swift */,
 			);
 			path = Extensions;
@@ -484,6 +484,7 @@
 			files = (
 				8407708F27E6B3E50042410C /* Announcements.swift in Sources */,
 				84D44BA527D8672200202BD3 /* News.swift in Sources */,
+				846E07732BF3067B00EAA538 /* PreferenceKeys.swift in Sources */,
 				849550F727AA2EF7008A180F /* PrayerTime.swift in Sources */,
 				8497D2E427C2B9F1000BF89C /* PrayerTimesView.swift in Sources */,
 				845FB0ED27E3C579006E54E1 /* ShareSheet.swift in Sources */,
@@ -525,7 +526,6 @@
 				843F283627C1DEE8008D0328 /* PrayerSchedule.swift in Sources */,
 				849550F127AA0316008A180F /* MockData.swift in Sources */,
 				84D44BA927D8677C00202BD3 /* NewsProvider.swift in Sources */,
-				8420E8BA27AF78A600C54EED /* UIScreen.swift in Sources */,
 				8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */,
 				840FBEBA27C87882003D646C /* FridayScheduleView.swift in Sources */,
 				8420E8BC27AF7FEE00C54EED /* NotificationSettings.swift in Sources */,

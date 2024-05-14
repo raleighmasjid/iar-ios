@@ -11,6 +11,7 @@ struct PrayerTimesView: View {
     
     let days: [PrayerDayViewModel]
     let showTaraweeh: Bool
+    @State var carouselHeight = 0.0
     @State var dayOffset = 0
     @Environment(\.scenePhase) var scenePhase
     
@@ -24,26 +25,31 @@ struct PrayerTimesView: View {
     var body: some View {
         VStack(spacing: 0) {
             PrayerHeader(prayerDays: days, dayOffset: $dayOffset)
-            ZStack {
+            ZStack(alignment: .top) {
                 PrayerDayView(prayerDay: nil,
                               currentPrayer: nil,
                               showTaraweeh: showTaraweeh)
-                    .opacity(days.isEmpty ? 1 : 0)
+                .opacity(days.isEmpty ? 1 : 0)
+                .overlay(
+                    GeometryReader { proxy in
+                        Color.clear.onAppear {
+                            self.carouselHeight = proxy.size.height
+                        }
+                    }
+                )
                 if !days.isEmpty {
                     TabView(selection: $dayOffset) {
                         ForEach(days, id: \.self) { prayerItem in
-                            VStack {
-                                PrayerDayView(prayerDay: prayerItem.prayerDay,
-                                              currentPrayer: prayerItem.currentPrayer,
-                                              showTaraweeh: showTaraweeh)
-                                Spacer(minLength: 0)
-                            }
+                            PrayerDayView(prayerDay: prayerItem.prayerDay,
+                                          currentPrayer: prayerItem.currentPrayer,
+                                          showTaraweeh: showTaraweeh)
                             .tag(prayerItem.index)
                         }
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
                     .opacity(days.isEmpty ? 0 : 1)
                     .id(days.hashValue)
+                    .frame(height: carouselHeight)
                 }
             }
         }
@@ -65,13 +71,10 @@ struct PrayerTimesView: View {
 #if DEBUG
 struct PrayerTimesView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            PrayerTimesView(prayerDays: [.mock()])
-            Spacer(minLength: 10)
-        }
-            .environmentObject(NotificationSettings())
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
+        PrayerTimesView(prayerDays: [.mock()])
+        .environmentObject(NotificationSettings())
+        .previewLayout(PreviewLayout.sizeThatFits)
+        .padding()
     }
 }
 #endif
