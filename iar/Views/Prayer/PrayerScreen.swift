@@ -33,36 +33,53 @@ struct PrayerScreen: View {
         let addedHeight: CGFloat = contentAreaHeight > 650 ? 180 : 130
         return safeArea.top + addedHeight
     }
-    
+
+    var headerImage: some View {
+        Image(.prayerHeader)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(height: headerHeight, alignment: .top)
+            .frame(maxWidth: UIScreen.main.bounds.width)
+            .clipped()
+            .allowsHitTesting(false)
+    }
+
+    var countdownView: some View {
+        ZStack(alignment: .top) {
+            PrayerCountdown(upcoming: viewModel.upcoming)
+                .frame(height: countdownHeight)
+                .opacity(largeHeaderOpacity)
+            HStack {
+                Spacer(minLength: 50)
+                if viewModel.loading {
+                    ProgressView()
+                        .tint(.white)
+                        .padding(.trailing, 48)
+                        .padding(.top, safeArea.top + 12)
+                }
+            }
+        }
+    }
+
+    var stickyHeader: some View {
+        SmallPrayerCountdown(upcoming: viewModel.upcoming)
+            .ignoresSafeArea(edges: .top)
+            .frame(maxWidth: .infinity)
+            .opacity(stickyHeaderOpacity)
+            .allowsHitTesting(false)
+    }
+
     var body: some View {
         ZStack(alignment: .top) {
-            Image(.prayerHeader)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(height: headerHeight, alignment: .top)
-                .frame(maxWidth: UIScreen.main.bounds.width)
-                .clipped()
-                .allowsHitTesting(false)
-            
+            headerImage
+
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    ZStack {
-                        PrayerCountdown(upcoming: viewModel.upcoming)
-                            .frame(height: countdownHeight)
-                            .opacity(largeHeaderOpacity)
-                        HStack {
-                            Spacer(minLength: 50)
-                            if viewModel.loading {
-                                ProgressView()
-                                    .padding(.trailing, 24)
-                            }
-                        }
-                    }
+                    countdownView
                     PrayerTimesView(prayerDays: viewModel.prayerDays)
                     FridayScheduleView(fridayPrayers: viewModel.fridaySchedule)
                     Spacer(minLength: 5)
                 }
-            
                 .background(GeometryReader { geometry in
                     Color.clear
                         .preference(key: PrayerScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named(scrollNamespace)).origin)
@@ -73,7 +90,6 @@ struct PrayerScreen: View {
             }
             .coordinateSpace(name: scrollNamespace)
         }
-        
         .ignoresSafeArea(edges: .top)
         .background(Color.prayerScreenBackground)
         .alert(isPresented: $viewModel.error) {
@@ -84,28 +100,9 @@ struct PrayerScreen: View {
                   secondaryButton: .cancel(Text("Dismiss")))
         }
         .overlay(alignment: .top) {
-            ZStack(alignment: .top) {
-                    Image(.prayerHeader)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: safeArea.top + 60, alignment: .top)
-                        .frame(maxWidth: .infinity)
-                        .clipped()
-                Text("Asr is in 12hrs 49min")
-                    .font(.system(size: 17, weight: .semibold))
-                    .foregroundStyle(.white)
-                    .padding(.top, safeArea.top + 20)
-            }
-            .ignoresSafeArea(edges: .top)
-            .frame(maxWidth: .infinity)
-            .opacity(stickyHeaderOpacity)
-            .allowsHitTesting(false)
-            
+            stickyHeader
         }
-        
     }
-    
-
 }
 
 #if DEBUG
