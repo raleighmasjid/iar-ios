@@ -10,6 +10,7 @@ import SwiftUI
 struct PrayerScreen: View {
     @ObservedObject var viewModel: PrayerTimesViewModel
     @State var scrollPosition = 0.0
+    @Environment(\.safeAreaInsets) var safeArea
     let scrollNamespace = "PrayerScrollView"
     
     var stickyHeaderOpacity: Double {
@@ -20,8 +21,17 @@ struct PrayerScreen: View {
         scrollPosition >= -64 ? 1 : 0
     }
     
-    var headerHeight: Double {
-        max(0, 278 + scrollPosition)
+    var headerHeight: CGFloat {
+        max(0, countdownHeight + 38 + scrollPosition)
+    }
+    
+    var contentAreaHeight: CGFloat {
+        UIScreen.main.bounds.height - (safeArea.top + safeArea.bottom)
+    }
+    
+    var countdownHeight: CGFloat {
+        let addedHeight: CGFloat = contentAreaHeight > 650 ? 180 : 130
+        return safeArea.top + addedHeight
     }
     
     var body: some View {
@@ -35,11 +45,10 @@ struct PrayerScreen: View {
                 .allowsHitTesting(false)
             
             ScrollView {
-            
                 VStack(alignment: .leading, spacing: 0) {
                     ZStack {
                         PrayerCountdown(upcoming: viewModel.upcoming)
-                            .frame(height: 240)
+                            .frame(height: countdownHeight)
                             .opacity(largeHeaderOpacity)
                         HStack {
                             Spacer(minLength: 50)
@@ -79,16 +88,15 @@ struct PrayerScreen: View {
                     Image(.prayerHeader)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(height: 100, alignment: .top)
+                        .frame(height: safeArea.top + 60, alignment: .top)
                         .frame(maxWidth: .infinity)
                         .clipped()
                 Text("Asr is in 12hrs 49min")
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(.white)
-                    .padding(.top, 60)
+                    .padding(.top, safeArea.top + 20)
             }
             .ignoresSafeArea(edges: .top)
-//            .padding(.bottom, 20)
             .frame(maxWidth: .infinity)
             .opacity(stickyHeaderOpacity)
             .allowsHitTesting(false)
