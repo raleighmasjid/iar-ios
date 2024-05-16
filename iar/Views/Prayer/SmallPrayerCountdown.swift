@@ -30,13 +30,13 @@ struct SmallPrayerCountdown: View {
                 Image(.prayerHeader)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(height: safeArea.top + 60, alignment: .top)
+                    .frame(height: safeArea.top + 42, alignment: .top)
                     .frame(maxWidth: .infinity)
                     .clipped()
             Text(countdown)
                 .font(.system(size: 17, weight: .semibold))
                 .foregroundStyle(.white)
-                .padding(.top, safeArea.top + 20)
+                .padding(.top, safeArea.top + 8)
         }
     }
 }

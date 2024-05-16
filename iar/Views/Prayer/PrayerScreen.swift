@@ -14,11 +14,25 @@ struct PrayerScreen: View {
     let scrollNamespace = "PrayerScrollView"
     
     var stickyHeaderOpacity: Double {
-        scrollPosition < -64 ? 1 : 0
+        switch scrollPosition {
+        case _ where scrollPosition <= (-1 * safeArea.top) - 50:
+            return 1
+        case _ where scrollPosition > (-1 * safeArea.top) - 35:
+            return 0
+        default:
+            return abs((scrollPosition + safeArea.top + 35.0) / 15.0)
+        }
     }
     
     var largeHeaderOpacity: Double {
-        scrollPosition >= -64 ? 1 : 0
+        switch scrollPosition {
+        case _ where scrollPosition >= (-1 * safeArea.top):
+            return 1
+        case _ where scrollPosition < (-1 * safeArea.top) - 40:
+            return 0
+        default:
+            return 1 - abs((scrollPosition + safeArea.top) / 40.0)
+        }
     }
     
     var headerHeight: CGFloat {
@@ -89,6 +103,7 @@ struct PrayerScreen: View {
                 }
             }
             .coordinateSpace(name: scrollNamespace)
+            .scrollIndicators(.hidden)
         }
         .ignoresSafeArea(edges: .top)
         .background(Color.prayerScreenBackground)
@@ -102,6 +117,7 @@ struct PrayerScreen: View {
         .overlay(alignment: .top) {
             stickyHeader
         }
+//        .toolbarColorScheme(.light, for: .tabBar)
     }
 }
 
