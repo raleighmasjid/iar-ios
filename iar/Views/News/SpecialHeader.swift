@@ -10,26 +10,23 @@ import SwiftUI
 struct SpecialHeader: View {
     let special: Post
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Image(systemName: "exclamationmark.circle")
-                    .font(.system(size: 18.0, weight: .semibold))
-                    .foregroundColor(.darkGreen)
+                Image(.announcementIcon)
+                    .foregroundStyle(.action)
                 Text(special.title)
-                    .foregroundColor(.darkGreen)
-                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(.action)
+                    .font(.system(size: 15, weight: .semibold))
             }
             Text(special.text)
-                .font(.system(size: 14))
-                .lineLimit(5)
-                .lineSpacing(3)
+                .foregroundStyle(.action)
+                .font(.system(size: 13))
+                .lineLimit(3)
+                .lineSpacing(5)
         }
         .padding(16)
-        .background(Color(.prayerBackground))
-        .cornerRadius(8)
-        .overlay(RoundedRectangle(cornerRadius: 8)
-                    .stroke(.darkGreen, lineWidth: 0.5))
-        
+        .background(.specialAnnouncement)
+        .cornerRadius(16)
     }
 }
 

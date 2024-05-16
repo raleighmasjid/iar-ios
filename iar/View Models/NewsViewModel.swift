@@ -10,7 +10,6 @@ import Foundation
 @MainActor
 class NewsViewModel: ObservableObject {
     @Published var announcements: Announcements?
-    @Published var events: [Date: [Event]] = [:]
     
     @Published var badge: String?
     
@@ -59,8 +58,6 @@ class NewsViewModel: ObservableObject {
     
     private func didFetchNews(news: News) {
         announcements = news.announcements
-        let cal = Calendar.current
-        events = Dictionary(grouping: news.events, by: { cal.startOfDay(for: $0.start) })
         updateBadge()
     }
     

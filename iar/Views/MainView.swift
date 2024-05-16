@@ -39,7 +39,6 @@ struct MainView: View {
             NavigationView {
                 NewsScreen(viewModel: newsViewModel)
                     .navigationTitle("News")
-                    .navigationBarTitleDisplayMode(.inline)
             }
             .navigationViewStyle(.stack)
             .tabItem {
@@ -48,11 +47,7 @@ struct MainView: View {
             .badge(newsViewModel.badge)
             .accentColor(.darkGreen)
             
-            NavigationView {
-                DonateScreen()
-                    .navigationTitle("Donate")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
+            DonateScreen()
             .navigationViewStyle(.stack)
             .tabItem {
                 Label("Donate", image: "tab-donate")
@@ -61,7 +56,7 @@ struct MainView: View {
             
             NavigationView {
                 MoreScreen()
-                    .navigationTitle("More")
+                    .navigationTitle("Settings")
                     .navigationBarTitleDisplayMode(.inline)
             }
             .navigationViewStyle(.stack)

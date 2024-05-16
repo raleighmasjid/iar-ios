@@ -29,19 +29,23 @@ struct PostRow: View {
                     }
                 }
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 54, height: 54)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .frame(width: 96, height: 96)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
             VStack(alignment: .leading, spacing: 8) {
                 Text(post.title)
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: 17, weight: .semibold))
                     .lineLimit(2)
+                HStack {
+                    Image(.calendarIcon)
+                        .foregroundStyle(.action)
+                    Text(Formatter.dayFormatter.string(from: post.date))
+                        .font(.system(size: 12))
+                        .foregroundColor(.action)
+                }
                 Text(post.text)
-                    .font(.system(size: 14))
+                    .font(.system(size: 13))
                     .lineLimit(3)
                     .foregroundColor(.secondaryText)
-                Text(Formatter.dayFormatter.string(from: post.date))
-                    .font(.system(size: 12))
-                    .foregroundColor(.tertiaryText)
             }
         }
         .padding(.vertical, 8)

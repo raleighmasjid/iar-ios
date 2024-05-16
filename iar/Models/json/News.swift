@@ -9,5 +9,4 @@ import Foundation
 
 struct News: Codable {
     let announcements: Announcements
-    let events: [Event]
 }

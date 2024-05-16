@@ -38,6 +38,7 @@ struct WebView: View {
     var body: some View {
         WebkitView(url: destination.url, helper: helper)
         .navigationTitle(destination.title)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 if helper.isLoading {

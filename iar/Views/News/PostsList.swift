@@ -14,38 +14,33 @@ struct PostsList: View {
     @State private var isVisible: Bool = false
     
     var body: some View {
-        if #available(iOS 15.0, *) {
-            mainContent
-                .refreshable {
-                    await viewModel.refreshNews()
-                }
-        } else {
-            mainContent
-        }
+        mainContent
+            .refreshable {
+                await viewModel.refreshNews()
+            }
     }
     
     var mainContent: some View {
         List {
-            if let special = viewModel.announcements?.special {
-                if #available(iOS 15.0, *) {
+            Section {
+                if let special = viewModel.announcements?.special {
                     specialButton(special: special)
                         .listRowSeparator(.hidden)
-                } else {
-                    specialButton(special: special)
+                }
+                
+                if let featured = viewModel.announcements?.featured {
+                    NavigationLink(destination: WebView(featured)) {
+                        PostRow(post: featured)
+                    }
+                }
+                
+                ForEach(viewModel.announcements?.posts ?? []) { post in
+                    NavigationLink(destination: WebView(post)) {
+                        PostRow(post: post)
+                    }
                 }
             }
-            
-            if let featured = viewModel.announcements?.featured {
-                NavigationLink(destination: WebView(featured)) {
-                    PostRow(post: featured)
-                }
-            }
-            
-            ForEach(viewModel.announcements?.posts ?? []) { post in
-                NavigationLink(destination: WebView(post)) {
-                    PostRow(post: post)
-                }
-            }
+            .listSectionSeparator(.hidden)
         }
         .listStyle(.plain)
         .onAppear {

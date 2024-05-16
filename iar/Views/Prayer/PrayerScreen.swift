@@ -117,7 +117,6 @@ struct PrayerScreen: View {
         .overlay(alignment: .top) {
             stickyHeader
         }
-//        .toolbarColorScheme(.light, for: .tabBar)
     }
 }
 
