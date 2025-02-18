@@ -41,6 +41,7 @@ struct SmallPrayerCountdown: View {
     }
 }
 
+#if DEBUG
 #Preview {
     SmallPrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)))
 }
@@ -48,3 +49,5 @@ struct SmallPrayerCountdown: View {
 #Preview {
     SmallPrayerCountdown(upcoming: nil)
 }
+#endif
+

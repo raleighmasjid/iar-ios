@@ -5,25 +5,78 @@
 //  Created by Ameir Al-Zoubi on 2/1/22.
 //
 
-import Foundation
-import Combine
-
 #if DEBUG
 
+import Foundation
+import Combine
+import CoreLocation
+
+class MockAlmostValidLocationProvider: LocationProvider {
+    weak var delegate: LocationProviderDelegate?
+    
+    func startUpdating() {
+        self.delegate?.didUpdateHeading(Heading(direction: 64.0, accuracy: 3), location: CLLocation(latitude: 35.791836480187186, longitude: -78.6350442338134), authorizationStatus: .authorizedWhenInUse)
+    }
+    
+    func stopUpdating() {
+        
+    }
+}
+
+class MockDeniedLocationProvider: LocationProvider {
+    weak var delegate: LocationProviderDelegate?
+    
+    func startUpdating() {
+        self.delegate?.didUpdateHeading(nil, location: nil, authorizationStatus: .denied)
+    }
+    
+    func stopUpdating() {
+        
+    }
+}
+
+
+class MockLocationProvider: LocationProvider {
+    weak var delegate: LocationProviderDelegate?
+    
+    func startUpdating() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.delegate?.didUpdateLocation("London")
+            self.delegate?.didUpdateHeading(Heading(direction: 13.0, accuracy: 3), location: CLLocation(latitude: 35.791836480187186, longitude: -78.6350442338134), authorizationStatus: .authorizedWhenInUse)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                self.delegate?.didUpdateHeading(Heading(direction: 53.0, accuracy: 3), location: CLLocation(latitude: 35.791836480187186, longitude: -78.6350442338134), authorizationStatus: .authorizedWhenInUse)
+            }
+        }
+    }
+    
+    func stopUpdating() {
+        
+    }
+}
+
 class MockProvider: PrayerProvider, NewsProvider {
-    var cachedNews: News? = nil
+    static var mockNews: News {
+        News.mocks()
+    }
+    
+    static var mockPrayerSchedule: PrayerSchedule {
+        let days: [PrayerDay] = [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
+        return PrayerSchedule(prayerDays: days, fridaySchedule: FridayPrayer.mocks())
+    }
+    
+    var cachedNews: News? = MockProvider.mockNews
     
     @MainActor
     func fetchNews() async throws -> News {
-        return News.mocks()
+        return MockProvider.mockNews
     }
     
-    var cachedPrayerSchedule: PrayerSchedule? = nil
+    var cachedPrayerSchedule: PrayerSchedule? = MockProvider.mockPrayerSchedule
     
     @MainActor
     func fetchPrayers() async throws -> PrayerSchedule {
-        let days: [PrayerDay] = [.mock(), .mock(date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)]
-        return PrayerSchedule(prayerDays: days, fridaySchedule: FridayPrayer.mocks())
+        return MockProvider.mockPrayerSchedule
     }
 }
 
@@ -34,10 +87,10 @@ extension News {
           "announcements": {
             "special": {
               "id": 11734,
-              "title": "Special COVID-19 Restriction",
+              "title": "COVID-19 Restriction",
               "date": "2022-01-02T11:57:16-05:00",
               "url": "https://raleighmasjid.org/special-covid-19-restriction/",
-              "text": "Following the Wake County change in policy regarding COVID-19, the Islamic Association of Raleigh is lifting our mask mandate effective Friday, Feb 25th at 5 PM. Your masjid will continue to accommodate those that would like to social distance, and continue wearing their masks. Hand sanitizer stations will continue to be accessible to our community.\n\n\n\nAdditionally, the gym will be reopening for unorganized activities and community events. ",
+              "text": "unorganized activities",
               "image": null
             },
             "posts": [

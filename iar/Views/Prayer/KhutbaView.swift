@@ -20,7 +20,7 @@ struct KhutbaView: View {
                         .foregroundColor(.shift)
                         .padding(.vertical, 4)
                         .padding(.horizontal, 8)
-                        .background(Color.white)
+                        .background(Color.khutbaBackground)
                         .cornerRadius(8)
                         .opacity(fridayPrayer.shift.isEmpty ? 0 : 1)
                     Spacer(minLength: 5)
@@ -76,24 +76,23 @@ struct KhutbaView: View {
 }
 
 #if DEBUG
-struct KhutbaView_Previews: PreviewProvider {
-    static var previews: some View {
-        KhutbaView(fridayPrayer: FridayPrayer.mocks()[0])
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .background(Color.prayerScreenBackground)
-        KhutbaView(fridayPrayer: FridayPrayer.mocks()[1])
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .background(Color.prayerScreenBackground)
-        KhutbaView(fridayPrayer: FridayPrayer.mocks()[2])
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .background(Color.prayerScreenBackground)
-        KhutbaView(fridayPrayer: FridayPrayer.mocks()[3])
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .background(Color.prayerScreenBackground)
-    }
+#Preview {
+    KhutbaView(fridayPrayer: FridayPrayer.mocks()[0])
+        .background(Color.prayerScreenBackground)
+}
+
+#Preview {
+    KhutbaView(fridayPrayer: FridayPrayer.mocks()[1])
+        .background(Color.prayerScreenBackground)
+}
+
+#Preview {
+    KhutbaView(fridayPrayer: FridayPrayer.mocks()[2])
+        .background(Color.prayerScreenBackground)
+}
+
+#Preview {
+    KhutbaView(fridayPrayer: FridayPrayer.mocks()[3])
+        .background(Color.prayerScreenBackground)
 }
 #endif

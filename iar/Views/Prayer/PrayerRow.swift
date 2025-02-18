@@ -65,32 +65,30 @@ struct PrayerRow: View {
 }
 
 #if DEBUG
-struct PrayerRow_Previews: PreviewProvider {
-    static var previews: some View {
-        PrayerRow(prayer: Prayer.fajr.title,
-                  adhan: Date(),
-                  iqamah: Date().addingTimeInterval(600),
-                  current: true,
-                  displayAlarm: true,
-                  notificationEnabled: .constant(true))
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-        PrayerRow(prayer: Prayer.dhuhr.title,
-                  adhan: nil,
-                  iqamah: nil,
-                  current: false,
-                  displayAlarm: true,
-                  notificationEnabled: .constant(false))
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-        PrayerRow(prayer: Prayer.maghrib.title,
-                  adhan: Date(),
-                  iqamah: Date().addingTimeInterval(600),
-                  current: false,
-                  displayAlarm: true,
-                  notificationEnabled: .constant(true))
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-    }
+#Preview {
+    PrayerRow(prayer: Prayer.fajr.title,
+              adhan: Date(),
+              iqamah: Date().addingTimeInterval(600),
+              current: true,
+              displayAlarm: true,
+              notificationEnabled: .constant(true))
+}
+
+#Preview {
+    PrayerRow(prayer: Prayer.dhuhr.title,
+              adhan: nil,
+              iqamah: nil,
+              current: false,
+              displayAlarm: true,
+              notificationEnabled: .constant(false))
+}
+
+#Preview {
+    PrayerRow(prayer: Prayer.maghrib.title,
+              adhan: Date(),
+              iqamah: Date().addingTimeInterval(600),
+              current: false,
+              displayAlarm: true,
+              notificationEnabled: .constant(true))
 }
 #endif

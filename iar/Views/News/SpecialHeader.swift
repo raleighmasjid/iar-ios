@@ -25,17 +25,14 @@ struct SpecialHeader: View {
                 .lineSpacing(5)
         }
         .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(.specialAnnouncement)
         .cornerRadius(16)
     }
 }
 
 #if DEBUG
-struct specialHeader_Previews: PreviewProvider {
-    static var previews: some View {
-        SpecialHeader(special: News.mocks().announcements.special!)
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-    }
+#Preview {
+    SpecialHeader(special: News.mocks().announcements.special!)
 }
 #endif

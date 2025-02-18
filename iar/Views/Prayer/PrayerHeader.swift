@@ -95,11 +95,12 @@ struct PrayerHeader: View {
 }
 
 #if DEBUG
-struct PrayerHeader_Previews: PreviewProvider {
-    static var previews: some View {
-        PrayerHeader(prayerDays: [PrayerDayViewModel(prayerDay: .mock(), index: 0), PrayerDayViewModel(prayerDay: .mock(), index: 1)], dayOffset: .constant(0))
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-    }
+#Preview {
+    PrayerHeader(
+        prayerDays: [
+            PrayerDayViewModel(prayerDay: .mock(), index: 0),
+            PrayerDayViewModel(prayerDay: .mock(), index: 1)],
+        dayOffset: .constant(0)
+    )
 }
 #endif

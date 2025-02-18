@@ -1,13 +1,22 @@
 {
-  "originHash" : "ac9f89c23a37b7215db16e70cae5b3b85733cf319810165cd20da3780168d530",
+  "originHash" : "ca72f6a7bd4d4384668cbff49e7323bde74bb14716f772b386647b46c82d8260",
   "pins" : [
+    {
+      "identity" : "adhan-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/batoulapps/adhan-swift",
+      "state" : {
+        "revision" : "6dc8309951fdaa0cd124c52b9a8de7e0da1ff2ce",
+        "version" : "1.4.0"
+      }
+    },
     {
       "identity" : "nuke",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Nuke.git",
       "state" : {
-        "revision" : "8e431251dea0081b6ab154dab61a6ec74e4b6577",
-        "version" : "12.6.0"
+        "revision" : "0ead44350d2737db384908569c012fe67c421e4d",
+        "version" : "12.8.0"
       }
     },
     {
@@ -15,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/OneSignal/OneSignal-XCFramework",
       "state" : {
-        "revision" : "b466a821e03008ecae885ebf79f52e4b88269b06",
-        "version" : "3.12.6"
+        "revision" : "a7df0fa1cb25ae2920b6ee01fe703fec50639256",
+        "version" : "5.2.10"
       }
     }
   ],

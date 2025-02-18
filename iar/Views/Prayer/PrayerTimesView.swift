@@ -69,12 +69,8 @@ struct PrayerTimesView: View {
 }
 
 #if DEBUG
-struct PrayerTimesView_Previews: PreviewProvider {
-    static var previews: some View {
-        PrayerTimesView(prayerDays: [.mock()])
+#Preview {
+    PrayerTimesView(prayerDays: [.mock()])
         .environmentObject(NotificationSettings())
-        .previewLayout(PreviewLayout.sizeThatFits)
-        .padding()
-    }
 }
 #endif

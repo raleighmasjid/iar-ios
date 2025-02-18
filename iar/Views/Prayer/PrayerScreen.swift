@@ -9,9 +9,10 @@ import SwiftUI
 
 struct PrayerScreen: View {
     @ObservedObject var viewModel: PrayerTimesViewModel
-    @State var scrollPosition = 0.0
-    @Environment(\.safeAreaInsets) var safeArea
-    let scrollNamespace = "PrayerScrollView"
+
+    @State private var scrollPosition = 0.0
+    @Environment(\.safeAreaInsets) private var safeArea
+    private let scrollNamespace = "PrayerScrollView"
     
     var stickyHeaderOpacity: Double {
         switch scrollPosition {
@@ -121,21 +122,12 @@ struct PrayerScreen: View {
 }
 
 #if DEBUG
-struct PrayerScreen_Previews: PreviewProvider {
-    static let viewModel = PrayerTimesViewModel(provider: MockProvider())
-    static var previews: some View {
-//        PrayerScreen(viewModel: viewModel)
-//            .previewDevice(PreviewDevice(rawValue: "iPhone 13"))
-//            .previewDisplayName("iPhone 13")
-//            .environmentObject(viewModel.notificationSettings)
-        
-        PrayerScreen(viewModel: PrayerTimesViewModel(provider: MockProvider()))
-            .environmentObject(viewModel.notificationSettings)
-        
-//        PrayerScreen(viewModel: PrayerTimesViewModel(provider: MockProvider()))
-//            .previewDevice(PreviewDevice(rawValue: "iPhone SE (1st generation)"))
-//            .previewDisplayName("iPhone SE")
-//            .environmentObject(viewModel.notificationSettings)
-    }
+#Preview {
+    let viewModel = PrayerTimesViewModel(provider: MockProvider())
+    PrayerScreen(viewModel: viewModel)
+        .environmentObject(viewModel.notificationSettings)
+        .onAppear {
+            viewModel.fetchLatest()
+        }
 }
 #endif

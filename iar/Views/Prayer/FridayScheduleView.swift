@@ -10,8 +10,6 @@ import SwiftUI
 struct FridayScheduleView: View {
     let fridayPrayers: [FridayPrayer]
     
-    @Environment(\.scenePhase) var scenePhase
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Friday Prayers")
@@ -30,11 +28,7 @@ struct FridayScheduleView: View {
 }
 
 #if DEBUG
-struct FridayScheduleView_Previews: PreviewProvider {
-    static var previews: some View {
-        FridayScheduleView(fridayPrayers: FridayPrayer.mocks())
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-    }
+#Preview {
+    FridayScheduleView(fridayPrayers: FridayPrayer.mocks())
 }
 #endif

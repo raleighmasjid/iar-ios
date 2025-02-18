@@ -13,6 +13,15 @@ struct MainView: View {
     
     @StateObject var newsViewModel = NewsViewModel(provider: NetworkNewsProvider())
     
+    @StateObject var compassViewModel: CompassViewModel = {
+        #if targetEnvironment(simulator)
+        let provider = MockLocationProvider()
+        #else
+        let provider = CoreLocationProvider()
+        #endif
+        return CompassViewModel(provider: provider)
+    }()
+    
     @Environment(\.scenePhase) var scenePhase
     @State var didEnterBackground = false
 
@@ -25,22 +34,16 @@ struct MainView: View {
                 Label("Prayer", image: "tab-prayer")
             }
             
-            NavigationView {
-                DonateScreen()
-                    .navigationTitle("Donate")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
-            .navigationViewStyle(.stack)
+            QiblahScreen(viewModel: compassViewModel)
             .tabItem {
                 Label("Qiblah", image: "tab-qibla")
             }
             .accentColor(.darkGreen)
             
-            NavigationView {
+            NavigationStack {
                 NewsScreen(viewModel: newsViewModel)
                     .navigationTitle("News")
             }
-            .navigationViewStyle(.stack)
             .tabItem {
                 Label("News", image: "tab-news")
             }
@@ -48,18 +51,16 @@ struct MainView: View {
             .accentColor(.darkGreen)
             
             DonateScreen()
-            .navigationViewStyle(.stack)
             .tabItem {
                 Label("Donate", image: "tab-donate")
             }
             .accentColor(.darkGreen)
             
-            NavigationView {
+            NavigationStack {
                 MoreScreen()
                     .navigationTitle("Settings")
                     .navigationBarTitleDisplayMode(.inline)
             }
-            .navigationViewStyle(.stack)
             .tabItem {
                 Label("Settings", image: "tab-settings")
             }
@@ -68,6 +69,8 @@ struct MainView: View {
         .environmentObject(prayerTimesViewModel.notificationSettings)
         .accentColor(.tabSelected)
         .onAppear {
+            styleTabBar()
+
             if prayerTimesViewModel.prayerDays.isEmpty {
                 prayerTimesViewModel.fetchLatest()
             }
@@ -94,12 +97,19 @@ struct MainView: View {
             newsViewModel.fetchLatest()
         }
     }
+    
+    func styleTabBar() {
+        let tabAppearance = UITabBarAppearance()
+        tabAppearance.configureWithDefaultBackground()
+        tabAppearance.stackedLayoutAppearance.normal.iconColor = UIColor(resource: .tabUnselected)
+        tabAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor(resource: .tabUnselected)]
+        UITabBar.appearance().standardAppearance = tabAppearance
+        UITabBar.appearance().scrollEdgeAppearance = tabAppearance
+    }
 }
 
 #if DEBUG
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
+#Preview {
+    MainView()
 }
 #endif

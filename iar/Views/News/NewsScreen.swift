@@ -23,17 +23,14 @@ struct NewsScreen: View {
 }
 
 #if DEBUG
-struct NewsScreen_Previews: PreviewProvider {
-    static let vm: NewsViewModel = {
-       let v = NewsViewModel(provider: MockProvider())
-        v.fetchLatest()
-        return v
-    }()
-    static var previews: some View {
-        NavigationView {
-            NewsScreen(viewModel: vm)
-                .navigationTitle("News")
-        }
+#Preview {
+    let vm = NewsViewModel(provider: MockProvider())
+    NavigationView {
+        NewsScreen(viewModel: vm)
+            .navigationTitle("News")
+            .onAppear {
+                vm.fetchLatest()
+            }
     }
 }
 #endif

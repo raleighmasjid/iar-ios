@@ -53,11 +53,7 @@ struct PostRow: View {
 }
 
 #if DEBUG
-struct AnnouncementRow_Previews: PreviewProvider {
-    static var previews: some View {
-        PostRow(post: News.mocks().announcements.posts.first!)
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-    }
+#Preview {
+    PostRow(post: News.mocks().announcements.posts.first!)
 }
 #endif

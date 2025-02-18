@@ -79,14 +79,11 @@ struct PostsList: View {
 }
 
 #if DEBUG
-struct AnnouncementsList_Previews: PreviewProvider {
-    static let vm: NewsViewModel = {
-       let v = NewsViewModel(provider: MockProvider())
-        v.fetchLatest()
-        return v
-    }()
-    static var previews: some View {
-        PostsList(viewModel: vm)
-    }
+#Preview {
+    let newsViewModel = NewsViewModel(provider: MockProvider())
+    PostsList(viewModel: newsViewModel)
+        .onAppear {
+            newsViewModel.fetchLatest()
+        }
 }
 #endif

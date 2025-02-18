@@ -55,14 +55,13 @@ struct PrayerCountdown: View {
 }
 
 #if DEBUG
-struct PrayerCountdown_Previews: PreviewProvider {
-    static var previews: some View {
-        PrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)))
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-        PrayerCountdown(upcoming: nil)
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-    }
+#Preview {
+    PrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)))
+        .background(Color.black)
+}
+
+#Preview("no upcoming") {
+    PrayerCountdown(upcoming: nil)
+        .background(Color.black)
 }
 #endif
