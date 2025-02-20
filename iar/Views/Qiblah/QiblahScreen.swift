@@ -12,10 +12,12 @@ struct QiblahScreen: View {
     @ObservedObject var viewModel: CompassViewModel
     
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.sizeCategory) var sizeCategory
     @State var didEnterBackground = false
     
     @State var rotationAngle: Double = 0
     @State var isVisible: Bool = false
+    @ScaledMetric private var markerHeight: Double = 14
     
     var isValid: Bool {
         switch viewModel.compassAngle {
@@ -53,31 +55,53 @@ struct QiblahScreen: View {
             return -1
         }
     }
+    
+    @ViewBuilder func headerView() -> some View {
+        if sizeCategory >= .accessibilityMedium {
+            VStack(alignment: .leading, spacing: 0) {
+                headerContent()
+            }.frame(maxWidth: .infinity, alignment: .leading)
+            
+        } else {
+            HStack(spacing: 0) {
+                headerContent()
+            }
+        }
+    }
+    
+    @ViewBuilder func headerContent() -> some View {
+        Text("Qibla")
+            .scalingFont(size: 28, weight: .bold)
+            .foregroundStyle(.textPrimary)
+        if sizeCategory < .accessibilityMedium {
+            Spacer(minLength: 20)
+        }
+        HStack {
+            Image(.locationMarker)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: markerHeight)
+            Text(viewModel.locationName ?? "---")
+        }
+        .scalingFont(size: 15, weight: .medium)
+        .foregroundStyle(.action)
+        .padding(12)
+        .background(.specialAnnouncement)
+        .cornerRadius(12)
+    }
 
     var body: some View {
         VStack {
-            HStack {
-                Text("Qibla")
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundStyle(.textPrimary)
-                Spacer()
-                HStack {
-                    Image(.locationMarker)
-                    Text(viewModel.locationName ?? "---")
-                }
-                .font(.system(size: 15, weight: .medium))
-                .foregroundStyle(.action)
-                .padding(12)
-                .background(.specialAnnouncement)
-                .cornerRadius(12)
-            }
-            .padding()
+            headerView()
+                .padding()
+            
             Spacer()
+            
             ZStack {
                 VStack(spacing: 30) {
                     Text("Location access is required to enable compass functionality and show the qibla direction.")
                         .foregroundStyle(.textPrimary)
-                        .font(.system(size: 18, weight: .light))
+                        .scalingFont(size: 18, weight: .light)
                     Button {
                         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                     } label: {
@@ -112,17 +136,15 @@ struct QiblahScreen: View {
                         .opacity(isValid ? 1 : 0)
                 }
             }
-            HStack(spacing: 0) {
-                Text("You're Facing ")
-                    .foregroundStyle(.textPrimary)
-                Text("Makkah")
-                    .foregroundStyle(.action)
-            }
-            .font(.system(size: 22, weight: .bold))
-            .opacity(percentCorrect)
-            .animation(.easeInOut(duration: 0.15), value: percentCorrect)
+            Text(makkahText)
+                .minimumScaleFactor(0.1)
+                .opacity(percentCorrect)
+                .animation(.easeInOut(duration: 0.15), value: percentCorrect)
+                .padding(.horizontal, 32)
             Spacer()
         }
+        .scalingFont(size: 22, weight: .bold)
+        .lineLimit(1)
         .onReceive(viewModel.$compassAngle) { angle in
             switch angle {
             case .valid(let angleValue):
@@ -148,6 +170,14 @@ struct QiblahScreen: View {
             }
         }
         
+    }
+    
+    var makkahText: AttributedString {
+        var text1 = AttributedString("You're Facing ")
+        text1.foregroundColor = .textPrimary
+        var text2 = AttributedString("Makkah")
+        text2.foregroundColor = .action
+        return text1 + text2
     }
     
     func adjustedEnd(from start: Double, to target: Double) -> Double {

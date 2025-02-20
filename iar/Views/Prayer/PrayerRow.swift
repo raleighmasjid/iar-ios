@@ -35,19 +35,19 @@ struct PrayerRow: View {
         HStack() {
             Text(prayer)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.system(size: 17, weight: .semibold))
+                .scalingFont(size: 17, weight: .semibold, maxSize: 24)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
             
             Text(adhanFormatted)
                 .frame(maxWidth: .infinity, alignment: .center)
-                .font(.system(size: 17, weight: .regular))
+                .scalingFont(size: 17, weight: .regular, maxSize: 22)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
             
             Text(iqamahFormatted)
                 .frame(maxWidth: .infinity, alignment: .trailing)
-                .font(.system(size: 17, weight: .regular))
+                .scalingFont(size: 17, weight: .regular, maxSize: 22)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
             

@@ -46,7 +46,7 @@ struct PrayerCountdown: View {
                 .scalingFont(size: 16, weight: .medium)
                 .background(badgeColor)
                 .cornerRadius(8)
-            Text(
+            Text(countdown)
                 .font(.system(size: 48))
         }
         .foregroundStyle(.white)

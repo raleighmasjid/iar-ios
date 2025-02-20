@@ -16,11 +16,11 @@ struct SpecialHeader: View {
                     .foregroundStyle(.action)
                 Text(special.title)
                     .foregroundStyle(.action)
-                    .font(.system(size: 15, weight: .semibold))
+                    .scalingFont(size: 15, weight: .semibold)
             }
             Text(special.text)
                 .foregroundStyle(.action)
-                .font(.system(size: 13))
+                .scalingFont(size: 13)
                 .lineLimit(3)
                 .lineSpacing(5)
         }

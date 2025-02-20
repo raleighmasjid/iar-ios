@@ -20,7 +20,7 @@ enum Prayer: CaseIterable {
         case .fajr:
             return "Fajr"
         case .shuruq:
-            return "Shuruq"
+            return "Sunrise"
         case .dhuhr:
             return "Dhuhr"
         case .asr:

@@ -56,7 +56,8 @@ struct PrayerDayView: View {
         }
         .padding(.vertical, 18)
         .padding(.horizontal, 16)
-        .font(.system(size: 17, weight: .semibold))
+        .scalingFont(size: 17, weight: .semibold, maxSize: 23)
+        .lineLimit(1)
     }
 }
 

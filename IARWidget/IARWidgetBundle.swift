@@ -12,5 +12,6 @@ import SwiftUI
 struct IARWidgetBundle: WidgetBundle {
     var body: some Widget {
         PrayerWidget()
+        PrayerDayWidget()
     }
 }

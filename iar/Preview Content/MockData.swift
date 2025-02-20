@@ -41,7 +41,7 @@ class MockLocationProvider: LocationProvider {
     
     func startUpdating() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.delegate?.didUpdateLocation("London")
+            self.delegate?.didUpdateLocation("San Francisco")
             self.delegate?.didUpdateHeading(Heading(direction: 13.0, accuracy: 3), location: CLLocation(latitude: 35.791836480187186, longitude: -78.6350442338134), authorizationStatus: .authorizedWhenInUse)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {

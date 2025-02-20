@@ -12,7 +12,7 @@ struct HijriView: View {
     
     var body: some View {
         Text(components.formatted())
-            .font(.system(size: 11, weight: .semibold))
+            .scalingFont(size: 11, weight: .semibold)
             .foregroundStyle(.white)
             .padding(.vertical, 4)
             .padding(.horizontal, 8)

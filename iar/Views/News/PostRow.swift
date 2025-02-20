@@ -33,17 +33,17 @@ struct PostRow: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
             VStack(alignment: .leading, spacing: 8) {
                 Text(post.title)
-                    .font(.system(size: 17, weight: .semibold))
+                    .scalingFont(size: 17, weight: .semibold)
                     .lineLimit(2)
                 HStack {
                     Image(.calendarIcon)
                         .foregroundStyle(.action)
                     Text(Formatter.dayFormatter.string(from: post.date))
-                        .font(.system(size: 12))
+                        .scalingFont(size: 12)
                         .foregroundColor(.action)
                 }
                 Text(post.text)
-                    .font(.system(size: 13))
+                    .scalingFont(size: 13)
                     .lineLimit(3)
                     .foregroundColor(.secondaryText)
             }

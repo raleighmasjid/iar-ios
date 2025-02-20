@@ -21,8 +21,8 @@ extension View {
         }
     }
     
-    func scalingFont(size: Double, weight: Font.Weight = .regular) -> some View {
-        modifier(ScalingFont(size: size, weight: weight))
+    func scalingFont(size: Double, weight: Font.Weight = .regular, maxSize: Double? = nil) -> some View {
+        modifier(ScalingFont(size: size, weight: weight, maxSize: maxSize))
     }
 }
 
@@ -30,9 +30,10 @@ struct ScalingFont: ViewModifier {
     @ScaledMetric
     var size: Double
     let weight: Font.Weight
+    var maxSize: Double? = nil
     
     func body(content: Content) -> some View {
         content
-            .font(.system(size: size, weight: weight))
+            .font(.system(size: min(size, maxSize ?? size), weight: weight))
     }
 }

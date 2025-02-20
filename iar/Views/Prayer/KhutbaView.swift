@@ -16,7 +16,7 @@ struct KhutbaView: View {
             VStack(spacing: 0) {
                 HStack {
                     Text(fridayPrayer.shift)
-                        .font(.system(size: 16, weight: .bold))
+                        .scalingFont(size: 16, weight: .bold)
                         .foregroundColor(.shift)
                         .padding(.vertical, 4)
                         .padding(.horizontal, 8)
@@ -25,7 +25,7 @@ struct KhutbaView: View {
                         .opacity(fridayPrayer.shift.isEmpty ? 0 : 1)
                     Spacer(minLength: 5)
                     Text(fridayPrayer.time)
-                        .font(.system(size: 20, weight: .bold))
+                        .scalingFont(size: 20, weight: .bold)
                         .foregroundColor(.white)
                 }
                 .padding(16)
@@ -34,7 +34,7 @@ struct KhutbaView: View {
                 VStack(spacing: 0) {
                     Text(fridayPrayer.title)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 20, weight: .regular))
+                        .scalingFont(size: 20, weight: .regular)
                         .padding(.bottom, 24)
                         .padding(.top, 8)
                     
@@ -51,9 +51,9 @@ struct KhutbaView: View {
                             .clipShape(Circle())
                         VStack(alignment: .leading, spacing: 2) {
                             Text(fridayPrayer.speaker)
-                                .font(.system(size: 17, weight: .semibold))
+                                .scalingFont(size: 17, weight: .semibold)
                             Text(fridayPrayer.description)
-                                .font(.system(size: 12))
+                                .scalingFont(size: 12)
                                 .foregroundColor(.secondaryText)
                         }
                         

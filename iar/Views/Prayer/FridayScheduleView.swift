@@ -13,7 +13,7 @@ struct FridayScheduleView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Friday Prayers")
-                .font(.system(size: 28, weight: .bold))
+                .scalingFont(size: 28, weight: .bold)
                 .padding(.horizontal, 20)
             VStack(spacing: 16) {
                 ForEach(fridayPrayers, id: \.self) {

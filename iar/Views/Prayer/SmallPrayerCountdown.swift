@@ -12,7 +12,9 @@ struct SmallPrayerCountdown: View {
     @ObservedObject var viewModel: PrayerCountdownViewModel
     
     @Environment(\.safeAreaInsets) var safeArea
-
+    @State private var backgroundHeight: Double = 42
+    
+    
     init(upcoming: PrayerTime?) {
         viewModel = PrayerCountdownViewModel(upcoming: upcoming)
     }
@@ -30,14 +32,29 @@ struct SmallPrayerCountdown: View {
                 Image(.prayerHeader)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(height: safeArea.top + 42, alignment: .top)
+                    .frame(height: backgroundHeight + 8, alignment: .top)
                     .frame(maxWidth: .infinity)
                     .clipped()
             Text(countdown)
-                .font(.system(size: 17, weight: .semibold))
+                .scalingFont(size: 17, weight: .semibold)
                 .foregroundStyle(.white)
                 .padding(.top, safeArea.top + 8)
+                .background(GeometryReader { geometry in
+                    Color.clear
+                        .preference(key: TextHeightPreferenceKey.self, value: geometry.frame(in: .global).height)
+                })
+                .onPreferenceChange(TextHeightPreferenceKey.self) { value in
+                    self.backgroundHeight = value
+                }
+                
         }
+    }
+}
+
+struct TextHeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 42
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
     }
 }
 

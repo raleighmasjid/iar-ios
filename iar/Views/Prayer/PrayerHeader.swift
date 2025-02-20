@@ -60,11 +60,11 @@ struct PrayerHeader: View {
             } label: {
                 VStack(spacing: 2) {
                     Text(date)
-                        .font(.system(size: 16, weight: .semibold))
+                        .scalingFont(size: 16, weight: .semibold)
                         .frame(maxWidth: .infinity)
                         .padding(.bottom, 4)
                     Text(hijri)
-                        .font(.system(size: 12))
+                        .scalingFont(size: 12)
                         .frame(maxWidth: .infinity)
                         .foregroundStyle(.secondaryText)
                 }
