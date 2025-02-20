@@ -29,7 +29,7 @@ struct NewsScreen: View {
         NewsScreen(viewModel: vm)
             .navigationTitle("News")
             .onAppear {
-                vm.fetchLatest()
+                vm.loadData()
             }
     }
 }

@@ -68,14 +68,14 @@ class MockProvider: PrayerProvider, NewsProvider {
     var cachedNews: News? = MockProvider.mockNews
     
     @MainActor
-    func fetchNews() async throws -> News {
+    func fetchNews(forceRefresh: Bool) async throws -> News {
         return MockProvider.mockNews
     }
     
     var cachedPrayerSchedule: PrayerSchedule? = MockProvider.mockPrayerSchedule
     
     @MainActor
-    func fetchPrayers() async throws -> PrayerSchedule {
+    func fetchPrayers(forceRefresh: Bool) async throws -> PrayerSchedule {
         return MockProvider.mockPrayerSchedule
     }
 }

@@ -5,11 +5,7 @@
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.usernotifications.service</string>
-		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).NotificationService</string>
+		<string>com.apple.widgetkit-extension</string>
 	</dict>
-	<key>OneSignal_app_groups_key</key>
-	<string>group.com.lemosys.IARMasjid</string>
 </dict>
 </plist>

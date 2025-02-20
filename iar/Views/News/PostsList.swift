@@ -83,7 +83,7 @@ struct PostsList: View {
     let newsViewModel = NewsViewModel(provider: MockProvider())
     PostsList(viewModel: newsViewModel)
         .onAppear {
-            newsViewModel.fetchLatest()
+            newsViewModel.loadData()
         }
 }
 #endif

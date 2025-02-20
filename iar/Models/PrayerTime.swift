@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UserNotifications
 
 struct PrayerTime: Equatable {
     let prayer: Prayer
@@ -24,25 +23,5 @@ struct PrayerTime: Equatable {
         default:
             return adhan
         }
-    }
-    
-    func notificationRequest(notificationType: NotificationType) -> UNNotificationRequest {
-        let fireDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: notificationTime)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: false)
-        
-        let content = UNMutableNotificationContent()
-        switch prayer {
-        case .shuruq:
-            content.body = "Shuruq is in 30 minutes"
-            content.sound = notificationType == .silent ? nil : UNNotificationSound.default
-        default:
-            content.body = prayer.title
-            content.sound = notificationType.notificationSound
-        }
-        
-        if #available(iOS 15.0, *) {
-            content.interruptionLevel = .timeSensitive
-        }
-        return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
     }
 }

@@ -112,7 +112,7 @@ struct PrayerScreen: View {
             Alert(title: Text("Error"),
                   message: Text("Unable to load prayer times"),
                   primaryButton: .default(Text("Retry"),
-                                          action: { viewModel.fetchLatest() }),
+                                          action: { viewModel.loadData() }),
                   secondaryButton: .cancel(Text("Dismiss")))
         }
         .overlay(alignment: .top) {
@@ -127,7 +127,7 @@ struct PrayerScreen: View {
     PrayerScreen(viewModel: viewModel)
         .environmentObject(viewModel.notificationSettings)
         .onAppear {
-            viewModel.fetchLatest()
+            viewModel.loadData()
         }
 }
 #endif

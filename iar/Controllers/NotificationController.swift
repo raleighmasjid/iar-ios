@@ -37,12 +37,30 @@ actor NotificationController {
         center.removeAllPendingNotificationRequests()
         for time in prayerTimes {
             do {
-                try await center.add(time.notificationRequest(notificationType: notificationType))
+                try await center.add(notificationRequest(prayerTime: time, notificationType: notificationType))
             } catch {
                 NSLog("Error scheduling notification: \(error)")
             }
         }
+    }
+    
+    private func notificationRequest(prayerTime: PrayerTime, notificationType: NotificationType) -> UNNotificationRequest {
+        let fireDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: prayerTime.notificationTime)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: false)
         
+        let content = UNMutableNotificationContent()
+        switch prayerTime.prayer {
+        case .shuruq:
+            content.body = "Shuruq is in 30 minutes"
+            content.sound = notificationType == .silent ? nil : UNNotificationSound.default
+        default:
+            content.body = prayerTime.prayer.title
+            content.sound = notificationType.notificationSound
+        }
         
+        if #available(iOS 15.0, *) {
+            content.interruptionLevel = .timeSensitive
+        }
+        return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
     }
 }

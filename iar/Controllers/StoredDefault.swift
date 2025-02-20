@@ -26,7 +26,7 @@ struct StoredDefault<T: Codable> {
 
     var wrappedValue: T {
         get {
-            guard let data = UserDefaults.standard.object(forKey: key.rawValue) as? Data else {
+            guard let data = sharedUserDefaults.object(forKey: key.rawValue) as? Data else {
                 return defaultValue
             }
 
@@ -36,7 +36,9 @@ struct StoredDefault<T: Codable> {
         
         set {
             let data = try? JSONEncoder().encode(newValue)
-            UserDefaults.standard.set(data, forKey: key.rawValue)
+            sharedUserDefaults.set(data, forKey: key.rawValue)
         }
     }
 }
+
+fileprivate let sharedUserDefaults: UserDefaults = UserDefaults(suiteName: "group.com.lemosys.IARMasjid")!

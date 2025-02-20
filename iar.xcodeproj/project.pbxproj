@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -69,6 +69,22 @@
 		84AAD21E2BF7A4C1004A1605 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAD21D2BF7A4C1004A1605 /* LocationProvider.swift */; };
 		84AAD2202BF7A752004A1605 /* CompassAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAD21F2BF7A752004A1605 /* CompassAngle.swift */; };
 		84ACC8D927B86761004D4F25 /* FridayPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACC8D827B86761004D4F25 /* FridayPrayer.swift */; };
+		84B91F932D657CA7004F2FBC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B91F762D64E4C8004F2FBC /* WidgetKit.framework */; };
+		84B91F942D657CA7004F2FBC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B91F782D64E4C8004F2FBC /* SwiftUI.framework */; };
+		84B91F9F2D657CA8004F2FBC /* IARWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 84B91F922D657CA7004F2FBC /* IARWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		84B91FA52D657D13004F2FBC /* PrayerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F427AA07EB008A180F /* PrayerProvider.swift */; };
+		84B91FA62D657D21004F2FBC /* PrayerSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F283527C1DEE8008D0328 /* PrayerSchedule.swift */; };
+		84B91FA72D657D2A004F2FBC /* PrayerDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2CA279F9246000D80EE /* PrayerDay.swift */; };
+		84B91FA82D657D34004F2FBC /* HijriComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2DE279FA893000D80EE /* HijriComponents.swift */; };
+		84B91FA92D657D3F004F2FBC /* AdhanSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2C8279F74C3000D80EE /* AdhanSchedule.swift */; };
+		84B91FAA2D657D49004F2FBC /* IqamahSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2CC279F926A000D80EE /* IqamahSchedule.swift */; };
+		84B91FAB2D657D6D004F2FBC /* FridayPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACC8D827B86761004D4F25 /* FridayPrayer.swift */; };
+		84B91FB02D657F84004F2FBC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CD79C2D644529009FA503 /* View.swift */; };
+		84B91FB52D658276004F2FBC /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E6279FB162000D80EE /* Prayer.swift */; };
+		84B91FB62D65835B004F2FBC /* PrayerTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F627AA2EF7008A180F /* PrayerTime.swift */; };
+		84B91FB72D65840A004F2FBC /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
+		84B91FB82D658430004F2FBC /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E57E0127AB943600AC10A0 /* URLSession.swift */; };
+		84B91FB92D658481004F2FBC /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FB27AA38B5008A180F /* Sequence.swift */; };
 		84D44BA127D866C300202BD3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA027D866C300202BD3 /* Post.swift */; };
 		84D44BA527D8672200202BD3 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA427D8672200202BD3 /* News.swift */; };
 		84D44BA727D8676400202BD3 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA627D8676400202BD3 /* NewsViewModel.swift */; };
@@ -86,6 +102,13 @@
 			remoteGlobalIDString = 843C8C7B27F154090077F5E1;
 			remoteInfo = IARNotificationServiceExtension;
 		};
+		84B91F9D2D657CA8004F2FBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847AC2AE279F71A1000D80EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84B91F912D657CA7004F2FBC;
+			remoteInfo = IARWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,6 +119,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				843C8C8327F154090077F5E1 /* IARNotificationServiceExtension.appex in Embed Foundation Extensions */,
+				84B91F9F2D657CA8004F2FBC /* IARWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +187,10 @@
 		84AAD21D2BF7A4C1004A1605 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		84AAD21F2BF7A752004A1605 /* CompassAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassAngle.swift; sourceTree = "<group>"; };
 		84ACC8D827B86761004D4F25 /* FridayPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridayPrayer.swift; sourceTree = "<group>"; };
+		84B91F762D64E4C8004F2FBC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		84B91F782D64E4C8004F2FBC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		84B91F892D64E54D004F2FBC /* IARNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IARNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		84B91F922D657CA7004F2FBC /* IARWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IARWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D44BA027D866C300202BD3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		84D44BA427D8672200202BD3 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		84D44BA627D8676400202BD3 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
@@ -171,6 +199,20 @@
 		84E57E0127AB943600AC10A0 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		84FB95A22BF45E00005E0D5A /* SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeArea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		84B91FA02D657CA8004F2FBC /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 84B91F912D657CA7004F2FBC /* IARWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		84B91F952D657CA7004F2FBC /* IARWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (84B91FA02D657CA8004F2FBC /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = IARWidget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		843C8C7927F154090077F5E1 /* Frameworks */ = {
@@ -190,6 +232,15 @@
 				84224BD72BED5676001B6353 /* Nuke in Frameworks */,
 				846315822BF6F70E007781F1 /* Adhan in Frameworks */,
 				84224BD92BED5676001B6353 /* NukeUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B91F8F2D657CA7004F2FBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B91F942D657CA7004F2FBC /* SwiftUI.framework in Frameworks */,
+				84B91F932D657CA7004F2FBC /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +318,7 @@
 		843C8C7D27F154090077F5E1 /* IARNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
+				84B91F892D64E54D004F2FBC /* IARNotificationServiceExtension.entitlements */,
 				843C8C7E27F154090077F5E1 /* NotificationService.swift */,
 				843C8C8027F154090077F5E1 /* Info.plist */,
 			);
@@ -287,6 +339,8 @@
 			children = (
 				847AC2B8279F71A2000D80EE /* iar */,
 				843C8C7D27F154090077F5E1 /* IARNotificationServiceExtension */,
+				84B91F952D657CA7004F2FBC /* IARWidget */,
+				84B91F752D64E4C8004F2FBC /* Frameworks */,
 				847AC2B7279F71A2000D80EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -296,6 +350,7 @@
 			children = (
 				847AC2B6279F71A2000D80EE /* IAR.app */,
 				843C8C7C27F154090077F5E1 /* IARNotificationServiceExtension.appex */,
+				84B91F922D657CA7004F2FBC /* IARWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -385,6 +440,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		84B91F752D64E4C8004F2FBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84B91F762D64E4C8004F2FBC /* WidgetKit.framework */,
+				84B91F782D64E4C8004F2FBC /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84FEFD4E27AEDD0A0075126B /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +494,7 @@
 			);
 			dependencies = (
 				843C8C8227F154090077F5E1 /* PBXTargetDependency */,
+				84B91F9E2D657CA8004F2FBC /* PBXTargetDependency */,
 			);
 			name = iar;
 			packageProductDependencies = (
@@ -443,6 +508,28 @@
 			productReference = 847AC2B6279F71A2000D80EE /* IAR.app */;
 			productType = "com.apple.product-type.application";
 		};
+		84B91F912D657CA7004F2FBC /* IARWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84B91FA12D657CA8004F2FBC /* Build configuration list for PBXNativeTarget "IARWidgetExtension" */;
+			buildPhases = (
+				84B91F8E2D657CA7004F2FBC /* Sources */,
+				84B91F8F2D657CA7004F2FBC /* Frameworks */,
+				84B91F902D657CA7004F2FBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				84B91F952D657CA7004F2FBC /* IARWidget */,
+			);
+			name = IARWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = IARWidgetExtension;
+			productReference = 84B91F922D657CA7004F2FBC /* IARWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -450,7 +537,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					843C8C7B27F154090077F5E1 = {
@@ -458,6 +545,9 @@
 					};
 					847AC2B5279F71A2000D80EE = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					84B91F912D657CA7004F2FBC = {
+						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
@@ -481,6 +571,7 @@
 			targets = (
 				847AC2B5279F71A2000D80EE /* iar */,
 				843C8C7B27F154090077F5E1 /* IARNotificationServiceExtension */,
+				84B91F912D657CA7004F2FBC /* IARWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -502,6 +593,13 @@
 				8416F08D27BF603D00129383 /* AdhanAfasy.caf in Resources */,
 				840F072627DFE05300CCDE19 /* Launch Screen.storyboard in Resources */,
 				847AC2BE279F71A2000D80EE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B91F902D657CA7004F2FBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +677,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84B91F8E2D657CA7004F2FBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B91FA52D657D13004F2FBC /* PrayerProvider.swift in Sources */,
+				84B91FB92D658481004F2FBC /* Sequence.swift in Sources */,
+				84B91FB82D658430004F2FBC /* URLSession.swift in Sources */,
+				84B91FB72D65840A004F2FBC /* StoredDefault.swift in Sources */,
+				84B91FAB2D657D6D004F2FBC /* FridayPrayer.swift in Sources */,
+				84B91FA82D657D34004F2FBC /* HijriComponents.swift in Sources */,
+				84B91FB52D658276004F2FBC /* Prayer.swift in Sources */,
+				84B91FA72D657D2A004F2FBC /* PrayerDay.swift in Sources */,
+				84B91FB02D657F84004F2FBC /* View.swift in Sources */,
+				84B91FAA2D657D49004F2FBC /* IqamahSchedule.swift in Sources */,
+				84B91FA92D657D3F004F2FBC /* AdhanSchedule.swift in Sources */,
+				84B91FB62D65835B004F2FBC /* PrayerTime.swift in Sources */,
+				84B91FA62D657D21004F2FBC /* PrayerSchedule.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -587,12 +705,18 @@
 			target = 843C8C7B27F154090077F5E1 /* IARNotificationServiceExtension */;
 			targetProxy = 843C8C8127F154090077F5E1 /* PBXContainerItemProxy */;
 		};
+		84B91F9E2D657CA8004F2FBC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84B91F912D657CA7004F2FBC /* IARWidgetExtension */;
+			targetProxy = 84B91F9D2D657CA8004F2FBC /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		843C8C8527F154090077F5E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = IARNotificationServiceExtension/IARNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M8X3U28L5K;
@@ -600,7 +724,7 @@
 				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Notification Service Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -619,6 +743,7 @@
 		843C8C8627F154090077F5E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = IARNotificationServiceExtension/IARNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M8X3U28L5K;
@@ -626,7 +751,7 @@
 				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Notification Service Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -779,6 +904,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iar/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IAR;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location used to determine Qibla direction";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -786,7 +913,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -813,6 +940,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iar/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IAR;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location used to determine Qibla direction";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -820,7 +949,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -828,6 +957,71 @@
 				MARKETING_VERSION = 3.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid;
 				PRODUCT_NAME = IAR;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		84B91FA22D657CA8004F2FBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = IARWidget/IARWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M8X3U28L5K;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IARWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IAR;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 3.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.IARWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84B91FA32D657CA8004F2FBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = IARWidget/IARWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M8X3U28L5K;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IARWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IAR;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 3.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.IARWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -860,6 +1054,15 @@
 			buildConfigurations = (
 				847AC2C5279F71A2000D80EE /* Debug */,
 				847AC2C6279F71A2000D80EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84B91FA12D657CA8004F2FBC /* Build configuration list for PBXNativeTarget "IARWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84B91FA22D657CA8004F2FBC /* Debug */,
+				84B91FA32D657CA8004F2FBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -59,15 +59,11 @@ class PrayerTimesViewModel: ObservableObject {
         return prayerDays[safe: offset]
     }
     
-    func fetchLatest() {
+    func loadData() {
         loading = true
-        if let cached = provider.cachedPrayerSchedule {
-            didFetchPrayerSchedule(schedule: cached)
-        }
-
         Task {
             do {
-                let schedule = try await self.provider.fetchPrayers()
+                let schedule = try await self.provider.fetchPrayers(forceRefresh: false)
                 self.didFetchPrayerSchedule(schedule: schedule)
                 self.loading = false
             } catch {

@@ -72,10 +72,10 @@ struct MainView: View {
             styleTabBar()
 
             if prayerTimesViewModel.prayerDays.isEmpty {
-                prayerTimesViewModel.fetchLatest()
+                prayerTimesViewModel.loadData()
             }
             if newsViewModel.announcements == nil {
-                newsViewModel.fetchLatest()
+                newsViewModel.loadData()
             }
         }
         .onChange(of: scenePhase) { newPhase in
@@ -85,16 +85,16 @@ struct MainView: View {
             case .active:
                 if didEnterBackground {
                     didEnterBackground = false
-                    prayerTimesViewModel.fetchLatest()
-                    newsViewModel.fetchLatest()
+                    prayerTimesViewModel.loadData()
+                    newsViewModel.loadData()
                 }
             default:
                 break
             }
         }
         .onReceive(dayChange) { _ in
-            prayerTimesViewModel.fetchLatest()
-            newsViewModel.fetchLatest()
+            prayerTimesViewModel.loadData()
+            newsViewModel.loadData()
         }
     }
     

@@ -10,7 +10,7 @@ import Combine
 
 protocol NewsProvider: AnyObject {
     var cachedNews: News? { get }
-    func fetchNews() async throws -> News
+    func fetchNews(forceRefresh: Bool) async throws -> News
 }
 
 class NetworkNewsProvider: NewsProvider {
@@ -20,11 +20,20 @@ class NetworkNewsProvider: NewsProvider {
     private(set) var cachedNews: News?
 
     @MainActor
-    func fetchNews() async throws -> News {
+    func fetchNews(forceRefresh: Bool) async throws -> News {
+        if let cached = cachedNews, let cacheDate = cached.cacheDate, !forceRefresh {
+            // 5 minute cache lifetime
+            let cacheInterval = Date().timeIntervalSince(cacheDate)
+            if cacheInterval < 60 * 5 {
+                return cached
+            }
+        }
+        
         let (data, _) = try await session.data(from: "https://raleighmasjid.org/API/app/news/")
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        let news = try decoder.decode(News.self, from: data)
+        var news = try decoder.decode(News.self, from: data)
+        news.cacheDate = Date()
         cachedNews = news
         return news
     }

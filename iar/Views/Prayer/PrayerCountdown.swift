@@ -43,10 +43,10 @@ struct PrayerCountdown: View {
             Text(nextPrayer)
                 .padding(.vertical, 4)
                 .padding(.horizontal, 9)
-                .font(.system(size: 16, weight: .medium))
+                .scalingFont(size: 16, weight: .medium)
                 .background(badgeColor)
                 .cornerRadius(8)
-            Text(countdown)
+            Text(
                 .font(.system(size: 48))
         }
         .foregroundStyle(.white)

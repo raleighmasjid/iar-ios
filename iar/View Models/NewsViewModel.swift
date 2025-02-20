@@ -25,24 +25,25 @@ class NewsViewModel: ObservableObject {
         self.provider = provider
     }
     
-    func fetchLatest() {
-        if let cached = provider.cachedNews {
-            didFetchNews(news: cached)
-        }
-
+    func loadData() {
         loading = true
         Task {
-            await refreshNews()
-            self.loading = false
+            do {
+                let news = try await self.provider.fetchNews(forceRefresh: true)
+                self.didFetchNews(news: news)
+                self.loading = false
+            } catch {
+                self.error = true
+                self.loading = false
+            }
         }
     }
     
     func refreshNews() async {
         do {
-            let news = try await provider.fetchNews()
+            let news = try await provider.fetchNews(forceRefresh: true)
             self.didFetchNews(news: news)
         } catch {
-            NSLog("Error \(error)")
             self.error = true
         }
     }
