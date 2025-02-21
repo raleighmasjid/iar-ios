@@ -17,7 +17,7 @@ struct PrayerWidget: Widget {
         }
         .configurationDisplayName("Next Prayer")
         .description("Countdown until the next prayer")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .systemMedium])
         .contentMarginsDisabled()
     }
 }

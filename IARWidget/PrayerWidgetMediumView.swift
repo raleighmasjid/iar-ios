@@ -20,7 +20,7 @@ struct PrayerWidgetMediumView: View {
                     Text(entry.prayerDay.adhan(for: prayer).formatted(date: .omitted, time: .shortened))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .scalingFont(size: 15, weight: .semibold)
+                .font(.system(size: 15, weight: .semibold))
                 .foregroundStyle(prayerColor(prayer))
                 .lineLimit(1)
                 .allowsTightening(true)
@@ -45,9 +45,9 @@ struct PrayerWidgetMediumView: View {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
                     Text("\(entry.nextPrayer.prayer.title) is in")
-                        .scalingFont(size: 11, weight: .semibold)
+                        .font(.system(size: 13, weight: .semibold))
                     Text(entry.nextPrayer.adhan, style: .relative)
-                        .scalingFont(size: 20, weight: .semibold)
+                        .font(.system(size: 20, weight: .semibold))
                         .minimumScaleFactor(0.1)
                         .lineLimit(1)
                         .allowsTightening(true)
@@ -71,12 +71,13 @@ struct PrayerWidgetMediumView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding(16)
+        .padding([.horizontal, .bottom], 16)
+        .padding(.top, 12)
     }
 }
 
 #Preview(as: .systemMedium) {
-    PrayerDayWidget()
+    PrayerWidget()
 } timeline: {
     PrayerTimelineEntry.placeholder()
 }

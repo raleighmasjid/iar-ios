@@ -38,7 +38,10 @@ struct SmallPrayerCountdown: View {
             Text(countdown)
                 .scalingFont(size: 17, weight: .semibold)
                 .foregroundStyle(.white)
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
                 .padding(.top, safeArea.top + 8)
+                .padding(.horizontal, 30)
                 .background(GeometryReader { geometry in
                     Color.clear
                         .preference(key: TextHeightPreferenceKey.self, value: geometry.frame(in: .global).height)

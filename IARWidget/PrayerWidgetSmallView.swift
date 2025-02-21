@@ -16,9 +16,9 @@ struct PrayerWidgetSmallView: View {
             HijriView(components: entry.prayerDay.hijri)
             VStack(alignment: .leading) {
                 Text("\(entry.nextPrayer.prayer.title) is in")
-                    .scalingFont(size: 13, weight: .semibold)
+                    .font(.system(size: 13, weight: .semibold))
                 Text(entry.nextPrayer.adhan, style: .relative)
-                    .scalingFont(size: 28, weight: .bold)
+                    .font(.system(size: 28, weight: .bold))
                     .minimumScaleFactor(0.1)
                     .lineLimit(1)
                     .allowsTightening(true)
@@ -29,7 +29,7 @@ struct PrayerWidgetSmallView: View {
                 Spacer(minLength: 16)
                 Text(entry.nextPrayer.adhan.formatted(date: .omitted, time: .shortened))
             }
-            .scalingFont(size: 15, weight: .semibold)
+            .font(.system(size: 15, weight: .semibold))
             .allowsTightening(true)
             .minimumScaleFactor(0.5)
             .lineLimit(1)

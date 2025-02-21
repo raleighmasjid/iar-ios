@@ -34,7 +34,7 @@ struct PrayerWidgetView: View {
 }
 
 #Preview(as: .systemMedium) {
-    PrayerDayWidget()
+    PrayerWidget()
 } timeline: {
     PrayerTimelineEntry.placeholder()
 }
