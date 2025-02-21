@@ -9,6 +9,8 @@ import SwiftUI
 
 struct QiblahScreen: View {
 
+    let feedback = UIImpactFeedbackGenerator()
+    
     @ObservedObject var viewModel: CompassViewModel
     
     @Environment(\.scenePhase) var scenePhase
@@ -55,6 +57,8 @@ struct QiblahScreen: View {
             return -1
         }
     }
+    
+    @State var isCorrect: Bool = false
     
     @ViewBuilder func headerView() -> some View {
         if sizeCategory >= .accessibilityMedium {
@@ -128,6 +132,7 @@ struct QiblahScreen: View {
                         .onAppear {
                             isVisible = true
                             viewModel.startUpdating()
+                            feedback.prepare()
                         }
                         .onDisappear {
                             isVisible = false
@@ -137,13 +142,14 @@ struct QiblahScreen: View {
                 }
             }
             Text(makkahText)
+                .scalingFont(size: 22, weight: .bold)
                 .minimumScaleFactor(0.1)
                 .opacity(percentCorrect)
                 .animation(.easeInOut(duration: 0.15), value: percentCorrect)
                 .padding(.horizontal, 32)
+
             Spacer()
         }
-        .scalingFont(size: 22, weight: .bold)
         .lineLimit(1)
         .onReceive(viewModel.$compassAngle) { angle in
             switch angle {
@@ -151,6 +157,16 @@ struct QiblahScreen: View {
                 rotationAngle = adjustedEnd(from: rotationAngle, to: angleValue)
             default:
                 break
+            }
+            isCorrect = percentCorrect > 0
+        }
+        .onChange(of: isCorrect) { newValue in
+            if isVisible {
+                if newValue {
+                    feedback.impactOccurred(intensity: 1.0)
+                } else {
+                    feedback.impactOccurred(intensity: 0.5)
+                }
             }
         }
         .onChange(of: scenePhase) { newPhase in
