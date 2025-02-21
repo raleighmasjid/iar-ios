@@ -22,8 +22,8 @@ struct PrayerWidget: Widget {
     }
 }
 
-#Preview(as: .systemSmall) {
-    PrayerWidget()
-} timeline: {
-    PrayerTimelineEntry.placeholder()
-}
+//#Preview(as: .systemSmall) {
+//    PrayerWidget()
+//} timeline: {
+//    PrayerTimelineEntry.placeholder()
+//}

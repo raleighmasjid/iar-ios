@@ -76,8 +76,8 @@ struct PrayerWidgetMediumView: View {
     }
 }
 
-#Preview(as: .systemMedium) {
-    PrayerWidget()
-} timeline: {
-    PrayerTimelineEntry.placeholder()
-}
+//#Preview(as: .systemMedium) {
+//    PrayerWidget()
+//} timeline: {
+//    PrayerTimelineEntry.placeholder()
+//}

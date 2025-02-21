@@ -11,12 +11,15 @@ struct SmallPrayerCountdown: View {
 
     @ObservedObject var viewModel: PrayerCountdownViewModel
     
-    @Environment(\.safeAreaInsets) var safeArea
-    @State private var backgroundHeight: Double = 42
+    let verticalPadding: CGFloat
+    let safeArea: CGSize
+    @Binding var textHeight: CGFloat
     
-    
-    init(upcoming: PrayerTime?) {
-        viewModel = PrayerCountdownViewModel(upcoming: upcoming)
+    init(upcoming: PrayerTime?, verticalPadding: CGFloat, safeArea: CGSize, textHeight: Binding<CGFloat>) {
+        self.viewModel = PrayerCountdownViewModel(upcoming: upcoming)
+        self.verticalPadding = verticalPadding
+        self.safeArea = safeArea
+        self._textHeight = textHeight
     }
 
     var countdown: String {
@@ -32,42 +35,35 @@ struct SmallPrayerCountdown: View {
                 Image(.prayerHeader)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(height: backgroundHeight + 8, alignment: .top)
+                    .frame(height: textHeight + safeArea.height, alignment: .top)
                     .frame(maxWidth: .infinity)
                     .clipped()
+                    .ignoresSafeArea(edges: .top)
             Text(countdown)
                 .scalingFont(size: 17, weight: .semibold)
                 .foregroundStyle(.white)
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
-                .padding(.top, safeArea.top + 8)
+                .padding(.vertical, verticalPadding)
                 .padding(.horizontal, 30)
-                .background(GeometryReader { geometry in
-                    Color.clear
-                        .preference(key: TextHeightPreferenceKey.self, value: geometry.frame(in: .global).height)
-                })
-                .onPreferenceChange(TextHeightPreferenceKey.self) { value in
-                    self.backgroundHeight = value
+                .onGeometryChange(for: CGFloat.self) { proxy in
+                    proxy.frame(in: .global).height
+                } action: { newValue in
+                    self.textHeight = newValue
                 }
-                
         }
     }
 }
 
-struct TextHeightPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = 42
-    
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-    }
-}
-
-#if DEBUG
-#Preview {
-    SmallPrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)))
-}
-
-#Preview {
-    SmallPrayerCountdown(upcoming: nil)
-}
-#endif
+//#if DEBUG
+//#Preview {
+//    @Previewable @State var textHeight: Double = 0
+//    SmallPrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)), safeArea: .zero, textHeight: $textHeight)
+//}
+//
+//#Preview {
+//    @Previewable @State var textHeight: Double = 0
+//    SmallPrayerCountdown(upcoming: nil, safeArea: .zero, textHeight: $textHeight)
+//}
+//#endif
 

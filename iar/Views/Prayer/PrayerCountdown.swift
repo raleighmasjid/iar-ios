@@ -9,9 +9,13 @@ import SwiftUI
 
 struct PrayerCountdown: View {
     @ObservedObject var viewModel: PrayerCountdownViewModel
+    let verticalPadding: CGFloat
+    @Binding var textHeight: CGFloat
     
-    init(upcoming: PrayerTime?) {
-        viewModel = PrayerCountdownViewModel(upcoming: upcoming)
+    init(upcoming: PrayerTime?, verticalPadding: CGFloat, textHeight: Binding<CGFloat>) {
+        self.viewModel = PrayerCountdownViewModel(upcoming: upcoming)
+        self.verticalPadding = verticalPadding
+        self._textHeight = textHeight
     }
     
     var nextPrayer: String {
@@ -47,21 +51,28 @@ struct PrayerCountdown: View {
                 .background(badgeColor)
                 .cornerRadius(8)
             Text(countdown)
-                .font(.system(size: 48))
+                .scalingFont(size: 48)
+                .onGeometryChange(for: CGFloat.self) { proxy in
+                    proxy.size.height
+                } action: { newValue in
+                    textHeight = newValue
+                }
         }
         .foregroundStyle(.white)
-        .padding(.top, 36)
+        .padding(.vertical, verticalPadding)
     }
 }
 
 #if DEBUG
 #Preview {
-    PrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)))
+    PrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)),
+                    verticalPadding: 40,
+                    textHeight: .constant(0))
         .background(Color.black)
 }
 
 #Preview("no upcoming") {
-    PrayerCountdown(upcoming: nil)
+    PrayerCountdown(upcoming: nil, verticalPadding: 40, textHeight: .constant(0))
         .background(Color.black)
 }
 #endif

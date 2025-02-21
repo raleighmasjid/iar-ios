@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PrayerScrollOffsetPreferenceKey: PreferenceKey {
-    static var defaultValue: CGPoint = .zero
+struct FramePreferenceKey: PreferenceKey {
+    static var defaultValue: CGRect = .zero
     
-    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
     }
 }

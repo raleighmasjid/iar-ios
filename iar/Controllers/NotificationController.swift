@@ -58,9 +58,7 @@ actor NotificationController {
             content.sound = notificationType.notificationSound
         }
         
-        if #available(iOS 15.0, *) {
-            content.interruptionLevel = .timeSensitive
-        }
+        content.interruptionLevel = .timeSensitive
         return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
     }
 }

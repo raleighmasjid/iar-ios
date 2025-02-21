@@ -8,45 +8,61 @@
 import SwiftUI
 
 struct PrayerScreen: View {
+
     @ObservedObject var viewModel: PrayerTimesViewModel
 
-    @State private var scrollPosition = 0.0
-    @Environment(\.safeAreaInsets) private var safeArea
+    @State var safeArea: CGSize = .zero
+    @State var countdownFrame: CGRect = .zero
+    @State var smallCountdownHeight: CGFloat = 0
+    @State var countdownTextHeight: CGFloat = 0
     private let scrollNamespace = "PrayerScrollView"
     
+    let smallCountdownVerticalPadding: CGFloat = 18.0
+    let countdownVerticalPadding: CGFloat = 40.0
+    
+    var scrollPosition: CGFloat {
+        countdownFrame.origin.y
+    }
+    
     var stickyHeaderOpacity: Double {
+        let metrics = opacityMetrics()
+        let offset = smallCountdownVerticalPadding / 2
+        let end = max(metrics.end - offset, smallCountdownHeight - countdownFrame.height)
+        let start = metrics.end + offset
+        let duration = start - end
+        
         switch scrollPosition {
-        case _ where scrollPosition <= (-1 * safeArea.top) - 50:
-            return 1
-        case _ where scrollPosition > (-1 * safeArea.top) - 35:
+        case _ where scrollPosition > start:
             return 0
+        case _ where scrollPosition <= end:
+            return 1
         default:
-            return abs((scrollPosition + safeArea.top + 35.0) / 15.0)
+            return 1.0 - abs((scrollPosition - end) / duration)
         }
     }
     
+    func opacityMetrics() -> (start: CGFloat, end: CGFloat, duration: CGFloat) {
+        let end: CGFloat = (smallCountdownHeight - smallCountdownVerticalPadding) - (countdownFrame.height - countdownVerticalPadding)
+        let duration: CGFloat = countdownTextHeight - (smallCountdownHeight - (smallCountdownVerticalPadding * 2))
+        let start: CGFloat = end + duration
+        return (start: start, end: end, duration: duration)
+    }
+    
     var largeHeaderOpacity: Double {
+        let metrics = opacityMetrics()
+        
         switch scrollPosition {
-        case _ where scrollPosition >= (-1 * safeArea.top):
+        case _ where scrollPosition >= metrics.start:
             return 1
-        case _ where scrollPosition < (-1 * safeArea.top) - 40:
+        case _ where scrollPosition < metrics.end:
             return 0
         default:
-            return 1 - abs((scrollPosition + safeArea.top) / 40.0)
+            return abs((scrollPosition - metrics.end) / metrics.duration)
         }
     }
     
     var headerHeight: CGFloat {
-        max(0, countdownHeight + 38 + scrollPosition)
-    }
-    
-    var contentAreaHeight: CGFloat {
-        UIScreen.main.bounds.height - (safeArea.top + safeArea.bottom)
-    }
-    
-    var countdownHeight: CGFloat {
-        let addedHeight: CGFloat = contentAreaHeight > 650 ? 180 : 130
-        return safeArea.top + addedHeight
+        max(0, countdownFrame.size.height + safeArea.height + countdownFrame.origin.y + 38)
     }
 
     var headerImage: some View {
@@ -54,31 +70,24 @@ struct PrayerScreen: View {
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(height: headerHeight, alignment: .top)
-            .frame(maxWidth: UIScreen.main.bounds.width)
             .clipped()
             .allowsHitTesting(false)
+            .ignoresSafeArea(edges: .top)
     }
 
     var countdownView: some View {
-        ZStack(alignment: .top) {
-            PrayerCountdown(upcoming: viewModel.upcoming)
-                .frame(height: countdownHeight)
-                .opacity(largeHeaderOpacity)
-            HStack {
-                Spacer(minLength: 50)
-                if viewModel.loading {
-                    ProgressView()
-                        .tint(.white)
-                        .padding(.trailing, 48)
-                        .padding(.top, safeArea.top + 12)
-                }
-            }
-        }
+        PrayerCountdown(upcoming: viewModel.upcoming,
+                        verticalPadding: countdownVerticalPadding,
+                        textHeight: $countdownTextHeight)
+            .opacity(largeHeaderOpacity)
+            .frame(maxWidth: .infinity)
     }
 
     var stickyHeader: some View {
-        SmallPrayerCountdown(upcoming: viewModel.upcoming)
-            .ignoresSafeArea(edges: .top)
+        SmallPrayerCountdown(upcoming: viewModel.upcoming,
+                             verticalPadding: smallCountdownVerticalPadding,
+                             safeArea: safeArea,
+                             textHeight: $smallCountdownHeight)
             .frame(maxWidth: .infinity)
             .opacity(stickyHeaderOpacity)
             .allowsHitTesting(false)
@@ -87,26 +96,42 @@ struct PrayerScreen: View {
     var body: some View {
         ZStack(alignment: .top) {
             headerImage
+                .frame(maxWidth: safeArea.width)
 
+            HStack {
+                Spacer(minLength: 50)
+                if viewModel.loading {
+                    ProgressView()
+                        .tint(.white)
+                        .padding(.trailing, 42)
+                        .padding(.top, 8)
+                }
+            }
+            
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     countdownView
+                        .onGeometryChange(for: CGRect.self) { proxy in
+                            proxy.frame(in: .named(scrollNamespace))
+                        } action: { value in
+                            self.countdownFrame = value
+                        }
                     PrayerTimesView(prayerDays: viewModel.prayerDays)
                     FridayScheduleView(fridayPrayers: viewModel.fridaySchedule)
                     Spacer(minLength: 5)
                 }
-                .background(GeometryReader { geometry in
-                    Color.clear
-                        .preference(key: PrayerScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named(scrollNamespace)).origin)
-                })
-                .onPreferenceChange(PrayerScrollOffsetPreferenceKey.self) { value in
-                    self.scrollPosition = value.y
-                }
             }
             .coordinateSpace(name: scrollNamespace)
             .scrollIndicators(.hidden)
+//            .if(true) { scrollView in
+//                
+//                if #available(iOS 17.0, *) {
+//                    scrollView.scrollTargetBehavior(.viewAligned)
+//                } else {
+//                    scrollView
+//                }
+//            }
         }
-        .ignoresSafeArea(edges: .top)
         .background(Color.prayerScreenBackground)
         .alert(isPresented: $viewModel.error) {
             Alert(title: Text("Error"),
@@ -117,7 +142,12 @@ struct PrayerScreen: View {
         }
         .overlay(alignment: .top) {
             stickyHeader
+        }.onGeometryChange(for: CGSize.self) { proxy in
+            CGSize(width: proxy.size.width, height: proxy.safeAreaInsets.top)
+        } action: { newValue in
+            safeArea = newValue
         }
+
     }
 }
 

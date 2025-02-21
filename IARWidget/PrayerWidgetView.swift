@@ -27,14 +27,14 @@ struct PrayerWidgetView: View {
     }
 }
 
-#Preview(as: .systemSmall) {
-    PrayerWidget()
-} timeline: {
-    PrayerTimelineEntry.placeholder()
-}
-
-#Preview(as: .systemMedium) {
-    PrayerWidget()
-} timeline: {
-    PrayerTimelineEntry.placeholder()
-}
+//#Preview(as: .systemSmall) {
+//    PrayerWidget()
+//} timeline: {
+//    PrayerTimelineEntry.placeholder()
+//}
+//
+//#Preview(as: .systemMedium) {
+//    PrayerWidget()
+//} timeline: {
+//    PrayerTimelineEntry.placeholder()
+//}
