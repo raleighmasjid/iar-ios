@@ -9,12 +9,12 @@ import SwiftUI
 
 struct PrayerCountdown: View {
     @ObservedObject var viewModel: PrayerCountdownViewModel
-    let verticalPadding: CGFloat
+    let mode: Mode
     @Binding var textHeight: CGFloat
     
-    init(upcoming: PrayerTime?, verticalPadding: CGFloat, textHeight: Binding<CGFloat>) {
+    init(upcoming: PrayerTime?, mode: Mode, textHeight: Binding<CGFloat>) {
         self.viewModel = PrayerCountdownViewModel(upcoming: upcoming)
-        self.verticalPadding = verticalPadding
+        self.mode = mode
         self._textHeight = textHeight
     }
     
@@ -43,7 +43,7 @@ struct PrayerCountdown: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 12) {
+        VStack(alignment: .center, spacing: mode.spacing) {
             Text(nextPrayer)
                 .padding(.vertical, 4)
                 .padding(.horizontal, 9)
@@ -51,7 +51,7 @@ struct PrayerCountdown: View {
                 .background(badgeColor)
                 .cornerRadius(8)
             Text(countdown)
-                .scalingFont(size: 48)
+                .scalingFont(size: mode.countdownFontSize)
                 .onGeometryChange(for: CGFloat.self) { proxy in
                     proxy.size.height
                 } action: { newValue in
@@ -59,20 +59,52 @@ struct PrayerCountdown: View {
                 }
         }
         .foregroundStyle(.white)
-        .padding(.vertical, verticalPadding)
+        .padding(.vertical, mode.verticalPadding)
+    }
+    
+    enum Mode {
+        case small
+        case large
+        
+        var verticalPadding: CGFloat {
+            switch self {
+            case .small:
+                return 28
+            case .large:
+                return 40
+            }
+        }
+        
+        var countdownFontSize: CGFloat {
+            switch self {
+            case .small:
+                return 36
+            case .large:
+                return 48
+            }
+        }
+        
+        var spacing: CGFloat {
+            switch self {
+            case .small:
+                return 4
+            case .large:
+                return 12
+            }
+        }
     }
 }
 
 #if DEBUG
 #Preview {
     PrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)),
-                    verticalPadding: 40,
+                    mode: .large,
                     textHeight: .constant(0))
         .background(Color.black)
 }
 
 #Preview("no upcoming") {
-    PrayerCountdown(upcoming: nil, verticalPadding: 40, textHeight: .constant(0))
+    PrayerCountdown(upcoming: nil, mode: .large, textHeight: .constant(0))
         .background(Color.black)
 }
 #endif

@@ -8,21 +8,12 @@
 import SwiftUI
 
 extension View {
-    /// Applies the given transform if the given condition evaluates to `true`.
-    /// - Parameters:
-    ///   - condition: The condition to evaluate.
-    ///   - transform: The transform to apply to the source `View`.
-    /// - Returns: Either the original `View` or the modified `View` if the condition is `true`.
-    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
-        if condition {
-            transform(self)
-        } else {
-            self
-        }
-    }
-    
     func scalingFont(size: Double, weight: Font.Weight = .regular, maxSize: Double? = nil) -> some View {
         modifier(ScalingFont(size: size, weight: weight, maxSize: maxSize))
+    }
+    
+    func targetedScrollView(transitionStart: CGFloat, transitionEnd: CGFloat) -> some View {
+        modifier(TargetedScrollView(transitionStart: transitionStart, transitionEnd: transitionEnd))
     }
 }
 
@@ -35,5 +26,30 @@ struct ScalingFont: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: min(size, maxSize ?? size), weight: weight))
+    }
+}
+
+struct TargetedScrollView: ViewModifier {
+    let transitionStart: CGFloat
+    let transitionEnd: CGFloat
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 17, *) {
+            content.scrollTargetBehavior(StickyHeaderScrollTargetBehavior(transitionStart: transitionStart, transitionEnd: transitionEnd))
+        } else {
+            content
+        }
+    }
+}
+
+@available(iOS 17, *)
+struct StickyHeaderScrollTargetBehavior: ScrollTargetBehavior {
+    let transitionStart: CGFloat
+    let transitionEnd: CGFloat
+    
+    func updateTarget(_ target: inout ScrollTarget, context: TargetContext) {
+        if target.rect.origin.y >= transitionStart && target.rect.minY <= transitionEnd {
+            target.rect.origin.y = transitionEnd
+        }
     }
 }

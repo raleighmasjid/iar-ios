@@ -78,12 +78,12 @@
 		84B91FA92D657D3F004F2FBC /* AdhanSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2C8279F74C3000D80EE /* AdhanSchedule.swift */; };
 		84B91FAA2D657D49004F2FBC /* IqamahSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2CC279F926A000D80EE /* IqamahSchedule.swift */; };
 		84B91FAB2D657D6D004F2FBC /* FridayPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACC8D827B86761004D4F25 /* FridayPrayer.swift */; };
-		84B91FB02D657F84004F2FBC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CD79C2D644529009FA503 /* View.swift */; };
 		84B91FB52D658276004F2FBC /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E6279FB162000D80EE /* Prayer.swift */; };
 		84B91FB62D65835B004F2FBC /* PrayerTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550F627AA2EF7008A180F /* PrayerTime.swift */; };
 		84B91FB72D65840A004F2FBC /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		84B91FB82D658430004F2FBC /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E57E0127AB943600AC10A0 /* URLSession.swift */; };
 		84B91FB92D658481004F2FBC /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849550FB27AA38B5008A180F /* Sequence.swift */; };
+		84CA80382D68F89E009BE7DD /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CA80362D68F89A009BE7DD /* UIApplication.swift */; };
 		84D44BA127D866C300202BD3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA027D866C300202BD3 /* Post.swift */; };
 		84D44BA527D8672200202BD3 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA427D8672200202BD3 /* News.swift */; };
 		84D44BA727D8676400202BD3 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA627D8676400202BD3 /* NewsViewModel.swift */; };
@@ -188,6 +188,7 @@
 		84B91F782D64E4C8004F2FBC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		84B91F892D64E54D004F2FBC /* IARNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IARNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		84B91F922D657CA7004F2FBC /* IARWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IARWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		84CA80362D68F89A009BE7DD /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		84D44BA027D866C300202BD3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		84D44BA427D8672200202BD3 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		84D44BA627D8676400202BD3 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
@@ -430,6 +431,7 @@
 				8420E8B727AF730E00C54EED /* ToggleStyle.swift */,
 				84E57E0127AB943600AC10A0 /* URLSession.swift */,
 				843A6AE82BFD957700137409 /* CLPlacemark.swift */,
+				84CA80362D68F89A009BE7DD /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -615,6 +617,7 @@
 				8407708F27E6B3E50042410C /* Announcements.swift in Sources */,
 				84D44BA527D8672200202BD3 /* News.swift in Sources */,
 				849550F727AA2EF7008A180F /* PrayerTime.swift in Sources */,
+				84CA80382D68F89E009BE7DD /* UIApplication.swift in Sources */,
 				8497D2E427C2B9F1000BF89C /* PrayerTimesView.swift in Sources */,
 				845FB0ED27E3C579006E54E1 /* ShareSheet.swift in Sources */,
 				847AC2CD279F926A000D80EE /* IqamahSchedule.swift in Sources */,
@@ -681,7 +684,6 @@
 				84B91FA82D657D34004F2FBC /* HijriComponents.swift in Sources */,
 				84B91FB52D658276004F2FBC /* Prayer.swift in Sources */,
 				84B91FA72D657D2A004F2FBC /* PrayerDay.swift in Sources */,
-				84B91FB02D657F84004F2FBC /* View.swift in Sources */,
 				84B91FAA2D657D49004F2FBC /* IqamahSchedule.swift in Sources */,
 				84B91FA92D657D3F004F2FBC /* AdhanSchedule.swift in Sources */,
 				84B91FB62D65835B004F2FBC /* PrayerTime.swift in Sources */,

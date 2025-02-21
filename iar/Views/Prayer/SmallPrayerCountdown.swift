@@ -12,10 +12,10 @@ struct SmallPrayerCountdown: View {
     @ObservedObject var viewModel: PrayerCountdownViewModel
     
     let verticalPadding: CGFloat
-    let safeArea: CGSize
+    let safeArea: CGFloat
     @Binding var textHeight: CGFloat
     
-    init(upcoming: PrayerTime?, verticalPadding: CGFloat, safeArea: CGSize, textHeight: Binding<CGFloat>) {
+    init(upcoming: PrayerTime?, verticalPadding: CGFloat, safeArea: CGFloat, textHeight: Binding<CGFloat>) {
         self.viewModel = PrayerCountdownViewModel(upcoming: upcoming)
         self.verticalPadding = verticalPadding
         self.safeArea = safeArea
@@ -35,7 +35,7 @@ struct SmallPrayerCountdown: View {
                 Image(.prayerHeader)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(height: textHeight + safeArea.height, alignment: .top)
+                    .frame(height: textHeight + safeArea, alignment: .top)
                     .frame(maxWidth: .infinity)
                     .clipped()
                     .ignoresSafeArea(edges: .top)
