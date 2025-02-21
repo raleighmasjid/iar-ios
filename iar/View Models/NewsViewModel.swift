@@ -27,6 +27,9 @@ class NewsViewModel: ObservableObject {
     
     func loadData() {
         loading = true
+        if let cache = provider.cachedNews {
+            didFetchNews(news: cache)
+        }
         Task {
             do {
                 let news = try await self.provider.fetchNews(forceRefresh: true)

@@ -61,6 +61,9 @@ class PrayerTimesViewModel: ObservableObject {
     
     func loadData() {
         loading = true
+        if let cache = provider.cachedPrayerSchedule {
+            didFetchPrayerSchedule(schedule: cache)
+        }
         Task {
             do {
                 let schedule = try await self.provider.fetchPrayers(forceRefresh: false)
