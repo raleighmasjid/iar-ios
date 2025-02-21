@@ -88,6 +88,7 @@ struct QiblahScreen: View {
             Text(viewModel.locationName ?? "---")
         }
         .scalingFont(size: 15, weight: .medium)
+        .lineLimit(1)
         .foregroundStyle(.action)
         .padding(12)
         .background(.specialAnnouncement)
@@ -129,28 +130,28 @@ struct QiblahScreen: View {
                         .opacity(percentCorrect)
                         .animation(.easeInOut(duration: 0.15), value: percentCorrect)
                     CompassView(angle: rotationAngle, percentCorrect: percentCorrect)
-                        .onAppear {
-                            isVisible = true
-                            viewModel.startUpdating()
-                            feedback.prepare()
-                        }
-                        .onDisappear {
-                            isVisible = false
-                            viewModel.stopUpdating()
-                        }
                         .opacity(isValid ? 1 : 0)
                 }
             }
             Text(makkahText)
                 .scalingFont(size: 22, weight: .bold)
                 .minimumScaleFactor(0.1)
+                .lineLimit(1)
                 .opacity(percentCorrect)
                 .animation(.easeInOut(duration: 0.15), value: percentCorrect)
                 .padding(.horizontal, 32)
 
             Spacer()
         }
-        .lineLimit(1)
+        .onAppear {
+            isVisible = true
+            viewModel.startUpdating()
+            feedback.prepare()
+        }
+        .onDisappear {
+            isVisible = false
+            viewModel.stopUpdating()
+        }
         .onReceive(viewModel.$compassAngle) { angle in
             switch angle {
             case .valid(let angleValue):

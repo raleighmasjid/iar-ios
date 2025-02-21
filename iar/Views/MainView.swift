@@ -36,7 +36,7 @@ struct MainView: View {
             
             QiblahScreen(viewModel: compassViewModel)
             .tabItem {
-                Label("Qiblah", image: "tab-qibla")
+                Label("Qibla", image: "tab-qibla")
             }
             .accentColor(.darkGreen)
             
