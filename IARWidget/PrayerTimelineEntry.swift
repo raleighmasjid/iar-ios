@@ -15,7 +15,11 @@ struct PrayerTimelineEntry: TimelineEntry {
     let nextPrayer: PrayerTime
     let isPlaceholder: Bool
     
-    init(date: Date, prayerDay: PrayerDay, currentPrayer: PrayerTime?, nextPrayer: PrayerTime, isPlaceholder: Bool = false) {
+    init(date: Date,
+         prayerDay: PrayerDay,
+         currentPrayer: PrayerTime?,
+         nextPrayer: PrayerTime,
+         isPlaceholder: Bool = false) {
         self.date = date
         self.prayerDay = prayerDay
         self.currentPrayer = currentPrayer
@@ -23,46 +27,59 @@ struct PrayerTimelineEntry: TimelineEntry {
         self.isPlaceholder = isPlaceholder
     }
     
+    var description: String {
+        let currentTime = currentPrayer?.adhan.formatted(date: .abbreviated, time: .shortened) ?? "-"
+        let nextTime = nextPrayer.adhan.formatted(date: .abbreviated, time: .shortened)
+
+        return """
+        PrayerTimelineEntry
+        Date: \(date.formatted(date: .abbreviated, time: .shortened))
+        Current: \(currentPrayer?.prayer.title ?? "N/A") @ \(currentTime)
+        Next: \(nextPrayer.prayer.title) @ \(nextTime)
+        Prayer Day: \(prayerDay.date.formatted(date: .abbreviated, time: .omitted))
+        """
+    }
+    
     static func entries(prayerSchedule: PrayerSchedule) -> [PrayerTimelineEntry] {
         var entries: [PrayerTimelineEntry] = []
         
-        var previousPrayerTime: PrayerTime? = nil
-        for prayerDay in prayerSchedule.prayerDays {
+        for (dayIndex, prayerDay) in prayerSchedule.prayerDays.enumerated() {
+            var previousPrayerTime: PrayerTime? = nil
             for prayerTime in prayerDay.prayerTimes {
-                if prayerTime.adhan > Date() {
-                    entries.append(PrayerTimelineEntry(
-                        date: previousPrayerTime?.adhan ?? Date(),
+                let entry = switch prayerTime.prayer {
+                case .fajr:
+                    PrayerTimelineEntry(
+                        date: Calendar.current.startOfDay(for: prayerDay.date),
+                        prayerDay: prayerDay,
+                        currentPrayer: nil,
+                        nextPrayer: prayerTime
+                    )
+                default:
+                    PrayerTimelineEntry(
+                        date: previousPrayerTime?.adhan ?? .distantPast,
                         prayerDay: prayerDay,
                         currentPrayer: previousPrayerTime,
                         nextPrayer: prayerTime
-                    ))
+                    )
                 }
+                entries.append(entry)
+                
                 previousPrayerTime = prayerTime
+            }
+            
+            // post-isha countdown to tomorrow fajr
+            if dayIndex < prayerSchedule.prayerDays.count - 1 {
+                let tomorrow = prayerSchedule.prayerDays[dayIndex + 1]
+                entries.append(
+                    PrayerTimelineEntry(date: prayerDay.adhan(for: .isha),
+                                        prayerDay: prayerDay,
+                                        currentPrayer: prayerDay.prayerTime(for: .isha),
+                                        nextPrayer: tomorrow.prayerTime(for: .fajr))
+                )
             }
         }
 
-        return entries
-    }
-    
-    static func dayEntries(prayerSchedule: PrayerSchedule) -> [PrayerTimelineEntry] {
-        var entries: [PrayerTimelineEntry] = []
-        
-        var previousPrayerTime: PrayerTime? = nil
-        for prayerDay in prayerSchedule.prayerDays {
-            for prayerTime in prayerDay.prayerTimes {
-                if prayerTime.adhan > Date() {
-                    entries.append(PrayerTimelineEntry(
-                        date: previousPrayerTime?.adhan ?? Date(),
-                        prayerDay: prayerDay,
-                        currentPrayer: previousPrayerTime,
-                        nextPrayer: prayerTime
-                    ))
-                }
-                previousPrayerTime = prayerTime
-            }
-        }
-
-        return entries
+        return entries.filter { $0.nextPrayer.adhan >= Date() }
     }
     
     static func snapshot(prayerSchedule: PrayerSchedule) -> PrayerTimelineEntry {

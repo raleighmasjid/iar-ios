@@ -34,7 +34,7 @@ struct PrayerWidgetMediumView: View {
         if prayer == entry.currentPrayer?.prayer {
             return .currentPrayer
         } else if (entry.prayerDay.adhan(for: prayer) < Date()) {
-            return .white.opacity(0.5)
+            return .white.opacity(0.85)
         } else {
             return .white
         }
@@ -51,6 +51,7 @@ struct PrayerWidgetMediumView: View {
                         .minimumScaleFactor(0.1)
                         .lineLimit(1)
                         .allowsTightening(true)
+                        .redacted(reason: entry.isPlaceholder ? .placeholder : [])
                 }
                 .padding(.top, 4)
                 .foregroundStyle(.white)

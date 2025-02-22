@@ -22,6 +22,7 @@ struct PrayerWidgetSmallView: View {
                     .minimumScaleFactor(0.1)
                     .lineLimit(1)
                     .allowsTightening(true)
+                    .redacted(reason: entry.isPlaceholder ? .placeholder : [])
             }
             .frame(maxHeight: .infinity)
             HStack {

@@ -71,8 +71,12 @@ struct PrayerDay: Codable, Equatable, Hashable {
     
     var prayerTimes: [PrayerTime] {
         Prayer.allCases.map {
-            PrayerTime(prayer: $0, adhan: adhan(for: $0), iqamah: iqamah(for: $0))
+            prayerTime(for: $0)
         }
+    }
+    
+    func prayerTime(for prayer: Prayer) -> PrayerTime {
+        PrayerTime(prayer: prayer, adhan: adhan(for: prayer), iqamah: iqamah(for: prayer))
     }
     
     var hasTaraweeh: Bool {
