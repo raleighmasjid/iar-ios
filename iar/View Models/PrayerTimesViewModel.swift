@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 import Combine
+import WidgetKit
 
 @MainActor
 class PrayerTimesViewModel: ObservableObject {
@@ -69,6 +70,7 @@ class PrayerTimesViewModel: ObservableObject {
                 let schedule = try await self.provider.fetchPrayers(forceRefresh: false)
                 self.didFetchPrayerSchedule(schedule: schedule)
                 self.loading = false
+                WidgetCenter.shared.reloadAllTimelines()
             } catch {
                 self.error = true
                 self.loading = false

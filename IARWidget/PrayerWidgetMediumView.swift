@@ -33,8 +33,8 @@ struct PrayerWidgetMediumView: View {
     func prayerColor(_ prayer: Prayer) -> Color {
         if prayer == entry.currentPrayer?.prayer {
             return .currentPrayer
-        } else if (entry.prayerDay.adhan(for: prayer) < Date()) {
-            return .white.opacity(0.85)
+        } else if (entry.prayerDay.adhan(for: prayer) < entry.date) {
+            return .white.opacity(0.80)
         } else {
             return .white
         }
