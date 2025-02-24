@@ -11,7 +11,6 @@ struct PrayerTimesView: View {
     
     let days: [PrayerDayViewModel]
     let showTaraweeh: Bool
-    @State var carouselHeight = 0.0
     @State var dayOffset = 0
     @Environment(\.scenePhase) var scenePhase
     
@@ -30,13 +29,6 @@ struct PrayerTimesView: View {
                               currentPrayer: nil,
                               showTaraweeh: showTaraweeh)
                 .opacity(days.isEmpty ? 1 : 0)
-                .overlay(
-                    GeometryReader { proxy in
-                        Color.clear.onAppear {
-                            self.carouselHeight = proxy.size.height
-                        }
-                    }
-                )
                 if !days.isEmpty {
                     TabView(selection: $dayOffset) {
                         ForEach(days, id: \.self) { prayerItem in
@@ -49,7 +41,6 @@ struct PrayerTimesView: View {
                     .tabViewStyle(.page(indexDisplayMode: .never))
                     .opacity(days.isEmpty ? 0 : 1)
                     .id(days.hashValue)
-                    .frame(height: carouselHeight)
                 }
             }
         }

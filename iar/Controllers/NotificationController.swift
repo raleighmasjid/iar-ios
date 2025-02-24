@@ -26,7 +26,7 @@ actor NotificationController {
             let prayerTimes = prayerDays
                 .flatMap { $0.prayerTimes }
                 .filter { enabledPrayers.contains($0.prayer) && $0.notificationTime > now }
-            
+
             await schedule(prayerTimes: Array(prayerTimes.prefix(notificationLimit)), notificationType: notificationType)
         } catch {
             NSLog("Error requesting notification authorization \(error)")
@@ -34,14 +34,18 @@ actor NotificationController {
     }
     
     private func schedule(prayerTimes: [PrayerTime], notificationType: NotificationType) async {
-        center.removeAllPendingNotificationRequests()
-        for time in prayerTimes {
+        let newRequests = prayerTimes.map { notificationRequest(prayerTime: $0, notificationType: notificationType) }
+        for request in newRequests {
             do {
-                try await center.add(notificationRequest(prayerTime: time, notificationType: notificationType))
+                try await center.add(request)
             } catch {
                 NSLog("Error scheduling notification: \(error)")
             }
         }
+        let newRequestIDs = newRequests.map(\.identifier)
+        let allRequestIDs = await center.pendingNotificationRequests().map(\.identifier)
+        let toRemove = Array(Set(allRequestIDs).subtracting(Set(newRequestIDs)))
+        center.removePendingNotificationRequests(withIdentifiers: toRemove)
     }
     
     private func notificationRequest(prayerTime: PrayerTime, notificationType: NotificationType) -> UNNotificationRequest {
@@ -59,6 +63,6 @@ actor NotificationController {
         }
         
         content.interruptionLevel = .timeSensitive
-        return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        return UNNotificationRequest(identifier: prayerTime.notificationIdentifier, content: content, trigger: trigger)
     }
 }

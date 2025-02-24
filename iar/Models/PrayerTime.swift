@@ -12,6 +12,13 @@ struct PrayerTime: Equatable {
     let adhan: Date
     let iqamah: Date?
     
+    var notificationIdentifier: String {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(identifier: "America/New_York")!
+        let comps = cal.dateComponents([.year, .month, .day], from: adhan)
+        return "\(comps.year ?? 0)-\(comps.month ?? 0)-\(comps.day ?? 0)-\(prayer.title)"
+    }
+    
     var timeRemaining: TimeInterval {
         adhan.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
     }

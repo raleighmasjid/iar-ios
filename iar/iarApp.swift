@@ -7,17 +7,52 @@
 
 import SwiftUI
 import OneSignalFramework
+import BackgroundTasks
+import WidgetKit
 
 @main
 struct iarApp: App {
     
+    @Environment(\.scenePhase) private var phase
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self)
     var appDelegate
+    
+    let backgroundTaskIdentifier = "com.lemosys.IARMasjid.localNotificationsRefresh"
 
     var body: some Scene {
         WindowGroup {
             MainView()
         }
+        .onChange(of: phase) { newPhase in
+            switch newPhase {
+            case .active:
+                scheduleAppRefresh()
+            default: break
+            }
+        }.backgroundTask(.appRefresh(backgroundTaskIdentifier)) {
+            await scheduleAppRefresh()
+
+            let prayerProvider = NetworkPrayerProvider()
+            guard let schedule = try? await prayerProvider.fetchPrayers() else {
+                return
+            }
+            
+            let notificationSettings = NotificationSettings()
+            let notificationController = NotificationController()
+            let enabledPrayers = Prayer.allCases.filter { notificationSettings.isEnabled(for: $0) }
+                    
+            await notificationController.scheduleNotifications(prayerDays: schedule.prayerDays,
+                                                               enabledPrayers: enabledPrayers,
+                                                               notificationType: notificationSettings.type)
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+    }
+    
+    func scheduleAppRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: backgroundTaskIdentifier)
+        request.earliestBeginDate = Date().addingTimeInterval(60 * 60 * 24)
+        try? BGTaskScheduler.shared.submit(request)
     }
 }
 

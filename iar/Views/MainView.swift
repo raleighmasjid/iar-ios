@@ -70,7 +70,7 @@ struct MainView: View {
         .accentColor(.tabSelected)
         .onAppear {
             styleTabBar()
-
+            
             if prayerTimesViewModel.prayerDays.isEmpty {
                 prayerTimesViewModel.loadData()
             }

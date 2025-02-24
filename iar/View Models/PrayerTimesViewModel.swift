@@ -17,15 +17,7 @@ class PrayerTimesViewModel: ObservableObject {
     @Published var fridaySchedule: [FridayPrayer] = []
     @Published var error = false
     @Published var loading = false
-    @Published var prayerDays: [PrayerDay] = [] {
-        didSet {
-            updateNextPrayer()
-            
-            if (prayerDays != oldValue) {
-                updateNotifications()
-            }
-        }
-    }
+    @Published var prayerDays: [PrayerDay] = []
 
     let notificationSettings: NotificationSettings
     
@@ -35,6 +27,9 @@ class PrayerTimesViewModel: ObservableObject {
     private let notificationController = NotificationController()
 
     private var cancellables = Set<AnyCancellable>()
+    private var isSchedulingNotifications: Bool = false
+    private var rescheduleNotificationsRequired: Bool = false
+    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
     init(provider: PrayerProvider) {
         self.provider = provider
@@ -62,13 +57,13 @@ class PrayerTimesViewModel: ObservableObject {
     
     func loadData() {
         loading = true
-        if let cache = provider.cachedPrayerSchedule {
-            didFetchPrayerSchedule(schedule: cache)
+        if let cache = provider.cachedPrayerSchedule, prayerDays.isEmpty {
+            didFetchPrayerSchedule(schedule: cache, fromCache: true)
         }
         Task {
             do {
                 let schedule = try await self.provider.fetchPrayers(forceRefresh: false)
-                self.didFetchPrayerSchedule(schedule: schedule)
+                self.didFetchPrayerSchedule(schedule: schedule, fromCache: false)
                 self.loading = false
                 WidgetCenter.shared.reloadAllTimelines()
             } catch {
@@ -78,10 +73,14 @@ class PrayerTimesViewModel: ObservableObject {
         }
     }
     
-    private func didFetchPrayerSchedule(schedule: PrayerSchedule) {
+    private func didFetchPrayerSchedule(schedule: PrayerSchedule, fromCache: Bool) {
         prayerDays = schedule.prayerDays
             .filter { Calendar.zonedCalendar.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
         fridaySchedule = schedule.fridaySchedule
+        updateNextPrayer()
+        if !fromCache {
+            updateNotifications()
+        }
     }
     
     private func updateNextPrayer() {
@@ -92,11 +91,41 @@ class PrayerTimesViewModel: ObservableObject {
     }
 
     private func updateNotifications() {
+        guard !isSchedulingNotifications else {
+            rescheduleNotificationsRequired = true
+            return
+        }
+        
+        isSchedulingNotifications = true
         let enabledPrayers = Prayer.allCases.filter { notificationSettings.isEnabled(for: $0) }
+        startBackgroundTask()
         Task {
             await self.notificationController.scheduleNotifications(prayerDays: self.prayerDays,
                                                                     enabledPrayers: enabledPrayers,
                                                                     notificationType: self.notificationSettings.type)
+            
+            self.isSchedulingNotifications = false
+            if self.rescheduleNotificationsRequired {
+                self.rescheduleNotificationsRequired = false
+                updateNotifications()
+            } else {
+                self.endBackgroundTask()
+            }
+        }
+    }
+    
+    private func startBackgroundTask() {
+        if backgroundTask == .invalid {
+            backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+                self?.endBackgroundTask()
+            }
+        }
+    }
+
+    private func endBackgroundTask() {
+        if backgroundTask != .invalid {
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+            backgroundTask = .invalid
         }
     }
 }
