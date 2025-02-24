@@ -27,9 +27,9 @@ enum NotificationType: String, CaseIterable {
     var notificationSound: UNNotificationSound? {
         switch self {
         case .saadAlghamidi:
-            return UNNotificationSound(named: UNNotificationSoundName(rawValue: "AdhanAfasy.caf"))
-        case .alafasy:
             return UNNotificationSound(named: UNNotificationSoundName(rawValue: "AdhanSaadAlghamdi.caf"))
+        case .alafasy:
+            return UNNotificationSound(named: UNNotificationSoundName(rawValue: "AdhanAfasy.caf"))
         case .silent:
             return nil
         }
