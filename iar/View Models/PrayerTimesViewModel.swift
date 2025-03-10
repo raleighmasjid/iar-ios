@@ -57,23 +57,22 @@ class PrayerTimesViewModel: ObservableObject {
     
     func loadData() {
         loading = true
-        if let cache = provider.cachedPrayerSchedule, prayerDays.isEmpty {
-            didFetchPrayerSchedule(schedule: cache, fromCache: true)
+        if let cache = provider.cachedPrayerSchedule {
+            setPrayerData(schedule: cache, fromCache: true)
         }
         Task {
             do {
                 let schedule = try await self.provider.fetchPrayers(forceRefresh: false)
-                self.didFetchPrayerSchedule(schedule: schedule, fromCache: false)
-                self.loading = false
+                self.setPrayerData(schedule: schedule, fromCache: false)
                 WidgetCenter.shared.reloadAllTimelines()
             } catch {
                 self.error = true
-                self.loading = false
             }
+            self.loading = false
         }
     }
     
-    private func didFetchPrayerSchedule(schedule: PrayerSchedule, fromCache: Bool) {
+    private func setPrayerData(schedule: PrayerSchedule, fromCache: Bool) {
         prayerDays = schedule.prayerDays
             .filter { Calendar.zonedCalendar.compare(Date(), to: $0.date, toGranularity: .day) != .orderedDescending }
         fridaySchedule = schedule.fridaySchedule

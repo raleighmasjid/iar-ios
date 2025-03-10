@@ -20,13 +20,9 @@ class NetworkPrayerProvider: PrayerProvider {
     private(set) var cachedPrayerSchedule: PrayerSchedule?
 
     @MainActor
-    func fetchPrayers(forceRefresh: Bool = false) async throws -> PrayerSchedule {
-        if let cache = cachedPrayerSchedule, let cacheDate = cache.cacheDate, !forceRefresh {
-            // 5 minute cache lifetime
-            let cacheInterval = Date().timeIntervalSince(cacheDate)
-            if cacheInterval < 60 * 5 {
-                return cache
-            }
+    func fetchPrayers(forceRefresh: Bool) async throws -> PrayerSchedule {
+        if let cache = cachedPrayerSchedule, cache.isValidCache, !forceRefresh {
+            return cache
         }
 
         let (data, _) = try await session.data(from: "https://raleighmasjid.org/API/app/prayer-schedule/")

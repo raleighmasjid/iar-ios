@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OneSignalFramework
 
 struct MoreScreen: View {
     @EnvironmentObject var notifications: NotificationSettings
@@ -16,6 +17,18 @@ struct MoreScreen: View {
                 Picker("Prayer Alert", selection: $notifications.type) {
                     ForEach(NotificationType.allCases, id:\.self) { type in
                         Text(type.title).tag(type)
+                    }
+                }
+            }
+            
+            if !OneSignal.Notifications.permission {
+                Section {
+                    Button("Enable Notifications") {
+                        OneSignal.Notifications.requestPermission({ accepted in
+                            #if DEBUG
+                            print("User accepted notifications: \(accepted)")
+                            #endif
+                        }, fallbackToSettings: true)
                     }
                 }
             }

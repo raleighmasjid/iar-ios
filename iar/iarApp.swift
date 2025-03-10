@@ -34,7 +34,7 @@ struct iarApp: App {
             await scheduleAppRefresh()
 
             let prayerProvider = NetworkPrayerProvider()
-            guard let schedule = try? await prayerProvider.fetchPrayers() else {
+            guard let schedule = try? await prayerProvider.fetchPrayers(forceRefresh: false) else {
                 return
             }
             
@@ -59,11 +59,6 @@ struct iarApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         OneSignal.initialize("01fcf852-7b3f-4b53-a733-4cb8241bd193", withLaunchOptions: launchOptions)
-        OneSignal.Notifications.requestPermission({ accepted in
-            #if DEBUG
-            print("User accepted notifications: \(accepted)")
-            #endif
-        }, fallbackToSettings: true)
         return true
     }
 }

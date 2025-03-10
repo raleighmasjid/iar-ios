@@ -21,12 +21,8 @@ class NetworkNewsProvider: NewsProvider {
 
     @MainActor
     func fetchNews(forceRefresh: Bool) async throws -> News {
-        if let cached = cachedNews, let cacheDate = cached.cacheDate, !forceRefresh {
-            // 5 minute cache lifetime
-            let cacheInterval = Date().timeIntervalSince(cacheDate)
-            if cacheInterval < 60 * 5 {
-                return cached
-            }
+        if let cached = cachedNews, cached.isValidCache, !forceRefresh {
+            return cached
         }
         
         let (data, _) = try await session.data(from: "https://raleighmasjid.org/API/app/news/")

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct DonateScreen: View {
+    
+    @Environment(\.openURL) private var openURL
+    
     let donateURL = URL(string: "https://donate.raleighmasjid.org/giving")!
     
     var body: some View {
@@ -24,18 +27,19 @@ struct DonateScreen: View {
                 .multilineTextAlignment(.leading)
                 .layoutPriority(1)
                 .minimumScaleFactor(0.5)
-            Button(action: {
-                    
-                }) {
-                    Link("Donate Now", destination: donateURL)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .scalingFont(size: 16, weight: .semibold)
-                        .padding()
-                        .foregroundColor(.darkGreen)
-                }
-                .background(Color(.segmentedBackground))
-                .cornerRadius(27)
-                .layoutPriority(0.75)
+            Button {
+                openURL(donateURL)
+            } label: {
+                Text("Donate Now")
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .scalingFont(size: 16, weight: .semibold)
+                    .padding()
+                    .foregroundColor(.darkGreen)
+            }
+            .background(Color(.segmentedBackground))
+            .cornerRadius(27)
+            .layoutPriority(0.75)
+            
             Spacer(minLength: 5)
         }.padding(.horizontal, 50)
     }

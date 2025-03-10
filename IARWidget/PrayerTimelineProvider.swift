@@ -22,7 +22,7 @@ struct PrayerTimelineProvider: TimelineProvider {
         }
         Task {
             do {
-                let prayerSchedule = try await networkPrayerProvider.fetchPrayers()
+                let prayerSchedule = try await networkPrayerProvider.fetchPrayers(forceRefresh: false)
                 completion(PrayerTimelineEntry.snapshot(prayerSchedule: prayerSchedule))
             } catch {
                 completion(PrayerTimelineEntry.placeholder())
@@ -33,7 +33,7 @@ struct PrayerTimelineProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
             do {
-                let prayerSchedule = try await networkPrayerProvider.fetchPrayers()
+                let prayerSchedule = try await networkPrayerProvider.fetchPrayers(forceRefresh: false)
                 completion(Timeline(entries: PrayerTimelineEntry.entries(prayerSchedule: prayerSchedule), policy: .atEnd))
             } catch {
                 completion(Timeline(entries: [], policy: .after(Date().addingTimeInterval(60 * 5))))

@@ -32,7 +32,7 @@ class NewsViewModel: ObservableObject {
         }
         Task {
             do {
-                let news = try await self.provider.fetchNews(forceRefresh: true)
+                let news = try await self.provider.fetchNews(forceRefresh: false)
                 self.didFetchNews(news: news)
                 self.loading = false
             } catch {

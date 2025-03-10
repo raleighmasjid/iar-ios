@@ -55,7 +55,7 @@ struct PostsList: View {
                 viewModel.didViewAnnouncements()
             }
         }
-        .sheet(isPresented: $showingSpecial) {
+        .fullScreenCover(isPresented: $showingSpecial) {
             NavigationView {
                 if let special = viewModel.announcements?.special {
                     WebView(special, done: {
