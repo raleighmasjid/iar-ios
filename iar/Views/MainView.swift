@@ -24,6 +24,7 @@ struct MainView: View {
     
     @Environment(\.scenePhase) var scenePhase
     @State var didEnterBackground = false
+    @State var newsPath: [Post] = []
 
     let dayChange = NotificationCenter.default.publisher(for: .NSCalendarDayChanged).receive(on: RunLoop.main)
 
@@ -34,40 +35,41 @@ struct MainView: View {
                 Label("Prayer", image: "tab-prayer")
             }
             
-            QiblahScreen(viewModel: compassViewModel)
+            NavigationStack {
+                QiblaScreen(viewModel: compassViewModel)
+                    .largeNavigationTitle("Qibla")
+                    .background(.appBackground)
+            }
             .tabItem {
                 Label("Qibla", image: "tab-qibla")
             }
-            .accentColor(.darkGreen)
             
-            NavigationStack {
-                NewsScreen(viewModel: newsViewModel)
-                    .navigationTitle("News")
+            NavigationStack(path: $newsPath) {
+                NewsScreen(viewModel: newsViewModel, path: $newsPath)
+                    .largeNavigationTitle("News")
+                    .background(.appBackground)
             }
             .tabItem {
-                Label("News", image: "tab-news")
+                Label("News", image: newsViewModel.badge ? "tab-news-badge" : "tab-news")
             }
-            .badge(newsViewModel.badge)
-            .accentColor(.darkGreen)
             
             DonateScreen()
+                .background(.appBackground)
             .tabItem {
                 Label("Donate", image: "tab-donate")
             }
-            .accentColor(.darkGreen)
             
             NavigationStack {
                 MoreScreen()
-                    .navigationTitle("Settings")
-                    .navigationBarTitleDisplayMode(.inline)
+                    .largeNavigationTitle("Settings")
+                    .background(.appBackground)
             }
             .tabItem {
                 Label("Settings", image: "tab-settings")
             }
-            .accentColor(.darkGreen)
         }
+        .tint(.accent)
         .environmentObject(prayerTimesViewModel.notificationSettings)
-        .accentColor(.tabSelected)
         .onAppear {
             styleTabBar()
             
@@ -101,8 +103,8 @@ struct MainView: View {
     func styleTabBar() {
         let tabAppearance = UITabBarAppearance()
         tabAppearance.configureWithDefaultBackground()
-        tabAppearance.stackedLayoutAppearance.normal.iconColor = UIColor(resource: .tabUnselected)
-        tabAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor(resource: .tabUnselected)]
+        tabAppearance.stackedLayoutAppearance.normal.iconColor = UIColor(resource: .secondaryText)
+        tabAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor(resource: .secondaryText)]
         UITabBar.appearance().standardAppearance = tabAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabAppearance
     }

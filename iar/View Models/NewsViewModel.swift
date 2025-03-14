@@ -11,7 +11,7 @@ import Foundation
 class NewsViewModel: ObservableObject {
     @Published var announcements: Announcements?
     
-    @Published var badge: String?
+    @Published var badge: Bool = false
     
     @Published var error = false
     @Published var loading = false
@@ -67,7 +67,7 @@ class NewsViewModel: ObservableObject {
     
     private func updateBadge() {
         guard let announcements = announcements else {
-            badge = nil
+            badge = false
             return
         }
 
@@ -75,6 +75,6 @@ class NewsViewModel: ObservableObject {
         let viewedIds = Set(viewedAnnouncements)
         
         let unviewedIds = currentIds.subtracting(viewedIds)
-        badge = unviewedIds.isEmpty ? nil : " "
+        badge = !unviewedIds.isEmpty
     }
 }

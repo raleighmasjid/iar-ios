@@ -34,9 +34,9 @@ struct DonateScreen: View {
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .scalingFont(size: 16, weight: .semibold)
                     .padding()
-                    .foregroundColor(.darkGreen)
+                    .foregroundColor(.accent)
             }
-            .background(Color(.segmentedBackground))
+            .background(.primaryContainer)
             .cornerRadius(27)
             .layoutPriority(0.75)
             

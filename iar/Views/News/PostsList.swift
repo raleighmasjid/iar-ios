@@ -9,81 +9,42 @@ import SwiftUI
 
 struct PostsList: View {
     
-    @ObservedObject var viewModel: NewsViewModel
-    @State private var showingSpecial: Bool = false
-    @State private var isVisible: Bool = false
+    let announcements: Announcements?
+    @Binding var path: [Post]
     
     var body: some View {
-        mainContent
-            .refreshable {
-                await viewModel.refreshNews()
-            }
-    }
-    
-    var mainContent: some View {
         List {
-            Section {
-                if let special = viewModel.announcements?.special {
-                    specialButton(special: special)
-                        .listRowSeparator(.hidden)
-                }
-                
-                if let featured = viewModel.announcements?.featured {
-                    NavigationLink(destination: WebView(featured)) {
-                        PostRow(post: featured)
+            Group {
+                if let special = announcements?.special {
+                    Button {
+                        path.append(special)
+                    } label: {
+                        SpecialAnnouncement(special: special)
                     }
+                    .buttonStyle(AnnouncementButtonStyle())
+                    .padding(.horizontal, 16)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
                 }
                 
-                ForEach(viewModel.announcements?.posts ?? []) { post in
-                    NavigationLink(destination: WebView(post)) {
+                ForEach(announcements?.allPosts ?? []) { post in
+                    Button {
+                        path.append(post)
+                    } label: {
                         PostRow(post: post)
                     }
+                    .buttonStyle(AnnouncementButtonStyle())
+                    .listRowBackground(Color.clear)
                 }
-            }
-            .listSectionSeparator(.hidden)
+            }.listRowInsets(EdgeInsets())
         }
         .listStyle(.plain)
-        .onAppear {
-            isVisible = true
-            viewModel.didViewAnnouncements()
-        }
-        .onDisappear {
-            isVisible = false
-        }
-        .onChange(of: viewModel.announcements) { newAnnouncement in
-            if isVisible {
-                viewModel.didViewAnnouncements()
-            }
-        }
-        .fullScreenCover(isPresented: $showingSpecial) {
-            NavigationView {
-                if let special = viewModel.announcements?.special {
-                    WebView(special, done: {
-                        showingSpecial = false
-                    })
-                    .navigationBarTitleDisplayMode(.inline)
-                    .ignoresSafeArea(.all, edges: .bottom)
-                }
-            }
-        }
-    }
-    
-    func specialButton(special: Post) -> some View {
-        Button {
-            showingSpecial = true
-        } label: {
-            SpecialHeader(special: special)
-        }
-        .buttonStyle(PlainButtonStyle())
+        .scrollContentBackground(.hidden)
     }
 }
 
 #if DEBUG
 #Preview {
-    let newsViewModel = NewsViewModel(provider: MockProvider())
-    PostsList(viewModel: newsViewModel)
-        .onAppear {
-            newsViewModel.loadData()
-        }
+    PostsList(announcements: News.mocks().announcements, path: .constant([]))
 }
 #endif

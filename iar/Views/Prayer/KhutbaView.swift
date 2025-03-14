@@ -17,10 +17,10 @@ struct KhutbaView: View {
                 HStack {
                     Text(fridayPrayer.shift)
                         .scalingFont(size: 16, weight: .bold)
-                        .foregroundColor(.shift)
+                        .foregroundColor(.primaryFixed)
                         .padding(.vertical, 4)
                         .padding(.horizontal, 8)
-                        .background(Color.khutbaBackground)
+                        .background(.white)
                         .cornerRadius(8)
                         .opacity(fridayPrayer.shift.isEmpty ? 0 : 1)
                     Spacer(minLength: 5)
@@ -29,7 +29,7 @@ struct KhutbaView: View {
                         .foregroundColor(.white)
                 }
                 .padding(16)
-                .background(Color.brandPrimary)
+                .background(.primaryFixed)
 
                 VStack(spacing: 0) {
                     Text(fridayPrayer.title)
@@ -62,12 +62,12 @@ struct KhutbaView: View {
                 .padding(16)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .foregroundColor(.textPrimary)
+            .foregroundColor(.primaryText)
         }
         .background(
             ZStack(alignment: .bottomTrailing) {
-                Color.khutbaBackground
-                Image(.khutbaDecoration)
+                Color.surfaceContainer
+                Image(.khutbaDecoration)       
             }
         )
         .cornerRadius(16)
@@ -78,21 +78,21 @@ struct KhutbaView: View {
 #if DEBUG
 #Preview {
     KhutbaView(fridayPrayer: FridayPrayer.mocks()[0])
-        .background(Color.prayerScreenBackground)
+        .background(.surfaceVariant)
 }
 
 #Preview {
     KhutbaView(fridayPrayer: FridayPrayer.mocks()[1])
-        .background(Color.prayerScreenBackground)
+        .background(.surfaceVariant)
 }
 
 #Preview {
     KhutbaView(fridayPrayer: FridayPrayer.mocks()[2])
-        .background(Color.prayerScreenBackground)
+        .background(.surfaceVariant)
 }
 
 #Preview {
     KhutbaView(fridayPrayer: FridayPrayer.mocks()[3])
-        .background(Color.prayerScreenBackground)
+        .background(.surfaceVariant)
 }
 #endif

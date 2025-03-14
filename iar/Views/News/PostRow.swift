@@ -37,10 +37,10 @@ struct PostRow: View {
                     .lineLimit(2)
                 HStack {
                     Image(.calendarIcon)
-                        .foregroundStyle(.action)
+                        .foregroundStyle(.accent)
                     Text(Formatter.dayFormatter.string(from: post.date))
                         .scalingFont(size: 12)
-                        .foregroundColor(.action)
+                        .foregroundColor(.accent)
                 }
                 Text(post.text)
                     .scalingFont(size: 13)

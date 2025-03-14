@@ -44,7 +44,7 @@ struct PrayerTimesView: View {
                 }
             }
         }
-        .background(.prayerCardBackground)
+        .background(.surfaceContainer)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.05), radius: 25, x: 0, y: 5)
         .padding(.horizontal, 16)

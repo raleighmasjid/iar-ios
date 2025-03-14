@@ -1,5 +1,5 @@
 //
-//  CompassView.swift
+//  CompassStar.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 5/16/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CompassView: View {
+struct CompassStar: View {
     
     var angle: Double
     var percentCorrect: Double
@@ -24,7 +24,7 @@ struct CompassView: View {
                 .aspectRatio(contentMode: .fit)
                 .rotationEffect(.degrees(angle))
                 .animation(.easeInOut(duration: 0.15), value: angle)
-                .shadow(color: .qiblaGlow.opacity(percentCorrect), radius: 50, x: 0, y: 5)
+                .shadow(color: .outlineVariant.opacity(percentCorrect), radius: 50, x: 0, y: 5)
                 .animation(.easeInOut(duration: 0.15), value: percentCorrect)
                 .onGeometryChange(for: CGSize.self) { proxy in
                     proxy.size
@@ -40,10 +40,12 @@ struct CompassView: View {
     }
 }
 
+#if DEBUG
 #Preview("Incorrect") {
-    CompassView(angle: 45, percentCorrect: 0)
+    CompassStar(angle: 45, percentCorrect: 0)
 }
 
 #Preview("Correct") {
-    CompassView(angle: 0, percentCorrect: 0.5)
+    CompassStar(angle: 0, percentCorrect: 0.5)
 }
+#endif

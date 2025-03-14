@@ -43,6 +43,7 @@ struct WebView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 if helper.isLoading {
                     ProgressView()
+                        .tint(.primaryText)
                 }
                 Button {
                     showActions = true

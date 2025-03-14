@@ -15,17 +15,14 @@ struct AlarmToggleStyle: ToggleStyle {
         } label: {
             if configuration.isOn {
                 Image(.alarmOn)
-                    .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.action)
-                    .opacity(1)
+                    .foregroundStyle(.accent)
             } else {
                 Image(.alarmOff)
-                    .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.disabledAction)
+                    .foregroundStyle(.tertiaryText)
             }
 
         }

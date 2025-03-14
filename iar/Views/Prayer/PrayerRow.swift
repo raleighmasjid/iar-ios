@@ -24,11 +24,11 @@ struct PrayerRow: View {
     }
     
     var bgColor: Color {
-        current ? Color(.prayerBackground) : .clear
+        current ? .tertiaryContainer : .clear
     }
     
     var textColor: Color {
-        current ? Color.action : Color.primary
+        current ? .accent : .primaryText
     }
     
     var body: some View {

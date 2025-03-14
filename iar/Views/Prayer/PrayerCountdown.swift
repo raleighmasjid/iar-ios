@@ -38,7 +38,7 @@ struct PrayerCountdown: View {
         if viewModel.upcoming == nil {
             return .clear
         } else {
-            return Color(.badgeBackground)
+            return .white.opacity(0.15)
         }
     }
     
@@ -100,11 +100,11 @@ struct PrayerCountdown: View {
     PrayerCountdown(upcoming: PrayerTime(prayer: .maghrib, adhan: Date().addingTimeInterval(600), iqamah: Date().addingTimeInterval(900)),
                     mode: .large,
                     textHeight: .constant(0))
-        .background(Color.black)
+        .background(.black)
 }
 
 #Preview("no upcoming") {
     PrayerCountdown(upcoming: nil, mode: .large, textHeight: .constant(0))
-        .background(Color.black)
+        .background(.black)
 }
 #endif

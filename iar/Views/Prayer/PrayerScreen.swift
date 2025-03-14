@@ -147,7 +147,7 @@ struct PrayerScreen: View {
                 }
             }
         }
-        .background(Color.prayerScreenBackground)
+        .background(.surfaceVariant)
         .alert(isPresented: $viewModel.error) {
             Alert(title: Text("Error"),
                   message: Text("Unable to load prayer times"),

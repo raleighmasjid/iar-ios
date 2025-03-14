@@ -12,6 +12,14 @@ struct Announcements: Codable, Equatable {
     let featured: Post?
     let posts: [Post]
     
+    var allPosts: [Post] {
+        var all = posts
+        if let featured = featured {
+            all.insert(featured, at: 0)
+        }
+        return all
+    }
+    
     func postIDs() -> [Int] {
         var ids = posts.map { $0.id }
         if let special = special {

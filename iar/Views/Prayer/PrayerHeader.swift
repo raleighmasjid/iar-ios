@@ -47,7 +47,7 @@ struct PrayerHeader: View {
                 }
             } label: {
                 Image(.chevronLeft)
-                    .foregroundColor(hasPreviousDays ? Color(.action) : .primary.opacity(0.3))
+                    .foregroundColor(hasPreviousDays ? .accent : .tertiaryText)
                     .frame(width: buttonSize, height: buttonSize)
                     .padding(4)
             }
@@ -81,7 +81,7 @@ struct PrayerHeader: View {
                 }
             } label: {
                 Image(.chevronRight)
-                    .foregroundColor(hasNextDays ? .action : .primary.opacity(0.3))
+                    .foregroundColor(hasNextDays ? .accent : .tertiaryText)
                     .frame(width: buttonSize, height: buttonSize)
                     .padding(4)
             }

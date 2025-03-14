@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Post: Codable, Identifiable, Equatable, WebDestination {
+struct Post: Codable, Identifiable, Equatable, Hashable, WebDestination {
     let id: Int
     let title: String
     let date: Date
