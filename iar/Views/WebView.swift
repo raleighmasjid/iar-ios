@@ -61,6 +61,7 @@ struct WebView: View {
                 }
             }
         }
+        .background(.appBackground)
         .alert(isPresented: $helper.hasExternalURL) {
             Alert(
                 title: Text("Open in Safari?"),

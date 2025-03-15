@@ -11,7 +11,6 @@ struct NewsScreen: View {
 
     @ObservedObject var viewModel: NewsViewModel
     @Binding var path: [Post]
-    @State private var showingSpecial: Bool = false
     @State private var isVisible: Bool = false
 
     var body: some View {
@@ -38,17 +37,6 @@ struct NewsScreen: View {
         }
         .navigationDestination(for: Post.self) { post in
             WebView(post)
-        }
-        .fullScreenCover(isPresented: $showingSpecial) {
-            NavigationView {
-                if let special = viewModel.announcements?.special {
-                    WebView(special, done: {
-                        showingSpecial = false
-                    })
-                    .navigationBarTitleDisplayMode(.inline)
-                    .ignoresSafeArea(.all, edges: .bottom)
-                }
-            }
         }
     }
 }

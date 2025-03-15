@@ -39,6 +39,17 @@
                ReferencedContainer = "container:iar.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "843444972D85140A00386417"
+               BuildableName = "IARTests.xctest"
+               BlueprintName = "IARTests"
+               ReferencedContainer = "container:iar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

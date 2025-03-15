@@ -23,8 +23,8 @@ struct PostsList: View {
                     }
                     .buttonStyle(AnnouncementButtonStyle())
                     .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
                     .listRowSeparator(.hidden)
-                    .listRowBackground(Color.clear)
                 }
                 
                 ForEach(announcements?.allPosts ?? []) { post in
@@ -33,10 +33,18 @@ struct PostsList: View {
                     } label: {
                         PostRow(post: post)
                     }
-                    .buttonStyle(AnnouncementButtonStyle())
-                    .listRowBackground(Color.clear)
+                    .buttonStyle(PostButtonStyle())
+                    .listRowSeparatorTint(.outline)
+                    .alignmentGuide(.listRowSeparatorLeading) { _ in
+                        16
+                    }
+                    .alignmentGuide(.listRowSeparatorTrailing) { dimensions in
+                        dimensions[.trailing] - 16
+                    }
                 }
-            }.listRowInsets(EdgeInsets())
+            }
+            .listRowInsets(EdgeInsets())
+            .listRowBackground(Color.clear)
         }
         .listStyle(.plain)
         .scrollContentBackground(.hidden)

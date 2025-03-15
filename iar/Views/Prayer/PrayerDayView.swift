@@ -19,7 +19,9 @@ struct PrayerDayView: View {
             
             ForEach(Prayer.allCases, id: \.self) { prayer in
                 Divider()
+                    .overlay(.outline)
                     .padding(.horizontal, 16)
+                    
                 PrayerRow(prayer: prayer.title,
                           adhan: prayerDay?.adhan(for: prayer),
                           iqamah: prayerDay?.iqamah(for: prayer),
@@ -30,7 +32,9 @@ struct PrayerDayView: View {
             
             if (showTaraweeh) {
                 Divider()
+                    .overlay(.outline)
                     .padding(.horizontal, 16)
+                    
                 PrayerRow(prayer: "Taraweeh",
                           adhan: nil,
                           iqamah: prayerDay?.iqamah.taraweeh,

@@ -33,16 +33,20 @@ class CompassViewModel: ObservableObject, LocationProviderDelegate {
     func didUpdateHeading(_ heading: Heading?, location: CLLocation?, authorizationStatus: CLAuthorizationStatus) {
         if authorizationStatus == .denied || authorizationStatus == .restricted {
             compassAngle = .accessDenied
+            isCorrect = false
             return
         }
         
         guard let heading = heading, let location = location else {
             compassAngle = .pending
+            isCorrect = false
             return
         }
         
         if heading.accuracy < 0 || heading.accuracy >= 90 {
             compassAngle = .invalid
+            isCorrect = false
+            return
         }
         
         var qibla = Qibla(coordinates: Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)).direction
@@ -51,34 +55,17 @@ class CompassViewModel: ObservableObject, LocationProviderDelegate {
             qibla += 360
         }
         
-        let previousAngle: Double = switch compassAngle {
-        case .valid(let angle):
-            angle
-        default:
-            0
-        }
-        
-        compassAngle = .valid(adjustedEnd(from: previousAngle, to: qibla))
+        let previousAngle = compassAngle.currentAngle ?? 0
+        compassAngle = .valid(CompassAngle.adjustedEnd(from: previousAngle, to: qibla))
         isCorrect = percentCorrect > 0
     }
     
     var percentCorrect: Double {
-        switch compassAngle {
-        case .valid(let angle) where angle >= 350 || angle <= 10:
-            let smallAngle = angle > 180 ? angle - 360 : angle
-            return min(1, 1.2 - (abs(smallAngle)/10))
-        default:
+        guard let normalizedSmallestAngle = compassAngle.normalizedSmallestAngle else {
             return -1
         }
-    }
-    
-    func adjustedEnd(from start: Double, to target: Double) -> Double {
-        // Shift end to be greater than start
-        var end = target
-        while end < start { end += 360 }
-
-        // Mod the distance with 360, shifting by 180 to keep on the same side of a circle
-        return (end - start + 180).truncatingRemainder(dividingBy: 360) - 180 + start
+        
+        return min(1, 1.2 - (abs(normalizedSmallestAngle)/10))
     }
     
     func didUpdateLocation(_ location: String) {

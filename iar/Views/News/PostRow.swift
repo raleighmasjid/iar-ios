@@ -48,7 +48,6 @@ struct PostRow: View {
                     .foregroundColor(.secondaryText)
             }
         }
-        .padding(.vertical, 8)
     }
 }
 
