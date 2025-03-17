@@ -23,7 +23,11 @@ class CompassViewModel: ObservableObject, LocationProviderDelegate {
     }
     
     func startUpdating() {
-        provider.startUpdating()
+        if provider.headingAvailable {
+            provider.startUpdating()
+        } else {
+            compassAngle = .unavailable
+        }
     }
     
     func stopUpdating() {

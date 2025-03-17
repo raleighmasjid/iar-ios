@@ -10,33 +10,37 @@ import SwiftUI
 struct NewsScreen: View {
 
     @ObservedObject var viewModel: NewsViewModel
-    @Binding var path: [Post]
+    @State var path: [Post] = []
     @State private var isVisible: Bool = false
 
     var body: some View {
-        PostsList(announcements: viewModel.announcements, path: $path)
-        .toolbar {
-            if (viewModel.loading) {
-                ProgressView()
-            }
-        }
-        .refreshable {
-            await viewModel.refreshNews()
-        }
-        .onAppear {
-            isVisible = true
-            viewModel.didViewAnnouncements()
-        }
-        .onDisappear {
-            isVisible = false
-        }
-        .onChange(of: viewModel.announcements) { newAnnouncement in
-            if isVisible {
-                viewModel.didViewAnnouncements()
-            }
-        }
-        .navigationDestination(for: Post.self) { post in
-            WebView(post)
+        NavigationStack(path: $path) {
+            PostsList(announcements: viewModel.announcements, path: $path)
+                .toolbar {
+                    if (viewModel.loading) {
+                        ProgressView()
+                    }
+                }
+                .largeNavigationTitle("News")
+                .background(.appBackground)
+                .refreshable {
+                    await viewModel.refreshNews()
+                }
+                .onAppear {
+                    isVisible = true
+                    viewModel.didViewAnnouncements()
+                }
+                .onDisappear {
+                    isVisible = false
+                }
+                .onChange(of: viewModel.announcements) { newAnnouncement in
+                    if isVisible {
+                        viewModel.didViewAnnouncements()
+                    }
+                }
+                .navigationDestination(for: Post.self) { post in
+                    WebView(post)
+                }
         }
     }
 }
@@ -45,8 +49,7 @@ struct NewsScreen: View {
 #Preview {
     let vm = NewsViewModel(provider: MockProvider())
     NavigationView {
-        NewsScreen(viewModel: vm, path: .constant([]))
-            .navigationTitle("News")
+        NewsScreen(viewModel: vm)
             .onAppear {
                 vm.loadData()
             }

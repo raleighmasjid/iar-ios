@@ -13,26 +13,22 @@ protocol WebDestination {
     var title: String { get }
 }
 
-struct WebLink: WebDestination {
+struct WebLink: WebDestination, Hashable {
     let url: String
     let title: String
 }
 
 struct WebView: View {
     
-    typealias DoneAction = () -> Void
-    
     @Environment(\.openURL) var openURL
     
     let destination: WebDestination
-    let doneAction: DoneAction?
     @StateObject var helper: WebViewHelper = WebViewHelper()
     @State var showActions: Bool = false
     @State var showShare: Bool = false
     
-    init(_ webDestination: WebDestination, done: DoneAction? = nil) {
+    init(_ webDestination: WebDestination) {
         destination = webDestination
-        doneAction = done
     }
     
     var body: some View {
@@ -45,20 +41,19 @@ struct WebView: View {
                     ProgressView()
                         .tint(.primaryText)
                 }
-                Button {
-                    showActions = true
+                Menu {
+                    Button("Open in Browser") {
+                        if let url = currentURL() {
+                            openURL(url)
+                        }
+                    }
+                    Button("Share") {
+                        showShare = true
+                    }
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                 }
-            }
-            
-            
-            ToolbarItem(placement: .navigationBarLeading) {
-                if let doneAction = doneAction {
-                    Button("Done") {
-                        doneAction()
-                    }
-                }
+
             }
         }
         .background(.appBackground)
@@ -71,22 +66,6 @@ struct WebView: View {
                         openURL(url)
                     }
                 }), secondaryButton: .cancel())
-        }
-        .actionSheet(isPresented: $showActions) {
-            ActionSheet(
-                title: Text(currentURL()?.absoluteString ?? destination.url),
-                buttons: [
-                    .default(Text("Share")) {
-                        showShare = true
-                    },
-                    .default(Text("Open in Browser")) {
-                        if let url = currentURL() {
-                            openURL(url)
-                        }
-                    },
-                    .cancel()
-                ]
-            )
         }
         .sheet(isPresented: $showShare) {
             ShareSheet(activityItems: [currentURL() ?? destination.url])

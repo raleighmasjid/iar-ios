@@ -9,25 +9,17 @@ import SwiftUI
 
 struct SmallPrayerCountdown: View {
 
-    @ObservedObject var viewModel: PrayerCountdownViewModel
+    let upcoming: PrayerTime?
     
     let verticalPadding: CGFloat
     let safeArea: CGFloat
     @Binding var textHeight: CGFloat
     
     init(upcoming: PrayerTime?, verticalPadding: CGFloat, safeArea: CGFloat, textHeight: Binding<CGFloat>) {
-        self.viewModel = PrayerCountdownViewModel(upcoming: upcoming)
+        self.upcoming = upcoming
         self.verticalPadding = verticalPadding
         self.safeArea = safeArea
         self._textHeight = textHeight
-    }
-
-    var countdown: String {
-        guard let upcoming = viewModel.upcoming else {
-            return " "
-        }
-
-        return "\(upcoming.prayer.title) is in \(viewModel.timeRemaining.formattedInterval())"
     }
 
     var body: some View {
@@ -39,18 +31,28 @@ struct SmallPrayerCountdown: View {
                     .frame(maxWidth: .infinity)
                     .clipped()
                     .ignoresSafeArea(edges: .top)
-            Text(countdown)
-                .scalingFont(size: 17, weight: .semibold)
-                .foregroundStyle(.white)
-                .lineLimit(1)
-                .minimumScaleFactor(0.1)
-                .padding(.vertical, verticalPadding)
-                .padding(.horizontal, 30)
-                .onGeometryChange(for: CGFloat.self) { proxy in
-                    proxy.frame(in: .global).height
-                } action: { newValue in
-                    self.textHeight = newValue
+            Group {
+                if let upcoming = upcoming {
+                    HStack(spacing: 0) {
+                        Text("\(upcoming.prayer.title) is in ")
+                        Text(upcoming.adhan, style: .relative)
+                    }
+                } else {
+                    Text(" ")
                 }
+            }
+            .scalingFont(size: 17, weight: .semibold)
+            .monospacedDigit()
+            .foregroundStyle(.white)
+            .lineLimit(1)
+            .minimumScaleFactor(0.1)
+            .padding(.vertical, verticalPadding)
+            .padding(.horizontal, 30)
+            .onGeometryChange(for: CGFloat.self) { proxy in
+                proxy.frame(in: .global).height
+            } action: { newValue in
+                self.textHeight = newValue
+            }
         }
     }
 }

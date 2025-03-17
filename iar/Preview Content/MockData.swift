@@ -21,6 +21,10 @@ class MockAlmostValidLocationProvider: LocationProvider {
     func stopUpdating() {
         
     }
+    
+    var headingAvailable: Bool {
+        true
+    }
 }
 
 class MockDeniedLocationProvider: LocationProvider {
@@ -32,6 +36,26 @@ class MockDeniedLocationProvider: LocationProvider {
     
     func stopUpdating() {
         
+    }
+    
+    var headingAvailable: Bool {
+        true
+    }
+}
+
+class MockUnavailableLocationProvider: LocationProvider {
+    weak var delegate: LocationProviderDelegate?
+    
+    func startUpdating() {
+        self.delegate?.didUpdateHeading(nil, location: nil, authorizationStatus: .denied)
+    }
+    
+    func stopUpdating() {
+        
+    }
+    
+    var headingAvailable: Bool {
+        false
     }
 }
 
@@ -53,6 +77,10 @@ class MockLocationProvider: LocationProvider {
     
     func stopUpdating() {
         
+    }
+    
+    var headingAvailable: Bool {
+        true
     }
 }
 

@@ -7,50 +7,48 @@
 
 import SwiftUI
 import OneSignalFramework
+import Contacts
 
 struct MoreScreen: View {
-    @EnvironmentObject var notifications: NotificationSettings
+    
+    @State var path: [WebLink] = []
+    @State var settingsSize: CGSize = .zero
+    @State var footerSize: CGSize = .zero
+    @State var screenSize: CGSize = .zero
     
     var body: some View {
-        Form {
-            Section {
-                Picker("Prayer Alert", selection: $notifications.type) {
-                    ForEach(NotificationType.allCases, id:\.self) { type in
-                        Text(type.title).tag(type)
-                    }
+        NavigationStack(path: $path) {
+            ScrollView {
+                VStack(spacing: 0) {
+                    SettingsList(path: $path)
+                        .onGeometryChange(for: CGSize.self) { proxy in
+                            proxy.size
+                        } action: { newValue in
+                            settingsSize = newValue
+                        }
+
+                    Spacer()
+                        .frame(height: max(0, screenSize.height - (settingsSize.height + footerSize.height)))
+                    
+                    SettingsFooter()
+                        .onGeometryChange(for: CGSize.self) { proxy in
+                            proxy.size
+                        } action: { newValue in
+                            footerSize = newValue
+                        }
                 }
             }
-            
-            if !OneSignal.Notifications.permission {
-                Section {
-                    Button("Enable Notifications") {
-                        OneSignal.Notifications.requestPermission({ accepted in
-                            #if DEBUG
-                            print("User accepted notifications: \(accepted)")
-                            #endif
-                        }, fallbackToSettings: true)
-                    }
-                }
+            .largeNavigationTitle("Settings")
+            .background(.appBackground)
+            .navigationDestination(for: WebLink.self) { webLink in
+                WebView(webLink)
             }
-            
-            Section(footer:
-                VStack(alignment: .center) {
-                    Text("The Islamic Association of Raleigh")
-                    Text(version())
-            }.frame(maxWidth: .infinity)
-                .padding(.top, 50)
-            ) {
-                NavigationLink("App Feedback", destination: WebView(WebLink(url: "https://raleighmasjid.org/appfeedback", title: "App Feedback")))
-                NavigationLink("Visit Full Website", destination: WebView(WebLink(url: "https://raleighmasjid.org", title: "IAR")))
+            .onGeometryChange(for: CGSize.self) { proxy in
+                proxy.size
+            } action: { newValue in
+                screenSize = newValue
             }
         }
-    }
-    
-    func version() -> String {
-        let dictionary = Bundle.main.infoDictionary!
-        let version = dictionary["CFBundleShortVersionString"] as! String
-        let build = dictionary["CFBundleVersion"] as! String
-        return "Version \(version) (\(build))"
     }
 }
 

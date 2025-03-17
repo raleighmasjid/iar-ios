@@ -62,6 +62,7 @@ class PrayerTimesViewModel: ObservableObject {
         }
         Task {
             do {
+                startBackgroundTask()
                 let schedule = try await self.provider.fetchPrayers(forceRefresh: false)
                 self.setPrayerData(schedule: schedule, fromCache: false)
                 WidgetCenter.shared.reloadAllTimelines()

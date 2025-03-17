@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 @MainActor
 class NewsViewModel: ObservableObject {
@@ -20,6 +21,7 @@ class NewsViewModel: ObservableObject {
     private var viewedAnnouncements: [Int]
     
     private let provider: NewsProvider
+    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
     init(provider: NewsProvider) {
         self.provider = provider
@@ -44,8 +46,10 @@ class NewsViewModel: ObservableObject {
     
     func refreshNews() async {
         do {
+            startBackgroundTask()
             let news = try await provider.fetchNews(forceRefresh: true)
             self.didFetchNews(news: news)
+            endBackgroundTask()
         } catch {
             self.error = true
         }
@@ -76,5 +80,20 @@ class NewsViewModel: ObservableObject {
         
         let unviewedIds = currentIds.subtracting(viewedIds)
         badge = !unviewedIds.isEmpty
+    }
+    
+    private func startBackgroundTask() {
+        if backgroundTask == .invalid {
+            backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+                self?.endBackgroundTask()
+            }
+        }
+    }
+
+    private func endBackgroundTask() {
+        if backgroundTask != .invalid {
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+            backgroundTask = .invalid
+        }
     }
 }

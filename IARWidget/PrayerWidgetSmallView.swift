@@ -19,6 +19,7 @@ struct PrayerWidgetSmallView: View {
                     .font(.system(size: 13, weight: .semibold))
                 Text(entry.nextPrayer.adhan, style: .relative)
                     .font(.system(size: 28, weight: .bold))
+                    .monospacedDigit()
                     .minimumScaleFactor(0.1)
                     .lineLimit(1)
                     .allowsTightening(true)

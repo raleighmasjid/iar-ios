@@ -13,6 +13,7 @@ public enum CompassAngle {
     case invalid
     case pending
     case accessDenied
+    case unavailable
     
     var normalizedSmallestAngle: Double? {
         guard case let .valid(angle) = self else {

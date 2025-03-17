@@ -15,7 +15,8 @@ struct MainView: View {
     
     @StateObject var compassViewModel: CompassViewModel = {
         #if targetEnvironment(simulator)
-        let provider = MockLocationProvider()
+//         let provider = MockLocationProvider()
+        let provider = MockDeniedLocationProvider()
         #else
         let provider = CoreLocationProvider()
         #endif
@@ -24,7 +25,6 @@ struct MainView: View {
     
     @Environment(\.scenePhase) var scenePhase
     @State var didEnterBackground = false
-    @State var newsPath: [Post] = []
 
     let dayChange = NotificationCenter.default.publisher(for: .NSCalendarDayChanged).receive(on: RunLoop.main)
 
@@ -35,35 +35,22 @@ struct MainView: View {
                 Label("Prayer", image: "tab-prayer")
             }
             
-            NavigationStack {
-                QiblaScreen(viewModel: compassViewModel)
-                    .largeNavigationTitle("Qibla")
-                    .background(.appBackground)
-            }
+            QiblaScreen(viewModel: compassViewModel)
             .tabItem {
                 Label("Qibla", image: "tab-qibla")
             }
             
-            NavigationStack(path: $newsPath) {
-                NewsScreen(viewModel: newsViewModel, path: $newsPath)
-                    .largeNavigationTitle("News")
-                    .background(.appBackground)
-            }
+            NewsScreen(viewModel: newsViewModel)
             .tabItem {
                 Label("News", image: newsViewModel.badge ? "tab-news-badge" : "tab-news")
             }
             
             DonateScreen()
-                .background(.appBackground)
             .tabItem {
                 Label("Donate", image: "tab-donate")
             }
             
-            NavigationStack {
-                MoreScreen()
-                    .largeNavigationTitle("Settings")
-                    .background(.appBackground)
-            }
+            MoreScreen()
             .tabItem {
                 Label("Settings", image: "tab-settings")
             }

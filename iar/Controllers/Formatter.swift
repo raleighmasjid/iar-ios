@@ -21,21 +21,6 @@ enum Formatter {
         formatter.timeZone = TimeZone(identifier: "America/New_York")
         return formatter
     }()
-    
-    static let longIntervalFormatter: DateComponentsFormatter = {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.hour, .minute]
-        formatter.unitsStyle = .abbreviated
-        return formatter
-    }()
-    
-    static let shortIntervalFormatter: DateComponentsFormatter = {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .abbreviated
-        formatter.zeroFormattingBehavior = .pad
-        return formatter
-    }()
 }
 
 extension Calendar {
@@ -55,15 +40,5 @@ extension Date {
     
     func timeFormatted() -> String {
         Formatter.timeFormatter.string(from: self)
-    }
-}
-
-extension TimeInterval {
-    func formattedInterval() -> String {
-        if self > 60 * 60 {
-            return Formatter.longIntervalFormatter.string(from: self) ?? ""
-        } else {
-            return Formatter.shortIntervalFormatter.string(from: self) ?? ""
-        }
     }
 }

@@ -26,6 +26,7 @@ struct SpecialAnnouncement: View {
                 .lineLimit(3)
                 .lineSpacing(5)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 

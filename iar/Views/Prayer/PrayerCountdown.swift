@@ -8,38 +8,26 @@
 import SwiftUI
 
 struct PrayerCountdown: View {
-    @ObservedObject var viewModel: PrayerCountdownViewModel
+    let upcoming: PrayerTime?
     let mode: Mode
     @Binding var textHeight: CGFloat
     
     init(upcoming: PrayerTime?, mode: Mode, textHeight: Binding<CGFloat>) {
-        self.viewModel = PrayerCountdownViewModel(upcoming: upcoming)
+        self.upcoming = upcoming
         self.mode = mode
         self._textHeight = textHeight
     }
     
     var nextPrayer: String {
-        guard let upcoming = viewModel.upcoming else {
+        guard let upcoming = upcoming else {
             return " "
         }
 
         return "\(upcoming.prayer.title) is in"
     }
     
-    var countdown: String {
-        guard viewModel.upcoming != nil else {
-            return " "
-        }
-
-        return viewModel.timeRemaining.formattedInterval()
-    }
-    
     var badgeColor: Color {
-        if viewModel.upcoming == nil {
-            return .clear
-        } else {
-            return .white.opacity(0.15)
-        }
+        upcoming != nil ? .white.opacity(0.15) : .clear
     }
     
     var body: some View {
@@ -50,13 +38,21 @@ struct PrayerCountdown: View {
                 .scalingFont(size: 16, weight: .medium)
                 .background(badgeColor)
                 .cornerRadius(8)
-            Text(countdown)
-                .scalingFont(size: mode.countdownFontSize)
-                .onGeometryChange(for: CGFloat.self) { proxy in
-                    proxy.size.height
-                } action: { newValue in
-                    textHeight = newValue
+            
+            Group {
+                if let upcoming = upcoming {
+                    Text(upcoming.adhan, style: .relative)
+                } else {
+                    Text(" ")
                 }
+            }
+            .scalingFont(size: mode.countdownFontSize)
+            .monospacedDigit()
+            .onGeometryChange(for: CGFloat.self) { proxy in
+                proxy.size.height
+            } action: { newValue in
+                textHeight = newValue
+            }
         }
         .foregroundStyle(.white)
         .padding(.vertical, mode.verticalPadding)

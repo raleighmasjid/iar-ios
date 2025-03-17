@@ -12,6 +12,7 @@ protocol LocationProvider: AnyObject {
     var delegate: LocationProviderDelegate? { get set }
     func startUpdating()
     func stopUpdating()
+    var headingAvailable: Bool { get }
 }
 
 protocol LocationProviderDelegate: AnyObject {
@@ -37,6 +38,10 @@ class CoreLocationProvider: NSObject, LocationProvider, CLLocationManagerDelegat
         locationManager.pausesLocationUpdatesAutomatically = true
         locationManager.headingFilter = kCLHeadingFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyReduced
+    }
+    
+    var headingAvailable: Bool {
+        CLLocationManager.headingAvailable()
     }
  
     func startUpdating() {

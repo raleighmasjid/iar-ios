@@ -1,31 +1,21 @@
 //
-//  AccessDeniedView.swift
+//  HeadingUnavailableView.swift
 //  iar
 //
-//  Created by Ameir Al-Zoubi on 3/13/25.
+//  Created by Ameir Al-Zoubi on 3/15/25.
 //
 
 import SwiftUI
 
-struct AccessDeniedView: View {
-    @Environment(\.openURL) private var openURL
-    
+struct HeadingUnavailableView: View {
     var body: some View {
         VStack(spacing: 30) {
             Image(systemName: "exclamationmark.triangle.fill")
                 .foregroundStyle(.red)
                 .font(.system(size: 32, weight: .medium))
-            Text("Location access is required to enable compass functionality and show the qibla direction.")
+            Text("This device does not support real time compass directions.")
                 .foregroundStyle(.primaryText)
                 .scalingFont(size: 18)
-            Button {
-                openURL(URL(string: UIApplication.openSettingsURLString)!)
-            } label: {
-                Text("System Settings")
-                    .foregroundStyle(.accent)
-                    .font(.headline)
-            }
-            .buttonStyle(PrimaryContainerButtonStyle())
         }
         .padding(40)
     }
@@ -34,23 +24,21 @@ struct AccessDeniedView: View {
 #if DEBUG
 #Preview("Light Mode") {
     VStack(alignment: .center) {
-        AccessDeniedView()
+        HeadingUnavailableView()
             
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .background(.appBackground)
     .environment(\.colorScheme, .light)
-    .tint(.accent)
 }
 
 #Preview("Dark Mode") {
     VStack(alignment: .center) {
-        AccessDeniedView()
+        HeadingUnavailableView()
             
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .background(.appBackground)
     .environment(\.colorScheme, .dark)
-    .tint(.accent)
 }
 #endif

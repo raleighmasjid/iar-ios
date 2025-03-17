@@ -48,6 +48,7 @@ struct PrayerWidgetMediumView: View {
                         .font(.system(size: 13, weight: .semibold))
                     Text(entry.nextPrayer.adhan, style: .relative)
                         .font(.system(size: 20, weight: .semibold))
+                        .monospacedDigit()
                         .minimumScaleFactor(0.1)
                         .lineLimit(1)
                         .allowsTightening(true)

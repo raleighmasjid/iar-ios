@@ -21,7 +21,7 @@ struct PostsList: View {
                     } label: {
                         SpecialAnnouncement(special: special)
                     }
-                    .buttonStyle(AnnouncementButtonStyle())
+                    .buttonStyle(PrimaryContainerButtonStyle())
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
                     .listRowSeparator(.hidden)
@@ -32,8 +32,9 @@ struct PostsList: View {
                         path.append(post)
                     } label: {
                         PostRow(post: post)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .buttonStyle(PostButtonStyle())
+                    .buttonStyle(RowButtonStyle())
                     .listRowSeparatorTint(.outline)
                     .alignmentGuide(.listRowSeparatorLeading) { _ in
                         16

@@ -1,5 +1,5 @@
 //
-//  PostButtonStyle.swift
+//  RowButtonStyle.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 3/15/25.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct PostButtonStyle: ButtonStyle {
+struct RowButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(16)
+            .contentShape(Rectangle())
             .background(configuration.isPressed ? .gray.opacity(0.15) : .clear)
     }
 }
