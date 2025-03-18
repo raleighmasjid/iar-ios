@@ -3,6 +3,16 @@
     {
       "filename" : "tab-news-badge.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "tab-news-badge-dark.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {
