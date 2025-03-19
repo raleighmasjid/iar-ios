@@ -12,41 +12,20 @@ import Contacts
 struct MoreScreen: View {
     
     @State var path: [WebLink] = []
-    @State var settingsSize: CGSize = .zero
-    @State var footerSize: CGSize = .zero
-    @State var screenSize: CGSize = .zero
     
     var body: some View {
         NavigationStack(path: $path) {
-            ScrollView {
-                VStack(spacing: 0) {
+            VStack(spacing: 0) {
+                ScrollView {
                     SettingsList(path: $path)
-                        .onGeometryChange(for: CGSize.self) { proxy in
-                            proxy.size
-                        } action: { newValue in
-                            settingsSize = newValue
-                        }
-
-                    Spacer()
-                        .frame(height: max(0, screenSize.height - (settingsSize.height + footerSize.height)))
-                    
-                    SettingsFooter()
-                        .onGeometryChange(for: CGSize.self) { proxy in
-                            proxy.size
-                        } action: { newValue in
-                            footerSize = newValue
-                        }
                 }
+                
+                SettingsFooter()
             }
             .largeNavigationTitle("Settings")
             .background(.appBackground)
             .navigationDestination(for: WebLink.self) { webLink in
                 WebView(webLink)
-            }
-            .onGeometryChange(for: CGSize.self) { proxy in
-                proxy.size
-            } action: { newValue in
-                screenSize = newValue
             }
         }
     }
