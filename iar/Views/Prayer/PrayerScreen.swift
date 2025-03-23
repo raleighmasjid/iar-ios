@@ -162,7 +162,6 @@ struct PrayerScreen: View {
         } action: { newValue in
             contentArea = newValue
         }
-
     }
 }
 

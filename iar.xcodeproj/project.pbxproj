@@ -100,6 +100,7 @@
 		84D44BA927D8677C00202BD3 /* NewsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D44BA827D8677C00202BD3 /* NewsProvider.swift */; };
 		84E57E0027AB8FE400AC10A0 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E57DFF27AB8FE300AC10A0 /* Formatter.swift */; };
 		84E57E0227AB943600AC10A0 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E57E0127AB943600AC10A0 /* URLSession.swift */; };
+		84E9AA9D2D8B336C0017E87B /* DirectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9AA9C2D8B33680017E87B /* DirectionsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +224,7 @@
 		84D44BA827D8677C00202BD3 /* NewsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsProvider.swift; sourceTree = "<group>"; };
 		84E57DFF27AB8FE300AC10A0 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		84E57E0127AB943600AC10A0 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		84E9AA9C2D8B33680017E87B /* DirectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -505,6 +507,7 @@
 		84FEFD4E27AEDD0A0075126B /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				84E9AA9C2D8B33680017E87B /* DirectionsViewModel.swift */,
 				847AC2E1279FAE16000D80EE /* PrayerTimesViewModel.swift */,
 				84D44BA627D8676400202BD3 /* NewsViewModel.swift */,
 				8497D2E127C2B981000BF89C /* PrayerDayViewModel.swift */,
@@ -718,6 +721,7 @@
 				843444A22D862CF800386417 /* RowButtonStyle.swift in Sources */,
 				84CA80382D68F89E009BE7DD /* UIApplication.swift in Sources */,
 				8497D2E427C2B9F1000BF89C /* PrayerTimesView.swift in Sources */,
+				84E9AA9D2D8B336C0017E87B /* DirectionsViewModel.swift in Sources */,
 				844456D22D83BD3700554E41 /* LocationCard.swift in Sources */,
 				845FB0ED27E3C579006E54E1 /* ShareSheet.swift in Sources */,
 				847AC2CD279F926A000D80EE /* IqamahSchedule.swift in Sources */,

@@ -11,19 +11,39 @@ struct SettingsFooter: View {
     
     @Environment(\.openURL) private var openURL
     
+    let directionsViewModel = DirectionsViewModel()
+    
     var body: some View {
         VStack(alignment: .center, spacing: 32) {
             VStack(spacing: 8) {
                 Text("Open Daily From Fajr to Isha")
                     .scalingFont(size: 15)
                     .foregroundStyle(.primaryText)
-                
-                Button {
-                    openURL(URL(string: "http://maps.apple.com/?daddr=808+Atwater+St%2C+Raleigh%2C+NC+27607")!)
-                } label: {
-                    Text("808 Atwater St, Raleigh, NC 27607")
-                        .scalingFont(size: 15, weight: .semibold)
+
+                Group {
+                    if directionsViewModel.hasGoogleMaps {
+                        Menu {
+                            Section("Get directions") {
+                                Button("Apple Maps") {
+                                    openURL(directionsViewModel.appleMapsURL)
+                                }
+                                Button("Google Maps") {
+                                    openURL(directionsViewModel.googleMapsURL)
+                                }
+                            }
+                        } label: {
+                            Text(directionsViewModel.address)
+                        }
+                        .menuOrder(.fixed)
+                    } else {
+                        Button {
+                            openURL(directionsViewModel.appleMapsURL)
+                        } label: {
+                            Text(directionsViewModel.address)
+                        }
+                    }
                 }
+                .scalingFont(size: 15, weight: .semibold)
                 .buttonStyle(SmallPrimaryContainerButtonStyle())
             }
             

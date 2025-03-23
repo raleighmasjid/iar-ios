@@ -12,15 +12,23 @@ import Contacts
 struct MoreScreen: View {
     
     @State var path: [WebLink] = []
+    @State var footerHeight: CGFloat = 0
     
     var body: some View {
         NavigationStack(path: $path) {
-            VStack(spacing: 0) {
+            ZStack {
                 ScrollView {
                     SettingsList(path: $path)
+                        .padding(.bottom, footerHeight)
                 }
                 
                 SettingsFooter()
+                    .onGeometryChange(for: CGFloat.self) { proxy in
+                        proxy.size.height
+                    } action: { newValue in
+                        footerHeight = newValue
+                    }
+                    .frame(maxHeight: .infinity, alignment: .bottom)
             }
             .largeNavigationTitle("Settings")
             .background(.appBackground)
