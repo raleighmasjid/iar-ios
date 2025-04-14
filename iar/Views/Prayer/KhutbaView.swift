@@ -67,7 +67,8 @@ struct KhutbaView: View {
         .background(
             ZStack(alignment: .bottomTrailing) {
                 Color.surfaceContainer
-                Image(.khutbaDecoration)       
+                Image(.khutbaDecoration)
+                    .foregroundStyle(.tertiaryAccent)
             }
         )
         .cornerRadius(16)

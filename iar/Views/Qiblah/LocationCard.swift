@@ -13,7 +13,7 @@ struct LocationCard: View {
     @ScaledMetric private var markerHeight: Double = 14
     
     var body: some View {
-        HStack {
+        HStack(spacing: 5) {
             Image(.locationMarker)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -23,18 +23,19 @@ struct LocationCard: View {
         .scalingFont(size: 15, weight: .medium)
         .lineLimit(1)
         .foregroundStyle(.accent)
-        .padding(12)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
         .background(.primaryContainer)
         .cornerRadius(12)
     }
 }
 
 #if DEBUG
-#Preview {
+#Preview("Raleigh") {
     LocationCard(locationName: "Raleigh")
 }
 
-#Preview {
+#Preview("Loading") {
     LocationCard(locationName: nil)
 }
 #endif

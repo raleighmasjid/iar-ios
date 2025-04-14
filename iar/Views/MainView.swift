@@ -15,8 +15,8 @@ struct MainView: View {
     
     @StateObject var compassViewModel: CompassViewModel = {
         #if targetEnvironment(simulator)
-//         let provider = MockLocationProvider()
-        let provider = MockDeniedLocationProvider()
+         let provider = MockLocationProvider()
+//        let provider = MockDeniedLocationProvider()
         #else
         let provider = CoreLocationProvider()
         #endif
