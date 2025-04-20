@@ -886,7 +886,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -913,7 +913,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1075,7 +1075,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid;
 				PRODUCT_NAME = IAR;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1112,7 +1112,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid;
 				PRODUCT_NAME = IAR;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1141,7 +1141,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.IARWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1172,7 +1172,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.IARWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
