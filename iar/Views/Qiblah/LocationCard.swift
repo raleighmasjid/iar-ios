@@ -22,11 +22,7 @@ struct LocationCard: View {
         }
         .scalingFont(size: 15, weight: .medium)
         .lineLimit(1)
-        .foregroundStyle(.accent)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 8)
-        .background(.primaryContainer)
-        .cornerRadius(12)
+        .primaryContainer(size: .small)
     }
 }
 

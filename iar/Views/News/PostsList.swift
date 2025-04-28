@@ -21,7 +21,7 @@ struct PostsList: View {
                     } label: {
                         SpecialAnnouncement(special: special)
                     }
-                    .buttonStyle(PrimaryContainerButtonStyle())
+                    .buttonStyle(PrimaryContainerButtonStyle(size: .large))
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
                     .listRowSeparator(.hidden)

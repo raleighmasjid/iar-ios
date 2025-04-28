@@ -93,14 +93,6 @@ struct PrayerScreen: View {
             .ignoresSafeArea(edges: .top)
     }
 
-    var countdownView: some View {
-        PrayerCountdown(upcoming: viewModel.upcoming,
-                        mode: countdownMode,
-                        textHeight: $countdownTextHeight)
-            .opacity(largeHeaderOpacity)
-            .frame(maxWidth: .infinity)
-    }
-
     var stickyHeader: some View {
         SmallPrayerCountdown(upcoming: viewModel.upcoming,
                              verticalPadding: smallCountdownVerticalPadding,
@@ -118,7 +110,11 @@ struct PrayerScreen: View {
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    countdownView
+                    PrayerCountdown(upcoming: viewModel.upcoming,
+                                    mode: countdownMode,
+                                    textHeight: $countdownTextHeight)
+                        .opacity(largeHeaderOpacity)
+                        .frame(maxWidth: .infinity)
                         .onGeometryChange(for: CGRect.self) { proxy in
                             proxy.frame(in: .named(scrollNamespace))
                         } action: { value in
@@ -126,8 +122,9 @@ struct PrayerScreen: View {
                         }
                     PrayerTimesView(prayerDays: viewModel.prayerDays)
                     FridayScheduleView(fridayPrayers: viewModel.fridaySchedule)
-                    Spacer(minLength: 5)
+                        .padding(.vertical, 32)
                 }
+                .padding(.horizontal, 16)
             }
             .coordinateSpace(name: scrollNamespace)
             .scrollIndicators(.hidden)

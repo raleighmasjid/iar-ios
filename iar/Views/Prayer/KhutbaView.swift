@@ -31,12 +31,10 @@ struct KhutbaView: View {
                 .padding(16)
                 .background(.primaryFixed)
 
-                VStack(spacing: 0) {
+                VStack(spacing: 16) {
                     Text(fridayPrayer.title)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .scalingFont(size: 20, weight: .regular)
-                        .padding(.bottom, 24)
-                        .padding(.top, 8)
                     
                     HStack(spacing: 16) {
                         LazyImage(url: URL(string: fridayPrayer.imageUrl)) { state in
@@ -49,7 +47,7 @@ struct KhutbaView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 48, height: 48)
                             .clipShape(Circle())
-                        VStack(alignment: .leading, spacing: 2) {
+                        VStack(alignment: .leading, spacing: 0) {
                             Text(fridayPrayer.speaker)
                                 .scalingFont(size: 17, weight: .semibold)
                             Text(fridayPrayer.description)

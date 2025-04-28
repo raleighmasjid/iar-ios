@@ -25,7 +25,7 @@ struct DonateScreen: View {
             Text("Your Masjid relies on the generous people of this community to keep its doors open. Consider donating to help cover our running costs.")
                 .scalingFont(size: 16)
                 .foregroundColor(.secondaryText)
-                .multilineTextAlignment(.leading)
+                .multilineTextAlignment(.center)
                 .layoutPriority(1)
                 .minimumScaleFactor(0.5)
             
@@ -33,11 +33,10 @@ struct DonateScreen: View {
                 openURL(donateURL)
             } label: {
                 Text("Donate Now")
-                    .foregroundStyle(.accent)
                     .frame(maxWidth: .infinity)
                     .scalingFont(size: 16, weight: .semibold)
             }
-            .buttonStyle(PrimaryContainerButtonStyle())
+            .buttonStyle(PrimaryContainerButtonStyle(size: .medium))
             .layoutPriority(0.75)
             
             Spacer(minLength: 5)

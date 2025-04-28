@@ -24,7 +24,6 @@
 		84224BD92BED5676001B6353 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 84224BD82BED5676001B6353 /* NukeUI */; };
 		842956EB2D87C93E00605553 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842956EA2D87C93B00605553 /* SettingsRow.swift */; };
 		842956EE2D87D2E000605553 /* SettingsPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842956ED2D87D2D800605553 /* SettingsPickerRow.swift */; };
-		842956F02D88D6F100605553 /* SmallPrimaryContainerButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842956EF2D88D6EB00605553 /* SmallPrimaryContainerButtonStyle.swift */; };
 		842956F22D88DDC300605553 /* SettingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842956F12D88DDC000605553 /* SettingsList.swift */; };
 		842956F42D88E04D00605553 /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842956F32D88E04A00605553 /* SettingsFooter.swift */; };
 		842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E34C127BDE9AE00A3B50B /* NotificationController.swift */; };
@@ -59,6 +58,7 @@
 		847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E1279FAE16000D80EE /* PrayerTimesViewModel.swift */; };
 		847AC2E5279FB10A000D80EE /* PrayerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E4279FB10A000D80EE /* PrayerRow.swift */; };
 		847AC2E7279FB162000D80EE /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2E6279FB162000D80EE /* Prayer.swift */; };
+		848FC1922DB877E4005F4C91 /* PrimaryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FC1912DB877E1005F4C91 /* PrimaryContainer.swift */; };
 		848FEE2A2D62B8C3007F14EC /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 848FEE292D62B8C3007F14EC /* OneSignalExtension */; };
 		848FEE2C2D62B8C3007F14EC /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 848FEE2B2D62B8C3007F14EC /* OneSignalFramework */; };
 		848FEE2E2D62B8C3007F14EC /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 848FEE2D2D62B8C3007F14EC /* OneSignalInAppMessages */; };
@@ -159,7 +159,6 @@
 		8422A11627ACAE7C0043B8D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		842956EA2D87C93B00605553 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		842956ED2D87D2D800605553 /* SettingsPickerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPickerRow.swift; sourceTree = "<group>"; };
-		842956EF2D88D6EB00605553 /* SmallPrimaryContainerButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallPrimaryContainerButtonStyle.swift; sourceTree = "<group>"; };
 		842956F12D88DDC000605553 /* SettingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsList.swift; sourceTree = "<group>"; };
 		842956F32D88E04A00605553 /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
 		842E34C127BDE9AE00A3B50B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -197,6 +196,7 @@
 		847AC2E4279FB10A000D80EE /* PrayerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerRow.swift; sourceTree = "<group>"; };
 		847AC2E6279FB162000D80EE /* Prayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
 		8483A8D027BE0484003BB4BE /* iar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iar.entitlements; sourceTree = "<group>"; };
+		848FC1912DB877E1005F4C91 /* PrimaryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryContainer.swift; sourceTree = "<group>"; };
 		849550F027AA0316008A180F /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		849550F227AA0654008A180F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		849550F427AA07EB008A180F /* PrayerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerProvider.swift; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				844456CD2D827D4A00554E41 /* PrimaryContainerButtonStyle.swift */,
-				842956EF2D88D6EB00605553 /* SmallPrimaryContainerButtonStyle.swift */,
+				848FC1912DB877E1005F4C91 /* PrimaryContainer.swift */,
 				843444A12D862CF200386417 /* RowButtonStyle.swift */,
 				845FB0EC27E3C579006E54E1 /* ShareSheet.swift */,
 				84994CD127DD53BB00BD2A33 /* WebView.swift */,
@@ -616,7 +616,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					843444972D85140A00386417 = {
 						CreatedOnToolsVersion = 16.2;
@@ -733,6 +733,7 @@
 				84994CD027DD4EEF00BD2A33 /* PostRow.swift in Sources */,
 				844B424C2BF53ECD007410CD /* SmallPrayerCountdown.swift in Sources */,
 				84AAD21E2BF7A4C1004A1605 /* LocationProvider.swift in Sources */,
+				848FC1922DB877E4005F4C91 /* PrimaryContainer.swift in Sources */,
 				844456D02D839D8200554E41 /* AccessDeniedView.swift in Sources */,
 				847AC2C9279F74C3000D80EE /* AdhanSchedule.swift in Sources */,
 				842956EB2D87C93E00605553 /* SettingsRow.swift in Sources */,
@@ -765,7 +766,6 @@
 				841CD79D2D64452A009FA503 /* View.swift in Sources */,
 				84ACC8D927B86761004D4F25 /* FridayPrayer.swift in Sources */,
 				842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */,
-				842956F02D88D6F100605553 /* SmallPrimaryContainerButtonStyle.swift in Sources */,
 				842E34C627BDED2800A3B50B /* MoreScreen.swift in Sources */,
 				847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */,
 				843444A42D8635DA00386417 /* HeadingUnavailableView.swift in Sources */,
@@ -831,7 +831,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8X3U28L5K;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
@@ -854,7 +853,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8X3U28L5K;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
@@ -875,7 +873,6 @@
 				CODE_SIGN_ENTITLEMENTS = IARNotificationServiceExtension/IARNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8X3U28L5K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Notification Service Extension";
@@ -902,7 +899,6 @@
 				CODE_SIGN_ENTITLEMENTS = IARNotificationServiceExtension/IARNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8X3U28L5K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Notification Service Extension";
@@ -960,6 +956,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = M8X3U28L5K;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1025,6 +1022,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = M8X3U28L5K;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1056,7 +1054,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "iar/Preview\\ Content iar/Preview\\ Content/MockData.swift";
-				DEVELOPMENT_TEAM = M8X3U28L5K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iar/Info.plist;
@@ -1093,7 +1090,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "iar/Preview\\ Content iar/Preview\\ Content/MockData.swift";
-				DEVELOPMENT_TEAM = M8X3U28L5K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iar/Info.plist;
@@ -1128,7 +1124,6 @@
 				CODE_SIGN_ENTITLEMENTS = IARWidget/IARWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8X3U28L5K;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IARWidget/Info.plist;
@@ -1159,7 +1154,6 @@
 				CODE_SIGN_ENTITLEMENTS = IARWidget/IARWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8X3U28L5K;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IARWidget/Info.plist;

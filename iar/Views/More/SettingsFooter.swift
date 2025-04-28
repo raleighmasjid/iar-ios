@@ -44,7 +44,7 @@ struct SettingsFooter: View {
                     }
                 }
                 .scalingFont(size: 15, weight: .semibold)
-                .buttonStyle(SmallPrimaryContainerButtonStyle())
+                .buttonStyle(PrimaryContainerButtonStyle(size: .small))
             }
             
             VStack(spacing: 4) {

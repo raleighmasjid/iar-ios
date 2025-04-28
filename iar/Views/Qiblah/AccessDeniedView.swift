@@ -22,10 +22,9 @@ struct AccessDeniedView: View {
                 openURL(URL(string: UIApplication.openSettingsURLString)!)
             } label: {
                 Text("System Settings")
-                    .foregroundStyle(.accent)
                     .font(.headline)
             }
-            .buttonStyle(PrimaryContainerButtonStyle())
+            .buttonStyle(PrimaryContainerButtonStyle(size: .medium))
         }
         .padding(40)
     }

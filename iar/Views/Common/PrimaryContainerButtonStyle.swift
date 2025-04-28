@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct PrimaryContainerButtonStyle: ButtonStyle {
+    
+    let size: PrimaryContainer.Size
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(16)
-            .background(.primaryContainer)
-            .cornerRadius(16)
-            .opacity(configuration.isPressed ? 0.75 : 1)
+            .primaryContainer(size: size)
+            .opacity(configuration.isPressed ? 0.7 : 1)
     }
 }

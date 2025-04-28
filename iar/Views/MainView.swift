@@ -35,9 +35,11 @@ struct MainView: View {
                 Label("Prayer", image: "tab-prayer")
             }
             
-            QiblaScreen(viewModel: compassViewModel)
-            .tabItem {
-                Label("Qibla", image: "tab-qibla")
+            if compassViewModel.provider.headingAvailable {
+                QiblaScreen(viewModel: compassViewModel)
+                    .tabItem {
+                        Label("Qibla", image: "tab-qibla")
+                    }
             }
             
             NewsScreen(viewModel: newsViewModel)
