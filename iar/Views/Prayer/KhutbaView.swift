@@ -41,7 +41,7 @@ struct KhutbaView: View {
                                 if let image = state.image {
                                     image.resizable()
                                 } else {
-                                    Color.secondaryText.opacity(0.25)
+                                    Color.tertiaryText
                                 }
                             }
                             .aspectRatio(contentMode: .fill)
