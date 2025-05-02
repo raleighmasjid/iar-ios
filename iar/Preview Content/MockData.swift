@@ -116,10 +116,10 @@ extension News {
           "announcements": {
             "special": {
               "id": 11734,
-              "title": "COVID-19 Restriction",
+              "title": "COVID-19 Restrictions in place for now and for the foreseeable future ever and ever",
               "date": "2022-01-02T11:57:16-05:00",
               "url": "https://raleighmasjid.org/special-covid-19-restriction/",
-              "text": "unorganized activities",
+              "text": "unorganized activities lorem ipsum dolor sit amet. The third shift will NOT be held due to the inclement weather. No activities.",
               "image": null
             },
             "posts": [

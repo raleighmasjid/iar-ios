@@ -16,12 +16,9 @@ struct PostsList: View {
         List {
             Group {
                 if let special = announcements?.special {
-                    Button {
+                    SpecialAnnouncement(special: special) {
                         path.append(special)
-                    } label: {
-                        SpecialAnnouncement(special: special)
                     }
-                    .buttonStyle(PrimaryContainerButtonStyle(size: .large))
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
                     .listRowSeparator(.hidden)

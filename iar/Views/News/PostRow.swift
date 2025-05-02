@@ -20,7 +20,7 @@ struct PostRow: View {
     }
     
     var body: some View {
-        HStack(alignment: .center, spacing: 16) {
+        HStack(alignment: .top, spacing: 16) {
             LazyImage(url: postImageURL, transaction: .init(animation: .easeIn(duration: 0.2))) { state in
                     if let image = state.image {
                         image.resizable()
@@ -35,7 +35,7 @@ struct PostRow: View {
                 Text(post.title)
                     .scalingFont(size: 17, weight: .semibold)
                     .lineLimit(2)
-                HStack {
+                HStack(spacing: 8) {
                     Image(.calendarIcon)
                         .foregroundStyle(.accent)
                     Text(Formatter.dayFormatter.string(from: post.date))
