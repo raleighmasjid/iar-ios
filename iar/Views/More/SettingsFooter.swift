@@ -32,14 +32,14 @@ struct SettingsFooter: View {
                                 }
                             }
                         } label: {
-                            Text(directionsViewModel.address)
+                            buttonLabel()
                         }
                         .menuOrder(.fixed)
                     } else {
                         Button {
                             openURL(directionsViewModel.appleMapsURL)
                         } label: {
-                            Text(directionsViewModel.address)
+                            buttonLabel()
                         }
                     }
                 }
@@ -57,10 +57,17 @@ struct SettingsFooter: View {
         .padding(.bottom, 32)
     }
     
+    func buttonLabel() -> some View {
+        HStack(spacing: 5) {
+            Image(.locationMarker)
+            Text(directionsViewModel.address)
+        }
+    }
+    
     func version() -> String {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String
-        return "Version \(version) (\(build))"
+        return "App version \(version) (\(build))"
     }
 }
