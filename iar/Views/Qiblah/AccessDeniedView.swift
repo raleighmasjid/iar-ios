@@ -13,7 +13,7 @@ struct AccessDeniedView: View {
     var body: some View {
         VStack(spacing: 30) {
             Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundStyle(.red)
+                .foregroundStyle(.accent)
                 .font(.system(size: 32, weight: .medium))
             Text("Location access is required to enable compass functionality and show the qibla direction.")
                 .foregroundStyle(.primaryText)
@@ -34,7 +34,6 @@ struct AccessDeniedView: View {
 #Preview("Light Mode") {
     VStack(alignment: .center) {
         AccessDeniedView()
-            
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .background(.appBackground)
@@ -45,7 +44,6 @@ struct AccessDeniedView: View {
 #Preview("Dark Mode") {
     VStack(alignment: .center) {
         AccessDeniedView()
-            
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .background(.appBackground)

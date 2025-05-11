@@ -32,29 +32,33 @@ struct PrayerRow: View {
     }
     
     var body: some View {
-        HStack() {
-            Text(prayer)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .scalingFont(size: 17, weight: .semibold, maxSize: 24)
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
-            
-            Text(adhanFormatted)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .scalingFont(size: 17, weight: .regular, maxSize: 22)
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
-            
-            Text(iqamahFormatted)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .scalingFont(size: 17, weight: .regular, maxSize: 22)
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
+        HStack {
+            HStack {
+                Text(prayer)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .scalingFont(size: 17, weight: .semibold, maxSize: 24)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                
+                Text(adhanFormatted)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .scalingFont(size: 17, weight: .regular, maxSize: 22)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                
+                Text(iqamahFormatted)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .scalingFont(size: 17, weight: .regular, maxSize: 22)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+            }
+            .padding(.vertical, 16)
+            .frame(maxWidth: .infinity)
             
             Toggle("Alarm", isOn: $notificationEnabled)
                 .toggleStyle(.alarm)
-                .frame(width: 52, height: 18)
-                .padding(.vertical, 18)
+                .frame(width: 52)
+                .frame(maxHeight: .infinity)
                 .opacity(displayAlarm ? 1.0 : 0.0)
                 .disabled(!displayAlarm)
         }

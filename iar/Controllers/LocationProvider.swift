@@ -114,4 +114,8 @@ class CoreLocationProvider: NSObject, LocationProvider, CLLocationManagerDelegat
             delegate?.didUpdateHeading(nil, location: nil, authorizationStatus: status)
         }
     }
+    
+    func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
+        true
+    }
 }

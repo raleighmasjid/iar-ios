@@ -17,11 +17,13 @@ struct AlarmToggleStyle: ToggleStyle {
                 Image(.alarmOn)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .frame(width: 16)
                     .foregroundStyle(.accent)
             } else {
                 Image(.alarmOff)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .frame(width: 16)
                     .foregroundStyle(.tertiaryText)
             }
 
