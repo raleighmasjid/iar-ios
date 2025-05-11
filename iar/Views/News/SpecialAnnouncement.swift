@@ -16,8 +16,8 @@ struct SpecialAnnouncement: View {
         Button {
             action()
         } label: {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack(alignment: .center) {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(alignment: .center, spacing: 8) {
                     Image(.announcementIcon)
                         .foregroundStyle(.accent)
                     Text(special.title)
@@ -28,7 +28,6 @@ struct SpecialAnnouncement: View {
                     .foregroundStyle(.accent)
                     .scalingFont(size: 13)
                     .lineLimit(3)
-                    .lineSpacing(5)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
