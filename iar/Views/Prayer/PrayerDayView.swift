@@ -49,14 +49,14 @@ struct PrayerDayView: View {
     }
     
     var columnHeaders: some View {
-        HStack() {
+        HStack(spacing: 0) {
             Text("Prayer")
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text("Adhan")
                 .frame(maxWidth: .infinity, alignment: .center)
             Text("Iqamah")
                 .frame(maxWidth: .infinity, alignment: .trailing)
-            Spacer().frame(width: 55)
+            Spacer().frame(width: 52)
         }
         .padding(.vertical, 18)
         .padding(.horizontal, 16)

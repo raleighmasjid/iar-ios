@@ -60,7 +60,7 @@ class CompassViewModel: ObservableObject, LocationProviderDelegate {
         }
         
         let previousAngle = compassAngle.currentAngle ?? 0
-        compassAngle = .valid(CompassAngle.adjustedEnd(from: previousAngle, to: qibla))
+        compassAngle = .valid(heading: CompassAngle.adjustedEnd(from: previousAngle, to: qibla), deviation: heading.accuracy)
         isCorrect = percentCorrect > 0
     }
     

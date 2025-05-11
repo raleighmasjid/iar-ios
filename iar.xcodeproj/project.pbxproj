@@ -78,6 +78,7 @@
 		84AAD21E2BF7A4C1004A1605 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAD21D2BF7A4C1004A1605 /* LocationProvider.swift */; };
 		84AAD2202BF7A752004A1605 /* CompassAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAD21F2BF7A752004A1605 /* CompassAngle.swift */; };
 		84ACC8D927B86761004D4F25 /* FridayPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACC8D827B86761004D4F25 /* FridayPrayer.swift */; };
+		84B523222DD127BF00A91C95 /* InvalidHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B523212DD127BB00A91C95 /* InvalidHeading.swift */; };
 		84B91F932D657CA7004F2FBC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B91F762D64E4C8004F2FBC /* WidgetKit.framework */; };
 		84B91F942D657CA7004F2FBC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B91F782D64E4C8004F2FBC /* SwiftUI.framework */; };
 		84B91F9F2D657CA8004F2FBC /* IARWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 84B91F922D657CA7004F2FBC /* IARWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -213,6 +214,7 @@
 		84AAD21D2BF7A4C1004A1605 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		84AAD21F2BF7A752004A1605 /* CompassAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassAngle.swift; sourceTree = "<group>"; };
 		84ACC8D827B86761004D4F25 /* FridayPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridayPrayer.swift; sourceTree = "<group>"; };
+		84B523212DD127BB00A91C95 /* InvalidHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidHeading.swift; sourceTree = "<group>"; };
 		84B91F762D64E4C8004F2FBC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		84B91F782D64E4C8004F2FBC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		84B91F892D64E54D004F2FBC /* IARNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IARNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			children = (
 				844456CF2D839D7C00554E41 /* AccessDeniedView.swift */,
 				843444A32D8635D500386417 /* HeadingUnavailableView.swift */,
+				84B523212DD127BB00A91C95 /* InvalidHeading.swift */,
 				8463157C2BF6F3F0007781F1 /* QiblaScreen.swift */,
 				844456D32D83CFAB00554E41 /* QiblaCompass.swift */,
 				844456D12D83BD3700554E41 /* LocationCard.swift */,
@@ -739,6 +742,7 @@
 				842956EB2D87C93E00605553 /* SettingsRow.swift in Sources */,
 				847AC2DF279FA893000D80EE /* HijriComponents.swift in Sources */,
 				847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */,
+				84B523222DD127BF00A91C95 /* InvalidHeading.swift in Sources */,
 				84994CCA27DD465500BD2A33 /* NewsSection.swift in Sources */,
 				8420E8B827AF730E00C54EED /* ToggleStyle.swift in Sources */,
 				8416F08527BEFE9E00129383 /* PrayerHeader.swift in Sources */,

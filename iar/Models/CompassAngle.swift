@@ -9,14 +9,14 @@ import Foundation
 import CoreLocation
 
 public enum CompassAngle {
-    case valid(Double)
+    case valid(heading: Double, deviation: Double)
     case invalid
     case pending
     case accessDenied
     case unavailable
     
     var normalizedSmallestAngle: Double? {
-        guard case let .valid(angle) = self else {
+        guard case let .valid(angle, _) = self else {
             return nil
         }
         
@@ -28,7 +28,7 @@ public enum CompassAngle {
     }
     
     var currentAngle: Double? {
-        guard case let .valid(angle) = self else {
+        guard case let .valid(angle, _) = self else {
             return nil
         }
         

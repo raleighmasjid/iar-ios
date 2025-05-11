@@ -29,8 +29,22 @@ struct QiblaScreen: View {
                         HeadingUnavailableView()
                     case .accessDenied:
                         AccessDeniedView()
-                    case .valid(let angle):
-                        QiblaCompass(angle: angle, percentCorrect: viewModel.percentCorrect)
+                    case .invalid:
+                        InvalidHeadingView()
+                    case .valid(let angle, let deviation):
+                        Spacer()
+                        QiblaCompass(
+                            angle: angle,
+                            percentCorrect: viewModel.percentCorrect
+                        )
+                        Spacer()
+#if DEBUG
+                        Text("Heading Accuracy: ±\(String(format: "%0.1f", deviation))°")
+                            .opacity(deviation > 1 ? 1 : 0)
+                            .padding(.bottom, 16)
+                            .font(.caption)
+                            .foregroundStyle(.secondaryText)
+#endif
                     default:
                         ProgressView()
                             .progressViewStyle(.circular)

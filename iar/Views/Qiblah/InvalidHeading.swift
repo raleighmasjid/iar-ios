@@ -1,19 +1,19 @@
 //
-//  HeadingUnavailableView.swift
+//  InvalidHeading.swift
 //  iar
 //
-//  Created by Ameir Al-Zoubi on 3/15/25.
+//  Created by Ameir Al-Zoubi on 5/11/25.
 //
 
 import SwiftUI
 
-struct HeadingUnavailableView: View {
+struct InvalidHeadingView: View {
     var body: some View {
         VStack(spacing: 30) {
             Image(systemName: "exclamationmark.triangle.fill")
                 .foregroundStyle(.accent)
                 .font(.system(size: 32, weight: .medium))
-            Text("This device does not support real time compass directions.")
+            Text("Unable to determine heading. Try moving to away from any strong magnetic fields or electronic devices.")
                 .foregroundStyle(.primaryText)
                 .scalingFont(size: 18)
         }
@@ -24,7 +24,7 @@ struct HeadingUnavailableView: View {
 #if DEBUG
 #Preview("Light Mode") {
     VStack(alignment: .center) {
-        HeadingUnavailableView()
+        InvalidHeadingView()
             
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -34,7 +34,7 @@ struct HeadingUnavailableView: View {
 
 #Preview("Dark Mode") {
     VStack(alignment: .center) {
-        HeadingUnavailableView()
+        InvalidHeadingView()
             
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
