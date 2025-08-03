@@ -23,6 +23,7 @@ struct KhutbaView: View {
                         .background(.white)
                         .cornerRadius(8)
                         .opacity(fridayPrayer.shift.isEmpty ? 0 : 1)
+                    
                     Spacer(minLength: 5)
                     Text(fridayPrayer.time)
                         .scalingFont(size: 20, weight: .bold)

@@ -34,8 +34,6 @@ struct SettingsPickerRow<Content: View>: View {
             
             content
         }
-        .padding(.leading, 16)
-        .padding(.trailing, 8)
-        .padding(.vertical, 8)
+        .padding(16)
     }
 }

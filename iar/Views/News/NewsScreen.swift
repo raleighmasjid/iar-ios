@@ -21,7 +21,8 @@ struct NewsScreen: View {
                         ProgressView()
                     }
                 }
-                .largeNavigationTitle("News")
+                .toolbarTitleDisplayMode(.inlineLarge)
+                .navigationTitle("News")
                 .background(.appBackground)
                 .refreshable {
                     await viewModel.refreshNews()
@@ -33,7 +34,7 @@ struct NewsScreen: View {
                 .onDisappear {
                     isVisible = false
                 }
-                .onChange(of: viewModel.announcements) { newAnnouncement in
+                .onChange(of: viewModel.announcements) { _, newAnnouncement in
                     if isVisible {
                         viewModel.didViewAnnouncements()
                     }

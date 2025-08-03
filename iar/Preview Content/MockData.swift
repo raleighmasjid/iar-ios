@@ -22,8 +22,20 @@ class MockAlmostValidLocationProvider: LocationProvider {
         
     }
     
+    func requestLocationAccess() {
+        
+    }
+    
+    func requestFullAccuracy() {
+        
+    }
+    
     var headingAvailable: Bool {
         true
+    }
+    
+    var accuracyAuthorization: CLAccuracyAuthorization {
+        .reducedAccuracy
     }
 }
 
@@ -38,8 +50,20 @@ class MockDeniedLocationProvider: LocationProvider {
         
     }
     
+    func requestLocationAccess() {
+        
+    }
+    
+    func requestFullAccuracy() {
+        
+    }
+    
     var headingAvailable: Bool {
         true
+    }
+    
+    var accuracyAuthorization: CLAccuracyAuthorization {
+        .reducedAccuracy
     }
 }
 
@@ -54,8 +78,20 @@ class MockUnavailableLocationProvider: LocationProvider {
         
     }
     
+    func requestLocationAccess() {
+        
+    }
+    
+    func requestFullAccuracy() {
+        
+    }
+    
     var headingAvailable: Bool {
         false
+    }
+    
+    var accuracyAuthorization: CLAccuracyAuthorization {
+        .reducedAccuracy
     }
 }
 
@@ -79,8 +115,20 @@ class MockLocationProvider: LocationProvider {
         
     }
     
+    func requestFullAccuracy() {
+        
+    }
+    
+    func requestLocationAccess() {
+        
+    }
+    
     var headingAvailable: Bool {
         true
+    }
+    
+    var accuracyAuthorization: CLAccuracyAuthorization {
+        .reducedAccuracy
     }
 }
 

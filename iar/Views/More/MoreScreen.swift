@@ -30,7 +30,8 @@ struct MoreScreen: View {
                     }
                     .frame(maxHeight: .infinity, alignment: .bottom)
             }
-            .largeNavigationTitle("Settings")
+            .toolbarTitleDisplayMode(.inlineLarge)
+            .navigationTitle("Settings")
             .background(.appBackground)
             .navigationDestination(for: WebLink.self) { webLink in
                 WebView(webLink)

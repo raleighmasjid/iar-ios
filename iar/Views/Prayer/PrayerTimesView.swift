@@ -47,7 +47,7 @@ struct PrayerTimesView: View {
         .background(.surfaceContainer)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.05), radius: 25, x: 0, y: 5)
-        .onChange(of: scenePhase) { newPhase in
+        .onChange(of: scenePhase) { _, newPhase in
             switch newPhase {
             case .background:
                 dayOffset = 0

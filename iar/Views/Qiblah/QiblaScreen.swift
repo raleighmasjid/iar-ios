@@ -6,103 +6,46 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct QiblaScreen: View {
     
     @ObservedObject var viewModel: CompassViewModel
     
-    @Environment(\.scenePhase) private var scenePhase
-    @State private var didEnterBackground = false
-    
-    @State private var availableHeight: CGFloat = 0
-    @State private var isVisible: Bool = false
-    
-    private let feedback = UIImpactFeedbackGenerator()
+    @State private var mode: QiblaMode = .map
     
     var body: some View {
-        NavigationStack {
-            // workaround for bug with iOS 18.0 and inlineLargeTitle
-            ScrollView{
-                VStack(alignment: .center) {
-                    switch viewModel.compassAngle {
-                    case .unavailable:
-                        HeadingUnavailableView()
-                    case .accessDenied:
-                        AccessDeniedView()
-                    case .invalid:
-                        InvalidHeadingView()
-                    case .valid(let angle, let deviation):
-                        Spacer()
-                        QiblaCompass(
-                            angle: angle,
-                            percentCorrect: viewModel.percentCorrect
-                        )
-                        Spacer()
-#if DEBUG
-                        Text("Heading Accuracy: ±\(String(format: "%0.1f", deviation))°")
-                            .opacity(deviation > 1 ? 1 : 0)
-                            .padding(.bottom, 16)
-                            .font(.caption)
-                            .foregroundStyle(.secondaryText)
-#endif
-                    default:
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                            .tint(.primaryText)
-                            .controlSize(.large)
-                    }
-                }
-                .frame(height: availableHeight)
-                .frame(maxWidth: .infinity)
-            }
-            .largeNavigationTitle("Qibla")
-            .background(.appBackground)
-            .scrollDisabled(true)
-            .onGeometryChange(for: CGFloat.self) { proxy in
-                proxy.size.height
-            } action: { newValue in
-                availableHeight = newValue
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+        VStack(spacing: 0) {
+            HStack {
+                Text("Qibla")
+                Spacer()
+                if mode == .compass {
                     LocationCard(locationName: viewModel.locationName)
-                        .padding(.top, 24)
                 }
             }
-            .onAppear {
-                isVisible = true
-                viewModel.startUpdating()
-                feedback.prepare()
-            }
-            .onDisappear {
-                isVisible = false
-                viewModel.stopUpdating()
-            }
-            .onChange(of: viewModel.isCorrect) { newValue in
-                if isVisible {
-                    if newValue {
-                        feedback.impactOccurred(intensity: 1.0)
-                    } else {
-                        feedback.impactOccurred(intensity: 0.5)
-                    }
+            .navTitle()
+            Picker("Qibla Mode", selection: $mode) {
+                ForEach(QiblaMode.allCases, id: \.self) { mode in
+                    Text(mode.title)
                 }
             }
-            .onChange(of: scenePhase) { newPhase in
-                switch newPhase {
-                case .background:
-                    didEnterBackground = true
-                    viewModel.stopUpdating()
-                case .active:
-                    if didEnterBackground {
-                        didEnterBackground = false
-                        if isVisible {
-                            viewModel.startUpdating()
-                        }
-                    }
-                default:
-                    break
+            .pickerStyle(.segmented)
+            .padding(.horizontal, 16)
+            .padding(.bottom, 16)
+            
+            VStack {
+                switch mode {
+                case .map:
+                    QiblaMap(viewModel: viewModel)
+                case .compass:
+                    QiblaCompass(viewModel: viewModel)
                 }
             }
+        }
+        .frame(maxHeight: .infinity)
+        .background(.appBackground)
+        .onAppear {
+            viewModel.requestLocationAuthorization()
         }
     }
 }

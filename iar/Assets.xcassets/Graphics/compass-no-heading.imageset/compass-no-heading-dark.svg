@@ -1,0 +1,11 @@
+<svg width="340" height="340" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M170 290C236.274 290 290 236.274 290 170C290 103.726 236.274 50 170 50C103.726 50 50 103.726 50 170C50 236.274 103.726 290 170 290Z" fill="#202B28" stroke="#61C469" stroke-width="6" stroke-miterlimit="10"/>
+<line x1="171" y1="63" x2="171" y2="73" stroke="#61C469" stroke-width="2" stroke-linecap="round"/>
+<line x1="171" y1="267" x2="171" y2="277" stroke="#61C469" stroke-width="2" stroke-linecap="round"/>
+<line x1="63" y1="169" x2="73" y2="169" stroke="#61C469" stroke-width="2" stroke-linecap="round"/>
+<line x1="267" y1="169" x2="277" y2="169" stroke="#61C469" stroke-width="2" stroke-linecap="round"/>
+<line x1="95.047" y1="93.6328" x2="102.118" y2="100.704" stroke="#61C469" stroke-width="2" stroke-linecap="round"/>
+<line x1="239.296" y1="237.882" x2="246.367" y2="244.953" stroke="#61C469" stroke-width="2" stroke-linecap="round"/>
+<line x1="93.6328" y1="244.953" x2="100.704" y2="237.882" stroke="#61C469" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.882" y1="100.704" x2="244.953" y2="93.6329" stroke="#61C469" stroke-width="2" stroke-linecap="round"/>
+</svg>

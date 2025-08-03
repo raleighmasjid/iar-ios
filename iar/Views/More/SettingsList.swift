@@ -14,21 +14,28 @@ struct SettingsList: View {
     @EnvironmentObject var notifications: NotificationSettings
     @Environment(\.openURL) private var openURL
     
+    var rowDivider: some View {
+        Divider()
+            .overlay(.outline)
+            .padding(.horizontal, 16)
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             SettingsPickerRow(image: Image(.adhanSoundIcon), title: "Adhan Sound") {
-                Picker("Prayer Alert", selection: $notifications.type) {
-                    ForEach(NotificationType.allCases, id:\.self) { type in
-                        Text(type.title).tag(type)
+                Menu {
+                    Picker("Prayer Alert", selection: $notifications.type) {
+                        ForEach(NotificationType.allCases, id:\.self) { type in
+                            Text(type.title).tag(type)
+                        }
                     }
+                } label: {
+                    Text("\(notifications.type.title) \(Image(systemName: "chevron.up.chevron.down"))")
                 }
-                .pickerStyle(.menu)
                 .tint(.accent)
             }
             
-            Divider()
-                .overlay(.outline)
-                .padding(.horizontal, 16)
+            rowDivider
             
             Button {
                 if OneSignal.Notifications.canRequestPermission {
@@ -41,9 +48,7 @@ struct SettingsList: View {
             }
             .buttonStyle(RowButtonStyle())
             
-            Divider()
-                .overlay(.outline)
-                .padding(.horizontal, 16)
+            rowDivider
             
             Button {
                 path.append(
@@ -53,7 +58,23 @@ struct SettingsList: View {
                 SettingsRow(image: Image(.fullWebsiteIcon), title: "View Full Website")
             }
             .buttonStyle(RowButtonStyle())
+            
+            rowDivider
+            
+            Text(version())
+            .padding(16)
+            .padding(.vertical, 8)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundStyle(.secondaryText)
+            .font(.system(size: 11))
         }
+    }
+    
+    func version() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        let build = dictionary["CFBundleVersion"] as! String
+        return "App version \(version) (\(build))"
     }
 }
 

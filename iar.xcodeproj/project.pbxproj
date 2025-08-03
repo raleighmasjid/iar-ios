@@ -39,12 +39,14 @@
 		844456CE2D827D5300554E41 /* PrimaryContainerButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844456CD2D827D4A00554E41 /* PrimaryContainerButtonStyle.swift */; };
 		844456D02D839D8200554E41 /* AccessDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844456CF2D839D7C00554E41 /* AccessDeniedView.swift */; };
 		844456D22D83BD3700554E41 /* LocationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844456D12D83BD3700554E41 /* LocationCard.swift */; };
-		844456D42D83CFBD00554E41 /* QiblaCompass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844456D32D83CFAB00554E41 /* QiblaCompass.swift */; };
+		844456D42D83CFBD00554E41 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844456D32D83CFAB00554E41 /* CompassView.swift */; };
+		84459BEE2E3DB202009FF6F9 /* MapArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84459BED2E3DB1FB009FF6F9 /* MapArrow.swift */; };
+		84459BF02E3DBC42009FF6F9 /* MapArrowGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84459BEF2E3DBC2E009FF6F9 /* MapArrowGraphic.swift */; };
 		844B424C2BF53ECD007410CD /* SmallPrayerCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B424B2BF53ECD007410CD /* SmallPrayerCountdown.swift */; };
 		8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458125127B5F6F10065B185 /* StoredDefault.swift */; };
 		845FB0ED27E3C579006E54E1 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FB0EC27E3C579006E54E1 /* ShareSheet.swift */; };
 		8463157D2BF6F3F0007781F1 /* QiblaScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463157C2BF6F3F0007781F1 /* QiblaScreen.swift */; };
-		8463157F2BF6F535007781F1 /* CompassStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463157E2BF6F535007781F1 /* CompassStar.swift */; };
+		8463157F2BF6F535007781F1 /* CompassArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463157E2BF6F535007781F1 /* CompassArrow.swift */; };
 		846315822BF6F70E007781F1 /* Adhan in Frameworks */ = {isa = PBXBuildFile; productRef = 846315812BF6F70E007781F1 /* Adhan */; };
 		846315842BF6F75C007781F1 /* CompassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846315832BF6F75C007781F1 /* CompassViewModel.swift */; };
 		847AC2BA279F71A2000D80EE /* iarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AC2B9279F71A2000D80EE /* iarApp.swift */; };
@@ -75,6 +77,11 @@
 		84994CD027DD4EEF00BD2A33 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CCF27DD4EEF00BD2A33 /* PostRow.swift */; };
 		84994CD227DD53BB00BD2A33 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CD127DD53BB00BD2A33 /* WebView.swift */; };
 		84994CD427DD5DFC00BD2A33 /* SpecialAnnouncement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84994CD327DD5DFC00BD2A33 /* SpecialAnnouncement.swift */; };
+		84AA28DF2E3BA88000C584D1 /* NavTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA28DE2E3BA87D00C584D1 /* NavTitle.swift */; };
+		84AA28E12E3BAB4600C584D1 /* MapControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA28E02E3BAB4100C584D1 /* MapControlView.swift */; };
+		84AA28E32E3BAB9900C584D1 /* MapDisplayStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA28E22E3BAB9500C584D1 /* MapDisplayStyle.swift */; };
+		84AA28E52E3BABBF00C584D1 /* QiblaMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA28E42E3BABBD00C584D1 /* QiblaMode.swift */; };
+		84AA28E72E3BAC8F00C584D1 /* QiblaMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA28E62E3BAC8C00C584D1 /* QiblaMap.swift */; };
 		84AAD21E2BF7A4C1004A1605 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAD21D2BF7A4C1004A1605 /* LocationProvider.swift */; };
 		84AAD2202BF7A752004A1605 /* CompassAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAD21F2BF7A752004A1605 /* CompassAngle.swift */; };
 		84ACC8D927B86761004D4F25 /* FridayPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACC8D827B86761004D4F25 /* FridayPrayer.swift */; };
@@ -102,6 +109,9 @@
 		84E57E0027AB8FE400AC10A0 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E57DFF27AB8FE300AC10A0 /* Formatter.swift */; };
 		84E57E0227AB943600AC10A0 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E57E0127AB943600AC10A0 /* URLSession.swift */; };
 		84E9AA9D2D8B336C0017E87B /* DirectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9AA9C2D8B33680017E87B /* DirectionsViewModel.swift */; };
+		84EEEA242E3ADC22006F9C7B /* DirectionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EEEA232E3ADC1C006F9C7B /* DirectionsButton.swift */; };
+		84EEEA262E3AF0AC006F9C7B /* QiblaCompass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EEEA252E3AF0AC006F9C7B /* QiblaCompass.swift */; };
+		84EEEA282E3B1BE6006F9C7B /* MapButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EEEA272E3B1BE2006F9C7B /* MapButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,12 +187,14 @@
 		844456CD2D827D4A00554E41 /* PrimaryContainerButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryContainerButtonStyle.swift; sourceTree = "<group>"; };
 		844456CF2D839D7C00554E41 /* AccessDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessDeniedView.swift; sourceTree = "<group>"; };
 		844456D12D83BD3700554E41 /* LocationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCard.swift; sourceTree = "<group>"; };
-		844456D32D83CFAB00554E41 /* QiblaCompass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaCompass.swift; sourceTree = "<group>"; };
+		844456D32D83CFAB00554E41 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
+		84459BED2E3DB1FB009FF6F9 /* MapArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapArrow.swift; sourceTree = "<group>"; };
+		84459BEF2E3DBC2E009FF6F9 /* MapArrowGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapArrowGraphic.swift; sourceTree = "<group>"; };
 		844B424B2BF53ECD007410CD /* SmallPrayerCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallPrayerCountdown.swift; sourceTree = "<group>"; };
 		8458125127B5F6F10065B185 /* StoredDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredDefault.swift; sourceTree = "<group>"; };
 		845FB0EC27E3C579006E54E1 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		8463157C2BF6F3F0007781F1 /* QiblaScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaScreen.swift; sourceTree = "<group>"; };
-		8463157E2BF6F535007781F1 /* CompassStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassStar.swift; sourceTree = "<group>"; };
+		8463157E2BF6F535007781F1 /* CompassArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassArrow.swift; sourceTree = "<group>"; };
 		846315832BF6F75C007781F1 /* CompassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassViewModel.swift; sourceTree = "<group>"; };
 		847AC2B6279F71A2000D80EE /* IAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AC2B9279F71A2000D80EE /* iarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iarApp.swift; sourceTree = "<group>"; };
@@ -211,6 +223,11 @@
 		84994CCF27DD4EEF00BD2A33 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		84994CD127DD53BB00BD2A33 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		84994CD327DD5DFC00BD2A33 /* SpecialAnnouncement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialAnnouncement.swift; sourceTree = "<group>"; };
+		84AA28DE2E3BA87D00C584D1 /* NavTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavTitle.swift; sourceTree = "<group>"; };
+		84AA28E02E3BAB4100C584D1 /* MapControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapControlView.swift; sourceTree = "<group>"; };
+		84AA28E22E3BAB9500C584D1 /* MapDisplayStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDisplayStyle.swift; sourceTree = "<group>"; };
+		84AA28E42E3BABBD00C584D1 /* QiblaMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaMode.swift; sourceTree = "<group>"; };
+		84AA28E62E3BAC8C00C584D1 /* QiblaMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaMap.swift; sourceTree = "<group>"; };
 		84AAD21D2BF7A4C1004A1605 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		84AAD21F2BF7A752004A1605 /* CompassAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassAngle.swift; sourceTree = "<group>"; };
 		84ACC8D827B86761004D4F25 /* FridayPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridayPrayer.swift; sourceTree = "<group>"; };
@@ -227,6 +244,9 @@
 		84E57DFF27AB8FE300AC10A0 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		84E57E0127AB943600AC10A0 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		84E9AA9C2D8B33680017E87B /* DirectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsViewModel.swift; sourceTree = "<group>"; };
+		84EEEA232E3ADC1C006F9C7B /* DirectionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsButton.swift; sourceTree = "<group>"; };
+		84EEEA252E3AF0AC006F9C7B /* QiblaCompass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaCompass.swift; sourceTree = "<group>"; };
+		84EEEA272E3B1BE2006F9C7B /* MapButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -324,6 +344,7 @@
 			children = (
 				842E34C527BDED2800A3B50B /* MoreScreen.swift */,
 				842956F32D88E04A00605553 /* SettingsFooter.swift */,
+				84EEEA232E3ADC1C006F9C7B /* DirectionsButton.swift */,
 				842956F12D88DDC000605553 /* SettingsList.swift */,
 				842956EA2D87C93B00605553 /* SettingsRow.swift */,
 				842956ED2D87D2D800605553 /* SettingsPickerRow.swift */,
@@ -345,6 +366,7 @@
 			children = (
 				844456CD2D827D4A00554E41 /* PrimaryContainerButtonStyle.swift */,
 				848FC1912DB877E1005F4C91 /* PrimaryContainer.swift */,
+				84AA28DE2E3BA87D00C584D1 /* NavTitle.swift */,
 				843444A12D862CF200386417 /* RowButtonStyle.swift */,
 				845FB0EC27E3C579006E54E1 /* ShareSheet.swift */,
 				84994CD127DD53BB00BD2A33 /* WebView.swift */,
@@ -382,12 +404,18 @@
 			isa = PBXGroup;
 			children = (
 				844456CF2D839D7C00554E41 /* AccessDeniedView.swift */,
+				8463157E2BF6F535007781F1 /* CompassArrow.swift */,
+				844456D32D83CFAB00554E41 /* CompassView.swift */,
 				843444A32D8635D500386417 /* HeadingUnavailableView.swift */,
 				84B523212DD127BB00A91C95 /* InvalidHeading.swift */,
-				8463157C2BF6F3F0007781F1 /* QiblaScreen.swift */,
-				844456D32D83CFAB00554E41 /* QiblaCompass.swift */,
 				844456D12D83BD3700554E41 /* LocationCard.swift */,
-				8463157E2BF6F535007781F1 /* CompassStar.swift */,
+				84459BED2E3DB1FB009FF6F9 /* MapArrow.swift */,
+				84459BEF2E3DBC2E009FF6F9 /* MapArrowGraphic.swift */,
+				84EEEA272E3B1BE2006F9C7B /* MapButtonStyle.swift */,
+				84AA28E02E3BAB4100C584D1 /* MapControlView.swift */,
+				84EEEA252E3AF0AC006F9C7B /* QiblaCompass.swift */,
+				84AA28E62E3BAC8C00C584D1 /* QiblaMap.swift */,
+				8463157C2BF6F3F0007781F1 /* QiblaScreen.swift */,
 			);
 			path = Qiblah;
 			sourceTree = "<group>";
@@ -448,10 +476,12 @@
 			children = (
 				842D301C27D02E1A000CE8D4 /* json */,
 				847AC2E6279FB162000D80EE /* Prayer.swift */,
+				84AA28E42E3BABBD00C584D1 /* QiblaMode.swift */,
 				849550F627AA2EF7008A180F /* PrayerTime.swift */,
 				8416F08827BF280D00129383 /* NotificationType.swift */,
 				84994CC927DD465500BD2A33 /* NewsSection.swift */,
 				84AAD21F2BF7A752004A1605 /* CompassAngle.swift */,
+				84AA28E22E3BAB9500C584D1 /* MapDisplayStyle.swift */,
 				843A6AEA2BFD9BF500137409 /* Heading.swift */,
 			);
 			path = Models;
@@ -726,12 +756,15 @@
 				8497D2E427C2B9F1000BF89C /* PrayerTimesView.swift in Sources */,
 				84E9AA9D2D8B336C0017E87B /* DirectionsViewModel.swift in Sources */,
 				844456D22D83BD3700554E41 /* LocationCard.swift in Sources */,
+				84AA28E72E3BAC8F00C584D1 /* QiblaMap.swift in Sources */,
 				845FB0ED27E3C579006E54E1 /* ShareSheet.swift in Sources */,
 				847AC2CD279F926A000D80EE /* IqamahSchedule.swift in Sources */,
 				849550F527AA07EB008A180F /* PrayerProvider.swift in Sources */,
 				847AC2BC279F71A2000D80EE /* PrayerDayView.swift in Sources */,
 				843A6AEB2BFD9BF500137409 /* Heading.swift in Sources */,
+				84459BEE2E3DB202009FF6F9 /* MapArrow.swift in Sources */,
 				840FBEBC27C88129003D646C /* KhutbaView.swift in Sources */,
+				84EEEA282E3B1BE6006F9C7B /* MapButtonStyle.swift in Sources */,
 				840FBEB427C8729C003D646C /* NewsScreen.swift in Sources */,
 				84994CD027DD4EEF00BD2A33 /* PostRow.swift in Sources */,
 				844B424C2BF53ECD007410CD /* SmallPrayerCountdown.swift in Sources */,
@@ -755,8 +788,9 @@
 				840FBEB627C872AB003D646C /* DonateScreen.swift in Sources */,
 				847AC2CB279F9246000D80EE /* PrayerDay.swift in Sources */,
 				84E57E0027AB8FE400AC10A0 /* Formatter.swift in Sources */,
-				844456D42D83CFBD00554E41 /* QiblaCompass.swift in Sources */,
+				844456D42D83CFBD00554E41 /* CompassView.swift in Sources */,
 				8416F08927BF280D00129383 /* NotificationType.swift in Sources */,
+				84AA28DF2E3BA88000C584D1 /* NavTitle.swift in Sources */,
 				849550F927AA3784008A180F /* PrayerCountdown.swift in Sources */,
 				846315842BF6F75C007781F1 /* CompassViewModel.swift in Sources */,
 				84D44BA727D8676400202BD3 /* NewsViewModel.swift in Sources */,
@@ -765,11 +799,13 @@
 				84994CD427DD5DFC00BD2A33 /* SpecialAnnouncement.swift in Sources */,
 				842E34C427BDEBF200A3B50B /* PrayerScreen.swift in Sources */,
 				84E57E0227AB943600AC10A0 /* URLSession.swift in Sources */,
+				84459BF02E3DBC42009FF6F9 /* MapArrowGraphic.swift in Sources */,
 				847AC2E7279FB162000D80EE /* Prayer.swift in Sources */,
 				84994CD227DD53BB00BD2A33 /* WebView.swift in Sources */,
 				841CD79D2D64452A009FA503 /* View.swift in Sources */,
 				84ACC8D927B86761004D4F25 /* FridayPrayer.swift in Sources */,
 				842E34C227BDE9AE00A3B50B /* NotificationController.swift in Sources */,
+				84EEEA262E3AF0AC006F9C7B /* QiblaCompass.swift in Sources */,
 				842E34C627BDED2800A3B50B /* MoreScreen.swift in Sources */,
 				847AC2E2279FAE16000D80EE /* PrayerTimesViewModel.swift in Sources */,
 				843444A42D8635DA00386417 /* HeadingUnavailableView.swift in Sources */,
@@ -780,10 +816,14 @@
 				84D44BA927D8677C00202BD3 /* NewsProvider.swift in Sources */,
 				8458125227B5F6F10065B185 /* StoredDefault.swift in Sources */,
 				840FBEBA27C87882003D646C /* FridayScheduleView.swift in Sources */,
+				84AA28E12E3BAB4600C584D1 /* MapControlView.swift in Sources */,
+				84AA28E32E3BAB9900C584D1 /* MapDisplayStyle.swift in Sources */,
 				842956F42D88E04D00605553 /* SettingsFooter.swift in Sources */,
 				8420E8BC27AF7FEE00C54EED /* NotificationSettings.swift in Sources */,
-				8463157F2BF6F535007781F1 /* CompassStar.swift in Sources */,
+				8463157F2BF6F535007781F1 /* CompassArrow.swift in Sources */,
+				84EEEA242E3ADC22006F9C7B /* DirectionsButton.swift in Sources */,
 				84994CCC27DD47C500BD2A33 /* PostsList.swift in Sources */,
+				84AA28E52E3BABBF00C584D1 /* QiblaMode.swift in Sources */,
 				8497D2E227C2B981000BF89C /* PrayerDayViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,13 +921,13 @@
 				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Notification Service Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.3;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -907,13 +947,13 @@
 				INFOPLIST_FILE = IARNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Notification Service Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.3;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1062,6 +1102,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iar/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = IAR;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location used to determine Qibla direction";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1071,12 +1112,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.3;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid;
 				PRODUCT_NAME = IAR;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1098,6 +1139,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iar/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = IAR;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location used to determine Qibla direction";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1107,12 +1149,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.3;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid;
 				PRODUCT_NAME = IAR;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1133,14 +1175,14 @@
 				INFOPLIST_FILE = IARWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = IAR;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.1.3;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.IARWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1163,14 +1205,14 @@
 				INFOPLIST_FILE = IARWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = IAR;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.1.3;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lemosys.IARMasjid.IARWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

@@ -128,10 +128,12 @@ struct PrayerScreen: View {
             }
             .coordinateSpace(name: scrollNamespace)
             .scrollIndicators(.hidden)
-            .targetedScrollView(
-                transitionStart: opacityMetrics().start * -1,
-                transitionEnd: stickyOpacityMetrics().end * -1)
-
+            .scrollTargetBehavior(
+                StickyHeaderScrollTargetBehavior(
+                    transitionStart: opacityMetrics().start * -1,
+                    transitionEnd: stickyOpacityMetrics().end * -1
+                )
+            )
             statusBarImage
             
             HStack {

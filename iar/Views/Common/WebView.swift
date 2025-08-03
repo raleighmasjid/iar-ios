@@ -36,11 +36,14 @@ struct WebView: View {
         .navigationTitle(destination.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                if helper.isLoading {
+            if helper.isLoading {
+                ToolbarItem(placement: .topBarTrailing) {
                     ProgressView()
                         .tint(.primaryText)
                 }
+//                .sharedBackgroundVisibility(.hidden)
+            }
+            ToolbarItem(placement: .topBarTrailing) {
                 Menu {
                     Button("Open in Browser") {
                         if let url = currentURL() {

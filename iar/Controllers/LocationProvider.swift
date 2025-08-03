@@ -12,12 +12,16 @@ protocol LocationProvider: AnyObject {
     var delegate: LocationProviderDelegate? { get set }
     func startUpdating()
     func stopUpdating()
+    func requestLocationAccess()
+    func requestFullAccuracy()
+    var accuracyAuthorization: CLAccuracyAuthorization { get }
     var headingAvailable: Bool { get }
 }
 
 protocol LocationProviderDelegate: AnyObject {
     func didUpdateHeading(_ heading: Heading?, location: CLLocation?, authorizationStatus: CLAuthorizationStatus)
     func didUpdateLocation(_ location: String)
+    func didUpdateAuthorization()
 }
 
 class CoreLocationProvider: NSObject, LocationProvider, CLLocationManagerDelegate {
@@ -34,16 +38,39 @@ class CoreLocationProvider: NSObject, LocationProvider, CLLocationManagerDelegat
         super.init()
         locationManager.delegate = self
 
-        locationManager.distanceFilter = kCLLocationAccuracyThreeKilometers
+        locationManager.distanceFilter = kCLLocationAccuracyBestForNavigation
         locationManager.pausesLocationUpdatesAutomatically = true
         locationManager.headingFilter = kCLHeadingFilterNone
-        locationManager.desiredAccuracy = kCLLocationAccuracyReduced
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
     }
     
     var headingAvailable: Bool {
-        CLLocationManager.headingAvailable()
+        return true
+        //CLLocationManager.headingAvailable()
+    }
+    
+    func requestLocationAccess() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard CLLocationManager.locationServicesEnabled() else {
+                return
+            }
+            
+            if self.locationManager.authorizationStatus == .notDetermined {
+                self.locationManager.requestWhenInUseAuthorization()
+            }
+        }
+    }
+    
+    var accuracyAuthorization: CLAccuracyAuthorization {
+        locationManager.accuracyAuthorization
     }
  
+    func requestFullAccuracy() {
+        locationManager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "qibla") { [weak self] error in
+            self?.delegate?.didUpdateAuthorization()
+        }
+    }
+    
     func startUpdating() {
         DispatchQueue.global(qos: .userInitiated).async {
             guard CLLocationManager.locationServicesEnabled() else {
@@ -108,6 +135,7 @@ class CoreLocationProvider: NSObject, LocationProvider, CLLocationManagerDelegat
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        delegate?.didUpdateAuthorization()
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             startUpdating()
         } else if status == .denied || status == .restricted {

@@ -1,5 +1,5 @@
 //
-//  CompassStar.swift
+//  CompassArrow.swift
 //  iar
 //
 //  Created by Ameir Al-Zoubi on 5/16/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CompassStar: View {
+struct CompassArrow: View {
     
     var angle: Double
     var percentCorrect: Double
@@ -42,10 +42,10 @@ struct CompassStar: View {
 
 #if DEBUG
 #Preview("Incorrect") {
-    CompassStar(angle: 45, percentCorrect: 0)
+    CompassArrow(angle: 45, percentCorrect: 0)
 }
 
 #Preview("Correct") {
-    CompassStar(angle: 0, percentCorrect: 0.5)
+    CompassArrow(angle: 0, percentCorrect: 0.5)
 }
 #endif

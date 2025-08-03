@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct SettingsFooter: View {
-    
-    @Environment(\.openURL) private var openURL
-    
-    let directionsViewModel = DirectionsViewModel()
+    let atwaterStViewModel = DirectionsViewModel.atwaterSt
+    let pageRdViewModel = DirectionsViewModel.pageRd
     
     var body: some View {
         VStack(alignment: .center, spacing: 32) {
@@ -20,54 +18,12 @@ struct SettingsFooter: View {
                     .scalingFont(size: 15)
                     .foregroundStyle(.primaryText)
 
-                Group {
-                    if directionsViewModel.hasGoogleMaps {
-                        Menu {
-                            Section("Get directions") {
-                                Button("Apple Maps") {
-                                    openURL(directionsViewModel.appleMapsURL)
-                                }
-                                Button("Google Maps") {
-                                    openURL(directionsViewModel.googleMapsURL)
-                                }
-                            }
-                        } label: {
-                            buttonLabel()
-                        }
-                        .menuOrder(.fixed)
-                    } else {
-                        Button {
-                            openURL(directionsViewModel.appleMapsURL)
-                        } label: {
-                            buttonLabel()
-                        }
-                    }
-                }
-                .scalingFont(size: 15, weight: .semibold)
-                .buttonStyle(PrimaryContainerButtonStyle(size: .small))
+                HStack(spacing: 8) {
+                    DirectionsButton(directionsViewModel: atwaterStViewModel)
+                    DirectionsButton(directionsViewModel: pageRdViewModel)
+                }.padding(.horizontal, 16)
             }
-            
-            VStack(spacing: 4) {
-                Text("The Islamic Association of Raleigh")
-                Text(version())
-            }
-            .foregroundStyle(.secondaryText)
-            .font(.system(size: 11))
         }
         .padding(.bottom, 32)
-    }
-    
-    func buttonLabel() -> some View {
-        HStack(spacing: 5) {
-            Image(.locationMarker)
-            Text(directionsViewModel.address)
-        }
-    }
-    
-    func version() -> String {
-        let dictionary = Bundle.main.infoDictionary!
-        let version = dictionary["CFBundleShortVersionString"] as! String
-        let build = dictionary["CFBundleVersion"] as! String
-        return "App version \(version) (\(build))"
     }
 }
