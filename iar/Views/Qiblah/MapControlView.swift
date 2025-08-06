@@ -24,7 +24,7 @@ struct MapControlView: View {
     var body: some View {
         VStack {
             HStack {
-                if !viewModel.hasFullAccuracy {
+                if viewModel.accuracy == .reducedAccuracy {
                     Spacer()
                     Button {
                         viewModel.requestFullAccuracy()

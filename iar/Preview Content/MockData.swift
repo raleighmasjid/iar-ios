@@ -12,6 +12,10 @@ import Combine
 import CoreLocation
 
 class MockAlmostValidLocationProvider: LocationProvider {
+    var authorizationStatus: CLAuthorizationStatus {
+        .authorizedWhenInUse
+    }
+    
     weak var delegate: LocationProviderDelegate?
     
     func startUpdating() {
@@ -34,12 +38,16 @@ class MockAlmostValidLocationProvider: LocationProvider {
         true
     }
     
-    var accuracyAuthorization: CLAccuracyAuthorization {
+    var accuracyAuthorization: CLAccuracyAuthorization? {
         .reducedAccuracy
     }
 }
 
 class MockDeniedLocationProvider: LocationProvider {
+    var authorizationStatus: CLAuthorizationStatus {
+        .authorizedWhenInUse
+    }
+    
     weak var delegate: LocationProviderDelegate?
     
     func startUpdating() {
@@ -62,12 +70,16 @@ class MockDeniedLocationProvider: LocationProvider {
         true
     }
     
-    var accuracyAuthorization: CLAccuracyAuthorization {
+    var accuracyAuthorization: CLAccuracyAuthorization? {
         .reducedAccuracy
     }
 }
 
 class MockUnavailableLocationProvider: LocationProvider {
+    var authorizationStatus: CLAuthorizationStatus {
+        .authorizedWhenInUse
+    }
+    
     weak var delegate: LocationProviderDelegate?
     
     func startUpdating() {
@@ -90,13 +102,18 @@ class MockUnavailableLocationProvider: LocationProvider {
         false
     }
     
-    var accuracyAuthorization: CLAccuracyAuthorization {
+    var accuracyAuthorization: CLAccuracyAuthorization? {
         .reducedAccuracy
     }
 }
 
 
 class MockLocationProvider: LocationProvider {
+    
+    var authorizationStatus: CLAuthorizationStatus {
+        .authorizedWhenInUse
+    }
+    
     weak var delegate: LocationProviderDelegate?
     
     func startUpdating() {
@@ -127,7 +144,7 @@ class MockLocationProvider: LocationProvider {
         true
     }
     
-    var accuracyAuthorization: CLAccuracyAuthorization {
+    var accuracyAuthorization: CLAccuracyAuthorization? {
         .reducedAccuracy
     }
 }

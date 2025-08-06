@@ -14,17 +14,14 @@ class CompassViewModel: ObservableObject, LocationProviderDelegate {
     @Published var locationName: String?
     @Published var compassAngle: CompassAngle = .pending
     @Published var isCorrect: Bool = false
-    @Published var hasFullAccuracy: Bool = true
+    @Published var accuracy: CLAccuracyAuthorization? = nil
+    @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     
     let provider: LocationProvider
     
     init(provider: LocationProvider) {
         self.provider = provider
         self.provider.delegate = self
-    }
-    
-    func accuracyAuthorization() -> CLAccuracyAuthorization {
-        provider.accuracyAuthorization
     }
     
     func requestFullAccuracy() {
@@ -48,7 +45,8 @@ class CompassViewModel: ObservableObject, LocationProviderDelegate {
     }
     
     func didUpdateAuthorization() {
-        hasFullAccuracy = (provider.accuracyAuthorization == .fullAccuracy)
+        accuracy = provider.accuracyAuthorization
+        authorizationStatus = provider.authorizationStatus
     }
     
     func didUpdateHeading(_ heading: Heading?, location: CLLocation?, authorizationStatus: CLAuthorizationStatus) {

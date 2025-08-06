@@ -10,18 +10,8 @@ import SwiftUI
 struct MainView: View {
     
     @StateObject var prayerTimesViewModel = PrayerTimesViewModel(provider: NetworkPrayerProvider())
-    
     @StateObject var newsViewModel = NewsViewModel(provider: NetworkNewsProvider())
-    
-    @StateObject var compassViewModel: CompassViewModel = {
-        #if targetEnvironment(simulator)
-         let provider = MockLocationProvider()
-//        let provider = MockDeniedLocationProvider()
-        #else
-        let provider = CoreLocationProvider()
-        #endif
-        return CompassViewModel(provider: provider)
-    }()
+    @StateObject var compassViewModel = CompassViewModel(provider: CoreLocationProvider())
     
     @Environment(\.scenePhase) var scenePhase
     @State var didEnterBackground = false
@@ -35,13 +25,11 @@ struct MainView: View {
                 Label("Prayer", image: "tab-prayer")
             }
             
-            if compassViewModel.provider.headingAvailable {
-                QiblaScreen(viewModel: compassViewModel)
-                    .tabItem {
-                        Label("Qibla", image: "tab-qibla")
-                    }
+            QiblaScreen(viewModel: compassViewModel)
+            .tabItem {
+                Label("Qibla", image: "tab-qibla")
             }
-            
+    
             NewsScreen(viewModel: newsViewModel)
             .tabItem {
                 Label("News", image: newsViewModel.badge ? "tab-news-badge" : "tab-news")

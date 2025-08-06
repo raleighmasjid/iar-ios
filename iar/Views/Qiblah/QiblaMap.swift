@@ -11,10 +11,31 @@ import Adhan
 
 struct QiblaMap: View {
     
-    @State private var mapPosition = MapCameraPosition.userLocation(followsHeading: false, fallback: .automatic)
+    @ObservedObject var viewModel: CompassViewModel
+    
+    @State private var mapPosition = MapCameraPosition.userLocation(
+        followsHeading: false,
+        fallback: .automatic
+    )
+    
     @State private var mapStyle: MapDisplayStyle = .hybrid
     @State private var qiblaAngle: Double = 0
-    @ObservedObject var viewModel: CompassViewModel
+
+    
+    func setFallback() {
+        guard !mapPosition.positionedByUser else {
+            return
+        }
+        
+        if viewModel.authorizationStatus == .denied || viewModel.authorizationStatus == .restricted {
+            mapPosition = MapCameraPosition.camera(
+                MapCamera(
+                    centerCoordinate: CLLocationCoordinate2D(latitude: 35.78977019151847, longitude: -78.691211012544),
+                    distance: 750
+                )
+            )
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -36,6 +57,12 @@ struct QiblaMap: View {
             MapArrow(direction: $qiblaAngle)
                 .allowsHitTesting(false)
             MapControlView(mapPosition: $mapPosition, mapStyle: $mapStyle, qiblaAngle: $qiblaAngle, viewModel: viewModel)
+        }
+        .onAppear {
+            setFallback()
+        }
+        .onChange(of: viewModel.authorizationStatus) { _, newValue in
+            setFallback()
         }
     }
 }

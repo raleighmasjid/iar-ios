@@ -14,8 +14,9 @@ protocol LocationProvider: AnyObject {
     func stopUpdating()
     func requestLocationAccess()
     func requestFullAccuracy()
-    var accuracyAuthorization: CLAccuracyAuthorization { get }
+    var accuracyAuthorization: CLAccuracyAuthorization? { get }
     var headingAvailable: Bool { get }
+    var authorizationStatus: CLAuthorizationStatus { get }
 }
 
 protocol LocationProviderDelegate: AnyObject {
@@ -34,6 +35,8 @@ class CoreLocationProvider: NSObject, LocationProvider, CLLocationManagerDelegat
     
     weak var delegate: LocationProviderDelegate?
     
+    var authorizationStatus: CLAuthorizationStatus = .notDetermined
+    
     override init() {
         super.init()
         locationManager.delegate = self
@@ -45,8 +48,7 @@ class CoreLocationProvider: NSObject, LocationProvider, CLLocationManagerDelegat
     }
     
     var headingAvailable: Bool {
-        return true
-        //CLLocationManager.headingAvailable()
+        CLLocationManager.headingAvailable()
     }
     
     func requestLocationAccess() {
@@ -61,8 +63,11 @@ class CoreLocationProvider: NSObject, LocationProvider, CLLocationManagerDelegat
         }
     }
     
-    var accuracyAuthorization: CLAccuracyAuthorization {
-        locationManager.accuracyAuthorization
+    var accuracyAuthorization: CLAccuracyAuthorization? {
+        guard authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways else {
+            return nil
+        }
+        return locationManager.accuracyAuthorization
     }
  
     func requestFullAccuracy() {
@@ -135,6 +140,7 @@ class CoreLocationProvider: NSObject, LocationProvider, CLLocationManagerDelegat
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        self.authorizationStatus = status
         delegate?.didUpdateAuthorization()
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             startUpdating()
