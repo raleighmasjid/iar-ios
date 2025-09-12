@@ -28,3 +28,7 @@ struct MapArrowGraphic: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 }
+
+#Preview {
+    MapArrowGraphic()
+}

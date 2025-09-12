@@ -10,7 +10,12 @@ import SwiftUI
 struct NavTitle: ViewModifier {
     
     func body(content: Content) -> some View {
-        if #available(iOS 18.0, *) {
+        if #available(iOS 26.0, *) {
+            content
+                .font(.system(size: 34, weight: .bold, design: .default))
+                .padding(.horizontal, 16)
+                .padding(.vertical, 2)
+        } else if #available(iOS 18.0, *) {
             content
                 .font(.system(size: 34, weight: .bold, design: .default))
                 .padding(.horizontal, 16)

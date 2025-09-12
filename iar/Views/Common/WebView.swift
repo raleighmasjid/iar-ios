@@ -41,7 +41,7 @@ struct WebView: View {
                     ProgressView()
                         .tint(.primaryText)
                 }
-//                .sharedBackgroundVisibility(.hidden)
+                .removeGlass()
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
@@ -149,3 +149,4 @@ class WebViewHelper: NSObject, ObservableObject, WKNavigationDelegate, WKUIDeleg
     }
     
 }
+

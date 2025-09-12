@@ -22,27 +22,28 @@ struct MainView: View {
         TabView {
             PrayerScreen(viewModel: prayerTimesViewModel)
             .tabItem {
-                Label("Prayer", image: "tab-prayer")
+                Label("Prayer", image: .tabPrayer)
             }
             
             QiblaScreen(viewModel: compassViewModel)
             .tabItem {
-                Label("Qibla", image: "tab-qibla")
+                Label("Qibla", image: .tabQibla)
             }
     
             NewsScreen(viewModel: newsViewModel)
             .tabItem {
-                Label("News", image: newsViewModel.badge ? "tab-news-badge" : "tab-news")
+                Label("News", image: .tabNews)
             }
+            .badge(newsViewModel.badge ? "" : nil)
             
             DonateScreen()
             .tabItem {
-                Label("Donate", image: "tab-donate")
+                Label("Donate", image: .tabDonate)
             }
             
             MoreScreen()
             .tabItem {
-                Label("Settings", image: "tab-settings")
+                Label("Settings", image: .tabSettings)
             }
         }
         .tint(.accent)

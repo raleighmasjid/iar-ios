@@ -34,3 +34,7 @@ struct MapArrow: View {
         }
     }
 }
+
+#Preview {
+    MapArrow(direction: .constant(27))
+}
