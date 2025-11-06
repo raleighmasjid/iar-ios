@@ -20,20 +20,28 @@ struct SettingsPickerRow<Content: View>: View {
     }
     
     var body: some View {
-        HStack(spacing: 16) {
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundStyle(.accent)
-                .frame(width: 18, height: 18)
-            Text(title)
-                .scalingFont(size: 16)
-                .foregroundStyle(.primaryText)
-
+        HStack {
+            HStack(spacing: 16) {
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.accent)
+                    .frame(width: 18, height: 18)
+                Text(title)
+                    .scalingFont(size: 16)
+                    .foregroundStyle(.primaryText)
+            }
             Spacer()
-            
             content
         }
-        .padding(16)
+        .padding(.vertical, 8)
+        .padding(.leading, 16)
+        .padding(.trailing, 4)
     }
+}
+
+#Preview {
+    SettingsList(path: .constant([]))
+        .environmentObject(NotificationSettings())
+        .background(.appBackground)
 }

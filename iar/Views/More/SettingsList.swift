@@ -23,15 +23,12 @@ struct SettingsList: View {
     var body: some View {
         VStack(spacing: 0) {
             SettingsPickerRow(image: Image(.adhanSoundIcon), title: "Adhan Sound") {
-                Menu {
-                    Picker("Prayer Alert", selection: $notifications.type) {
-                        ForEach(NotificationType.allCases, id:\.self) { type in
-                            Text(type.title).tag(type)
-                        }
+                Picker("Adhan Sound", selection: $notifications.type) {
+                    ForEach(NotificationType.allCases, id:\.self) { type in
+                        Text(type.title).tag(type)
                     }
-                } label: {
-                    Text("\(notifications.type.title) \(Image(systemName: "chevron.up.chevron.down"))")
                 }
+                .pickerStyle(.menu)
                 .tint(.accent)
             }
             
