@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import OneSignalFramework
 import BackgroundTasks
 import WidgetKit
+import OneSignalFramework
 
 @main
 struct iarApp: App {
@@ -37,7 +37,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 bgTask.setTaskCompleted(success: true)
             }
         }
-        OneSignal.initialize("01fcf852-7b3f-4b53-a733-4cb8241bd193", withLaunchOptions: launchOptions)
+
+        if !ProcessInfo.processInfo.isiOSAppOnMac {
+            OneSignal.initialize("01fcf852-7b3f-4b53-a733-4cb8241bd193", withLaunchOptions: launchOptions)
+        }
+
         scheduleAppRefresh()
         return true
     }
