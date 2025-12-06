@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HijriView: View {
     let components: HijriComponents
-    var fullWidth: Bool = false
     
     var body: some View {
         HStack {
@@ -19,7 +18,6 @@ struct HijriView: View {
                 .padding(.vertical, 4)
                 .padding(.horizontal, 8)
         }
-        .frame(maxWidth: fullWidth ? .infinity : nil, alignment: .leading)
         .background(Color.white.opacity(0.1), in: RoundedRectangle(cornerRadius: 8))
     }
 }

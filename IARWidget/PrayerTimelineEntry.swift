@@ -95,7 +95,7 @@ struct PrayerTimelineEntry: TimelineEntry {
         let maghrib = Calendar.current.date(byAdding: DateComponents(hour: 18, minute: 12), to: midnight)!
         let isha = Calendar.current.date(byAdding: DateComponents(hour: 20, minute: 40), to: midnight)!
         let prayerDay = PrayerDay(date: Date(),
-                                  hijri: HijriComponents(monthName: "Jumada al-thani", day: 14, year: 1447, month: 6),
+                                  hijri: HijriComponents(monthName: "Ramadan", day: 27, year: 1447, month: 9),
                                   adhan: AdhanSchedule(fajr: fajr, shuruq: shuruq, dhuhr: dhuhr, asr: asr, maghrib: maghrib, isha: isha),
                                   iqamah: IqamahSchedule(
                                     fajr: fajr.addingTimeInterval(600),

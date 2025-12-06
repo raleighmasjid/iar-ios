@@ -13,7 +13,7 @@ struct PrayerWidgetSmallView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HijriView(components: entry.prayerDay.hijri, fullWidth: true)
+            HijriView(components: entry.prayerDay.hijri)
             
             VStack(alignment: .leading) {
                 Text("\(entry.nextPrayer.prayer.title) is in")
