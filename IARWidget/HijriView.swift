@@ -9,14 +9,17 @@ import SwiftUI
 
 struct HijriView: View {
     let components: HijriComponents
+    var fullWidth: Bool = false
     
     var body: some View {
-        Text(components.formatted())
-            .font(.system(size: 11, weight: .semibold))
-            .foregroundStyle(.white)
-            .padding(.vertical, 4)
-            .padding(.horizontal, 8)
-            .background(.white.opacity(0.1))
-            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 8, height: 8)))
+        HStack {
+            Text(components.formatted())
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundStyle(.white)
+                .padding(.vertical, 4)
+                .padding(.horizontal, 8)
+        }
+        .frame(maxWidth: fullWidth ? .infinity : nil, alignment: .leading)
+        .background(Color.white.opacity(0.1), in: RoundedRectangle(cornerRadius: 8))
     }
 }
