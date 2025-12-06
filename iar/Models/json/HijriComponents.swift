@@ -21,6 +21,6 @@ struct HijriComponents: Codable, Equatable, Hashable {
     }
     
     func formatted() -> String {
-        "\(monthName) \(day), \(year) h"
+        "\(monthName) \(day), \(year)\u{00A0}h"
     }
 }

@@ -41,24 +41,26 @@ struct PrayerWidgetMediumView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    Text("\(entry.nextPrayer.prayer.title) is in")
-                        .font(.system(size: 13, weight: .semibold))
-                    Text(entry.nextPrayer.adhan, style: .relative)
-                        .font(.system(size: 20, weight: .semibold))
-                        .monospacedDigit()
-                        .minimumScaleFactor(0.1)
-                        .lineLimit(1)
-                        .allowsTightening(true)
-                        .redacted(reason: entry.isPlaceholder ? .placeholder : [])
-                }
-                .padding(.top, 4)
-                .foregroundStyle(.white)
+        VStack(spacing: 0) {
+            HStack(alignment: .center, spacing: 0) {
+                Text("\(entry.nextPrayer.prayer.title) is in")
+                    .font(.system(size: 13, weight: .semibold))
+                
                 Spacer()
+                
                 HijriView(components: entry.prayerDay.hijri)
             }
+                    
+            Text(entry.nextPrayer.adhan, style: .relative)
+                .font(.system(size: 20, weight: .semibold))
+                .monospacedDigit()
+                .minimumScaleFactor(0.1)
+                .lineLimit(1)
+                .allowsTightening(true)
+                .redacted(reason: entry.isPlaceholder ? .placeholder : [])
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Spacer()
             
             HStack(spacing: 14) {
                 listPrayers([.fajr, .shuruq, .dhuhr])
@@ -73,8 +75,8 @@ struct PrayerWidgetMediumView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding([.horizontal, .bottom], 16)
-        .padding(.top, 12)
+        .padding(16)
+        .foregroundStyle(.white)
     }
 }
 

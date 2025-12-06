@@ -18,8 +18,5 @@ struct HijriView: View {
             .padding(.horizontal, 8)
             .background(.white.opacity(0.1))
             .clipShape(RoundedRectangle(cornerSize: CGSize(width: 8, height: 8)))
-            .lineLimit(1)
-            .allowsTightening(true)
-            .minimumScaleFactor(0.5)
     }
 }
