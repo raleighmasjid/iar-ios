@@ -14,13 +14,6 @@ enum Formatter {
         formatter.timeZone = TimeZone(identifier: "America/New_York")
         return formatter
     }()
-    
-    static let timeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        formatter.timeZone = TimeZone(identifier: "America/New_York")
-        return formatter
-    }()
 }
 
 extension Calendar {
@@ -36,9 +29,5 @@ extension Calendar {
 extension Date {
     func dayFormatted() -> String {
         Formatter.dayFormatter.string(from: self)
-    }
-    
-    func timeFormatted() -> String {
-        Formatter.timeFormatter.string(from: self)
     }
 }

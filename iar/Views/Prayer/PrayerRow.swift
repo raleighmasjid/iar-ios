@@ -15,14 +15,6 @@ struct PrayerRow: View {
     let displayAlarm: Bool
     @Binding var notificationEnabled: Bool
     
-    var adhanFormatted: String {
-        adhan?.timeFormatted() ?? " "
-    }
-    
-    var iqamahFormatted: String {
-        iqamah?.timeFormatted() ?? " "
-    }
-    
     var bgColor: Color {
         current ? .tertiaryContainer : .clear
     }
@@ -40,17 +32,29 @@ struct PrayerRow: View {
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)
                 
-                Text(adhanFormatted)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .scalingFont(size: 17, weight: .regular, maxSize: 22)
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
+                Group {
+                    if let adhan = adhan {
+                        Text(adhan.formatted(date: .omitted, time: .shortened))
+                    } else {
+                        Text(" ")
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .scalingFont(size: 17, weight: .regular, maxSize: 22)
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
                 
-                Text(iqamahFormatted)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .scalingFont(size: 17, weight: .regular, maxSize: 22)
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
+                Group {
+                    if let iqamah = iqamah {
+                        Text(iqamah.formatted(date: .omitted, time: .shortened))
+                    } else {
+                        Text(" ")
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .scalingFont(size: 17, weight: .regular, maxSize: 22)
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
             }
             .padding(.vertical, 16)
             .frame(maxWidth: .infinity)
