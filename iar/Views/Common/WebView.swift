@@ -36,13 +36,13 @@ struct WebView: View {
         .navigationTitle(destination.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if helper.isLoading {
-                ToolbarItem(placement: .topBarTrailing) {
-                    ProgressView()
-                        .tint(.primaryText)
-                }
-                .removeGlass()
+            ToolbarItem(placement: .topBarTrailing) {
+                ProgressView()
+                    .tint(.primaryText)
+                    .opacity(helper.isLoading ? 1 : 0)
             }
+            .removeGlass()
+            
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
                     Button("Open in Browser") {
