@@ -21,7 +21,7 @@ struct PrayerWidgetView: View {
                 PrayerWidgetSmallView(entry: entry)
             }
         }
-        .widgetBackground {
+        .containerBackground(for: .widget) {
             LinearGradient(colors: [.gradientStart, .gradientEnd], startPoint: .topLeading, endPoint: .bottomTrailing)
         }
     }
