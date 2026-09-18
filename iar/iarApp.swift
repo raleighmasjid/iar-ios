@@ -8,7 +8,9 @@
 import SwiftUI
 import BackgroundTasks
 import WidgetKit
-import OneSignalFramework
+import FirebaseCore
+import FirebaseMessaging
+import UserNotifications
 
 @main
 struct iarApp: App {
@@ -22,7 +24,7 @@ struct iarApp: App {
     }
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
     
     let backgroundTaskIdentifier = "com.lemosys.IARMasjid.localNotificationsRefresh"
     
@@ -38,13 +40,38 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             }
         }
 
-        if !ProcessInfo.processInfo.isiOSAppOnMac {
-            OneSignal.initialize("01fcf852-7b3f-4b53-a733-4cb8241bd193", withLaunchOptions: launchOptions)
-        }
-
         scheduleAppRefresh()
+        FirebaseApp.configure()
+        
+        // Set delegates
+        UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
+
+        // Register for remote notifications on APNs
+        application.registerForRemoteNotifications()
+        
         return true
     }
+    
+    // Capture the APNs token and assign it to FCM
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    // Receive the FCM registration token
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("FCM registration token: \(String(describing: fcmToken))")
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                  willPresent notification: UNNotification,
+                                  withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+          
+          let userInfo = notification.request.content.userInfo
+          
+          // This forces iOS to show the banner and play sound even if the app is wide open
+          completionHandler([[.banner, .sound, .badge]])
+      }
     
     func scheduleAppRefresh() {
         let request = BGAppRefreshTaskRequest(identifier: backgroundTaskIdentifier)

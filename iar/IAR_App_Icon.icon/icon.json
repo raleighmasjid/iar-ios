@@ -6,6 +6,7 @@
     {
       "layers" : [
         {
+          "hidden" : false,
           "image-name" : "IAR Logo.png",
           "name" : "IAR Logo",
           "position" : {

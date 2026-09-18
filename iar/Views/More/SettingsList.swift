@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import OneSignalFramework
+import UserNotifications
 
 struct SettingsList: View {
     
@@ -35,11 +35,7 @@ struct SettingsList: View {
             rowDivider
             
             Button {
-                if OneSignal.Notifications.canRequestPermission {
-                    OneSignal.Notifications.requestPermission({ _ in }, fallbackToSettings: true)
-                } else {
-                    openURL(URL(string: UIApplication.openSettingsURLString)!)
-                }
+                handleNotifications()
             } label: {
                 SettingsRow(image: Image(.notificationsIcons), title: "Notifications")
             }
@@ -72,6 +68,20 @@ struct SettingsList: View {
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String
         return "App version \(version) (\(build))"
+    }
+    
+    
+    func handleNotifications() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+                    print("Permission granted: \(granted)")
+                }
+            default:
+                openURL(URL(string: UIApplication.openSettingsURLString)!)
+            }
+        }
     }
 }
 
