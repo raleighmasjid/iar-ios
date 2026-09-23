@@ -15,35 +15,41 @@ struct QiblaScreen: View {
     @State private var mode: QiblaMode = .map
     
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("Qibla")
-                Spacer()
+        NavigationStack {
+            VStack(spacing: 0) {
+                Picker("Qibla Mode", selection: $mode) {
+                    ForEach(QiblaMode.allCases, id: \.self) { mode in
+                        Text(mode.title)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 16)
+                
+                VStack {
+                    switch mode {
+                    case .map:
+                        QiblaMap(viewModel: viewModel)
+                    case .compass:
+                        QiblaCompass(viewModel: viewModel)
+                    }
+                }
+            }
+            .frame(maxHeight: .infinity)
+            .background(.appBackground)
+            .inlineLargeTitleScrollFix()
+            .hiddenToolbarBackgroundIfAvailable()
+            .toolbarTitleDisplayMode(.inlineLarge)
+            .navigationTitle("Qibla")
+            .toolbar {
                 if mode == .compass {
-                    LocationCard(locationName: viewModel.locationName)
-                }
-            }
-            .navTitle()
-            Picker("Qibla Mode", selection: $mode) {
-                ForEach(QiblaMode.allCases, id: \.self) { mode in
-                    Text(mode.title)
-                }
-            }
-            .pickerStyle(.segmented)
-            .padding(.horizontal, 16)
-            .padding(.bottom, 16)
-            
-            VStack {
-                switch mode {
-                case .map:
-                    QiblaMap(viewModel: viewModel)
-                case .compass:
-                    QiblaCompass(viewModel: viewModel)
+                    ToolbarItem (placement: .navigationBarTrailing) {
+                        LocationCard(locationName: viewModel.locationName)
+                    }
+                    .removeGlass()
                 }
             }
         }
-        .frame(maxHeight: .infinity)
-        .background(.appBackground)
         .onAppear {
             viewModel.requestLocationAuthorization()
         }

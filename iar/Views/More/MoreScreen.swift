@@ -11,30 +11,19 @@ import Contacts
 struct MoreScreen: View {
     
     @State var path: [WebLink] = []
-    @State var footerHeight: CGFloat = 0
     
     var body: some View {
         NavigationStack(path: $path) {
-            ZStack {
-                ScrollView {
-                    SettingsList(path: $path)
-                        .padding(.bottom, footerHeight)
+            SettingsList(path: $path)
+                .safeAreaInset(edge: .bottom) {
+                    SettingsFooter()
                 }
-                
-                SettingsFooter()
-                    .onGeometryChange(for: CGFloat.self) { proxy in
-                        proxy.size.height
-                    } action: { newValue in
-                        footerHeight = newValue
-                    }
-                    .frame(maxHeight: .infinity, alignment: .bottom)
-            }
-            .toolbarTitleDisplayMode(.inlineLarge)
-            .navigationTitle("Settings")
-            .background(.appBackground)
-            .navigationDestination(for: WebLink.self) { webLink in
-                WebView(webLink)
-            }
+                .toolbarTitleDisplayMode(.inlineLarge)
+                .navigationTitle("Settings")
+                .background(.appBackground)
+                .navigationDestination(for: WebLink.self) { webLink in
+                    WebView(webLink)
+                }
         }
     }
 }

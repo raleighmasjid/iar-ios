@@ -66,10 +66,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                   willPresent notification: UNNotification,
                                   withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-          
-          let userInfo = notification.request.content.userInfo
-          
-          // This forces iOS to show the banner and play sound even if the app is wide open
           completionHandler([[.banner, .sound, .badge]])
       }
     

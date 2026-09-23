@@ -36,14 +36,13 @@ struct MapControlView: View {
             }
             Spacer()
             HStack(alignment: .bottom) {
-                Text("Qibla \(qiblaAngle, format: .number.precision(.fractionLength(1)))°")
-                    .font(.system(size: 17, weight: .semibold))
+                Text("Qibla: \(qiblaAngle, format: .number.precision(.fractionLength(1)))°")
+                    .font(.system(size: 16, weight: .medium))
                     .foregroundStyle(Color.primaryText)
-                    .padding(8)
-                    .background(Color.appBackground, in: RoundedRectangle(cornerRadius: 16))
-                    .padding(.vertical, 16)
+                    .padding(12)
+                    .mapOverlayBackground(in: Capsule())
                 Spacer()
-                VStack(spacing: 8) {
+                VStack(spacing: 0) {
                     Button {
                         withAnimation {
                             if mapPosition.followsUserLocation {
@@ -55,18 +54,23 @@ struct MapControlView: View {
                     } label: {
                         Image(systemName: mapPosition.followsUserLocation ? "location.fill" : "location")
                     }
-                    .buttonStyle(MapButtonStyle())
+                    .buttonStyle(MapIconButtonStyle())
+                    
+                    Divider()
+                        .frame(width: 24)
                     
                     Button {
                         mapStyle.toggle()
                     } label: {
                         Image(systemName: mapStyle.symbolName)
                     }
-                    .buttonStyle(MapButtonStyle())
+                    .buttonStyle(MapIconButtonStyle())
                 }
+                .mapOverlayBackground(in: Capsule())
             }
         }
-        .padding(.vertical, 16)
-        .padding(.horizontal, 8)
+        .padding(.top, 16)
+        .padding(.bottom, 40)
+        .padding(.horizontal, 22)
     }
 }

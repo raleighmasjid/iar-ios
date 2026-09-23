@@ -19,6 +19,7 @@ struct LocationCard: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: markerHeight)
             Text(locationName ?? "---")
+                .fixedSize()
         }
         .scalingFont(size: 15, weight: .medium)
         .lineLimit(1)

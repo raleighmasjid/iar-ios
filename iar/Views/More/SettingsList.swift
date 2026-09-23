@@ -14,53 +14,30 @@ struct SettingsList: View {
     @EnvironmentObject var notifications: NotificationSettings
     @Environment(\.openURL) private var openURL
     
-    var rowDivider: some View {
-        Divider()
-            .overlay(.outline)
-            .padding(.horizontal, 16)
-    }
-    
     var body: some View {
-        VStack(spacing: 0) {
-            SettingsPickerRow(image: Image(.adhanSoundIcon), title: "Adhan Sound") {
-                Picker("Adhan Sound", selection: $notifications.type) {
-                    ForEach(NotificationType.allCases, id:\.self) { type in
-                        Text(type.title).tag(type)
-                    }
-                }
-                .pickerStyle(.menu)
-                .tint(.accent)
-            }
+        List {
+            SettingsRowPicker(
+                image: Image(.adhanSoundIcon),
+                title: "Adhan Sound",
+                selection: $notifications.type
+            ) { $0.title }
+            .listRowSeparator(.hidden, edges: .top)
             
-            rowDivider
-            
-            Button {
+            SettingsRowButton(image: Image(.notificationsIcons), title: "Notifications") {
                 handleNotifications()
-            } label: {
-                SettingsRow(image: Image(.notificationsIcons), title: "Notifications")
             }
-            .buttonStyle(RowButtonStyle())
             
-            rowDivider
-            
-            Button {
+            SettingsRowButton(image: Image(.fullWebsiteIcon), title: "View Full Website") {
                 path.append(
                     WebLink(url: "https://raleighmasjid.org/", title: "Islamic Association of Raleigh")
                 )
-            } label: {
-                SettingsRow(image: Image(.fullWebsiteIcon), title: "View Full Website")
             }
-            .buttonStyle(RowButtonStyle())
             
-            rowDivider
-            
-            Text(version())
-            .padding(16)
-            .padding(.vertical, 8)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .foregroundStyle(.secondaryText)
-            .font(.system(size: 11))
+            SettingsRowText(text: version())
+                .listRowSeparator(.hidden, edges: .bottom)
         }
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
     }
     
     func version() -> String {
